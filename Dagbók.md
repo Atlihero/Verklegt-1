@@ -40,3 +40,5 @@ Vika 1
       -	Bjuggum til Git handbókina
       -	Byrjuðum á requirement listanum
       -	Byrjuðum á klasaritunum
+
+bleble
