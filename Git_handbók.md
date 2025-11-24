@@ -5,10 +5,10 @@
       *	Vinnna með branches til að vera ekki að breyta aðalkóðanum fyrr en við erum viss um allt sé rétt, áður en kóðanum er push-að í aðalkóðann
       *	Deila kóða með teymi/hóp til að vinna á skipulagðan hátt
    -	Fyrst þarf einn úr hópnum að búa til repository
-      *	Deilir því með meðlimum sem clone-a það á sitt github desktop app til að geta unnið með repo-ið á sinni tölvu og ýtt sínum kóða í það
+      * Deilir því með meðlimum sem clone-a það á sitt github desktop app til að geta unnið með repo-ið á sinni tölvu og ýtt sínum kóða í það
 
 ## Git skipanir
-  -	Setjum git fyrir framan skipunina
+   - Setjum git fyrir framan skipunina
 Repo = repository
 **Branch**
   -	A copy of the project used for working in an isolated environment without affecting the main project
