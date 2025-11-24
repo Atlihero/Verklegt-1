@@ -39,3 +39,4 @@
       -	Bjuggum til Git handbókina
       -	Byrjuðum á requirement listanum
       -	Byrjuðum á klasaritunum
+      - Burjuðum á use cases
