@@ -1,10 +1,10 @@
 ## Hvað er Git?
-  -	Git er vefþjónusta sem gerir notendum kleyft að geyma, deila og vinna saman að kóða
-  -	Notum git til að:
+   - Git er vefþjónusta sem gerir notendum kleyft að geyma, deila og vinna saman að kóða
+   -	Notum git til að:
     o	Fylgjast með hvaða breytingar hver og einn gerir í skrám
     o	Vinna með branches til að vera ekki að breyta aðalkóðanum fyrr en við erum viss um allt sé rétt, áður en kóðanum er push-að í aðalkóðann
     o	Deila kóða með teymi/hóp til að vinna á skipulagðan hátt
-  -	Fyrst þarf einn úr hópnum að búa til repository
+   -	Fyrst þarf einn úr hópnum að búa til repository
     o	Deilir því með meðlimum sem clone-a það á sitt github desktop app til að geta unnið með repo-ið á sinni tölvu og ýtt sínum kóða í það
 
 ## Git skipanir
@@ -35,7 +35,7 @@ Clone
 `Git Push` (ýta breytingum á GitHub)
   -	Ýtir öllum local commits í remote reposotory (mappan í Git skýjinu)
 `Git Push -u origin master`
-  -	Flaggið -u setur “upstream branch” sem þýðir að við þurfum ekki að skilgreina aftur hvaða grein (branch) þegar maður notar git push
+    - Flaggið -u setur “upstream branch” sem þýðir að við þurfum ekki að skilgreina aftur hvaða grein (branch) þegar maður notar git push
 `Git checkout -b <branch_name>`
   -	Býr til nýja grein (branch) og skiptir yfir í hana í einu skrefi
 `Git checkout <branch_name>`
