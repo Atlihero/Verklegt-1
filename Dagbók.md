@@ -1,7 +1,7 @@
-Dagbók fyrir git
+# Dagbók fyrir git
 
-Vika 1
-  Mánudagur 24.11.25 (dagur 1)
+## Vika 1
+  ### Mánudagur 24.11.25 (dagur 1)
     Hópmeðlimir sem eru mættir og fóru í fyrirlestur kl 8:30 eru: Atli, Brynja, Daníel, Elvar og Karen
     Christian mætti seinn hann vissi ekki að hann ætti að mæta 8:30. Sektin hans er að kaupa möns fyrir hópinn þriðjudag og miðvikudag
     Verkefni dagsins eru:
