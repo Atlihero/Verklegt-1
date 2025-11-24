@@ -1,4 +1,4 @@
-##Dagbók fyrir git
+Dagbók fyrir git
 
 Vika 1
   Mánudagur 24.11.25 (dagur 1)
