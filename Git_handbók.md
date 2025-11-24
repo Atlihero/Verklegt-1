@@ -1,4 +1,4 @@
-##Hvað er Git?
+  Hvað er Git?
   -	Git er vefþjónusta sem gerir notendum kleyft að geyma, deila og vinna saman að kóða
   -	Notum git til að:
     o	Fylgjast með hvaða breytingar hver og einn gerir í skrám
@@ -7,7 +7,7 @@
   -	Fyrst þarf einn úr hópnum að búa til repository
     o	Deilir því með meðlimum sem clone-a það á sitt github desktop app til að geta unnið með repo-ið á sinni tölvu og ýtt sínum kóða í það
 
-##Git skipanir
+  Git skipanir
   -	Setjum git fyrir framan skipunina
 Repo = repository
 Branch
