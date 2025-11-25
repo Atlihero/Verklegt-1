@@ -1,0 +1,62 @@
+{
+  "players": [
+    {
+      "id": 1,
+      "handle": "KristjanDaGoat",
+      "name": "Kristján Eldjárn",
+      "date_of_birth": "2006-06-09",
+      "address": "Nauthólsvegur 83C",
+      "phone": "823-3828",
+      "email": "kristjan25@ru.is",
+      "link": "https://twitch.tv/kristjandagoat",
+      "team_id": 10
+    }
+  ],
+  "teams": [
+    {
+      "id": 10,
+      "name": "RU Legends",
+      "captain_id": 1,
+      "website": "",
+      "ascii_logo": ""
+    }
+  ],
+  "tournaments": [
+    {
+      "id": 100,
+      "name": "RU’s Glorious e-Sport Extravaganza",
+      "start_date": "2025-12-01",
+      "end_date": "2025-12-02",
+      "venue": "Sólin",
+      "contact_name": "Tournament Admin",
+      "contact_email": "admin@ru.is",
+      "contact_phone": "555-5555"
+    }
+  ],
+  "games": [
+    {
+      "id": 1000,
+      "tournament_id": 100,
+      "round": 1,
+      "home_team_id": 10,
+      "away_team_id": 11,
+      "date_time": "2025-12-01T10:00:00",
+      "server_id": "A1",
+      "status": "scheduled"
+    }
+  ],
+  "results": [
+    {
+      "game_id": 1000,
+      "home_score": 16,
+      "away_score": 10,
+      "notes": "2-0 maps"
+    }
+  ],
+  "meta": {
+    "next_player_id": 2,
+    "next_team_id": 11,
+    "next_tournament_id": 101,
+    "next_game_id": 1001
+  }
+}
