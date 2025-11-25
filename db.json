@@ -2,13 +2,13 @@
   "players": [
     {
       "id": 1,
-      "handle": "KristjanDaGoat",
-      "name": "Kristján Eldjárn",
+      "handle": "FannarDaGoat",
+      "name": "Fannar Eldjárn",
       "date_of_birth": "2006-06-09",
       "address": "Nauthólsvegur 83C",
       "phone": "823-3828",
-      "email": "kristjan25@ru.is",
-      "link": "https://twitch.tv/kristjandagoat",
+      "email": "fannar25@ru.is",
+      "link": "https://twitch.tv/fannardagoat",
       "team_id": 10
     }
   ],
