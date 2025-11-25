@@ -39,7 +39,7 @@
       -	Bjuggum til Git handbókina
       -	Byrjuðum á requirement listanum
       -	Byrjuðum á klasaritunum
-      - Burjuðum á use cases
+      - Byrjuðum á use cases
 ### Þriðjudagur 25.11.25 (dagur 2)
     Mæting 9:30 Atli , Daníel, Elvar,
     Mæting EFTIR!!! 9:30 Brynja, Christian, Karen
