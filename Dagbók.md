@@ -77,3 +77,26 @@
   - TA mælir með að gera í hráu texta skjali sem er ekki word
 - Þarf að vera use case fyrir hvert requirement eins og í áfanganum hjá mörtu?
   - Já
+
+ 
+## Miðvikudagur 26.11.25 (dagur 3)
+Klukkan er 8:40 og Daníel er mættur fyrstur og skráir niður hverjir mættu svo.
+Á eftir honum tíndist síðan restin inn og morgunfundur hófst 9:35.
+
+Dagskrá dagsins er:
+  - Fara í logic layer plan (Daníel) ✅
+  - Fínpússa skýrsluna og setja hana fallega upp ✅
+  - Laga setup í git dagbók ✅
+  - Laga aðeins UI ✅
+  - Elvar sækir stúdentakort fr this time ✅
+  - Ping pong pása kl 10:45 ✅
+    - Spilað voru 3 leikir sem gengu misvel
+   
+**Samantekt fyrir daginn í dag:**
+- Skýrslan var fínpússuð
+- UI var klárað
+- Spurðum Gylfa út í spurningar sem við höfðum og fengum góð svör við þeim.
+- Skýrslan var fínpússuð og kláruð
+- Skýrslunni og Git handbók hefur verið skilað.
+- Næsta stopp er Sjöbben!
+
