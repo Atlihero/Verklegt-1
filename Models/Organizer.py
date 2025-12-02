@@ -4,5 +4,4 @@ class Organizer():
         self.name = name 
     
     def __str__(self):
-
         return f"Organizer(adminLogin='{self.adminLogin}', name='{self.name}')"
