@@ -1,8 +1,7 @@
 from Models.Tournament import Tournament #importa tournament klasan
-from datetime import datetime #importa tímanum
 
 #Klasi fyrir round á tournamenti sem segja númer hvað roundið er líka byrjunar og endatíma á roundinu
-class Round():
+class Round(Tournament):
     def __init__(self, number, startTime, endTime):
         self.number = number
         self.startTime = startTime

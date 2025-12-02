@@ -1,9 +1,8 @@
 from Models.Round import Round #importar round klasanum
 from Models.Tournament import Tournament #importar tournament klasann
-from datetime import datetime #importar tímasetningunum
 
 #klasi fyrir leiki sem segja hvenær þeir eru og að passa að það séu slétttölu
-class Game:
+class Game(Round, Tournament):
     def __init__(self, date, roundnumber):
         self.date = date
         self.roundenumber = roundnumber

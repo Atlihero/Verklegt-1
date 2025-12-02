@@ -1,6 +1,6 @@
 from Models.Player import Player
 
-class Team:
+class Team(Player):
     #Klasi fyrir nafn, kaftein, leikmenn og ASCII logo á lið
     def __init__(self, name, captain, players, asciiLogo):
         self.name = name
