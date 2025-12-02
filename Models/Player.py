@@ -15,6 +15,3 @@ class Player:
     def __str__(self, name, dob, address, email, handle, link):
         return f"{name}:\n\t{dob}:\n\t{address}:\n\t{email}:\n\t{handle}:\n\t{link}"
         
-    def name():
-        pass
-        
