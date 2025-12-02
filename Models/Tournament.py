@@ -1,5 +1,6 @@
 from Models.Game import Game
 from Models.Organizer import Organizer
+from datetime import date
 
 """
     Búa til __init__ fall sem tekur inn unique nafn, byrjunardag, endadag,
