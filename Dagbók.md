@@ -119,6 +119,8 @@ Einnig settum við okkur markmið um hvenær við viljum klára verkefnið.
 
 **Samantekt fyrir daginn í dag:**
 - Komin vel á veg með model klasana
-- Ákveðið pör sem munu vinna saman á morgun við gerð 3 laga hönnunina
+- Ákveðið pör sem munu vinna saman við gerð 3 laga hönnunina
 - Æfðum okkur í git að búa til branches og lesa og pull-a gögn úr öðrum branch sem er ekki manns eigin
 - Fórum yfir feedback-ið sem við fengum frá kennunum
+- Byrjuðum aðeins á uppsetningum í Data og logic layerinu
+- Allir farnir fyrir 19:00
