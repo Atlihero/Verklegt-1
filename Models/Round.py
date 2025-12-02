@@ -10,6 +10,4 @@ class Round():
     
     def __repr__(self):
         return str(self)
-        
-        
-        
+    
