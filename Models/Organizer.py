@@ -6,4 +6,4 @@ class Organizer():
     
     #skila upllýsingunum
     def __str__(self):
-        return f"Organizer(adminLogin='{self.adminLogin}', name='{self.name}')"
+        return f"{self.adminLogin} \n {self.name}"
