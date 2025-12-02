@@ -1,6 +1,7 @@
 #Hér á að koma föll sem ná í rétta data
-from Models.Player import Player
-from Models.Team import Team
+from Models.Player import Player #player import til að setja player upplýsingar í csv
+from Models.Team import Team #team import til að setja team upllýsingar í csv
+#Þessi 3 import til að sjá um tournament csv
 from Models.Tournament import Tournament
 from Models.Game import Game
 from Models.Round import Round
