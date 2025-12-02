@@ -8,3 +8,6 @@ class Game:
         
     def __str__(self):
         return f"{self.date}\n{self.roundenumber}"
+    
+    def __repr__(self):
+        return str(self)
