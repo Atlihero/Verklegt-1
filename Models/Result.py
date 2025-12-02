@@ -1,6 +1,6 @@
 from Models.Game import Game
 
-class result:
+class Result:
     #Klasi fyrir score_A, score_B og winner
     def __init__(self, score_A, score_B, winner):
         self.score_A = score_A
