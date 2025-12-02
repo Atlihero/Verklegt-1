@@ -12,6 +12,7 @@ class Player:
         self.handle = handle
         self.link = link
 
+    "Skilar öllum upplýsingum leikmanns mí nýrri línu"
     def __str__(self, name, dob, address, email, handle, link):
-        return f"{name}:\n\t{dob}:\n\t{address}:\n\t{email}:\n\t{handle}:\n\t{link}"
+        return f"{name}:\n{dob}:\n{address}:\n{email}:\n{handle}:\n{link}"
         
