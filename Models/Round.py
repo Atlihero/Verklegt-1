@@ -1,3 +1,5 @@
+from Models.Tournament import Tournament
+
 class Round():
     def __init__(self, name, number, startTime, endTime):
         self.name = name
