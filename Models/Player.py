@@ -1,5 +1,9 @@
 class Player:
     
+    """
+    Búa til __init__ fall sem tekur inn nafn, fæðingardag, heimili,
+    email, viðurnefni(gamertag), og link að samfélagsmiðli
+    """
     def __init__(self, name="", dob="", address="", email="", handle="", link=""):
         self.name = name
         self.dob = dob
