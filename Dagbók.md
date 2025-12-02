@@ -100,3 +100,9 @@ Dagskrá dagsins er:
 - Skýrslunni og Git handbók hefur verið skilað.
 - Næsta stopp er Sjöbben!
 
+## Þriðjudagur 2.12.25 (dagur 4)
+Fyrst mætir Elvar síðan kemur rest, Atli mætir seint kl 9:55 og Karen er veik.
+
+
+Dagskrá dagsins er:
+  - Fara yfir hvernig við ætlum að vinna saman í python 
