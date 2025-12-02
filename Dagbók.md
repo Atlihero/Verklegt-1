@@ -110,9 +110,15 @@ Ræddum stuttlega um lífið áður en við hentum okkur í Pythongleði Rikka o
 Eftir hana var tekin matarpása og síðan var morgunfundurinn tekinn sem í dag var hádegisfundur. Þar var farið yfir verkefni dagsins og hvernig væri best að vinna að verkefninu næstu 2 vikurnar. 
 
 Verkefni dagsins eru:
-- Byrja á að gera model klasana
-- Allir búa til sitt branch á github til að vinna í
-- Búa til sér branch sem er fyrir debugging
-  - Þannig að allur kóði fer þangað inn og áður en honum er push-að á main. Til að það sé bara kóði sem er tilbúinn inn á main.
+- Byrja á að gera model klasana ✅
+- Allir búa til sitt branch á github til að vinna í ✅
+- Búa til sér branch sem er fyrir debugging ✅
+  - Þannig að allur kóði fer þangað inn og áður en honum er push-að á main. Til að það sé bara kóði sem er tilbúinn inn á main. ✅
 
-Einnig settum við okkur markmið um hvenær við viljum klára verkefnið. 
+Einnig settum við okkur markmið um hvenær við viljum klára verkefnið.
+
+**Samantekt fyrir daginn í dag:**
+- Komin vel á veg með model klasana
+- Ákveðið pör sem munu vinna saman á morgun við gerð 3 laga hönnunina
+- Æfðum okkur í git að búa til branches og lesa og pull-a gögn úr öðrum branch sem er ekki manns eigin
+- Fórum yfir feedback-ið sem við fengum frá kennunum
