@@ -101,7 +101,7 @@ Dagskrá dagsins er:
 - Næsta stopp er Sjöbben!
 
 ## Þriðjudagur 2.12.25 (dagur 4)
-Fyrst mætir Elvar seinna mæta rest, Atli mætir 9:55 og og Karen er veik.
+Fyrst mætir Elvar síðan kemur rest, Atli mætir seint kl 9:55 og Karen er veik.
 
 
 Dagskrá dagsins er:
