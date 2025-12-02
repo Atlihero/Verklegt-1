@@ -6,7 +6,7 @@ from Models.Organizer import Organizer
     staðsetning, contact person, contact email og contact phone 
 """
 
-class Team:
+class Tournament:
     def __init__(self, unique_name, start_date, end_date, venue, contact_person, contact_email, contact_phone):
         self.unqie_name = unique_name
         self.start_date = start_date
@@ -18,7 +18,7 @@ class Team:
     
 
 
-    "Skilar öllum upplýsingum mótsinsdef __repr__(self): í nýrri línu"
+    "Skilar öllum upplýsingum mótsinsdef í nýrri línu"
 
     def __str__(self, unique_name, start_date, end_date, venue, contact_person, contact_email, contact_phone):
         return f"{unique_name}:\n{start_date}:\n{end_date}:\n{venue}\n{contact_person}\n{contact_email}\n{contact_phone}"
