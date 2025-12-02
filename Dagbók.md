@@ -1,7 +1,7 @@
 # Dagbók fyrir git
 
 ## Vika 1
-  ### Mánudagur 24.11.25 (dagur 1)
+  ### Mánudagur 24.11.25 (Dagur 1 í viku 1)
   Hópmeðlimir sem eru mættir og fóru í fyrirlestur kl 8:30 eru: Atli, Brynja, Daníel, Elvar og Karen
   Christian mætti seinn hann vissi ekki að hann ætti að mæta 8:30. Sektin hans er að kaupa möns fyrir hópinn þriðjudag og miðvikudag
   
@@ -44,7 +44,7 @@
     - Byrjuðum á use cases
 
 
-### Þriðjudagur 25.11.25 (dagur 2)
+### Þriðjudagur 25.11.25 (Dagur 2 í viku 1)
   Klukkan er 9:30 og mættir eru: Atli, Daníel og Elvar (sjokker)\
   Klukkan er 9:35 og restin af hópnum eru mætt: Brynja, Christian og Karen 
     
@@ -79,7 +79,7 @@
   - Já
 
  
-## Miðvikudagur 26.11.25 (dagur 3)
+### Miðvikudagur 26.11.25 (Dagur 3 í viku 1)
 Klukkan er 8:40 og Daníel er mættur fyrstur og skráir niður hverjir mættu svo.
 Á eftir honum tíndist síðan restin inn og morgunfundur hófst 9:35.
 
@@ -100,9 +100,18 @@ Dagskrá dagsins er:
 - Skýrslunni og Git handbók hefur verið skilað.
 - Næsta stopp er Sjöbben!
 
-## Þriðjudagur 2.12.25 (dagur 4)
-Fyrst mætir Elvar síðan kemur rest, Atli mætir seint kl 9:55 og Karen er veik.
+## Vika 2
+  ### Þriðjudagur 2.12.25 (Dagur 1 í viku 2)
 
+Klukkan er 9:29 og þrír hópmeðlimir eru mættir og hafa verið það í góðan tíma þeir eru: Brynja, Daníel og Elvar. Ekkert hefur heyrst til hinna hópmeðlimanna. Nú slær 9:30 og þá er sekt á línuna! Sektaðir er: Atli, Christian og Karen. 
+Christian mætti næstur og að lokum Atli. Karen er orðin veik og vann heima í dag.
 
-Dagskrá dagsins er:
-  - Fara yfir hvernig við ætlum að vinna saman í python 
+Ræddum stuttlega um lífið áður en við hentum okkur í Pythongleði Rikka og Konna.
+Eftir hana var tekin matarpása og síðan var morgunfundurinn tekinn sem í dag var hádegisfundur. Þar var farið yfir verkefni dagsins og hvernig væri best að vinna að verkefninu næstu 2 vikurnar. 
+
+Verkefni dagsins eru:
+- Byrja á að gera model klasana
+- Allir búa til sitt branch á github til að vinna í
+-	Búa til sér branch sem er fyrir debugging
+  - Þannig að allur kóði fer þangað inn og áður en honum er push-að á main. Til að það sé bara kóði sem er tilbúinn inn á main.
+Einnig settum við okkur markmið um hvenær við viljum klára verkefnið. 
