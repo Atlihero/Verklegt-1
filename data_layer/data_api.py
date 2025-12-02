@@ -18,4 +18,8 @@ def add_team():
     "Bætir við liði úr create team í LL"
     pass
 
+def get_club():
+    "Sækir klúbba"
+    pass
+
 
