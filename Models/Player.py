@@ -1,6 +1,6 @@
-class Player():
+class Player:
     
-    def __init__(self, name, dob, address, email, handle, link):
+    def __init__(self, name="", dob="", address="", email="", handle="", link=""):
         self.name = name
         self.dob = dob
         self.address = address
