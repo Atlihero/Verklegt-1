@@ -1,4 +1,3 @@
-from Models.Game import Game
 from Models.Organizer import Organizer
 from datetime import date
 
