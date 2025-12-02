@@ -83,7 +83,7 @@
 Klukkan er 8:40 og Daníel er mættur fyrstur og skráir niður hverjir mættu svo.
 Á eftir honum tíndist síðan restin inn og morgunfundur hófst 9:35.
 
-Dagskrá dagsins er:
+**Dagskrá dagsins er:**
   - Fara í logic layer plan (Daníel) ✅
   - Fínpússa skýrsluna og setja hana fallega upp ✅
   - Laga setup í git dagbók ✅
@@ -109,7 +109,7 @@ Christian mætti næstur og að lokum Atli. Karen er orðin veik og vann heima �
 Ræddum stuttlega um lífið áður en við hentum okkur í Pythongleði Rikka og Konna.
 Eftir hana var tekin matarpása og síðan var morgunfundurinn tekinn sem í dag var hádegisfundur. Þar var farið yfir verkefni dagsins og hvernig væri best að vinna að verkefninu næstu 2 vikurnar. 
 
-Verkefni dagsins eru:
+**Verkefni dagsins eru:**
 - Byrja á að gera model klasana ✅
 - Allir búa til sitt branch á github til að vinna í ✅
 - Búa til sér branch sem er fyrir debugging ✅
