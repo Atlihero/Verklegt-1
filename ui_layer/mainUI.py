@@ -1,6 +1,3 @@
-class MenuUI:
-    pass
-
 class CaptainUI:
     pass
 
