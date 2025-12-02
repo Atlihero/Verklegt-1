@@ -112,6 +112,7 @@ Eftir hana var tekin matarpása og síðan var morgunfundurinn tekinn sem í dag
 Verkefni dagsins eru:
 - Byrja á að gera model klasana
 - Allir búa til sitt branch á github til að vinna í
--	Búa til sér branch sem er fyrir debugging
+- Búa til sér branch sem er fyrir debugging
   - Þannig að allur kóði fer þangað inn og áður en honum er push-að á main. Til að það sé bara kóði sem er tilbúinn inn á main.
+
 Einnig settum við okkur markmið um hvenær við viljum klára verkefnið. 
