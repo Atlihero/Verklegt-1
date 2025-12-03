@@ -28,10 +28,10 @@ print(date_input)
 
 
 
-def player_phone():
-    phone_number = input("Enter player's phone number: ")
-    try:
+# def player_phone():
+#     phone_number = input("Enter player's phone number: ")
+#     try:
         
                         
-    except ValueError:
-        print("Invalid phone number. Try again.")
+#     except ValueError:
+#         print("Invalid phone number. Try again.")

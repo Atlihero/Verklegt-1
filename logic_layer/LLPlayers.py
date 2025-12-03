@@ -31,11 +31,12 @@ class PlayerInfo():
                 return address
         
         def player_phone():
-                phone_number = input("Enter player's phone number: ")
-                try:
-                        
-                except ValueError:
-                        print("Invalid phone number. Try again.")
+                pass
+                # phone_number = input("Enter player's phone number: ")
+                # try:
+
+                # except ValueError:
+                #         print("Invalid phone number. Try again.")
 
         def player_email():
                 player_email = input("Enter the player's email address: ")
@@ -45,8 +46,6 @@ class PlayerInfo():
                 handle = input("Enter player's handle: ")
                         # búa til lista
                         # 
-
-        
 
 
         def edit_player():
