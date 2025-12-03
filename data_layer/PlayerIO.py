@@ -17,7 +17,7 @@ class PlayerIO:
             f"Error message to be decided"
 
 
-
+#þetta þarf kannski smá að laga
     def add_new_player(player: list):
         try: 
             with open(PLAYER_PATH, "a",newline="", encoding="utf-8") as csvfile:
