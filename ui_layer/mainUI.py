@@ -4,8 +4,8 @@ class CaptainUI:
 class OrganizerUI:
     pass
 
-class PublicViewer:
+class PublicViewerUI:
     pass
 
-class Player: #Ekki alveg viss um þennan af því að það er bara eitt use case fyrir player
+class PlayerUI: #Ekki alveg viss um þennan af því að það er bara eitt use case fyrir player
     pass

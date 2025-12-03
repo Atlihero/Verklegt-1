@@ -15,8 +15,9 @@ class PlayerIO:
                 players.append(row)
         return players
 
-    def add_new_player():
-        
+    def add_new_player(player):
+        with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+            writer = csv.writer(csvfile)
 
         pass
 
