@@ -1,12 +1,9 @@
-#Hér á að koma föll sem ná í rétta data
 import csv
-from Models.Player import Player
 
-userinput = int(input("Select player by player id: "))
 PLAYER_PATH: str = r"data_layer\_data\Players.csv"
 
 #Klasi fyrir öllu sem tengist player í data layerinu sem inheritar model klasan "player"
-class PlayerIO(Player):
+class PlayerIO:
 
     def get_players():
             players = []
@@ -15,8 +12,5 @@ class PlayerIO(Player):
                 for row in reader:
                     players.append(row)
             return players
-
 players = PlayerIO.get_players()
-print(players[userinput])
-  
-
+print(players[1])
