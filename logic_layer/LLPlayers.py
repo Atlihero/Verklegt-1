@@ -6,8 +6,10 @@ class PlayerInfo():
                 # 6 input línur
                 pass
 
+
+
         def edit_player():
-                "fyrirliði vill breyta upllýsingum leikmanns í liði síns"
+                "fyrirliði vill breyta upplýsingum leikmanns í liði síns"
                 pass
 
         def create_player():
