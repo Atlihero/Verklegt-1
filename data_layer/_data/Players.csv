@@ -1,4 +1,4 @@
-PlayerID,Name,DOB,Address,Phonenumber,Email,Handle,Team
+PlayerID,Name,DOB,Address,Phonenumber,Email,Handle,Team,Points
 "P001","Jon Pork","20/01/2002","Landsgata 3","7000001","Jonporky@gmail.com","Porky404","Fantom"
 "P002","Shrek Swomp","10/08/1971","Swomp 1","7000002","Shrek@gmail.com","Hulk45","Fantom"
 "P003","Donkey Kong","14/09/2002","Jungle 3","7000003","Donkey@gmail.com","Bananamax","Fantom"
