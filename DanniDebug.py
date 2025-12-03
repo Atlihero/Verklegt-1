@@ -5,12 +5,14 @@ while True:
     print("\nValmynd:")
     print("1. Get players")
     print("2. add_new_player")
+    print("3. get team")
 
-    val = input("Veldu verkefni (1-9): ")
+    val = input("Veldu verkefni (1-3): ")
 
 
     #Klasi fyrir öllu sem tengist player í data layerinu sem inheritar model klasan "player"
     PLAYER_PATH: str = r"data_layer\_data\Players.csv"
+    TEAM_PATH: str = r"data_layer\_data\Teams.csv"
 
     
     if val == "1":
@@ -33,3 +35,16 @@ while True:
                         writer = csv.writer(csvfile)
                         writer.writerow(player)
                     return True
+                
+    if val == "3":
+        userinput = int(input("Veldu lið á milli 1-18: "))
+        class TeamIO:
+             def get_team():
+                Teams = []
+                with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
+                    reader  = csvfile.readlines()
+                    for row in reader:
+                        Teams.append(row)
+                return Teams
+        Teams = TeamIO.get_team()
+        print(Teams[userinput])
