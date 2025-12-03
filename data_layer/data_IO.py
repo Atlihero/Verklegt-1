@@ -2,6 +2,7 @@
 import csv
 
 PLAYER_PATH: str = r"_data\Players.csv"
+TEAM_PATH: str = r"-_data\Teams.csv"
 
 #Klasi fyrir öllu sem tengist player í data layerinu sem inheritar model klasan "player"
 class PlayerIO:
