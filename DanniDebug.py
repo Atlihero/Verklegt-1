@@ -23,11 +23,13 @@ while True:
                         for row in reader:
                             players.append(row)
                     return players
-    players = PlayerIO.get_players()
-    print(players[userinput])
+        players = PlayerIO.get_players()
+        print(players[userinput])
 
     if val == "2":
         class PlayerIO:
-                def add_new_player(player):
-                    with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+                def add_new_player(player: list):
+                    with open(PLAYER_PATH, "a",newline="", encoding="utf-8") as csvfile:
                         writer = csv.writer(csvfile)
+                        writer.writerow(player)
+                    return True
