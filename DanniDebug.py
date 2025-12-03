@@ -53,12 +53,12 @@ while True:
     if val == "4":
         userinput = int(input("Sláðu inn ID leikmanns sem þú vilt skoða: "))
         class PlayerIO:
-                def get_player_stats():
-                    player_stat = []
+            def get_player_stats():
+                    player_points = []
                     with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
-                        reader = csvfile.readlines()[-1]
-                        for row in reader:
-                            player_stat.append(row)
-                    return player_stat
+                        reader = csvfile.readlines["Points"]
+                        for colum in reader:
+                            player_points.append(colum)
+                    return player_points
         player_stat = PlayerIO.get_player_stats()
         print(player_stat[userinput])
