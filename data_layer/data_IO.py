@@ -1,12 +1,8 @@
 #Hér á að koma föll sem ná í rétta data
-from Models.Player import Player
-from Models.Team import Team
-from Models.Tournament import Tournament
-from Models.Game import Game
-from Models.Round import Round
+import csv
 
 #Klasi fyrir öllu sem tengist player í data layerinu sem inheritar model klasan "player"
-class PlayerIO(Player):
+class PlayerIO:
     def get_players():
         "sækir í leikmenn til að skoða"
         pass
@@ -22,7 +18,7 @@ class PlayerIO(Player):
     #Kannski meira    
 
 #Klasi fyrir öllu sem tengist Team í data layerinu sem inheritar model klasan "Team"
-class TeamIO(Team):
+class TeamIO:
 
     def get_team():
         "Sækir í lið til að skoða"
@@ -38,7 +34,7 @@ class TeamIO(Team):
 
     #Kannski meira
 
-class TournamentIO(Tournament, Round, Game):
+class TournamentIO:
 
     def get_tournaments():
         "Sækir í mót"
