@@ -26,3 +26,12 @@ date_input = player_info()
 
 print(date_input)
 
+
+
+def player_phone():
+    phone_number = input("Enter player's phone number: ")
+    try:
+        
+                        
+    except ValueError:
+        print("Invalid phone number. Try again.")

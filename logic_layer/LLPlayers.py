@@ -3,14 +3,18 @@ from datetime import datetime
 
 class PlayerInfo():
 
-        def dob_player():
-                player_dob = input("Enter player date of birth (DD/MM/YYYY): ")
+        def player_name():
+                name = input("Enter full name of player: ")
+                return name
+        
+        def player_dob():
+                dob = input("Enter player date of birth (DD/MM/YYYY): ")
                 try:
-                        entered_date = datetime.strptime(player_dob, "%d/%m/%Y")
+                        entered_date = datetime.strptime(dob, "%d/%m/%Y")
                        
                         if entered_date > datetime.now():
                                print("Please enter a valid date.")
-                               return PlayerInfo.dob_player()
+                               return PlayerInfo.player_dob()
                         
                         else:
                                 day = entered_date.day
@@ -19,17 +23,26 @@ class PlayerInfo():
                                 print(f"{day}/{month}/{year}")
                 except ValueError:
                         print("Invalid date. Try again using DD/MM/YYYY.")
-                        return PlayerInfo.dob_player()
+                        return PlayerInfo.player_dob()
 
+                
+        def player_address():
+                address = input("Enter player's home address: ")
+                return address
+        
+        def player_phone():
+                phone_number = input("Enter player's phone number: ")
+                try:
+                        
+                except ValueError:
+                        print("Invalid phone number. Try again.")
 
-        def player_information():
+        def player_email():
+                player_email = input("Enter the player's email address: ")
                 pass
                 # 6 input línur
-                player_name = input("Enter full name of player: ")
-                player_address = input("Enter player's home address: ")
-                player_phone = input("Enter player's phone number: ")
-                player_email = input("Enter the player's email address: ")
-                player_handle = input("Enter player's handle: ")
+        def player_handle():
+                handle = input("Enter player's handle: ")
                         # búa til lista
                         # 
 
