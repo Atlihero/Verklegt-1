@@ -6,8 +6,9 @@ while True:
     print("1. Get players")
     print("2. add_new_player")
     print("3. get team")
+    print("4. get player stats")
 
-    val = input("Veldu verkefni (1-3): ")
+    val = input("Veldu verkefni (1-4): ")
 
 
     #Klasi fyrir öllu sem tengist player í data layerinu sem inheritar model klasan "player"
@@ -35,7 +36,12 @@ while True:
                         writer = csv.writer(csvfile)
                         writer.writerow(player)
                     return True
-                
+
+
+
+
+
+
     if val == "3":
         userinput = int(input("Veldu lið á milli 1-18: "))
         class TeamIO:
@@ -48,3 +54,16 @@ while True:
                 return Teams
         Teams = TeamIO.get_team()
         print(Teams[userinput])
+
+    if val == "4":
+        userinput = int(input("Sláðu inn ID leikmanns sem þú vilt skoða: "))
+        class PlayerIO:
+                def get_player_stats():
+                    player_stat = []
+                    with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+                        reader = csvfile.readlines()[-1]
+                        for row in reader:
+                            player_stat.append(row)
+                    return player_stat
+        player_stat = PlayerIO.get_player_stats()
+        print(player_stat[userinput])
