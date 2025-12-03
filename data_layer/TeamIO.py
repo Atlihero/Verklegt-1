@@ -25,12 +25,14 @@ class TeamIO:
 
     def get_team_stats():
         try:
+            Wins = []
             Points = []
             with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                    Points.append(row["Points"], row["Wins"])
-                return Points
+                    Wins.append(row["Wins"])
+                    Points.append(row["Points"])
+                return Wins, Points
         except ValueError:  #in case of wrong inputs 
             f"Error message to be decided"
         pass
