@@ -13,8 +13,10 @@ PLAYER_PATH: str = "data_layer\_data\Players.csv"
 class PlayerIO(Player):
 
     def get_players():
-            with open(PLAYER_PATH, "r" , encoding="utf-8") as f:
-                print("Halló")
+            with open(PLAYER_PATH, "r" , encoding="utf-8") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    print(row)
 
     def add_new_player():
         "bætir við leikmanni sem user býr til"
