@@ -1,3 +1,5 @@
+import csv
+
 class TournamentIO:
 
     def get_tournaments():
@@ -6,6 +8,9 @@ class TournamentIO:
 
     def add_new_tournament():
         "Bætir við nýju móti"
+        pass
+
+    def add_teams_to_tournament():
         pass
 
     def get_games():

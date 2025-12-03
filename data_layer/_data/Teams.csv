@@ -1,19 +1,19 @@
-"sub","TeamName,Captain,asciiLogo
-"1","Fantom","Shrek Swomp"
-"2","Black in Yellow","Tony Stork"
-"3","Red Dragons","Peter Borker"
-"4","Blue Shells","Master Chiefy"
-"5","Spartan Squad","Kratos Rage"
-"6","Blockheads","Yoshi Dino"
-"7","Poké Pals","Ash Catchum"
-"8","Silver Blades","Geralt Rivia"
-"9","Shadow Clan","Zelda Royle"
-"10","Pink Stars","Kirby Puff"
-"11","Limit Breakers","Cloud Strife"
-"12","Street Squad","Ryu Hadou"
-"13","Fatal Force","Scorpion Stng"
-"14","Explorer Crew","Nathan Drayk"
-"15","Fireflies","Joel Millr"
-"16","Payload","Doom Slayer"
-"17","Arcane Crew","Jinx Boom"
-"18","Anti Krambúðin","King kong"
+TeamID,TeamName,Captain,Wins,Points
+"1","Fantom","Shrek Swomp",3,9
+"2","Black in Yellow","Tony Stork",1,3
+"3","Red Dragons","Peter Borker",0,0
+"4","Blue Shells","Master Chiefy",10,30
+"5","Spartan Squad","Kratos Rage",6,18
+"6","Blockheads","Yoshi Dino",5,15
+"7","Poké Pals","Ash Catchum",9,27
+"8","Silver Blades","Geralt Rivia",3,9
+"9","Shadow Clan","Zelda Royle",2,6
+"10","Pink Stars","Kirby Puff",4,12
+"11","Limit Breakers","Cloud Strife",7,21
+"12","Street Squad","Ryu Hadou",4,12
+"13","Fatal Force","Scorpion Stng",2,6
+"14","Explorer Crew","Nathan Drayk",6,18
+"15","Fireflies","Joel Millr",7,21
+"16","Payload","Doom Slayer",6,18
+"17","Arcane Crew","Jinx Boom",4,12
+"18","Anti Krambúðin","King kong",5,15
