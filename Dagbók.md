@@ -123,4 +123,5 @@ Einnig settum við okkur markmið um hvenær við viljum klára verkefnið.
 - Æfðum okkur í git að búa til branches og lesa og pull-a gögn úr öðrum branch sem er ekki manns eigin
 - Fórum yfir feedback-ið sem við fengum frá kennunum
 - Byrjuðum aðeins á uppsetningum í Data og logic layerinu
-- Allir farnir fyrir 19:00
+  ### Miðvikudagur 3.12.25 (Dagur 2 í viku 2)
+ 
