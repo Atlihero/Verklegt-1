@@ -1,15 +1,20 @@
 #Hér á að koma föll sem ná í rétta data
+import csv
 from Models.Player import Player
 from Models.Team import Team
 from Models.Tournament import Tournament
 from Models.Game import Game
 from Models.Round import Round
 
+
+PLAYER_PATH: str = "data_layer\_data\Players.csv"
+
 #Klasi fyrir öllu sem tengist player í data layerinu sem inheritar model klasan "player"
 class PlayerIO(Player):
+
     def get_players():
-        "sækir í leikmenn til að skoða"
-        pass
+            with open(PLAYER_PATH, "r" , encoding="utf-8") as f:
+                print("Halló")
 
     def add_new_player():
         "bætir við leikmanni sem user býr til"
