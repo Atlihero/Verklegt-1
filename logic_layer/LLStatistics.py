@@ -25,3 +25,7 @@ def calculate_club_stats():
     """mörk hjá club og sigur
     hefur sitt land og heimabæ"""
     pass
+
+def view_results():
+    "áhorfandi vill skoða úrslit leikja"
+    pass
