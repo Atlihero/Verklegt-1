@@ -37,11 +37,6 @@ while True:
                         writer.writerow(player)
                     return True
 
-
-
-
-
-
     if val == "3":
         userinput = int(input("Veldu lið á milli 1-18: "))
         class TeamIO:

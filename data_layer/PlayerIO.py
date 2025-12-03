@@ -30,9 +30,12 @@ class PlayerIO:
 
     def get_player_stats():
         try:
+            player_points = []
             with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
-                reader = csvfile.readlines
-
+                reader = csvfile.readlines["Points"]
+                for colum in reader:
+                    player_points.append(colum)
+            return player_points
         except ValueError:  #in case of wrong inputs 
             f"Error message to be decided"
         pass
