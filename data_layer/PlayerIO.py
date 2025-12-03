@@ -29,5 +29,10 @@ class PlayerIO:
 
 
     def get_player_stats():
+        try:
+            with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+                reader = csvfile.readlines
 
+        except ValueError:  #in case of wrong inputs 
+            f"Error message to be decided"
         pass
