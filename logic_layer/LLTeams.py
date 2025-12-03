@@ -3,7 +3,7 @@ from Models.Team import Team
 
 def add_player():
         "Fyrirliði vill bæta leikmanni í lið"
-pass
+        pass
 
 def create_team():
         "skipuleggjandi vill búa til lið"
