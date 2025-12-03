@@ -32,7 +32,7 @@ class TeamIO:
 
     def get_team():
         Teams = []
-        with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+        with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
             reader  = csvfile.readlines()
             for row in reader:
                 Teams.append(row)
