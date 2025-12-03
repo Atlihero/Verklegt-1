@@ -3,20 +3,21 @@ import csv
 
 PLAYER_PATH: str = r"_data\Players.csv"
 TEAM_PATH: str = r"-_data\Teams.csv"
+players = []
 
 #Klasi fyrir öllu sem tengist player í data layerinu sem inheritar model klasan "player"
 class PlayerIO:
 
     def get_players():
-            players = []
-            with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
-                reader  = csvfile.readlines()
-                for row in reader:
-                    players.append(row)
-            return players
+        with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+            reader  = csvfile.readlines()
+            for row in reader:
+                players.append(row)
+        return players
 
     def add_new_player():
-        "bætir við leikmanni sem user býr til"
+        
+
         pass
 
     def get_player_stats():
