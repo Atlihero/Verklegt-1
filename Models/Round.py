@@ -8,9 +8,9 @@ class Round(Tournament):
         self.endTime = endTime
 
 
-    def __str__(self, name, number, startTime, endTime):
+    def __str__(self):
         #Skilar niðurstöðunum í nýjum línum
-        return f"{name}:\n{number}:\n{startTime}:\n{endTime}"
+        return f"{self.name}:\n{self.number}:\n{self.startTime}:\n{self.endTime}"
     
     #Konni sagði að það væri sniðugt að hafa svona
     def __repr__(self):

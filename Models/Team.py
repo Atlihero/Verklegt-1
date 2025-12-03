@@ -6,8 +6,8 @@ class Team:
         self.asciiLogo = asciiLogo
     
     #Strengur sem skilar þeim úpllýsingum í nýjum línum
-    def __str__(self, name, captain, asciiLogo):
-        return f"{name}:\n{captain}:\n{asciiLogo}"
+    def __str__(self):
+        return f"{self.name}:\n{self.captain}:\n{self.asciiLogo}"
 
     def __repr__(self):
         return str(self)
