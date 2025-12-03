@@ -8,8 +8,8 @@ class Result(Game):
         self.winner = winner
     
     #Strengur sem skilar þeim úpllýsingum í nýjum línum
-    def __str__(self, score_A, score_B, winner):
-        return f"{score_A}:\n{score_B}:\n{winner}"
+    def __str__(self):
+        return f"{self.score_A}:\n{self.score_B}:\n{self.winner}"
 
     def __repr__(self):
         return str(self)

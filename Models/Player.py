@@ -13,8 +13,8 @@ class Player:
         self.link = link
 
     #Skilar öllum upplýsingum leikmanns í nýrri línu
-    def __str__(self, name, dob, address, email, handle, link):
-        return f"{name}:\n{dob}:\n{address}:\n{email}:\n{handle}:\n{link}"
+    def __str__(self):
+        return f"{self.name}:\n{self.dob}:\n{self.address}:\n{self.email}:\n{self.handle}:\n{self.link}"
     
     def __repr__(self):
         return str(self)
