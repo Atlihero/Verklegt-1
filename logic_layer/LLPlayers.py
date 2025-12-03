@@ -1,3 +1,6 @@
+from Models.Player import Player
+
+
 def edit_player():
         "fyrirliði vill breyta upllýsingum leikmanns í liði síns"
         pass
