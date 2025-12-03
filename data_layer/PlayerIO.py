@@ -1,4 +1,5 @@
 class PlayerIO:
+    
     def get_players():
         "sækir í leikmenn til að skoða"
         pass
