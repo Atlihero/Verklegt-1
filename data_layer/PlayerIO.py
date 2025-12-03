@@ -30,11 +30,11 @@ class PlayerIO:
 
     def get_player_stats():
         try:
-            Points = []
+            Points = [] #empty list to be used for storing the points given
             with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
-                reader = csv.DictReader(csvfile)
+                reader = csv.DictReader(csvfile) #reads the file and 
                 for row in reader:
-                    Points.append(row["Points"])
+                    Points.append(row["Points"]) #appends the points from the selected player to the list
                 return Points
         except ValueError:  #in case of wrong inputs 
             f"Error message to be decided"
