@@ -1,5 +1,6 @@
 import csv
 
+userinput = int(input("Select player ID: "))
 PLAYER_PATH: str = r"data_layer\_data\Players.csv"
 
 #Klasi fyrir öllu sem tengist player í data layerinu sem inheritar model klasan "player"
@@ -13,4 +14,4 @@ class PlayerIO:
                     players.append(row)
             return players
 players = PlayerIO.get_players()
-print(players[1])
+print(players[userinput])
