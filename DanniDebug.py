@@ -54,11 +54,11 @@ while True:
         userinput = int(input("Sláðu inn ID leikmanns sem þú vilt skoða: "))
         class PlayerIO:
             def get_player_stats():
-                    player_points = []
+                    Points = []
                     with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
-                        reader = csvfile.readlines["Points"]
-                        for colum in reader:
-                            player_points.append(colum)
-                    return player_points
-        player_stat = PlayerIO.get_player_stats()
-        print(player_stat[userinput])
+                        reader = csv.DictReader(csvfile)
+                        for row in reader:
+                            Points.append(row["Points"])
+                    return Points
+        Points = PlayerIO.get_player_stats()
+        print(Points[userinput])
