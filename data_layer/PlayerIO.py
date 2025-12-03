@@ -20,5 +20,5 @@ class PlayerIO:
         return True
 
     def get_player_stats():
-        "sækir tölfræði leikmanna"
+        
         pass
