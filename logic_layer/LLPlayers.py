@@ -4,40 +4,57 @@ from datetime import datetime
 class PlayerInfo():
 
     def player_name():
-            name = input("Enter full name of player: ")
-            return name
+        '''Asks user for full name'''
         
-    def player_dob():
-            dob = input("Enter player date of birth (DD/MM/YYYY): ")
-            try:
-                entered_date = datetime.strptime(dob, "%d/%m/%Y")
-                       
-                if entered_date > datetime.now():
-                    print("Please enter a valid date.")
-                    return PlayerInfo.player_dob()
-                                            
-                else:
-                    day = entered_date.day
-                    month = entered_date.month
-                    year = entered_date.year
-                    print(f"{day}/{month}/{year}")
-            except ValueError:
-                print("Invalid date. Try again using DD/MM/YYYY.")
+        name = input("Enter full name of player: ")
+        return name
+        
+    def player_dob(): 
+        '''Asks the user for their date of birth and checks if the format
+          fits the standards so the user can continue inputting the information.'''
+        
+        dob = input("Enter player date of birth (DD/MM/YYYY): ")
+        try:
+            # change string input to datetime
+            entered_date = datetime.strptime(dob, "%d/%m/%Y")
+            
+			# check if inputted date is in the future, then not valid
+            if entered_date > datetime.now():
+                print("Please enter a valid date.")
                 return PlayerInfo.player_dob()
+            else:
+                day = entered_date.day
+                month = entered_date.month
+                year = entered_date.year
+                print(f"{day}/{month}/{year}")
+        
+		# lets the user try again if he inputted wrong   
+        except ValueError:
+            print("Invalid date. Try again using DD/MM/YYYY.")
+            return PlayerInfo.player_dob()
 
                 
     def player_address():
+        '''Asks user for home address'''
+        
         address = input("Enter player's home address: ")
         return address
         
     def player_phone():
-        pass
-                # phone_number = input("Enter player's phone number: ")
-                # þarf að vera 7 tölustafir
-                # try:
-
-                # except ValueError:
-                #         print("Invalid phone number. Try again.")
+        '''Asks the user for his phone number and checks if it is valid, if not then 
+          the user tries again.'''
+        
+        phone_number = input("Enter player's phone number: ")
+        
+		# number has to be exactly 7 digits long
+        if len(phone_number) == 7 and phone_number.isdigit():
+            return f"{phone_number} is valid."
+        elif len(phone_number) < 7 and phone_number.isdigit():
+            print("Phone number must be 7 digits long. Please try")
+            return PlayerInfo.player_phone()
+        else:
+            print("Phone number must not be longer than 7 digits. Please try again")
+            return PlayerInfo.player_phone()
 
     def player_email():
         '''Asks the player for an email address and checks if it is valid so he can continue
@@ -73,27 +90,18 @@ class PlayerInfo():
         return f"{player_email} is a valid email"
 
     def player_handle():
-                pass
-                #handle = input("Enter player's handle: ")
-                        # búa til lista sem safnar saman handles og gáir svo hvort að einhver eru eins
-                        # 
-
+        '''Asks user for a username (handle) to use for the games. It cecks if the username 
+        is already in use and then asks for a new username since no two players 
+        can have the same username '''
         
-    def edit_player():
-        "fyrirliði vill breyta upplýsingum leikmanns í liði síns"
-        pass
-
-    def create_player():
-        "Skipuleggjandi vill búa til leikmann"
-        pass
-
-
-
-
-# eitt fall fyrir það sem player slær inn
-        # def player_information
-# muna eftir að hafa villuboð
-# 
-
-player = PlayerInfo.player_email()
-print(player)
+        handle = input("Enter player's handle: ")
+        existing_handles = []
+        
+        if handle in existing_handles:
+            print("This handle os already taken. Please try another one")
+            return PlayerInfo.player_handle()
+        
+		# if the handle is unique then its added to the list
+        existing_handles.append(handle)
+        print("Handle has been added to the list")
+        return handle
