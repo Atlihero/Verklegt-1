@@ -1,6 +1,6 @@
 from Models.Team import Team
-from data_layer import TeamIO
-from data_layer import PlayerIO
+from data_layer.TeamIO import TeamIO
+from data_layer.PlayerIO import PlayerIO
 
 class LLTeams:
 
@@ -19,12 +19,15 @@ class LLTeams:
 
                         parts = [p.strip().strip('"') for p in line.split(",")]         #Spliting on the comma and loops each field
 
-                        if len(parts) < 2:      #If it has less than 2 parts then we skip it instead of crashing
+                        if parts[0] == "TeamID": # ship the header
+                                continue
+
+                        if len(parts) < 3:      #If it has less than 3 parts then we skip it instead of crashing
                                 continue  
 
-                        name = parts[0]
-                        captain = parts[1]
-                        asciiLogo = parts[2] if len(parts) > 2 else "" # Third field is the logo or "" if it does not exist
+                        name = parts[1]
+                        captain = parts[2]
+                        asciiLogo = ""
 
                         team = Team(name=name, captain=captain, asciiLogo=asciiLogo)
                         teams.append(team)
@@ -33,7 +36,7 @@ class LLTeams:
                 
        
 
-        def add_player(self, team_name: str, player_id: str):
+        def add_player_to_team(self, team_name: str, player_name: str):
                 "Fyrirliði vill bæta leikmanni í lið"
 
                 # Check if team exists
@@ -44,16 +47,16 @@ class LLTeams:
                 # Get all players from data layer
                 players = PlayerIO.get_players()
 
-                # Find player with the right ID
+                # Find player with the right name
                 player_to_add = None
                 for p in players:
-                        if p.id == player_id:
+                        if p.name == player_name:
                                 player_to_add = p
                                 break
 
                 # Check if player is already in this team
                 if player_to_add is None:
-                        raise ValueError("Player with this ID was not found.")
+                        raise ValueError("Player with this name was not found.")
                 
                 if player_to_add.team == team.name:
                         raise ValueError("Leikmaður er nú þegar í þessu liði.")
@@ -81,7 +84,6 @@ class LLTeams:
                 return self.get_team_by_name(name) is not None  # Checks if a team has this name
 
 
-
         def create_team(self, name: str, captain: str, asciiLogo: str):
                 "skipuleggjandi vill búa til lið"
                 # Checks weather it has a name, captain and a unique name
@@ -99,8 +101,10 @@ class LLTeams:
                 # Updating in memory
                 self.teams.append(new_team)
 
+                new_id = len(self.teams)   
+
                 # Saving in CSV throguh TeamIO
-                row_for_csv = [new_team.name, new_team.captain, new_team.asciiLogo, 0, 0] # 0 wins & 0 points to begin with
+                row_for_csv = [str(new_id), new_team.name, new_team.captain, 0, 0] # 0 wins & 0 points to begin with
                 TeamIO.add_new_team(row_for_csv)
 
                 return new_team
