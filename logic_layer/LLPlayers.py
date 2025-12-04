@@ -15,10 +15,10 @@ class LLPlayer():
             
 			# check if inputted date is in the future, then not valid
             if dob > datetime.now():
-                raise ValueError ("Please enter a valid date.")
+                raise ValueError("Please enter a valid date.")
             return dob
         except ValueError:
-            raise ValueError ("Invalid date. Use DD/MM/YYYY")
+            raise ValueError("Invalid date. Use DD/MM/YYYY")
         
     def validate_phone(phone_number: int) -> int:
         '''Validates the players phone number, if not then 
@@ -26,7 +26,7 @@ class LLPlayer():
 
 		# number has to be exactly 7 digits long
         if len(phone_number) != 7 or not phone_number.isdigit():
-            raise ValueError ("Phone number must be exactly 7 digits long. Please try again")
+            raise ValueError("Phone number must be exactly 7 digits long. Please try again")
         return phone_number
             
 
