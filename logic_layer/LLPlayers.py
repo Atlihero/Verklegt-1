@@ -98,7 +98,7 @@ class PlayerInfo():
         existing_handles: list = []
         
         if handle in existing_handles:
-            print("This handle os already taken. Please try another one")
+            print("This handle is already taken. Please try another one.")
             return PlayerInfo.player_handle()
         
 		# if the handle is unique then its added to the list
