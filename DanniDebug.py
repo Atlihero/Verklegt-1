@@ -208,10 +208,7 @@ while True:
             winner = team_b
         else:
             winner = "Draw" 
-
-
-
-
+            
         games = [tournament_name, round, match_number, match_date, team_a, team_b, score_a, score_b, winner]
 
         class TournamentIO:
