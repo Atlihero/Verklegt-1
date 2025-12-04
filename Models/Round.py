@@ -1,18 +1,13 @@
-from Models.Tournament import Tournament #importa tournament klasan
-
-#Klasi fyrir round á tournamenti sem segja númer hvað roundið er líka byrjunar og endatíma á roundinu
-class Round(Tournament):
-    def __init__(self, number, startTime, endTime):
-        self.number = number
-        self.startTime = startTime
-        self.endTime = endTime
 
 
-    def __str__(self, name, number, startTime, endTime):
-        #Skilar niðurstöðunum í nýjum línum
-        return f"{name}:\n{number}:\n{startTime}:\n{endTime}"
+class Round:
+    def __init__(self, name, games=None):
+        self.name = name
+        self.games = games if games is not None else []
+
+    def __str__(self):
+        return f"{self.name}:\n{self.games}"
     
-    #Konni sagði að það væri sniðugt að hafa svona
     def __repr__(self):
         return str(self)
     

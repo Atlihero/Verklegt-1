@@ -1,11 +1,9 @@
-from Models.Organizer import Organizer
-
 """
     Búa til __init__ fall sem tekur inn unique nafn, byrjunardag, endadag,
     staðsetning, contact person, contact email og contact phone 
 """
 
-class Tournament(Organizer):
+class Tournament():
     def __init__(self, unique_name, start_date, end_date, venue, contact_person, contact_email, contact_phone):
         self.unqie_name = unique_name
         self.start_date = start_date
