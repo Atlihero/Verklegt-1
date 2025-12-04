@@ -4,7 +4,7 @@ from ui_layer import makePlayerUI
 
 class PlayerLL():
 
-    def player_dob(self): 
+    def validate_dob(self): 
         '''Checks players date of birth and if the format fits the 
         standards, then the user can continue inputting the information.'''
 
@@ -28,7 +28,7 @@ class PlayerLL():
             return PlayerLL.player_dob()
 
         
-    def player_phone(self):
+    def validate_phone(self):
         '''Validates the players phone number, if not then 
           the user tries again.'''
 
@@ -42,7 +42,7 @@ class PlayerLL():
             raise("Phone number must not be longer than 7 digits. Please try again")
             
 
-    def player_email(self):
+    def validate_email(self):
         '''Checks players email address and if it is valid then he can contiue.
            Raises error messages when the input is not up to standards.'''
 
@@ -73,7 +73,7 @@ class PlayerLL():
         
         return f"{player_email} is a valid email"
 
-    def player_handle(self):
+    def validate_handle(self):
         '''Checks players handle. It checks if the username 
         is already in use and then asks for a new username since no two players 
         can have the same username '''
