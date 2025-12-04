@@ -79,4 +79,3 @@ class LLPlayer():
     
     def create_player(name, dob_str, address, phone_number, player_email, player_handle, link):
         return Player.Player(name, dob_str, address, phone_number, player_email, player_handle, link)
-        

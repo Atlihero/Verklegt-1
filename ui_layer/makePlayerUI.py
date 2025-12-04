@@ -45,7 +45,6 @@ def get_player_info():
             break
         except ValueError as error:
             print(error)
-            #link = "" # is empty if validation fails
 
     player = LLPlayer.create_player(name, dob, address, phone_number, player_email, handle, link)
     print("Player created successfully!")
