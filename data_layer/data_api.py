@@ -1,5 +1,6 @@
 from PlayerIO import PlayerIO
 from TeamIO import TeamIO
+from TournamentIO import TournamentIO
 
 def get_all_teams():
     "Gets the teams from the csv to the LL"
@@ -30,3 +31,11 @@ def get_player_statistics():
 def add_teams_to_tournament(tournament_name, teams_list):
     "add exactly 16 teams to the tournament"
     return TeamIO.add_teams_to_tournament(tournament_name, teams_list)
+
+def new_tournament():
+    "Creates a new tournament in the csv"
+    return TournamentIO.create_new_tournament()
+
+def get_all_tournaments():
+    "retrieves the tournaments from the csv"
+    return TournamentIO.get_tournaments()
