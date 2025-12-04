@@ -1,1 +1,9 @@
-tournament_name,Round,match_number,match_date,team_a,team_b,match_date,score_a,score_b,winner
+tournament_name,Round,match_number,match_date,team_a,team_b,score_a,score_b,winner
+Nike_Tournament,1,1,04/12/2025,Red Dragons,Blockheads,0,0,0
+Nike_Tournament,1,2,04/12/2025,Fantom,Black in Yellow,0,0,0
+Nike_Tournament,1,3,04/12/2025,Blue Shells,Spartan Squad,0,0,0
+Nike_Tournament,1,4,04/12/2025,Poké Pals,Silver Blades,0,0,0
+Nike_Tournament,1,5,05/12/2025,Shadow Clan,Pink Stars,0,0,0
+Nike_Tournament,1,6,05/12/2025,Limit Breakers,Street Squad,0,0,0
+Nike_Tournament,1,7,05/12/2025,Fatal Force,Explorer Crew,0,0,0
+Nike_Tournament,1,8,05/12/2025,Fireflies,Payload,0,0,0
