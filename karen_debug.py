@@ -60,4 +60,19 @@ def remove_from_team(self):
     # warning signs 'u sure u want to delete this person?'
     # villa ef reynt er að taka út leikmann sem er ekki í liðinu
 
+    def player_name(self):
+        '''Asks user for full name'''
+        
+        name = input("Enter full name of player: ")
+        return name
+    
+    def player_address(self):
+        '''Asks user for home address'''
+        
+        address = input("Enter player's home address: ")
+        return address
+    
+     
+        dob = input("Enter player date of birth (DD/MM/YYYY): ")
+
     
