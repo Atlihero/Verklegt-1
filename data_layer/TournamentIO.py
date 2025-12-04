@@ -27,7 +27,13 @@ class TournamentIO:
         except ValueError: 
             f"Error message to be decided"
 
-    def get_results():
-        pass
+    def create_new_game(games: list):
+        try:
+            with open(GAMES_PATH, "a", newline="", encoding="utf-8") as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow(games)
+            return f"New Game added"
+        except ValueError:
+            return "Error"
 
         

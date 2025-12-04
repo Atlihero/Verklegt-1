@@ -189,3 +189,40 @@ while True:
                 
         team_a, team_b = TournamentIO.get_games()
         print(team_a[userinput], "vs", team_b[userinput])
+
+
+    if val == "10":
+        tournament_name = input("Enter tournament name: ")
+        round = input("Enter what round it is: ")
+        match_number = input("match number: ")
+        match_date = input("Enter match date: ")
+        team_a = input("Enter team_a: ")
+        team_b = input("Enter team_b: ")
+        score_a = int(input("Enter score_a: "))
+        score_b = int(input("Enter scoreB: "))
+
+            # Determine the winner
+        if score_a > score_b:
+            winner = team_a
+        elif score_b > score_a:
+            winner = team_b
+        else:
+            winner = "Draw" 
+
+
+
+
+        games = [tournament_name, round, match_number, match_date, team_a, team_b, score_a, score_b, winner]
+
+        class TournamentIO:
+            def create_new_game(games: list):
+                try:
+                    with open(GAMES_PATH, "a", newline="", encoding="utf-8") as csvfile:
+                        writer = csv.writer(csvfile)
+                        writer.writerow(games)
+                    return f"New Game added"
+                except ValueError:
+                    return "Error"
+                
+        print(TournamentIO.create_new_game(games))
+        
