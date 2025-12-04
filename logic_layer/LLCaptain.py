@@ -4,7 +4,27 @@ from logic_layer.LLTeams import LLTeams
 
 class Captain_actions():
     
+    MAX_TEAM_MEMBERS = 5
+
+    def __init__(self, team_name: str, player_name: str):
+        self.team_name = team_name
+        self.player_name = player_name
+
+    def get_team_members(self):
+        '''Used to check if team already has 5 players, '''
+        all_players = PlayerIO.get_players()
+        for p in all_players:
+            if all_players == self.team_name:
+                return p
+
     def add_to_team(self):
+        ll = LLTeams()
+        
+        # find existing players
+        members = self.get_team_members()
+        if len(members) >= self.MAX_TEAM_MEMBERS:
+            raise ValueError("There are already 5 players in your team.")
+       
         # Input fyrir nafn
         # kalla í fallið add_player frá LLTeams klasa
         # búa til liðslista max 5 á listanum
