@@ -28,18 +28,6 @@ class TournamentIO:
             f"Error message to be decided"
 
     def get_results():
-        results = []
-        try:
-            with open(GAMES_PATH, "r", encoding="utf-8") as csvfile:
-                reader = csv.reader(csvfile)
-                for row in reader:
-                    if len(row) >= 3:
-                        score_a = int(row[0]) if row[0] else 0
-                        score_b = int(row[1]) if row[1] else 0
-                        winner = row[2]
-                        results.append(Result(score_a, score_b, winner))
-            return results
-        except ValueError:
-            return "Villa" 
+        pass
 
         
