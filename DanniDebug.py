@@ -175,15 +175,17 @@ while True:
         userinput = int(input("Select the game ID: "))
         class TournamentIO:
             def get_games():
-                games = []
+                team_a = []
+                team_b = []
                 try:
                     with open(GAMES_PATH, "r", encoding="utf-8") as csvfile:
-                        reader = csv.reader(csvfile)
+                        reader = csv.DictReader(csvfile)
                         for row in reader:
-                            games.append(row)
-                    return games
+                            team_a.append(row["team_a"])
+                            team_b.append(row["team_b"])
+                    return team_a, team_b
                 except FileNotFoundError:
                     return "File not found"
                 
-        games = TournamentIO.get_games()
-        print(games[userinput])
+        team_a, team_b = TournamentIO.get_games()
+        print(team_a[userinput], "vs", team_b[userinput])
