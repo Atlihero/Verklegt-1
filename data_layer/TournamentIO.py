@@ -1,5 +1,6 @@
 import csv
 from datetime import datetime
+from Models.Result import Result
 
 TOURNAMENT_PATH: str = r"_data\Tournament.csv"
 GAMES_PATH: str = r"_data\Games.csv"
@@ -26,6 +27,25 @@ class TournamentIO:
         except ValueError: 
             f"Error message to be decided"
 
-    def generate_games():
-        pass
+    def get_results():
+        Result = []
+        try:
+            with open(GAMES_PATH, "r", encoding="utf-8") as csvfile:
+                reader = csv.reader(csvfile)
+                for row in reader:
+                    score_a, score_b, winner = row
+                    Result.append(int(score_a), int(score_b), winner)
+                return Result
+        except ValueError:
+            return "Villa kom upp"    
+        
+    def save_results(result: Result):
+        try:
+            with open(GAMES_PATH, "a", newline="", encoding="utf-8") as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow([result.score_A, result.score_B, result.winner])
+            return "Results saved"
+        except ValueError:
+            return "Villa kom upp"
+
         
