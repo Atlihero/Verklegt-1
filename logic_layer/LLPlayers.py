@@ -95,7 +95,7 @@ class PlayerInfo():
         can have the same username '''
         
         handle = input("Enter player's handle: ")
-        existing_handles = []
+        existing_handles: list = []
         
         if handle in existing_handles:
             print("This handle os already taken. Please try another one")

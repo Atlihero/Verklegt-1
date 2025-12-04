@@ -16,10 +16,11 @@ class LLTeams:
 			line = line.strip()
 			if not line:    # Skip if line is empty
 					continue
+		# Spliting on the comma and loops each field
+			parts = [p.strip().strip('"') for p in line.split(",")] 
 
-			parts = [p.strip().strip('"') for p in line.split(",")]         #Spliting on the comma and loops each field
-
-			if len(parts) < 2:      #If it has less than 2 parts then we skip it instead of crashing
+		# If it has less than 2 parts then we skip it instead of crashing
+			if len(parts) < 2:
 					continue  
 
 			name = parts[0]
@@ -72,11 +73,8 @@ class LLTeams:
 				return team
 		return None     
 
-
 	def team_exists(self, name: str):
 		return self.get_team_by_name(name) is not None  # Checks if a team has this name
-
-
 
 	def create_team(self, name: str, captain: str, asciiLogo: str):
 		"skipuleggjandi vill búa til lið"
@@ -88,7 +86,6 @@ class LLTeams:
 		if self.team_exists(name):
 			raise ValueError("Another team already has this name")
 		
-
 		# Creating team object
 		new_team = Team(name=name.strip(), captain=captain.strip(), asciiLogo=asciiLogo)
 
@@ -100,7 +97,6 @@ class LLTeams:
 		TeamIO.add_new_team(row_for_csv)
 
 		return new_team
-
 
 	def select_captain(self, team_name: str, new_captain: str):
 		"Skipuleggjandi vill velja fyriliða í liði"

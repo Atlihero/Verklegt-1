@@ -16,8 +16,6 @@ class PlayerIO:
         except ValueError: #in case of wrong inputs
             f"Error message to be decided"
 
-
-
     def create_new_player(player: list):
         try: 
             with open(PLAYER_PATH, "a",newline="", encoding="utf-8") as csvfile:
