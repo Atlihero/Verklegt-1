@@ -1,5 +1,5 @@
 import csv
-
+import os
 
 while True:
     print("\nValmynd:")
@@ -106,11 +106,11 @@ while True:
     if val == "7":
 
         class TournamentIO:
-            def add_new_tournament(tournament: list):
+            def add_new_tournament(tournament_data: list):
                 try: 
                     with open(TOURNAMENT_PATH, "a",newline="", encoding="utf-8") as csvfile:
                         writer = csv.writer(csvfile)
-                        writer.writerow(tournament) 
+                        writer.writerow(tournament_data) 
                     return f"New Tournament added :)"    
                 except ValueError: 
                     f"Error message to be decided"

@@ -1,4 +1,5 @@
 import csv
+import os
 
 TOURNAMENT_PATH: str = r"_data\Tournament.csv"
 
@@ -20,7 +21,7 @@ class TournamentIO:
             with open(TOURNAMENT_PATH, "a",newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow(tournament) 
-            return f"New Team added :)"    
+            return f"New Toy added :)"    
         except ValueError: 
             f"Error message to be decided"
         
