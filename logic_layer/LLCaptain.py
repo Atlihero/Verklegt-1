@@ -1,29 +1,28 @@
 from data_layer.PlayerIO import PlayerIO
 from data_layer.TeamIO import TeamIO
 from logic_layer.LLTeams import LLTeams
+from LLPlayers import LLPlayer
 
 class Captain_actions():
     
     MAX_TEAM_MEMBERS = 5
 
-    def __init__(self, team_name: str, player_name: str):
+    def __init__(self, player_handler : LLPlayer, team_name: str, player_name: str):
+        self.llplayerinfo = player_handler
         self.team_name = team_name
         self.player_name = player_name
 
     def get_team_members(self):
         '''Used to check if team already has 5 players, '''
+        all_players = self.llplayerinfo.get_players()
         all_players = PlayerIO.get_players()
         for p in all_players:
             if all_players == self.team_name:
                 return p
 
-    def add_to_team(self):
-        ll = LLTeams()
-        
-        # find existing players
-        members = self.get_team_members()
-        if len(members) >= self.MAX_TEAM_MEMBERS:
-            raise ValueError("There are already 5 players in your team.")
+    bleble = LLTeams.add_player()
+
+
        
         # Input fyrir nafn
         # kalla í fallið add_player frá LLTeams klasa
@@ -31,7 +30,6 @@ class Captain_actions():
         # 'do you want to add this person to your team? Y/N'
         # villa ef reynt við 6. manni - Team is full
         # villa ef reynt er að bæta við manni sem er nú þegar í liði
-        pass
     
     def remove_from_team(self):
         remove_player = input("Please enter the name of the player you want to remove: ")

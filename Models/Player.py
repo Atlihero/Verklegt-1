@@ -1,3 +1,6 @@
+from dataclasses import dataclass
+from datetime import date
+
 class Player:
     
     """
@@ -5,12 +8,12 @@ class Player:
     email, viðurnefni(gamertag), og link að samfélagsmiðli
     """
     def __init__(self, name="", dob="", address="", email="", handle="", link=""):
-        self.name = name
-        self.dob = dob
-        self.address = address
-        self.email = email
-        self.handle = handle
-        self.link = link
+        self.name: str = name
+        self.dob: date = dob
+        self.address: str = address
+        self.email: str = email
+        self.handle: str = handle
+        self.link: str = link
 
     #Skilar öllum upplýsingum leikmanns í nýrri línu
     def __str__(self):

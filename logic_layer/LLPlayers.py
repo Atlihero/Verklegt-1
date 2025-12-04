@@ -1,15 +1,7 @@
-#from Models.Player import Player
+from Models import Player
 from datetime import datetime
 
-class PlayerInfo():
-
-    def __init__(self):
-        self.name: str = self.player_name()
-        self.dob: datetime = self.player_dob()
-        self.address: str = self.player_address()
-        self.phone: int = self.player_phone()
-        self.email: str = self.player_email()
-        self.handle: str = self.player_handle()
+class LLPlayer():
 
     def player_name(self):
         '''Asks user for full name'''
