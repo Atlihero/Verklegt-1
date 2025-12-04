@@ -1,6 +1,8 @@
 import csv
+from datetime import datetime
 
 TOURNAMENT_PATH: str = r"_data\Tournament.csv"
+GAMES_PATH: str = r"_data\Games.csv"
 
 class TournamentIO:
 
@@ -20,9 +22,10 @@ class TournamentIO:
             with open(TOURNAMENT_PATH, "a",newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow(tournament) 
-            return f"New Toy added :)"    
+            return f"New Tournament added :)"    
         except ValueError: 
             f"Error message to be decided"
 
-    def get_round():
+    def generate_games():
         pass
+        

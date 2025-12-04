@@ -1,5 +1,4 @@
 import csv
-import random
 
 while True:
     print("\nValmynd:")
@@ -11,9 +10,8 @@ while True:
     print("6. Get team stats")
     print("7. Get Tournament")
     print("8. Create Tournament")
-    print("9. Generate Rounds")
 
-    val = input("Veldu verkefni (1-9): ")
+    val = input("Veldu verkefni (1-8): ")
 
 
     #Klasi fyrir öllu sem tengist player í data layerinu sem inheritar model klasan "player"
@@ -114,13 +112,16 @@ while True:
             def get_team_stats():
                 Wins = []
                 Points = []
+                Team_name = []
                 with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
                     reader = csv.DictReader(csvfile)
                     for row in reader:
+                        Team_name.append(row["TeamName"])
                         Wins.append(row["Wins"])
                         Points.append(row["Points"])
-                    return Wins, Points
-        Wins, Points = TeamIO.get_team_stats() 
+                    return Team_name, Wins, Points
+        Team_name, Wins, Points = TeamIO.get_team_stats() 
+        print(f"{Team_name[userinput]}")
         print(f"{Wins[userinput]} Wins")
         print(f"{Points[userinput]} Points")
 
@@ -130,13 +131,13 @@ while True:
         class TouranmentIO:
             def get_tournaments():
                 try:
-                    Tournament = [] #Empty list in which the tournament that is chosen goes into
+                    Tournament = []
                     with open(TOURNAMENT_PATH, "r", encoding="utf-8") as csvfile:
-                        reader  = csvfile.readlines() #reads the lines in the csv
-                        for row in reader: #for loop that goes through the lines to look for the right tournament
-                            Tournament.append(row) #append the tournament chosen to the list
-                        return Tournament #returns the list
-                except ValueError: #in case of wrong inputs
+                        reader  = csvfile.readlines() 
+                        for row in reader:
+                            Tournament.append(row)
+                        return Tournament
+                except ValueError: 
                     return f"Error message to be decided"
                 
         Tournament = TouranmentIO.get_tournaments()
