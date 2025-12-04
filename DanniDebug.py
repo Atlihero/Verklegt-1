@@ -100,3 +100,17 @@ while True:
                 
         Tournament = TouranmentIO.get_tournaments()
         print(Tournament[userinput])
+
+
+
+    if val == "7":
+
+        class TournamentIO:
+            def add_new_tournament(tournament: list):
+                try: 
+                    with open(TOURNAMENT_PATH, "a",newline="", encoding="utf-8") as csvfile:
+                        writer = csv.writer(csvfile)
+                        writer.writerow(tournament) 
+                    return f"New Tournament added :)"    
+                except ValueError: 
+                    f"Error message to be decided"
