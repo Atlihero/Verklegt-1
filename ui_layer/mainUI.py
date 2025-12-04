@@ -1,4 +1,4 @@
-from logic_layer.LL_api import LLAPI
+from logic_layer.LL_API import LLAPI
 from logic_layer.LLPlayers import LLPlayers
 from logic_layer.LLStatistics import LLStatistics
 from logic_layer.LLTeams import LLTeams
@@ -10,4 +10,4 @@ class MainUI:
         self.players = LLPlayers()
         self.statistics = LLStatistics()
         self.teams = LLTeams()
-        self.tournaments = LLTournaments()
+        self.tournaments = LLTournament()
