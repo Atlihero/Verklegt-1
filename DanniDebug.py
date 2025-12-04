@@ -4,11 +4,12 @@ import os
 while True:
     print("\nValmynd:")
     print("1. Get players")
-    print("2. add_new_player")
+    print("2. Create new player")
     print("3. get team")
     print("4. get player stats")
     print("5. Get team stats")
     print("6. Get tournament")
+    print("7. Create Tournament")
 
     val = input("Veldu verkefni (1-6): ")
 
@@ -33,15 +34,29 @@ while True:
         print(players[userinput])
 
     if val == "2":
+        name = input("Name: ")
+        Dob = input("Date of birth (00/00/0000): ")
+        Address = input("Address: ")
+        Phone = input("Phonenumber: ")
+        Email = input("Email: ")
+        Handle = input("Choose a handle: ")
+
+        team = "No Team"
+        Points = 0
+
+        player_data = [name, Dob, Address, Phone, Email, Handle, team, Points]
+
         class PlayerIO:
                 def create_new_player(player: list):
                     try: 
                         with open(PLAYER_PATH, "a",newline="", encoding="utf-8") as csvfile:
                             writer = csv.writer(csvfile)
-                            writer.writerow(player)
+                            writer.writerow(player_data)
                         return "Búin að búa til leikmann"
                     except ValueError:
                         return f"Villa kom upp :O"
+
+        print(PlayerIO.create_new_player(player_data))
 
     if val == "3":
         userinput = int(input("Veldu lið á milli 1-18: "))
@@ -69,7 +84,7 @@ while True:
                             Handle.append(row["Handle"])
                     return Handle, Points
         Handle, Points = PlayerIO.get_player_stats()
-        print(Handle[userinput], Points[userinput], "Points")
+        print(Handle[userinput-1], Points[userinput-1], "Points")
 
     
     if val == "5":
@@ -111,7 +126,7 @@ while True:
     if val == "7":
 
         class TournamentIO:
-            def add_new_tournament(tournament_data: list):
+            def create_new_tournament(tournament_data: list):
                 try: 
                     with open(TOURNAMENT_PATH, "a",newline="", encoding="utf-8") as csvfile:
                         writer = csv.writer(csvfile)
