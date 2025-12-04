@@ -1,18 +1,18 @@
 import csv
 
-TEAM_PATH: str = r"_data\Teams.csv" #path to the teams csv
+TEAM_PATH: str = r"_data\Teams.csv" 
 
 class TeamIO:
 
     def get_team():
         try:
-            Teams = [] #Empty list in which the team that is chosen goes into
+            Teams = [] 
             with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
-                reader  = csvfile.readlines() #reads the linse in the csv
-                for row in reader: #for loop that goes through the lines to look for the right team
-                    Teams.append(row) #append the team chosen to the list
-            return Teams #returns the list
-        except ValueError: #in case of wrong inputs
+                reader  = csvfile.readlines() 
+                for row in reader: 
+                    Teams.append(row)
+            return Teams 
+        except ValueError: 
             return f"Error message to be decided"
 
     def create_new_team(team: list):
@@ -26,14 +26,14 @@ class TeamIO:
 
     def get_team_stats():
         try:
-            Wins = [] #empty list for the wins of teams
-            Points = [] #empty list for the points of teams
+            Wins = []
+            Points = []
             with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
-                reader = csv.DictReader(csvfile) #reads the file like a dictionary
+                reader = csv.DictReader(csvfile)
                 for row in reader: 
-                    Wins.append(row["Wins"]) #adds the wins to the wins list based on the number in the wins column in the csv
-                    Points.append(row["Points"]) #adds the points to the points list based on the number in the points column in the csv
-                return Wins, Points #returns both of those lists and now 
-        except ValueError:  #in case of wrong inputs 
+                    Wins.append(row["Wins"])
+                    Points.append(row["Points"])
+                return Wins, Points 
+        except ValueError:
             f"Error message to be decided"
         pass

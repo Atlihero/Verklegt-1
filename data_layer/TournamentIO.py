@@ -1,5 +1,4 @@
 import csv
-import os
 
 TOURNAMENT_PATH: str = r"_data\Tournament.csv"
 
