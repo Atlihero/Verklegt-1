@@ -38,38 +38,5 @@ class TournamentIO:
                 return Result
         except ValueError:
             return "Villa kom upp"    
-        
-    def save_results(result: Result):
-        try:
-            with open(GAMES_PATH, "a", newline="", encoding="utf-8") as csvfile:
-                writer = csv.writer(csvfile)
-                writer.writerow([result.score_A, result.score_B, result.winner])
-            return "Results saved"
-        except ValueError:
-            return "Villa kom upp"
-        
-    
-    def get_games():
-        games = []
-        try:
-            with open(GAMES_PATH, "r", encoding="utf-8") as csvfile:
-                reader = csv.reader(csvfile)
-                for row in reader:
-                    date, round = row
-                    games.append(Game(date, round))
-            return games
-        except FileNotFoundError:
-            return "File not found"
-
-
-    def save_game(game: Game):
-        try:
-            with open(GAMES_PATH, "a", newline="", encoding="utf-8")as csvfile:
-                writer = csv.writer(csvfile)
-                writer.writerow([game.date, game.round])
-            return "Game saved"
-        except ValueError:
-            return "Error"
-        
 
         
