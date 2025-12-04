@@ -1,1 +1,9 @@
 tournament_name,round,match_number,match_date,team_a,team_b,score_a,score_b,winner
+Example Tournament,Round of 16,1,2025-12-10,Fantom,Anti Krambúðin,,,
+Example Tournament,Round of 16,2,2025-12-10,Black in Yellow,Arcane Crew,,,
+Example Tournament,Round of 16,3,2025-12-11,Red Dragons,Payload,,,
+Example Tournament,Round of 16,4,2025-12-11,Blue Shells,Fireflies,,,
+Example Tournament,Round of 16,5,2025-12-12,Spartan Squad,Explorer Crew,,,
+Example Tournament,Round of 16,6,2025-12-12,Blockheads,Fatal Force,,,
+Example Tournament,Round of 16,7,2025-12-13,Poké Pals,Street Squad,,,
+Example Tournament,Round of 16,8,2025-12-13,Silver Blades,Pink Stars,,,
