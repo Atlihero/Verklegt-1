@@ -18,7 +18,7 @@ class PlayerIO:
 
 
 #þetta þarf kannski smá að laga
-    def add_new_player(player: list):
+    def create_new_player(player: list):
         try: 
             with open(PLAYER_PATH, "a",newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile) #here the user writes in what is needed for the player like name DOB etc.
