@@ -15,13 +15,13 @@ class TeamIO:
         except ValueError: #in case of wrong inputs
             return f"Error message to be decided"
 
-    def add_new_team(team: list):
+    def create_new_team(team: list):
         try: 
             with open(TEAM_PATH, "a",newline="", encoding="utf-8") as csvfile:
-                writer = csv.writer(csvfile) #here the user writes in the details needed for a team like the name
-                writer.writerow(team) #prints what was written in a new row
+                writer = csv.writer(csvfile)
+                writer.writerow(team)
             return f"New Team added :)"    
-        except ValueError:   #in case of wrong inputs 
+        except ValueError:
             f"Error message to be decided"
 
     def get_team_stats():

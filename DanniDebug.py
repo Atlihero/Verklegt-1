@@ -1,5 +1,5 @@
 import csv
-import os
+
 
 while True:
     print("\nValmynd:")
@@ -7,9 +7,10 @@ while True:
     print("2. Create new player")
     print("3. get team")
     print("4. get player stats")
-    print("5. Get team stats")
-    print("6. Get tournament")
-    print("7. Create Tournament")
+    print("5. Create new team")
+    print("6. Get team stats")
+    print("7. Get Tournament")
+    print("8. Create Tournament")
 
     val = input("Veldu verkefni (1-6): ")
 
@@ -44,19 +45,19 @@ while True:
         team = "No Team"
         Points = 0
 
-        player_data = [name, Dob, Address, Phone, Email, Handle, team, Points]
+        player = [name, Dob, Address, Phone, Email, Handle, team, Points]
 
         class PlayerIO:
                 def create_new_player(player: list):
                     try: 
                         with open(PLAYER_PATH, "a",newline="", encoding="utf-8") as csvfile:
                             writer = csv.writer(csvfile)
-                            writer.writerow(player_data)
+                            writer.writerow(player)
                         return "Búin að búa til leikmann"
                     except ValueError:
                         return f"Villa kom upp :O"
 
-        print(PlayerIO.create_new_player(player_data))
+        print(PlayerIO.create_new_player(player))
 
     if val == "3":
         userinput = int(input("Veldu lið á milli 1-18: "))
@@ -72,7 +73,7 @@ while True:
         print(Teams[userinput])
 
     if val == "4":
-        userinput = int(input("Sláðu inn ID leikmanns sem þú vilt skoða: "))
+        userinput = int(input("Select the number of the player you want to check out: "))
         class PlayerIO:
             def get_player_stats():
                     Points = []
@@ -86,8 +87,27 @@ while True:
         Handle, Points = PlayerIO.get_player_stats()
         print(Handle[userinput-1], Points[userinput-1], "Points")
 
-    
     if val == "5":
+        teamName = input("TeamName: ")
+        captain = "No Captain"
+        wins = 0
+        points = 0
+
+        team = [teamName, captain, wins, points]
+         
+        class TeamIO:
+            def create_new_team(team: list):
+                try: 
+                    with open(TEAM_PATH, "a",newline="", encoding="utf-8") as csvfile:
+                        writer = csv.writer(csvfile)
+                        writer.writerow(team)
+                    return f"New Team added :)"    
+                except ValueError:
+                    f"Error message to be decided"
+        print(TeamIO.create_new_team(team))
+
+    
+    if val == "6":
         userinput = int(input("Sláðu inn númer liðs: "))
         class TeamIO:
             def get_team_stats():
@@ -104,7 +124,7 @@ while True:
         print(f"{Points[userinput]} Points")
 
     
-    if val == "6":
+    if val == "7":
         userinput = int(input("Sláðu inn númer móts: "))
         class TouranmentIO:
             def get_tournaments():
@@ -123,14 +143,25 @@ while True:
 
 
 
-    if val == "7":
+    if val == "8":
+        Tournament_name = input("Name of tournament: ")
+        Start_date = input("Start date of tournament 00/00/0000: ")
+        End_date = input("End date of the tournament 00/00/0000: ")
+        Venue = input("Select venue for the tournament: ")
+        ContactPerson = input("Contact person: ")
+        ContatEmail = input("Contact email: ")
+        ContactPhone = input("Contact phone: ")
+
+        tournament = [Tournament_name, Start_date, End_date, Venue, ContactPerson, ContatEmail, ContactPhone]
 
         class TournamentIO:
             def create_new_tournament(tournament_data: list):
                 try: 
                     with open(TOURNAMENT_PATH, "a",newline="", encoding="utf-8") as csvfile:
                         writer = csv.writer(csvfile)
-                        writer.writerow(tournament_data) 
+                        writer.writerow(tournament) 
                     return f"New Tournament added :)"    
                 except ValueError: 
                     f"Error message to be decided"
+
+        print(TournamentIO.create_new_tournament(tournament))
