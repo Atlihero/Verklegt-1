@@ -3,13 +3,13 @@ from datetime import datetime
 
 class PlayerInfo():
 
-    def player_name():
+    def player_name(self):
         '''Asks user for full name'''
         
         name = input("Enter full name of player: ")
         return name
         
-    def player_dob(): 
+    def player_dob(self): 
         '''Asks the user for their date of birth and checks if the format
           fits the standards so the user can continue inputting the information.'''
         
@@ -34,13 +34,13 @@ class PlayerInfo():
             return PlayerInfo.player_dob()
 
                 
-    def player_address():
+    def player_address(self):
         '''Asks user for home address'''
         
         address = input("Enter player's home address: ")
         return address
         
-    def player_phone():
+    def player_phone(self):
         '''Asks the user for his phone number and checks if it is valid, if not then 
           the user tries again.'''
         
@@ -56,7 +56,7 @@ class PlayerInfo():
             print("Phone number must not be longer than 7 digits. Please try again")
             return PlayerInfo.player_phone()
 
-    def player_email():
+    def player_email(self):
         '''Asks the player for an email address and checks if it is valid so he can continue
           adding his information. Prints error messages when the input is not up to standards.'''
 
@@ -89,7 +89,7 @@ class PlayerInfo():
         
         return f"{player_email} is a valid email"
 
-    def player_handle():
+    def player_handle(self):
         '''Asks user for a username (handle) to use for the games. It cecks if the username 
         is already in use and then asks for a new username since no two players 
         can have the same username '''
@@ -101,18 +101,7 @@ class PlayerInfo():
             print("This handle os already taken. Please try another one")
             return PlayerInfo.player_handle()
         
-	# if the handle is unique then its added to the list
+		# if the handle is unique then its added to the list
         existing_handles.append(handle)
         print("Handle has been added to the list")
         return handle
-
-
-
-
-# eitt fall fyrir það sem player slær inn
-        # def player_information
-# muna eftir að hafa villuboð
-# 
-
-player = PlayerInfo.player_email()
-print(player)
