@@ -1,16 +1,75 @@
+import csv
+from Models.Game import Game
+from Models.Result import Result
+
+TOURNAMENT_PATH: str = r"_data\Tournament.csv"
+GAMES_PATH: str = r"_data\Games.csv"
+
 class TournamentIO:
 
     def get_tournaments():
-        "Sækir í mót"
-        pass
+        try:
+            Tournament = []
+            with open(TOURNAMENT_PATH, "r", encoding="utf-8") as csvfile:
+                reader  = csvfile.readlines() 
+                for row in reader:
+                    Tournament.append(row) 
+            return Tournament 
+        except ValueError: 
+            return f"Error message to be decided"
 
-    def add_new_tournament():
-        "Bætir við nýju móti"
-        pass
+    def create_new_tournament(tournament: list):
+        try: 
+            with open(TOURNAMENT_PATH, "a",newline="", encoding="utf-8") as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow(tournament) 
+            return f"New Tournament added :)"    
+        except ValueError: 
+            f"Error message to be decided"
 
+    def get_results():
+        Result = []
+        try:
+            with open(GAMES_PATH, "r", encoding="utf-8") as csvfile:
+                reader = csv.reader(csvfile)
+                for row in reader:
+                    score_a, score_b, winner = row
+                    Result.append(int(score_a), int(score_b), winner)
+                return Result
+        except ValueError:
+            return "Villa kom upp"    
+        
+    def save_results(result: Result):
+        try:
+            with open(GAMES_PATH, "a", newline="", encoding="utf-8") as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow([result.score_A, result.score_B, result.winner])
+            return "Results saved"
+        except ValueError:
+            return "Villa kom upp"
+        
+    
     def get_games():
-        "Nær í leiki í mótinu !!Líklegt breyting hér!!"
-        pass
+        games = []
+        try:
+            with open(GAMES_PATH, "r", encoding="utf-8") as csvfile:
+                reader = csv.reader(csvfile)
+                for row in reader:
+                    date, round = row
+                    games.append(Game(date, round))
+            return games
+        except FileNotFoundError:
+            return "File not found"
 
-    def get_round():
-        "Nær í rounds í mótinu !!Líklegt breyting hér!!"
+
+    def save_game(game: Game):
+        try:
+            with open(GAMES_PATH, "a", newline="", encoding="utf-8")as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow([game.date, game.round])
+            return "Game saved"
+        except ValueError:
+            return "Error"
+        
+
+        
