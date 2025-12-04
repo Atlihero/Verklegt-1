@@ -129,7 +129,7 @@ Einnig settum við okkur markmið um hvenær við viljum klára verkefnið.
  Mættir eru á morgunfun allir nema Christian sem er seinn vegna strætó er seinn. 
  
  **Verkefni dagsins eru:**
- - Byrja á að forrita Logic layer og data layer eftir hópunum sem ákveðnir voru í gær
+ - Byrja á að forrita Logic layer og data layer eftir hópunum sem ákveðnir voru í gær ✅
  - Taka ping pong pásu
  - Fara yfir jafningjamatið og skrifa ígrundun fyrir seinustu viku. ✅
    
