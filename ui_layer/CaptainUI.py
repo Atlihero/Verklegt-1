@@ -4,10 +4,12 @@ from logic_layer.LLTeams import LLTeams
 
 
 class CaptainUI:
-    def __init__(self, select_captain, add_player, information_on_captain_team):
-        self.select_captain = select_captain
-        self.add_player = add_player
-        self.information_on_captain_team = information_on_captain_team
+    def __init__(self, LLPlayers, LLTeams):
+        self.players = LLPlayers
+        self.teams = LLTeams
 
-    def __str__(self):
-        pass
+    def add_player(self, p):
+        self.players.add_player(p)
+
+    def add_team(self, t):
+        self.teams.create_team(t)
