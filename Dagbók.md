@@ -132,4 +132,6 @@ Einnig settum við okkur markmið um hvenær við viljum klára verkefnið.
  - Byrja á að forrita Logic layer og data layer eftir hópunum sem ákveðnir voru í gær
  - Taka ping pong pásu
  - Fara yfir jafningjamatið og skrifa ígrundun fyrir seinustu viku. ✅
+   
+### Fimmtudagur 4.12.25 (Dagur 3 í viku 2)
  
