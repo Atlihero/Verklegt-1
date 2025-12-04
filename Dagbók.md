@@ -134,4 +134,12 @@ Einnig settum við okkur markmið um hvenær við viljum klára verkefnið.
  - Fara yfir jafningjamatið og skrifa ígrundun fyrir seinustu viku. ✅
    
 ### Fimmtudagur 4.12.25 (Dagur 3 í viku 2)
- 
+Mættir á morgunfund eru: Atli, Brynja, Daníel og Elvar. Karen er því miður veik heim í dag. Christian er aðeins seinn, strætó líklegast að stríða honum.
+**Verkefni dagsins eru:**
+-	Halda áfram að vinna í logic layer og data layer ✅
+
+**Staðan eftir daginn í dag:**
+-	Karen mætti þó svo hún væri veik
+-	Erum komin vel á veg í logic layer og data layer
+-	Unnum í UI
+-	Fengum hjálp frá Gylfa við gerð á logic layer fyrir player
