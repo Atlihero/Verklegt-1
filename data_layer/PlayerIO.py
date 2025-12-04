@@ -17,7 +17,7 @@ class PlayerIO:
             f"Error message to be decided"
 
 
-#þetta þarf kannski smá að laga
+
     def create_new_player(player: list):
         try: 
             with open(PLAYER_PATH, "a",newline="", encoding="utf-8") as csvfile:
@@ -28,14 +28,18 @@ class PlayerIO:
             f"Error message to be decided"
 
 
-    def get_player_stats(): #This will get the players points to an empty list
+    def get_player_stats():
+        """
+        Gets the points and handle of the players
+        """
         try:
-            Points = [] 
+            Points = []
+            Handle = []
             with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
-                reader = csv.DictReader(csvfile) #reads the file and 
+                reader = csv.DictReader(csvfile)
                 for row in reader:
-                    Points.append(row["Points"]) #appends the points from the selected player to the list
-                return Points
-        except ValueError:  #in case of wrong inputs 
+                    Points.append(row["Points"])
+                    Handle.append(row["Handle"])
+            return Handle, Points
+        except ValueError:  
             f"Error message to be decided"
-        pass
