@@ -36,4 +36,15 @@ class TeamIO:
                 return Wins, Points 
         except ValueError:
             f"Error message to be decided"
-        pass
+        
+    def add_teams_to_tournament(tournament: str, teams: list):
+        if len(teams) != 16:
+            return "Villa ekki eru 16 lið í mótinu"
+        try:
+            with open(TEAM_PATH, "a", newline="", encoding="utf-8") as csvfile:
+                writer = csv.writer(csvfile)
+                for team in teams:
+                    writer.writerow([tournament], team)
+                return "Teams added"
+        except ValueError:
+            return "Villa eittvhað fór úsrkeiðis"

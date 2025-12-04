@@ -1,6 +1,7 @@
 import csv
 
 TOURNAMENT_PATH: str = r"_data\Tournament.csv"
+ROUND_PATH: str = r"_data\Round.csv"
 
 class TournamentIO:
 
@@ -25,10 +26,7 @@ class TournamentIO:
             f"Error message to be decided"
         
 
-    def add_teams_to_tournament():
 
-        pass
 
     def get_round():
-        "Nær í rounds í mótinu !!Líklegt breyting hér!!"
         pass
