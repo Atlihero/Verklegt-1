@@ -1,5 +1,5 @@
 import csv
-from datetime import datetime
+from Models.Game import Game
 from Models.Result import Result
 
 TOURNAMENT_PATH: str = r"_data\Tournament.csv"
@@ -48,5 +48,27 @@ class TournamentIO:
         except ValueError:
             return "Villa kom upp"
         
+    
+    def get_games():
+        games = []
+        try:
+            with open(GAMES_PATH, "r", encoding="utf-8") as csvfile:
+                reader = csv.reader(csvfile)
+                for row in reader:
+                    date, round = row
+                    games.append(Game(date, round))
+            return games
+        except FileNotFoundError:
+            return "File not found"
+
+
+    def save_game(game: Game):
+        try:
+            with open(GAMES_PATH, "a", newline="", encoding="utf-8")as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow([game.date, game.round])
+            return "Game saved"
+        except ValueError:
+            return "Error, Error, Error, Error, Error, Error, Error, Error, Error, Error"
 
         
