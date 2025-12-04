@@ -1,7 +1,9 @@
 import csv
+import random
 
 TOURNAMENT_PATH: str = r"_data\Tournament.csv"
 ROUND_PATH: str = r"_data\Round.csv"
+TEAM_PATH: str = r"_data\Teams.csv"
 
 class TournamentIO:
 
@@ -26,7 +28,5 @@ class TournamentIO:
             f"Error message to be decided"
         
 
-
-
-    def get_round():
+    def generate_rounds():
         pass
