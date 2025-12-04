@@ -69,6 +69,7 @@ class TournamentIO:
                 writer.writerow([game.date, game.round])
             return "Game saved"
         except ValueError:
-            return "Error, Error, Error, Error, Error, Error, Error, Error, Error, Error"
+            return "Error"
+        
 
         
