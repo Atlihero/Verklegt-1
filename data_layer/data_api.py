@@ -1,6 +1,5 @@
 from PlayerIO import PlayerIO
 from TeamIO import TeamIO
-from TournamentIO import TournamentIO
 
 def get_all_teams():
     return TeamIO.get_team()
@@ -22,9 +21,3 @@ def get_player_statistics():
 
 def add_teams_to_tournament(tournament_name, teams_list):
     return TeamIO.add_teams_to_tournament(tournament_name, teams_list)
-
-def new_tournament():
-    return TournamentIO.create_new_tournament()
-
-def get_all_tournaments():
-    return TournamentIO.get_tournaments()

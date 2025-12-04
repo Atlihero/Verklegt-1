@@ -1,14 +1,15 @@
+from Models.Round import Round #importar round klasanum
 
-
-class Game:
-    def __init__(self, team1, team2, result= None):
-        self.team1 = team1
-        self.team2 = team2
-        self.result = result
+#klasi fyrir leiki sem segja hvenær þeir eru og að passa að það séu slétttölu
+class Game(Round):
+    def __init__(self, date, round):
+        super().__init__()
+        self.date = date
+        self.round = round
 
 
     def __str__(self):
-        return f"{self.team1}:\n{self.team2}:\n{self.result}"
+        return f"{self.date}:\n{self.round}"
     
     def __repr__(self):
         return str(self)

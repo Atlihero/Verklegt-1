@@ -46,8 +46,6 @@ class LLTeams:
 			teams.append(team)
 
 		return teams
-		
-	
 
 	def add_player(self, team_name: str, player_id: str):
 		"Fyrirliði vill bæta leikmanni í lið"
@@ -55,7 +53,7 @@ class LLTeams:
 		# Check if team exists
 		team = self.get_team_by_name(team_name)
 		if team is None:
-				raise ValueError("A team with this name was not found.")
+			raise ValueError("A team with this name was not found.")
 		
 		# Get all players from data layer
 		players = PlayerIO.get_players()
@@ -72,7 +70,7 @@ class LLTeams:
 			raise ValueError("Player with this ID was not found.")
 		
 		if player_to_add.team == team.name:
-			raise ValueError("Leikmaður er nú þegar í þessu liði.")
+			raise ValueError("Player is already a member of this team.")
 		
 		# Update Players team
 		player_to_add.team = team.name
@@ -92,7 +90,7 @@ class LLTeams:
 		return self.get_team_by_name(name) is not None  # Checks if a team has this name
 
 	def create_team(self, name: str, captain: str, asciiLogo: str):
-		"skipuleggjandi vill búa til lið"
+		'''Organizer wants to make a team'''
 		# Checks weather it has a name, captain and a unique name
 		if not name.strip():
 			raise ValueError("Name can not be empty")
