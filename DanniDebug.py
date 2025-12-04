@@ -12,7 +12,7 @@ while True:
     print("7. Get Tournament")
     print("8. Create Tournament")
 
-    val = input("Veldu verkefni (1-6): ")
+    val = input("Veldu verkefni (1-8): ")
 
 
     #Klasi fyrir öllu sem tengist player í data layerinu sem inheritar model klasan "player"
