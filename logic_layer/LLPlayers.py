@@ -4,12 +4,12 @@ from datetime import datetime
 class PlayerInfo():
 
     def __init__(self):
-        self.name = self.player_name()
-        self.dob = self.player_dob()
-        self.address = self.player_address()
-        self.phone = self.player_phone()
-        self.email = self.player_email()
-        self.handle = self.player_handle()
+        self.name: str = self.player_name()
+        self.dob: datetime = self.player_dob()
+        self.address: str = self.player_address()
+        self.phone: int = self.player_phone()
+        self.email: str = self.player_email()
+        self.handle: str = self.player_handle()
 
     def player_name(self):
         '''Asks user for full name'''
@@ -106,7 +106,7 @@ class PlayerInfo():
         existing_handles: list = []
         
         if handle in existing_handles:
-            print("This handle os already taken. Please try another one")
+            print("This handle is already taken. Please try another one.")
             return PlayerInfo.player_handle()
         
 		# if the handle is unique then its added to the list
