@@ -3,6 +3,14 @@ from datetime import datetime
 
 class PlayerInfo():
 
+    def __init__(self):
+        self.name = self.player_name()
+        self.dob = self.player_dob()
+        self.address = self.player_address()
+        self.phone = self.player_phone()
+        self.email = self.player_email()
+        self.handle = self.player_handle()
+
     def player_name(self):
         '''Asks user for full name'''
         
@@ -93,7 +101,7 @@ class PlayerInfo():
         '''Asks user for a username (handle) to use for the games. It cecks if the username 
         is already in use and then asks for a new username since no two players 
         can have the same username '''
-        
+        #move empty list to the ouside of function
         handle = input("Enter player's handle: ")
         existing_handles: list = []
         
