@@ -1,15 +1,14 @@
-from Models.Round import Round #importar round klasanum
-from Models.Tournament import Tournament #importar tournament klasann
 
-#klasi fyrir leiki sem segja hvenær þeir eru og að passa að það séu slétttölu
-class Game(Round, Tournament):
-    def __init__(self, date, roundnumber):
-        self.date = date
-        self.roundenumber = roundnumber
 
-    #skilar þeim upplýsingum    
+class Game:
+    def __init__(self, team1, team2, result= None):
+        self.team1 = team1
+        self.team2 = team2
+        self.result = result
+
+
     def __str__(self):
-        return f"{self.date}:\n{self.roundenumber}"
+        return f"{self.team1}:\n{self.team2}:\n{self.result}"
     
     def __repr__(self):
         return str(self)

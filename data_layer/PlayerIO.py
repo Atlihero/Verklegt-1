@@ -16,6 +16,8 @@ class PlayerIO:
         except ValueError: #in case of wrong inputs
             f"Error message to be decided"
 
+
+
     def create_new_player(player: list):
         try: 
             with open(PLAYER_PATH, "a",newline="", encoding="utf-8") as csvfile:
@@ -27,9 +29,6 @@ class PlayerIO:
 
 
     def get_player_stats():
-        """
-        Gets the points and handle of the players
-        """
         try:
             Points = []
             Handle = []
@@ -39,5 +38,6 @@ class PlayerIO:
                     Points.append(row["Points"])
                     Handle.append(row["Handle"])
             return Handle, Points
-        except ValueError:  
+        except ValueError:  #in case of wrong inputs 
             f"Error message to be decided"
+        pass
