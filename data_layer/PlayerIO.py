@@ -31,11 +31,13 @@ class PlayerIO:
     def get_player_stats():
         try:
             Points = []
+            Handle = []
             with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     Points.append(row["Points"])
-                return Points
+                    Handle.append(row["Handle"])
+            return Handle, Points
         except ValueError:  #in case of wrong inputs 
             f"Error message to be decided"
         pass

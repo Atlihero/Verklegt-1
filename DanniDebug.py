@@ -34,11 +34,14 @@ while True:
 
     if val == "2":
         class PlayerIO:
-                def add_new_player(player: list):
-                    with open(PLAYER_PATH, "a",newline="", encoding="utf-8") as csvfile:
-                        writer = csv.writer(csvfile)
-                        writer.writerow(player)
-                    return True
+                def create_new_player(player: list):
+                    try: 
+                        with open(PLAYER_PATH, "a",newline="", encoding="utf-8") as csvfile:
+                            writer = csv.writer(csvfile)
+                            writer.writerow(player)
+                        return "Búin að búa til leikmann"
+                    except ValueError:
+                        return f"Villa kom upp :O"
 
     if val == "3":
         userinput = int(input("Veldu lið á milli 1-18: "))
@@ -58,13 +61,15 @@ while True:
         class PlayerIO:
             def get_player_stats():
                     Points = []
+                    Handle = []
                     with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
                         reader = csv.DictReader(csvfile)
                         for row in reader:
                             Points.append(row["Points"])
-                    return Points
-        Points = PlayerIO.get_player_stats()
-        print(Points[userinput])
+                            Handle.append(row["Handle"])
+                    return Handle, Points
+        Handle, Points = PlayerIO.get_player_stats()
+        print(Handle[userinput], Points[userinput], "Points")
 
     
     if val == "5":
