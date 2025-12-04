@@ -1,4 +1,4 @@
-from Models.Team import Team
+from Models.Team  import Team
 from data_layer import TeamIO
 from data_layer import PlayerIO
 
@@ -114,3 +114,7 @@ class LLTeams:
 	def view_teams(self):
 		"áhorfandi vill skoða upplýsingar liða"
 		return list(self.teams)
+
+
+player = LLTeams.add_player()
+player
