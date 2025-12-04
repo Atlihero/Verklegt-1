@@ -28,9 +28,9 @@ class PlayerIO:
             f"Error message to be decided"
 
 
-    def get_player_stats():
+    def get_player_stats(): #This will get the players points to an empty list
         try:
-            Points = [] #empty list to be used for storing the points given
+            Points = [] 
             with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
                 reader = csv.DictReader(csvfile) #reads the file and 
                 for row in reader:
