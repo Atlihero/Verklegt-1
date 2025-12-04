@@ -1,4 +1,5 @@
 import csv
+from Models.Game import Game
 
 while True:
     print("\nValmynd:")
@@ -18,6 +19,7 @@ while True:
     PLAYER_PATH: str = r"data_layer\_data\Players.csv"
     TEAM_PATH: str = r"data_layer\_data\Teams.csv"
     TOURNAMENT_PATH: str = r"data_layer\_data\Tournament.csv"
+    GAMES_PATH: str = r"data_layer\_data\Games.csv"
 
     
     if val == "1":
@@ -128,7 +130,7 @@ while True:
     
     if val == "7":
         userinput = int(input("Sláðu inn númer móts: "))
-        class TouranmentIO:
+        class TournamentIO:
             def get_tournaments():
                 try:
                     Tournament = []
@@ -140,7 +142,7 @@ while True:
                 except ValueError: 
                     return f"Error message to be decided"
                 
-        Tournament = TouranmentIO.get_tournaments()
+        Tournament = TournamentIO.get_tournaments()
         print(Tournament[userinput])
 
 
@@ -167,3 +169,23 @@ while True:
                     f"Error message to be decided"
 
         print(TournamentIO.create_new_tournament(tournament))
+    
+
+    if val == "9":
+        userinput = int(input("Select the game ID: "))
+        class TournamentIO:
+            def get_games():
+                team_a = []
+                team_b = []
+                try:
+                    with open(GAMES_PATH, "r", encoding="utf-8") as csvfile:
+                        reader = csv.DictReader(csvfile)
+                        for row in reader:
+                            team_a.append(row["team_a"])
+                            team_b.append(row["team_b"])
+                    return team_a, team_b
+                except FileNotFoundError:
+                    return "File not found"
+                
+        team_a, team_b = TournamentIO.get_games()
+        print(team_a[userinput], "vs", team_b[userinput])
