@@ -1,6 +1,6 @@
-from PlayerIO import PlayerIO
-from TeamIO import TeamIO
-from TournamentIO import TournamentIO
+from data_layer.PlayerIO import PlayerIO
+from data_layer.TeamIO import TeamIO
+from data_layer.TournamentIO import TournamentIO
 
 class DataAPI:
     def __init__(self):

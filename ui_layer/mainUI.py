@@ -1,13 +1,9 @@
 from logic_layer.LL_api import LL_API
-from logic_layer.LLPlayers import LLPlayer
-from logic_layer.LLTeams import LLTeams
 
 
-class CaptainUI:
+class MainUI:
     def __init__(self):
         self.api = LL_API()
-        self.players = LLPlayer()
-        self.teams = LLTeams()
 
     def api_logic(self, api):
         self.add_api(api)

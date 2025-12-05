@@ -1,2 +1,9 @@
+from logic_layer.LL_api import LL_API
+
 class MainMenu:
-    pass
+    
+    def __init__(self):
+        self.api = LL_API()
+    
+    def getplayer(self):
+        LL_API.getplayers()
