@@ -1,10 +1,6 @@
 from logic_layer.LL_api import LL_API
 
 class Main:
-    def run(self):
-        self.api =LL_API
-        pass
-
     def menu():
         print("\033[91m--------------------------------------\033[0m")
         print("\033[91m---           GLADIATORS           ---\033[0m")
@@ -28,8 +24,12 @@ class Main:
             quit
         elif fyrst_input == "1" or fyrst_input == "2" or fyrst_input == "3" or fyrst_input == "b":
             print("nice")
-    menu()
 
+    def orginazer(self):
+        self.api =LL_API
+        pass
+
+    menu()
 
 pink = "\033[95m"
 reset = "\033[0m"
@@ -41,7 +41,7 @@ red = "\033[91m"
 highlite= "\033[100m"
 neongreen = "\033[92m"
 
-print(pink,"######################")
-print(pink,"## ",red,"--Scooby doo--",pink,"##")
+print(pink,"########################")
+print(pink,"## ",highlite,"--Scooby doo--",reset,pink,"##")
 
 
