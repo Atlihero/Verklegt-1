@@ -1,4 +1,5 @@
 from logic_layer.LL_api import LL_API
+from Colors import Colers
 
 class Main:
     def menu():
@@ -27,21 +28,12 @@ class Main:
 
     def orginazer(self):
         self.api =LL_API
-        pass
+        
 
     menu()
 
-pink = "\033[95m"
-reset = "\033[0m"
-blue = "\033[94m"
-neonblue = "\033[96m"
-Yellow = "\033[93m"
-gray = "\033[90m"
-red = "\033[91m"
-highlite= "\033[100m"
-neongreen = "\033[92m"
-
-print(pink,"########################")
-print(pink,"## ",highlite,"--Scooby doo--",reset,pink,"##")
-
-
+    def scoobster(pink, reset, blue, neonblue, Yellow, gray, red, highlite, neongreen):
+        print(pink,"########################")
+        print(pink,"## ",highlite,"--Scooby doo--",reset,pink,"##")
+    
+    scoobster(*Colers.all_colers())
