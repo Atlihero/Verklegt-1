@@ -4,7 +4,7 @@ from datetime import date
 class Player:
     
     """
-    Búa til __init__ fall sem tekur inn nafn, fæðingardag, heimili,
+    Búa til __init__ fall sem tekur inn nafn, fæðingardag, símanúmer, heimili,
     email, viðurnefni(gamertag), og link að samfélagsmiðli
     """
     def __init__(self, name="", dob="", phone="", address="", email="", handle="", link=""):
