@@ -5,6 +5,7 @@ TEAM_PATH: str = r"_data\Teams.csv"
 class TeamIO:
 
     def get_team():
+        '''returns a list of players for a specific team'''
         try:
             Teams = [] 
             with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
@@ -15,11 +16,12 @@ class TeamIO:
         except ValueError: 
             return f"Error message to be decided"
 
-    def create_new_team(team: list):
+    def create_new_team(team_name: list):
+        '''create an empty team with no players'''
         try: 
             with open(TEAM_PATH, "a",newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile)
-                writer.writerow(team)
+                writer.writerow(team_name)
             return f"New Team added :)"    
         except ValueError:
             f"Error message to be decided"
@@ -48,3 +50,17 @@ class TeamIO:
                 return "Teams added"
         except ValueError:
             return "Villa eittvhað fór úsrkeiðis"
+        
+
+    def get_all_teams() -> list:
+        '''returns a list of all team names'''
+        teams: list = []
+        try:
+            with open(TEAM_PATH, "a", newline="", encoding="utf-8") as csvfile:
+                reader = csv.writer(csvfile)
+                for row in reader:
+                    if row:
+                        teams.append(row[0])
+        except FileNotFoundError:
+            pass
+        return teams
