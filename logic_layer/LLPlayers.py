@@ -11,6 +11,10 @@ class LLPlayer:
         data = DataAPI()
         return data.get_all_players()
     
+    def get_player_publicViewer(self):
+        data = DataAPI()
+        return data.public_get_player()
+    
     def get_player_statistics(self):
         return super().get_player_statistics()
 

@@ -1,11 +1,12 @@
 from logic_layer.LL_api import LL_API
 
+class PublicViewer:
+    
+    userinput = int(input("Veldu ID leikmanns milli 1-57: "))
+    def getplayerPublic():
+        api = LL_API()        
+        players = api.getPlayerPublic()
+        return players
 
-userinput = int(input("Veldu ID leikmanns milli 1-57: "))
-def getplayer():
-    api = LL_API()        
-    players = api.getplayers()
-    return players
-
-player_dict = getplayer()
-print(player_dict[userinput])
+    player_dict = getplayerPublic()
+    print(player_dict[userinput])
