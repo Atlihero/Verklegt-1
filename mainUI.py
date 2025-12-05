@@ -36,6 +36,12 @@ class Happy_paths:
         print("\033[96m--- Back b)                        ---\033[0m")
         print("\033[96m--------------------------------------\033[0m")
 
+    def Happy_create_tournament():
+        print("tournament")
+
+    def Happy_create_team():
+        print("Create team")
+
     def Happy_make_captain():
         print("\033[91m--------------------------------------\033[0m")
         print("\033[91m---           GLADIATORS           ---\033[0m")
@@ -93,9 +99,9 @@ class Happy_paths:
         if input2 == "1":
             Happy_create_player()
         elif input2 == "2":
-            print("Jagerbomb")
+            Happy_create_tournament()
         elif input2 == "3":
-            print("Apparol spritz")
+            Happy_create_team()
         elif input2 == "4":
             ID_ = 7
             Happy_make_captain()
