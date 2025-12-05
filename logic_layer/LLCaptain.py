@@ -16,9 +16,8 @@ class LLCaptain():
     def get_team_members(self, team_name: str):
         '''Check if players are in this team and return a list of members'''
         all_players = PlayerIO.get_players()
-        for p in all_players:
-            if all_players == self.team_name:
-                return p
+        team_members = [p for p in all_players if p.team == team_name]
+        return team_members
             
     def add_player_to_team(self, team_name: str, player_name: str):
         '''Used to check if team already has 5 players, '''
@@ -44,6 +43,7 @@ class LLCaptain():
         '''Allows captain to remove a player from team'''
         all_players = PlayerIO.get_players()
         player_found = None
+
         for p in all_players:
                 if p.name == player_name:
                     player_found = p
@@ -55,11 +55,14 @@ class LLCaptain():
         if player_found.team != team_name:
             raise ValueError ("The player is not in this team. Please try another player.")
     
+        player_found.team = ""
+
+        PlayerIO.save_players(all_players)
+
+        return player_found
         # input fyrir nafn sem á að eyða úr liðslista
         # warning signs 'u sure u want to delete this person?'
         # villa ef reynt er að taka út leikmann sem er ekki í liðinu
-        pass
-
 
 
     def see_player_info(self):

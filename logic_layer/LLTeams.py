@@ -30,7 +30,7 @@ class LLTeams:
 			captain = parts[2]
 			asciiLogo = ""
 
-			team = Team(name=name, captain=captain, asciiLogo=asciiLogo)
+			team = Team(name, captain, asciiLogo)
 			teams.append(team)
 
 		return teams

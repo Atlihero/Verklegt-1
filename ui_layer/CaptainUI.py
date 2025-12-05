@@ -1,20 +1,20 @@
 from logic_layer.LL_API import LL_API
-from logic_layer.LLPlayers import LLPlayer
-from logic_layer.LLTeams import LLTeams
-from logic_layer.LLCaptain import LLCaptain
+# from logic_layer.LLPlayers import LLPlayer
+# from logic_layer.LLTeams import LLTeams
+# from logic_layer.LLCaptain import LLCaptain
 
 
 class CaptainUI:
     def __init__(self, LLPlayers, LLTeams):
         self.players = LLPlayers
         self.teams = LLTeams
-        self.ll = LLCaptain()
+        self.ll = LL_API()
 
-    def add_player(self, p):
-        self.players.add_player(p)
+    # def add_player(self, p):
+    #     self.players.add_player(p)
 
-    def add_team(self, t):
-        self.teams.create_team(t)
+    # def add_team(self, t):
+    #     self.teams.create_team(t)
 
 
     def add_to_team(self):
@@ -38,7 +38,7 @@ class CaptainUI:
             return 
         
         print("\nPlayers in your team")
-        for index, p in enumerate (start = 1):
+        for index, p in enumerate(start = 1):
             print(f"{index}. {p.name} | Handle: {p.handle}")
 
         try:
@@ -53,12 +53,12 @@ class CaptainUI:
         
         player_to_remove = players[selected_index]
 
-        confirmation = input("Are you sure you want to remove {name} from the team? Y/N")
+        confirmation = input(f"Are you sure you want to remove {player_to_remove} from the team? Y/N")
         if confirmation.upper() != "Y":
             print("Removal cancelled. The player will not be removed from the team.")
 
         try:
-            removed_player = self.ll.remove_from_team(team_name, player_to_remove.name)
+            removed_player = self.ll.remove_from_team(player_to_remove.name, team_name)
             print(f"{removed_player} has been removed from the team.")
         except ValueError as error:
             print("Error:", error) 
