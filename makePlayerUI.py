@@ -1,4 +1,6 @@
 from logic_layer.LLPlayers import LLPlayer #þetta þarf að vera wrapper == API !!!!
+from logic_layer.LL_api import LL_API
+
 
 def get_player_info():
     

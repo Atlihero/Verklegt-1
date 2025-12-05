@@ -6,13 +6,13 @@ class Orginizer:
         return self.cr_player
 
     def create_tournament(self):
-        self.cr_tournament = LL_API#wantae.tournament
+        self.cr_tournament = LL_API#vantar.tournament
         return self.cr_tournament
 
     def create_team(self):
-        self.cr_team = LL_API#wantar .create_team
+        self.cr_team = LL_API#vantar .create_team
         return self.cr_team
 
     def make_captain(self):
-        self.mk_captain = LL_API#wantar create captein
+        self.mk_captain = LL_API#vantar create captein
         return self.mk_captain
