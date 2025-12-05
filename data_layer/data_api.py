@@ -28,3 +28,6 @@ def new_tournament():
 
 def get_all_tournaments():
     return TournamentIO.get_tournaments()
+
+def new_game():
+    return TournamentIO.create_new_game()
