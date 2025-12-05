@@ -8,7 +8,8 @@ class LLPlayer:
 
     
     def get_all_players(self):
-        return DataAPI.get_all_players()
+        data = DataAPI()
+        return data.get_all_players()
     
     def get_player_statistics(self):
         return super().get_player_statistics()
