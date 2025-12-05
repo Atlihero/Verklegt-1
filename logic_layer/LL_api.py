@@ -63,3 +63,10 @@ class LL_API:
     def view_teams(self):
         "Public viewer wants to view teams"
         return self.team.view_teams() 
+    
+
+    """
+    Logic layer wrapper for the LLCaptain
+    """
+
+    def

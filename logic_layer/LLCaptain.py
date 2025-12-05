@@ -38,25 +38,31 @@ class LLCaptain():
 
         added_player =  self.ll_teams.add_player_to_team(team_name, player_name)
         return added_player
-       
-        # Input fyrir nafn
-        # kalla í fallið add_player frá LLTeams klasa
-        # búa til liðslista max 5 á listanum
-        # 'do you want to add this person to your team? Y/N'
-        # villa ef reynt við 6. manni - Team is full
-        # villa ef reynt er að bæta við manni sem er nú þegar í liði
     
-    def remove_from_team(self):
-        remove_player = input("Please enter the name of the player you want to remove: ")
+    
+    def remove_from_team(self, player_name: str, team_name: str):
+        '''Allows captain to remove a player from team'''
+        all_players = PlayerIO.get_players()
+        player_found = None
+        for p in all_players:
+                if p.name == player_name:
+                    player_found = p
+                    break
+                    
+        if player_found is None:
+            raise ValueError ("This player does not exist. Please try another player.")
+        
+        if player_found.team != team_name:
+            raise ValueError ("The player is not in this team. Please try another player.")
+    
         # input fyrir nafn sem á að eyða úr liðslista
         # warning signs 'u sure u want to delete this person?'
         # villa ef reynt er að taka út leikmann sem er ekki í liðinu
         pass
 
+
+
     def see_player_info(self):
         # getur séð allar upplýsingar um leikmenn í sínu liði (eftir að hafa bætt leikmanni í liðið)
         # setja upp töflu
-        pass
-
-    def add_to_team():
         pass
