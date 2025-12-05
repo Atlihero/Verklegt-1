@@ -37,3 +37,25 @@ class TeamIO:
         except ValueError:  #in case of wrong inputs 
             f"Error message to be decided"
         pass
+
+
+    def get_team_wins_points(team_name: str):
+        """Finds wins and points for a team"""
+
+        with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
+            reader = csv.reader(csvfile)
+            header = next(reader, None)  # skip header
+
+            for row in reader:
+                # row = [TeamID, TeamName, Captain, Wins, Points]
+                if len(row) < 5:
+                    continue
+
+                name = row[1].strip('"')
+
+                if name == team_name:
+                    wins = int(row[3])
+                    points = int(row[4])
+                    return wins, points
+        
+        raise ValueError("Team was not found in Teams.csv")
