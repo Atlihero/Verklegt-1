@@ -11,8 +11,10 @@ while True:
     print("6. Get team stats")
     print("7. Get Tournament")
     print("8. Create Tournament")
+    print("9. Get_games")
+    print("10. Create_new_game")
 
-    val = input("Veldu verkefni (1-8): ")
+    val = input("Veldu verkefni (1-10): ")
 
 
     #Klasi fyrir öllu sem tengist player í data layerinu sem inheritar model klasan "player"
