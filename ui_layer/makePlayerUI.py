@@ -1,4 +1,4 @@
-from logic_layer.LL_API import LL_API
+from logic_layer.LL_api import LL_API
 
 def get_player_info():
     
