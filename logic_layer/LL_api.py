@@ -68,5 +68,3 @@ class LL_API:
     """
     Logic layer wrapper for the LLCaptain
     """
-
-    def
