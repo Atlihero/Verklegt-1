@@ -143,3 +143,5 @@ Mættir á morgunfund eru: Atli, Brynja, Daníel og Elvar. Karen er því miður
 -	Erum komin vel á veg í logic layer og data layer
 -	Unnum í UI
 -	Fengum hjálp frá Gylfa við gerð á logic layer fyrir player
+
+### Fössari 5.12.25 (Dagur 4 í viku 2)
