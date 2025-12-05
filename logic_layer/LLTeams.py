@@ -1,13 +1,11 @@
-from Models.Team  import Team
-from data_layer import TeamIO
-from data_layer import PlayerIO
+from Models.Team import Team
+from data_layer.TeamIO import TeamIO
+from data_layer.PlayerIO import PlayerIO
 
 class LLTeams:
 
-	MAX_TEAM_MEMBERS = 5
-	
 	def __init__(self):
-		self.teams: list[Team] = self._load_teams_from_csv()
+			self.teams: list[Team] = self._load_teams_from_csv()
 
 
 	def _load_teams_from_csv(self):
@@ -17,24 +15,27 @@ class LLTeams:
 		for line in raw_rows:   # Loops each line from the csv
 			line = line.strip()
 			if not line:    # Skip if line is empty
-					continue
-		# Spliting on the comma and loops each field
-			parts = [p.strip().strip('"') for p in line.split(",")] 
+				continue
 
-		# If it has less than 2 parts then we skip it instead of crashing
-			if len(parts) < 2:
-					continue  
+			parts = [p.strip().strip('"') for p in line.split(",")]         #Spliting on the comma and loops each field
 
-			name = parts[0]
-			captain = parts[1]
-			asciiLogo = parts[2] if len(parts) > 2 else "" # Third field is the logo or "" if it does not exist
+			if parts[0] == "TeamID": # ship the header
+				continue
+
+			if len(parts) < 3:      #If it has less than 3 parts then we skip it instead of crashing
+				continue  
+
+			name = parts[1]
+			captain = parts[2]
+			asciiLogo = ""
 
 			team = Team(name=name, captain=captain, asciiLogo=asciiLogo)
 			teams.append(team)
 
 		return teams
 
-	def add_player(self, team_name: str, player_id: str):
+
+	def add_player_to_team(self, team_name: str, player_name: str):
 		"Fyrirliði vill bæta leikmanni í lið"
 
 		# Check if team exists
@@ -45,19 +46,19 @@ class LLTeams:
 		# Get all players from data layer
 		players = PlayerIO.get_players()
 
-		# Find player with the right ID
+		# Find player with the right name
 		player_to_add = None
 		for p in players:
-			if p.id == player_id:
-				player_to_add = p
-				break
+			if p.name == player_name:
+					player_to_add = p
+					break
 
 		# Check if player is already in this team
 		if player_to_add is None:
-			raise ValueError("Player with this ID was not found.")
+			raise ValueError("Player with this name was not found.")
 		
 		if player_to_add.team == team.name:
-			raise ValueError("Player is already a member of this team.")
+			raise ValueError("Leikmaður er nú þegar í þessu liði.")
 		
 		# Update Players team
 		player_to_add.team = team.name
@@ -66,18 +67,18 @@ class LLTeams:
 		PlayerIO.save_players(players)  
 
 		return player_to_add
-		
+
 	def get_team_by_name(self, name: str): # Checks for the teama and returns it if found, or None if not
 		for team in self.teams:
 			if team.name == name:
 				return team
-		return None     
+		return None
 
 	def team_exists(self, name: str):
 		return self.get_team_by_name(name) is not None  # Checks if a team has this name
 
 	def create_team(self, name: str, captain: str, asciiLogo: str):
-		'''Organizer wants to make a team'''
+		"skipuleggjandi vill búa til lið"
 		# Checks weather it has a name, captain and a unique name
 		if not name.strip():
 			raise ValueError("Name can not be empty")
@@ -85,18 +86,20 @@ class LLTeams:
 			raise ValueError("Captain can not be empty")
 		if self.team_exists(name):
 			raise ValueError("Another team already has this name")
-		
+
 		# Creating team object
 		new_team = Team(name=name.strip(), captain=captain.strip(), asciiLogo=asciiLogo)
 
 		# Updating in memory
 		self.teams.append(new_team)
+		new_id = len(self.teams)   
 
 		# Saving in CSV throguh TeamIO
-		row_for_csv = [new_team.name, new_team.captain, new_team.asciiLogo, 0, 0] # 0 wins & 0 points to begin with
+		row_for_csv = [str(new_id), new_team.name, new_team.captain, 0, 0] # 0 wins & 0 points to begin with
 		TeamIO.add_new_team(row_for_csv)
 
 		return new_team
+	
 
 	def select_captain(self, team_name: str, new_captain: str):
 		"Skipuleggjandi vill velja fyriliða í liði"
@@ -113,8 +116,5 @@ class LLTeams:
 
 	def view_teams(self):
 		"áhorfandi vill skoða upplýsingar liða"
+
 		return list(self.teams)
-
-
-player = LLTeams.add_player()
-player
