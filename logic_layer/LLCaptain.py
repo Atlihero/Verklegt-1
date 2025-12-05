@@ -16,9 +16,12 @@ class LLCaptain():
     def get_team_members(self, team_name: str):
         '''Check if players are in this team and return a list of members'''
         all_players = PlayerIO.get_players()
+
+        team_players = []
         for p in all_players:
-            if all_players == self.team_name:
-                return p
+            if p.team == team_name:
+                team_players.append(p)
+        return team_players
             
     def add_player_to_team(self, team_name: str, player_name: str):
         '''Used to check if team already has 5 players, '''
@@ -56,16 +59,21 @@ class LLCaptain():
             raise ValueError ("The player is not in this team. Please try another player.")
     
 
-    def cap_see_player_info(self, team_name: str):
+    def cap_see_player_info(self, team_name: str, player_name: str):
         '''Allows captains to see the players info that are on their team'''
         team_players = self.get_team_members(team_name)
-        
+        for player in team_players:
+            if player.name == player_name:
+                return player
+        #if player not found
+        raise ValueError("Player is not in this team. Please try another player.")
         
         # getur séð allar upplýsingar um leikmenn í sínu liði (eftir að hafa bætt leikmanni í liðið)
         # setja upp töflu
-        pass
+        
 
     def organizer_player_info(self):
         all_players = PlayerIO.get_players()
         for p in all_players:
-            if 
+        
+        
