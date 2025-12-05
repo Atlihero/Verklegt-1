@@ -8,7 +8,11 @@ class DataAPI:
         self.player = PlayerIO()
         self.team = TeamIO()
 
-def get_all_teams():
+def get_all_Teams(team_list):
+    "Gets all the teams an puts them in a lsit"
+    return TeamIO.get_all_teams(team_list)
+
+def get_teams():
     "Gets the teams from the csv to the LL"
     return TeamIO.get_team()
 
