@@ -8,6 +8,10 @@ class DataAPI:
         self.player = PlayerIO()
         self.team = TeamIO()
 
+    """
+    data layer wraper for teams, tournaments and players 
+    """   
+
     def get_all_Teams(self):
         "Gets all the teams an puts them in a list"
         return self.team.get_all_teams()
