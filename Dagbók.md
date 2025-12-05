@@ -145,3 +145,10 @@ Mættir á morgunfund eru: Atli, Brynja, Daníel og Elvar. Karen er því miður
 -	Fengum hjálp frá Gylfa við gerð á logic layer fyrir player
 
 ### Fössari 5.12.25 (Dagur 4 í viku 2)
+Mættir á morgunfund eru allir nema Atli sem fær að lúlla aðeins lengur.
+
+**Verkefni dagsin eru:**
+- Skipuleggja hvað þarf að gera til að klára verkefnið
+
+**Staðan eftir daginn:**
+-	Skrifum laangan to-do lista yfir allt sem þarf að gera
