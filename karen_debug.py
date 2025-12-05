@@ -23,13 +23,14 @@ class Captain_actions():
     bleble = LLTeams.add_player()
 
 
-       add
+    def add():
         # Input fyrir nafn
         # kalla í fallið add_player frá LLTeams klasa
         # búa til liðslista max 5 á listanum
         # 'do you want to add this person to your team? Y/N'
         # villa ef reynt við 6. manni - Team is full
         # villa ef reynt er að bæta við manni sem er nú þegar í liði
+        pass
     
     def remove_from_team(self):
         
