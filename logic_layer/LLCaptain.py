@@ -32,7 +32,7 @@ class Captain_actions():
         # villa ef reynt er að bæta við manni sem er nú þegar í liði
     
     def remove_from_team(self):
-        remove_player = input("Please enter the name of the player you want to remove: ")
+        
         # input fyrir nafn sem á að eyða úr liðslista
         # warning signs 'u sure u want to delete this person?'
         # villa ef reynt er að taka út leikmann sem er ekki í liðinu

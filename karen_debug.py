@@ -1,48 +1,28 @@
-# from datetime import datetime
+from data_layer.PlayerIO import PlayerIO
+from data_layer.TeamIO import TeamIO
+from logic_layer.LLTeams import LLTeams
+from logic_layer.LLPlayers import LLPlayer
 
-# def player_info():
-#     date_input=(input("Enter a date (DD/MM/YYYY): "))
-
-#     try:
-#         entered_date = datetime.strptime(date_input, "%d/%m/%Y")
-
-#         if entered_date > datetime.now():
-#             print("The date cannot be in the future.")
-#             return player_info()
-
-#         else:
-#             day = entered_date.day
-#             month = entered_date.month
-#             year = entered_date.year
-
-#             return f'{day}/{month}/{year}'
+class Captain_actions():
     
-#     except ValueError:
-#         print("Invalid date. Use DD/MM/YYYY.")
-#         return player_info()
+    MAX_TEAM_MEMBERS = 5
+
+    def __init__(self, player_handler : LLPlayer, team_name: str, player_name: str):
+        self.llplayerinfo = player_handler
+        self.team_name = team_name
+        self.player_name = player_name
+
+    def get_team_members(self):
+        '''Used to check if team already has 5 players, '''
+        all_players = self.llplayerinfo.get_players()
+       
+        for p in all_players:
+            if all_players == self.team_name:
+                return p
+
+    bleble = LLTeams.add_player()
 
 
-# date_input = player_info()
-
-# print(date_input)
-
-
-
-# def player_phone():
-#     phone_number = input("Enter player's phone number: ")
-#     try:
-        
-                        
-#     except ValueError:
-#         print("Invalid phone number. Try again.")
-
-def add_to_team(self):
-        ll = LLTeams()
-        
-        # find existing players
-        members = self.get_team_members()
-        if len(members) >= self.MAX_TEAM_MEMBERS:
-            raise ValueError("There are already 5 players in your team.")
        
         # Input fyrir nafn
         # kalla í fallið add_player frá LLTeams klasa
@@ -50,29 +30,15 @@ def add_to_team(self):
         # 'do you want to add this person to your team? Y/N'
         # villa ef reynt við 6. manni - Team is full
         # villa ef reynt er að bæta við manni sem er nú þegar í liði
+    
+    def remove_from_team(self):
+        
+        # input fyrir nafn sem á að eyða úr liðslista
+        # warning signs 'u sure u want to delete this person?'
+        # villa ef reynt er að taka út leikmann sem er ekki í liðinu
         pass
 
-
-
-def remove_from_team(self):
-    remove_player = input("Please enter the name of the player you want to remove: ")
-    # input fyrir nafn sem á að eyða úr liðslista
-    # warning signs 'u sure u want to delete this person?'
-    # villa ef reynt er að taka út leikmann sem er ekki í liðinu
-
-    def player_name(self):
-        '''Asks user for full name'''
-        
-        name = input("Enter full name of player: ")
-        return name
-    
-    def player_address(self):
-        '''Asks user for home address'''
-        
-        address = input("Enter player's home address: ")
-        return address
-    
-     
-        dob = input("Enter player date of birth (DD/MM/YYYY): ")
-
-    
+    def see_player_info(self):
+        # getur séð allar upplýsingar um leikmenn í sínu liði (eftir að hafa bætt leikmanni í liðið)
+        # setja upp töflu
+        pass
