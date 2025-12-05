@@ -42,3 +42,24 @@ class Captain_actions():
         # getur séð allar upplýsingar um leikmenn í sínu liði (eftir að hafa bætt leikmanni í liðið)
         # setja upp töflu
         pass
+
+
+
+    def add_to_team(self):
+        name  = input("jakak: ")
+        return "are you sure you want to add {name} to your team"
+        #need to watch out that a player does not enter twice = done in add_player_to_team
+        #player already in another team
+        #
+
+    def remove_from_team(self):
+        pass
+        #input who do you want to remove
+        #check are you sure about this person
+        #use function see players in team and make the captain select the player he want to remi
+        #LL api has, get_teams 
+
+    def see_player_info(self):
+        pass
+        #open again the fuction to see the players in a team then the captain can select which players information he want to see
+        
