@@ -1,3 +1,7 @@
+from Models.Team import Team 
+from data_layer.TeamIO import TeamIO
+from data_layer.PlayerIO import PlayerIO
+
 class Tournament():
     def __init__(self, name : str ):
 
@@ -9,7 +13,6 @@ class Tournament():
                     "Team9", "Team10", "Team11", "Team12", "Team13", "Team14", "Team15", "Team16"]
 
 # CONTACT Information very Important , Also Updated 
-
 
     def get_contact_info(self, contact:str = "", email:str="", phone : str = ""):
         
