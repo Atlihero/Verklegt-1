@@ -1,10 +1,12 @@
-from LLPlayers import LLPlayer
-from LLTeams import LLTeams
+from .LLPlayers import LLPlayer
+from .LLTeams import LLTeams
+from .LLCaptain import LLCaptain
 
 class LL_API:
     def __init__(self):
         self.player = LLPlayer()
         self.team = LLTeams()
+        self.captain = LLCaptain()
     
     """
     The Logic layer wrapper for the LLPlayer
@@ -63,4 +65,20 @@ class LL_API:
     def view_teams(self):
         "Public viewer wants to view teams"
         return self.team.view_teams() 
+    
 
+    """
+    Logic layer wrapper for the LLCaptain
+    """
+
+    def remove_player_from_team(self, team_name, player_name):
+        '''Captain removes a player from their team'''
+        return self.captain.remove_from_team(player_name, team_name)
+    
+    def add_player_to_team(self, team_name, player_name):
+        '''Captain adds a player to their team'''
+        return self.captain.add_player_to_team(team_name, player_name)
+
+    def get_team_members(self, team_name):
+        '''Return a list of Player objects in the team'''
+        return self.captain.get_team_members(team_name)

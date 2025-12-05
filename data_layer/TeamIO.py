@@ -1,8 +1,9 @@
 import csv
+import sys
 
-"path to the teams csv file"
-TEAM_PATH: str = r"_data\Teams.csv" 
-
+#TEAM_PATH: str = r"_data\Teams.csv" 
+TEAM_PATH = "data_layer/_data/Teams.csv"
+#my_file = open(sys.path[0]+"/"+COUNTRIES_OF_THE_WORLD, "r")
 class TeamIO:
 
     def get_team():
@@ -11,10 +12,11 @@ class TeamIO:
         and add it to a empty list which is then pulled up and displayed
         '''
         try:
-            Teams = []
-            with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
-                reader  = csvfile.readlines()
-                for row in reader:
+            Teams = [] 
+            with open(sys.path[0]+"/"+TEAM_PATH, "r") as csvfile:
+            #with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
+                reader  = csvfile.readlines() 
+                for row in reader: 
                     Teams.append(row)
             return Teams 
         except ValueError:

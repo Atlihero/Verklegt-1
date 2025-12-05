@@ -2,9 +2,17 @@ from data_layer.PlayerIO import PlayerIO
 from logic_layer.LLTeams import LLTeams
 
 class LLCaptain():
+class LLCaptain():
     
     MAX_TEAM_MEMBERS = 5
 
+    # def __init__(self, player_handler : LLPlayer, team_name: str, player_name: str):
+    #     self.llplayerinfo = player_handler
+    #     self.team_name = team_name
+    #     self.player_name = player_name
+
+    def __init__(self):
+        self.ll_teams = LLTeams()
     # def __init__(self, player_handler : LLPlayer, team_name: str, player_name: str):
     #     self.llplayerinfo = player_handler
     #     self.team_name = team_name
@@ -25,6 +33,13 @@ class LLCaptain():
             
     def add_player_to_team(self, team_name: str, player_name: str):
         '''Used to check if team already has 5 players, '''
+        team_players = self.get_team_members(team_name)
+
+        # check if there are 5 people in team
+        if len(team_players) > self.MAX_TEAM_MEMBERS:
+            raise ValueError ("There are already 5 players in this team.")
+       
+        # check if player is already in a team
         team_players = self.get_team_members(team_name)
 
         # check if there are 5 people in team
