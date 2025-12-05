@@ -1,4 +1,3 @@
-from Models.Player import Player
 import csv
 
 PLAYER_PATH: str = r"data_layer/_data/Players.csv"
@@ -6,19 +5,17 @@ PLAYER_PATH: str = r"data_layer/_data/Players.csv"
 #Class for all the player info 
 class PlayerIO:
 
-    def get_players():
+    def get_players(self):
         try:
             players = [] #Empty list for the player you are getting
             with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile: #opens and reads the player.csv
-                reader  = csv.reader(csvfile)   #read the lines in the csv
-                next(reader, None)
+                reader  = csvfile.readlines()   #read the lines in the csv
                 for row in reader: #for loop that checks each row
-                    name, ssn, team = row
-                    players.append(Player(name=name, ssn=ssn, team=team)) #appends the row of the selected input
-            #return players #returns the "list" for the player that was selected
+                    players.append(row) #appends the row of the selected input
         except ValueError: #in case of wrong inputs
             f"Error message to be decided"
-        return players
+        return players #returns the "list" for the player that was selected
+
 
 
     def create_new_player(player: list):

@@ -64,8 +64,20 @@ class LLCaptain():
         # warning signs 'u sure u want to delete this person?'
         # villa ef reynt er að taka út leikmann sem er ekki í liðinu
 
+    def cap_see_player_info(self, team_name: str, player_name: str):
+            '''Allows captains to see the players info that are on their team'''
+            team_players = self.get_team_members(team_name)
+            for player in team_players:
+                if player.name == player_name:
+                    return player
+            #if player not found
+            raise ValueError("Player is not in this team. Please try another player.")
+            
+            # getur séð allar upplýsingar um leikmenn í sínu liði (eftir að hafa bætt leikmanni í liðið)
+            # setja upp töflu
+            
 
-    def see_player_info(self):
-        # getur séð allar upplýsingar um leikmenn í sínu liði (eftir að hafa bætt leikmanni í liðið)
-        # setja upp töflu
+    def organizer_player_info(self):
         pass
+        # all_players = PlayerIO.get_players()
+        # for p in all_players:
