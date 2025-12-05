@@ -18,7 +18,7 @@ class LLPlayer():
                 raise ValueError("Please enter a valid date.")
             return dob
         except ValueError:
-            raise ValueError("Invalid date. Use DD/MM/YYYY")
+            raise ValueError ("Invalid date. Use DD/MM/YYYY")
         
     def validate_phone(phone_number: int) -> int:
         '''Validates the players phone number, if not then 
@@ -79,4 +79,3 @@ class LLPlayer():
     
     def create_player(name, dob_str, address, phone_number, player_email, player_handle, link):
         return Player.Player(name, dob_str, address, phone_number, player_email, player_handle, link)
-        

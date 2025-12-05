@@ -1,4 +1,4 @@
-#Data maniger !!!!
+#Data manager !!!!
 
 #calculate team stats
 #calculate player stats

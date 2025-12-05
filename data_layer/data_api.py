@@ -2,6 +2,12 @@ from PlayerIO import PlayerIO
 from TeamIO import TeamIO
 from TournamentIO import TournamentIO
 
+class DataAPI:
+    def __init__(self):
+        self.tournament = TournamentIO()
+        self.player = PlayerIO()
+        self.team = TeamIO()
+
 def get_all_teams():
     "Gets the teams from the csv to the LL"
     return TeamIO.get_team()
@@ -39,3 +45,7 @@ def new_tournament():
 def get_all_tournaments():
     "retrieves the tournaments from the csv"
     return TournamentIO.get_tournaments()
+
+def new_game():
+    "creates a new game in the csv"
+    return TournamentIO.create_new_game()

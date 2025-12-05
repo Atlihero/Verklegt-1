@@ -5,12 +5,14 @@ while True:
     print("\nValmynd:")
     print("1. Get players")
     print("2. Create new player")
-    print("3. get team")
-    print("4. get player stats")
+    print("3. Get team")
+    print("4. Get player stats")
     print("5. Create new team")
     print("6. Get team stats")
     print("7. Get Tournament")
     print("8. Create Tournament")
+    print("9. Get_games")
+    print("10. Create new Game")
 
     val = input("Veldu verkefni (1-8): ")
 
@@ -177,15 +179,51 @@ while True:
             def get_games():
                 team_a = []
                 team_b = []
+                date = []
                 try:
                     with open(GAMES_PATH, "r", encoding="utf-8") as csvfile:
                         reader = csv.DictReader(csvfile)
                         for row in reader:
                             team_a.append(row["team_a"])
                             team_b.append(row["team_b"])
-                    return team_a, team_b
+                            date.append(row["match_date"])
+                    return team_a, team_b, date
                 except FileNotFoundError:
                     return "File not found"
                 
-        team_a, team_b = TournamentIO.get_games()
-        print(team_a[userinput], "vs", team_b[userinput])
+        team_a, team_b, date = TournamentIO.get_games()
+        print(team_a[userinput], "vs", team_b[userinput], "----->", date[userinput])
+
+
+    if val == "10":
+        tournament_name = input("Enter tournament name: ")
+        round = input("Enter what round it is: ")
+        match_number = input("match number: ")
+        match_date = input("Enter match date: ")
+        team_a = input("Enter team_a: ")
+        team_b = input("Enter team_b: ")
+        score_a = int(input("Enter score_a: "))
+        score_b = int(input("Enter score_b: "))
+
+            # Determine the winner
+        if score_a > score_b:
+            winner = team_a
+        elif score_b > score_a:
+            winner = team_b
+        else:
+            winner = "Draw" 
+            
+        games = [tournament_name, round, match_number, match_date, team_a, team_b, score_a, score_b, winner]
+
+        class TournamentIO:
+            def create_new_game(games: list):
+                try:
+                    with open(GAMES_PATH, "a", newline="", encoding="utf-8") as csvfile:
+                        writer = csv.writer(csvfile)
+                        writer.writerow(games)
+                    return f"New Game added"
+                except ValueError:
+                    return "Error"
+                
+        print(TournamentIO.create_new_game(games))
+        
