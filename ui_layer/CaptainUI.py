@@ -13,3 +13,13 @@ class CaptainUI:
 
     def add_team(self, t):
         self.teams.create_team(t)
+
+
+    def add_to_team(self):
+        pass
+
+    def remove_from_team(self):
+        pass
+
+    def see_player_info(self):
+        pass
