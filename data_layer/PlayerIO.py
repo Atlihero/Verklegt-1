@@ -1,22 +1,48 @@
 import csv
+from Models.Player import Player
 
-PLAYER_PATH: str = r"_data\Players.csv"
+PLAYER_PATH: str = r"data_layer\_data\Players.csv"
 
 #Class for all the player info 
 class PlayerIO:
 
     def get_players():
-        try:
             players = [] #Empty list for the player you are getting
             with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile: #opens and reads the player.csv
-                reader  = csvfile.readlines()   #read the lines in the csv
+                reader = csv.reader(csvfile)   #read the lines in the csv
                 for row in reader: #for loop that checks each row
-                    players.append(row) #appends the row of the selected input
-            return players #returns the "list" for the player that was selected
-        except ValueError: #in case of wrong inputs
-            f"Error message to be decided"
+                    if not row:
+                        continue
+
+                    # If the line is too short then fill with blank
+                    if row[0] == "Name":
+                        continue
+                        
+                    name, dob, address, phone, email, handle, team, points = row
+
+                    player = Player(name, dob, address, phone, email, handle, team, points)
+                    players.append(player)
+
+            return players
+        
 
 
+    def save_players(players: list[Player]):
+        with open(PLAYER_PATH, "w", newline="", encoding="utf-8") as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(["Name", "DOB", "Address", "Phonenumber",
+                             "Email", "Handle", "Team", "Points"])
+            for p in players:
+                writer.writerow([
+                    p.name,
+                    p.dob,
+                    p.address,
+                    p.phone,
+                    p.email,
+                    p.handle,
+                    p.team,
+                    p.points,
+                ])
 
     def create_new_player(player: list):
         try: 
@@ -29,17 +55,13 @@ class PlayerIO:
 
 
     def get_player_stats():
-        """
-        Gets the points and handle of the players
-        """
         try:
             Points = []
-            Handle = []
             with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     Points.append(row["Points"])
-                    Handle.append(row["Handle"])
-            return Handle, Points
-        except ValueError:  
+                return Points
+        except ValueError:  #in case of wrong inputs 
             f"Error message to be decided"
+        pass

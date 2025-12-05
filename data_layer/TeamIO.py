@@ -1,41 +1,42 @@
 import csv
 
-TEAM_PATH: str = r"_data\Teams.csv" 
+TEAM_PATH: str = r"data_layer\_data\Teams.csv" #path to the teams csv
 
 class TeamIO:
 
     def get_team():
         try:
-            Teams = [] 
+            Teams = [] #Empty list in which the team that is chosen goes into
             with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
-                reader  = csvfile.readlines() 
-                for row in reader: 
-                    Teams.append(row)
-            return Teams 
-        except ValueError: 
+                reader  = csvfile.readlines() #reads the linse in the csv
+                for row in reader: #for loop that goes through the lines to look for the right team
+                    Teams.append(row) #append the team chosen to the list
+            return Teams #returns the list
+        except ValueError: #in case of wrong inputs
             return f"Error message to be decided"
 
-    def create_new_team(team: list):
+    def add_new_team(team: list):
         try: 
             with open(TEAM_PATH, "a",newline="", encoding="utf-8") as csvfile:
-                writer = csv.writer(csvfile)
-                writer.writerow(team)
+                writer = csv.writer(csvfile) #here the user writes in the details needed for a team like the name
+                writer.writerow(team) #prints what was written in a new row
             return f"New Team added :)"    
-        except ValueError:
+        except ValueError:   #in case of wrong inputs 
             f"Error message to be decided"
 
     def get_team_stats():
         try:
-            Wins = []
-            Points = []
+            Wins = [] #empty list for the wins of teams
+            Points = [] #empty list for the points of teams
             with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
-                reader = csv.DictReader(csvfile)
+                reader = csv.DictReader(csvfile) #reads the file like a dictionary
                 for row in reader: 
-                    Wins.append(row["Wins"])
-                    Points.append(row["Points"])
-                return Wins, Points 
-        except ValueError:
+                    Wins.append(row["Wins"]) #adds the wins to the wins list based on the number in the wins column in the csv
+                    Points.append(row["Points"]) #adds the points to the points list based on the number in the points column in the csv
+                return Wins, Points #returns both of those lists and now 
+        except ValueError:  #in case of wrong inputs 
             f"Error message to be decided"
+        pass
         
     def add_teams_to_tournament(tournament: str, teams: list):
         if len(teams) != 16:
@@ -44,7 +45,7 @@ class TeamIO:
             with open(TEAM_PATH, "a", newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile)
                 for team in teams:
-                    writer.writerow([tournament], team)
+                    writer.writerow([tournament, team])
                 return "Teams added"
         except ValueError:
             return "Villa eittvhað fór úsrkeiðis"
