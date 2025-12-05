@@ -10,7 +10,7 @@ class DataAPI:
 
     def get_all_Teams(self):
         "Gets all the teams an puts them in a list"
-        return self.team.ge
+        return self.team.get_all_teams()
 
     def get_teams(self):
         "Gets the teams from the csv to the LL"
@@ -42,14 +42,14 @@ class DataAPI:
         "add exactly 16 teams to the tournament"
         return self.team.add_teams_to_tournament(tournament_name, teams_list)
 
-    def new_tournament(self, tournament_list):
+    def new_tournament(self, tournament_dict):
         "Creates a new tournament in the csv"
-        return self.tournament.create_new_tournament(tournament_list)
+        return self.tournament.create_new_tournament(tournament_dict)
 
     def get_all_tournaments(self):
         "retrieves the tournaments from the csv"
-        return self.tournament.get_tournaments(self)
+        return self.tournament.get_tournaments()
 
-    def new_game(self, game_list):
+    def new_game(self, game_dict):
         "creates a new game in the csv"
-        return self.tournament.create_new_game(game_list)
+        return self.tournament.create_new_game(game_dict)
