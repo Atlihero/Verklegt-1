@@ -5,7 +5,7 @@ from data_layer.PlayerIO import PlayerIO
 class LLTeams:
 
 	def __init__(self):
-			self.teams: list[Team] = self._load_teams_from_csv()
+		self.teams: list[Team] = self._load_teams_from_csv()
 
 
 	def _load_teams_from_csv(self):
