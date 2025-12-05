@@ -29,10 +29,15 @@ class LLCaptain():
             raise ValueError ("There are already 5 players in this team.")
        
         # check if player is already in a team
+        all_players = PlayerIO.get_players()
+        for p in all_players:
+            if all_players == player_name:
+                if p.team != "":
+                    raise ValueError(f"{player_name} is already in another team. Please add another player to your team.")
+                break
 
-
-
-
+        added_player =  self.ll_teams.add_player_to_team(team_name, player_name)
+        return added_player
        
         # Input fyrir nafn
         # kalla í fallið add_player frá LLTeams klasa
