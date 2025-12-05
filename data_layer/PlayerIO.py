@@ -1,7 +1,7 @@
 import csv
 from Models.Player import Player
 
-PLAYER_PATH: str = r"data_layer\_data\Players.csv"
+PLAYER_PATH: str = r"_data\Players.csv"
 
 #Class for all the player info 
 class PlayerIO:

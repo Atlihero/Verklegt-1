@@ -1,46 +1,61 @@
 import csv
 
-TEAM_PATH: str = r"data_layer\_data\Teams.csv" #path to the teams csv
+"path to the teams csv file"
+TEAM_PATH: str = r"_data\Teams.csv" 
 
 class TeamIO:
 
     def get_team():
-        '''returns a list of players for a specific team'''
+        '''
+        This function finds the team which was selected by reading through the lines in the csv
+        and add it to a empty list which is then pulled up and displayed
+        '''
         try:
-            Teams = [] #Empty list in which the team that is chosen goes into
+            Teams = []
             with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
-                reader  = csvfile.readlines() #reads the linse in the csv
-                for row in reader: #for loop that goes through the lines to look for the right team
-                    Teams.append(row) #append the team chosen to the list
-            return Teams #returns the list
-        except ValueError: #in case of wrong inputs
+                reader  = csvfile.readlines()
+                for row in reader:
+                    Teams.append(row)
+            return Teams 
+        except ValueError:
             return f"Error message to be decided"
 
     def add_new_team(team: list):
-        '''create an empty team with no players'''
+        '''
+        this function adds a team to the csv by putting the inputs into the csv writer
+        which then add the new team with all the details into the csv file
+        '''
         try: 
             with open(TEAM_PATH, "a",newline="", encoding="utf-8") as csvfile:
-                writer = csv.writer(csvfile) #here the user writes in the details needed for a team like the name
-                writer.writerow(team) #prints what was written in a new row
+                writer = csv.writer(csvfile)
+                writer.writerow(team)
             return f"New Team added :)"    
-        except ValueError:   #in case of wrong inputs 
+        except ValueError: 
             f"Error message to be decided"
 
     def get_team_stats():
+        """
+        This function reads through the team csv path for the inputted team and puts the wins and points stats
+        of the team selected into a list which is to be dislpayed
+        """
         try:
-            Wins = [] #empty list for the wins of teams
-            Points = [] #empty list for the points of teams
+            Wins = []
+            Points = []
             with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
-                reader = csv.DictReader(csvfile) #reads the file like a dictionary
+                reader = csv.DictReader(csvfile)
                 for row in reader: 
-                    Wins.append(row["Wins"]) #adds the wins to the wins list based on the number in the wins column in the csv
-                    Points.append(row["Points"]) #adds the points to the points list based on the number in the points column in the csv
-                return Wins, Points #returns both of those lists and now 
-        except ValueError:  #in case of wrong inputs 
+                    Wins.append(row["Wins"]) 
+                    Points.append(row["Points"])
+                return Wins, Points 
+        except ValueError: 
             f"Error message to be decided"
         pass
         
     def add_teams_to_tournament(tournament: str, teams: list):
+        """
+        This function adds teams to the tournament and if by using the csv writer
+        And if there are not 16 teams in the tournament it displayes an error message
+        """
         if len(teams) != 16:
             return "Error, not enough teams in the tournament. There has to be 16 teams."
         try:
@@ -53,10 +68,10 @@ class TeamIO:
             return "Villa eittvhað fór úsrkeiðis"
 
     def get_all_teams() -> list:
-            '''returns a list of all team names'''
-            teams: list = []
+            '''returns a list of all team names in a newline'''
+            teams = []
             try:
-                with open(TEAM_PATH, "a", newline="", encoding="utf-8") as csvfile:
+                with open(TEAM_PATH, "r", newline="", encoding="utf-8") as csvfile:
                     reader = csv.writer(csvfile)
                     for row in reader:
                         if row:
