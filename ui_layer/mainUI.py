@@ -38,24 +38,6 @@ highlite= "\033[100m"
 neongreen = "\033[92m"
 
 print(pink,"######################")
-print(pink,"## ",red,"------Wassup-----",pink,"##")
+print(pink,"## ",red,"--Scooby doo--",pink,"##")
 
 
-#from logic_layer.LL_api import LL_api
-
-class Menu:
-    def menu():
-        print("\033[91mfjdkslfmdsnfs fsldkf skdfls jdfds8789745\033[0m")
-        print("\033[91m4875793kj34j5\033[0m")
-        print("\033[91m849348573k4j534...\033[0m")
-        print("\033[91mError 404 HAHA Just Kidding\033[0m")
-        print("\033[94mWelcome to test main menu\033[1m")
-        print("\033[96mpleas enter your bank account to continue ____:\033[0m")
-        val = input()
-        if val == 0:
-            pass
-        print("\033[91mIncorrect information\033[0m")
-    def run():
-        pass
-
-    menu()
