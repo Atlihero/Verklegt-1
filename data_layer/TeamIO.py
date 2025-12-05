@@ -1,7 +1,7 @@
 import csv
 
 "path to the teams csv file"
-TEAM_PATH: str = r"_data\Teams.csv" 
+TEAM_PATH: str = r"_data/Teams.csv" 
 
 class TeamIO:
 
