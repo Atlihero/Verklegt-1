@@ -1,7 +1,8 @@
 from logic_layer.LL_api import LL_API
 
 class Main:
-    def run():
+    def run(self):
+        self.api =LL_API
         pass
 
     def menu():
@@ -19,10 +20,13 @@ class Main:
         print("\033[96m--------------------------------------\033[0m")
         print("\033[96m--- Back b)                        ---\033[0m")
         print("\033[96m--------------------------------------\033[0m")
-        Fyrst_input = input("") #This code will change just testing
-        if Fyrst_input != "1" and "2" and "3" and "b":
+        fyrst_input = 8 #This code will change just testing
+        while fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
+            print("Please select a valid valiu")
+            fyrst_input = input("")
+        if fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
             quit
-        elif Fyrst_input == "1":
+        elif fyrst_input == "1" or fyrst_input == "2" or fyrst_input == "3" or fyrst_input == "b":
             print("nice")
     menu()
 

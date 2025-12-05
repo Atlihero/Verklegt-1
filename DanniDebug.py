@@ -18,10 +18,10 @@ while True:
 
 
     #Klasi fyrir öllu sem tengist player í data layerinu sem inheritar model klasan "player"
-    PLAYER_PATH: str = r"data_layer\_data\Players.csv"
-    TEAM_PATH: str = r"data_layer\_data\Teams.csv"
-    TOURNAMENT_PATH: str = r"data_layer\_data\Tournament.csv"
-    GAMES_PATH: str = r"data_layer\_data\Games.csv"
+    PLAYER_PATH: str = r"data_layer/_data/Players.csv"
+    TEAM_PATH: str = r"data_layer/_data/Teams.csv"
+    TOURNAMENT_PATH: str = r"data_layer/_data/Tournament.csv"
+    GAMES_PATH: str = r"data_layer/_data/Games.csv"
 
     
     if val == "1":
