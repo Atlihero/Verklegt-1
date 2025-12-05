@@ -5,6 +5,7 @@ TEAM_PATH: str = r"data_layer\_data\Teams.csv" #path to the teams csv
 class TeamIO:
 
     def get_team():
+        '''returns a list of players for a specific team'''
         try:
             Teams = [] #Empty list in which the team that is chosen goes into
             with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
@@ -16,6 +17,7 @@ class TeamIO:
             return f"Error message to be decided"
 
     def add_new_team(team: list):
+        '''create an empty team with no players'''
         try: 
             with open(TEAM_PATH, "a",newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile) #here the user writes in the details needed for a team like the name
@@ -40,7 +42,7 @@ class TeamIO:
         
     def add_teams_to_tournament(tournament: str, teams: list):
         if len(teams) != 16:
-            return "Villa ekki eru 16 lið í mótinu"
+            return "Error, not enough teams in the tournament. There has to be 16 teams."
         try:
             with open(TEAM_PATH, "a", newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile)
@@ -49,3 +51,16 @@ class TeamIO:
                 return "Teams added"
         except ValueError:
             return "Villa eittvhað fór úsrkeiðis"
+
+    def get_all_teams() -> list:
+            '''returns a list of all team names'''
+            teams: list = []
+            try:
+                with open(TEAM_PATH, "a", newline="", encoding="utf-8") as csvfile:
+                    reader = csv.writer(csvfile)
+                    for row in reader:
+                        if row:
+                            teams.append(row[0])
+            except FileNotFoundError:
+                pass
+            return teams
