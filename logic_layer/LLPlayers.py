@@ -1,107 +1,81 @@
-#from Models.Player import Player
+from Models import Player
 from datetime import datetime
 
-class PlayerInfo():
+class LLPlayer():
+    # because no names can be the same, doesn't add if they are the same
+    existing_handles = set() 
 
-    def player_name():
-        '''Asks user for full name'''
-        
-        name = input("Enter full name of player: ")
-        return name
-        
-    def player_dob(): 
-        '''Asks the user for their date of birth and checks if the format
-          fits the standards so the user can continue inputting the information.'''
-        
-        dob = input("Enter player date of birth (DD/MM/YYYY): ")
+    def validate_dob(dob_str: str) -> datetime: 
+        '''Checks players date of birth and if the format fits the 
+        standards, then the user can continue inputting the information.'''
+
         try:
             # change string input to datetime
-            entered_date = datetime.strptime(dob, "%d/%m/%Y")
+            dob = datetime.strptime(dob_str, "%d/%m/%Y")
             
 			# check if inputted date is in the future, then not valid
-            if entered_date > datetime.now():
-                print("Please enter a valid date.")
-                return PlayerInfo.player_dob()
-            else:
-                day = entered_date.day
-                month = entered_date.month
-                year = entered_date.year
-                print(f"{day}/{month}/{year}")
-        
-		# lets the user try again if he inputted wrong   
+            if dob > datetime.now():
+                raise ValueError("Please enter a valid date.")
+            return dob
         except ValueError:
-            print("Invalid date. Try again using DD/MM/YYYY.")
-            return PlayerInfo.player_dob()
-
-                
-    def player_address():
-        '''Asks user for home address'''
+            raise ValueError ("Invalid date. Use DD/MM/YYYY")
         
-        address = input("Enter player's home address: ")
-        return address
-        
-    def player_phone():
-        '''Asks the user for his phone number and checks if it is valid, if not then 
+    def validate_phone(phone_number: int) -> int:
+        '''Validates the players phone number, if not then 
           the user tries again.'''
-        
-        phone_number = input("Enter player's phone number: ")
-        
+
 		# number has to be exactly 7 digits long
-        if len(phone_number) == 7 and phone_number.isdigit():
-            return f"{phone_number} is valid."
-        elif len(phone_number) < 7 and phone_number.isdigit():
-            print("Phone number must be 7 digits long. Please try")
-            return PlayerInfo.player_phone()
-        else:
-            print("Phone number must not be longer than 7 digits. Please try again")
-            return PlayerInfo.player_phone()
+        if len(phone_number) != 7 or not phone_number.isdigit():
+            raise ValueError("Phone number must be exactly 7 digits long. Please try again")
+        return phone_number
+            
 
-    def player_email():
-        '''Asks the player for an email address and checks if it is valid so he can continue
-          adding his information. Prints error messages when the input is not up to standards.'''
+    def validate_email(player_email: str) -> str:
+        '''Checks players email address and if it is valid then he can contiue.
+           Raises error messages when the input is not up to standards.'''
 
-        player_email = input("Enter the player's email address: ")
         try:
             local_name, domain = player_email.split("@")
                 
 		# check if the inputted (innslegna) email has @ 
         except ValueError:
-            if player_email.count("@") > 1:
-                print("Email can only have 1 '@'. Please try again.")
-            else:
-                print("Email has to contain '@'. Please try again.")
-            return PlayerInfo.player_email()
+                raise ValueError("Email must contain a single '@'. Please try again.")
+            
         if not local_name:
-            print("Local part (name) may not be empty. Please try again")
-            return PlayerInfo.player_email()
+            raise ValueError("Local part (name) may not be empty. Please try again")
+            
                 
         # check if domain has a name and a dot, if not then invalid email address and user tries again
         domain_parts = domain.split(".")
-        if len(domain_parts) < 2 or not domain_parts[0] or not domain_parts[1]:
-                print("Domain must have a name and a valid ending. Please try again.")
-                return PlayerInfo.player_email()
-                
+        if len(domain_parts) < 2 or not all(domain_parts):
+                raise ValueError("Domain must have a name and a valid ending. Please try again.")
+                 
         # check if end of domain has valid ending after the dot
-        ending = domain.split(".")[-1]
+        ending = domain_parts[-1]
         if len(ending) < 2 or len(ending) > 3 or not ending.isalpha():
-            print("The email must contain a valid ending. Please try again.")
-            return PlayerInfo.player_email()
+            raise ValueError("The email must contain a valid ending. Please try again.")
+            
         
-        return f"{player_email} is a valid email"
+        return player_email
 
-    def player_handle():
-        '''Asks user for a username (handle) to use for the games. It cecks if the username 
+    def validate_handle(handle: str) -> str:
+        '''Checks players handle. It checks if the username 
         is already in use and then asks for a new username since no two players 
         can have the same username '''
         
-        handle = input("Enter player's handle: ")
-        existing_handles = []
+        if handle in LLPlayer.existing_handles:
+            raise ValueError("This handle is already taken. Please try another one.")
         
-        if handle in existing_handles:
-            print("This handle os already taken. Please try another one")
-            return PlayerInfo.player_handle()
-        
-	# if the handle is unique then its added to the list
-        existing_handles.append(handle)
-        print("Handle has been added to the list")
+		# if the handle is unique then its added to the list
+        LLPlayer.existing_handles.add(handle)
         return handle
+    
+    def validate_link(link: str) -> str:
+        if not link:
+            return "" # user didn't add a link
+        if not (link.startswith("http://") or link.startswith("https://")):
+            raise ValueError("Link must start with 'http://' or 'https://'. Please try another link")
+        return link
+    
+    def create_player(name, dob_str, address, phone_number, player_email, player_handle, link):
+        return Player.Player(name, dob_str, address, phone_number, player_email, player_handle, link)
