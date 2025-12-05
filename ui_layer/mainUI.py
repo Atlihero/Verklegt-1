@@ -2,9 +2,10 @@ from logic_layer.LL_api import LL_API
 
 
 
-class CaptainUI:
+class MainUI:
     def __init__(self):
         self.api = LL_API()
+        pass
 
     def api_logic(self, api):
         self.add_api(api)
@@ -14,3 +15,9 @@ class CaptainUI:
 
     def add_team(self, team):
         self.teams.create_team(team)
+
+class CaptainUI:
+    def __init__(self):
+        pass
+
+
