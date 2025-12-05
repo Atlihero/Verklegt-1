@@ -6,7 +6,7 @@ Viewer vill sjá Lið og leikmenn
 og þá bara nöfn liða
 Handle leikmanns
 """
-
+userinput = int(input("veldu númer leikmanns"))
 class PublicViewerUI(LL_API):
      
     def __init__(self):
@@ -15,11 +15,17 @@ class PublicViewerUI(LL_API):
     
     def show_all_teams(self):
         teams = self.view_teams()
-        return [teams["TeamName"] for team in teams]
+        return [team["TeamName"] for team in teams]
     
-    def show_team_players(self, team_name):
-         team = self.get_teams(team_name)
-         if not team:
-              return None
-         return team.get("player"[]) 
+    def show_all_players(self):
+         players = self.getplayers()
+         return [players]
+
+
+viewer = PublicViewerUI()
+players = viewer.show_all_players()
+print(players)
+    
+
+     
          

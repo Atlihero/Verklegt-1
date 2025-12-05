@@ -9,6 +9,14 @@ class LL_API:
     """
     The Logic layer wrapper for the LLPlayer
     """
+    def getplayers(self):
+        "gets player and his information"
+        return self.player.get_all_players()
+    
+    def getPlayer_stats(self):
+        "Get the stats of players"
+        return self.player.get_player_statistics()
+
     def valid_dob(self, dob):
         "Validates players date of birth"
         return self.player.validate_dob(dob)

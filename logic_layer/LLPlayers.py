@@ -1,9 +1,19 @@
 from Models import Player
 from datetime import datetime
+from data_layer.data_api import DataAPI
 
-class LLPlayer():
+class LLPlayer(DataAPI):
     # because no names can be the same, doesn't add if they are the same
     existing_handles = set() 
+
+    def __init__(self):
+        super().__init__()
+    
+    def get_all_players(self):
+        return super().get_all_players()
+    
+    def get_player_statistics(self):
+        return super().get_player_statistics()
 
     def validate_dob(dob_str: str) -> datetime: 
         '''Checks players date of birth and if the format fits the 
