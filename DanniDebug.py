@@ -199,7 +199,7 @@ while True:
         team_a = input("Enter team_a: ")
         team_b = input("Enter team_b: ")
         score_a = int(input("Enter score_a: "))
-        score_b = int(input("Enter scoreB: "))
+        score_b = int(input("Enter score_b: "))
 
             # Determine the winner
         if score_a > score_b:
