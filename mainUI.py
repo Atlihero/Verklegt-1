@@ -2,7 +2,7 @@ from logic_layer.LL_api import LL_API
 from Colors import Colers
 
 class Happy_paths:
-    count = 0
+    ID_ = 0
     def Happy_menu():
         print("\033[91m--------------------------------------\033[0m")
         print("\033[91m---           GLADIATORS           ---\033[0m")
@@ -28,8 +28,23 @@ class Happy_paths:
         print("\033[92m---    #Create player(1)           ---\033[0m")
         print("\033[92m---    #Create tournament(2)       ---\033[0m")
         print("\033[92m---    #Create team(3)             ---\033[0m")
-        print("\033[92m---    #Create a captain(4)        ---\033[0m")
+        print("\033[92m---    #Make captain(4)            ---\033[0m")
         print("\033[92m---    (1,2,3,4 or b for back)     ---\033[0m")
+        print("\033[96m--------------------------------------\033[0m")
+        print("\033[96m---     #Pleas enter your input    ---\033[0m")
+        print("\033[96m--------------------------------------\033[0m")
+        print("\033[96m--- Back b)                        ---\033[0m")
+        print("\033[96m--------------------------------------\033[0m")
+
+    def Happy_make_captain():
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[91m---           GLADIATORS           ---\033[0m")
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[93m---   >Selected make captain       ---\033[0m")
+        print("\033[92m---                                ---\033[0m")
+        print("\033[92m---     $Make player captain$      ---\033[0m")
+        print("\033[92m---                                ---\033[0m")
+        print("\033[92m---     #Input player ID           ---\033[0m")
         print("\033[96m--------------------------------------\033[0m")
         print("\033[96m---     #Pleas enter your input    ---\033[0m")
         print("\033[96m--------------------------------------\033[0m")
@@ -63,17 +78,28 @@ class Happy_paths:
     if fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
         quit
     elif fyrst_input == "1":
-        count = 1
+        ID_ = 1
         Happy_organizer()
-    elif fyrst_input in ["2","3","b"]:
+    elif fyrst_input == "2":
+        ID_ = 2
+        
+    elif fyrst_input in ["3","b"]:
         print("nice")
 
-    if count == 1:
+    if ID_ == 1:
         input2 = input("")
         while input2 != "1" and input2 != "2" and input2 != "3" and input2 !="4" and input2 != "b":
             print("Please select a valid valiu")
         if input2 == "1":
             Happy_create_player()
+        elif input2 == "2":
+            print("Jagerbomb")
+        elif input2 == "3":
+            print("Apparol spritz")
+        elif input2 == "4":
+            ID_ = 7
+            Happy_make_captain()
+        
 
 
 
