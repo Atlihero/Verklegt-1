@@ -39,3 +39,7 @@ def new_tournament():
 def get_all_tournaments():
     "retrieves the tournaments from the csv"
     return TournamentIO.get_tournaments()
+
+def new_game():
+    "creates a new game in the csv"
+    return TournamentIO.create_new_game()
