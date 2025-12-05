@@ -54,7 +54,7 @@ class CaptainUI:
         player_to_remove = players[selected_index]
 
         confirmation = input(f"Are you sure you want to remove {player_to_remove} from the team? Y/N")
-        if confirmation.upper() != "Y":
+        if confirmation.upper() != "y":
             print("Removal cancelled. The player will not be removed from the team.")
 
         try:
