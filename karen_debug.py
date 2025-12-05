@@ -23,7 +23,7 @@ class Captain_actions():
     bleble = LLTeams.add_player()
 
 
-       
+       add
         # Input fyrir nafn
         # kalla í fallið add_player frá LLTeams klasa
         # búa til liðslista max 5 á listanum
@@ -50,7 +50,9 @@ class Captain_actions():
         return "are you sure you want to add {name} to your team"
         #need to watch out that a player does not enter twice = done in add_player_to_team
         #player already in another team
-        #
+        #check if team is full
+        #check if player already in
+        #call LLteams function
 
     def remove_from_team(self):
         pass
@@ -59,7 +61,24 @@ class Captain_actions():
         #use function see players in team and make the captain select the player he want to remi
         #LL api has, get_teams 
 
+        #PlayerIO.get_players()
+        #player_found = nona
+
+
     def see_player_info(self):
         pass
         #open again the fuction to see the players in a team then the captain can select which players information he want to see
-        
+        #players. self.get players in team 
+        #make new empty list
+        #add to that list
+
+
+
+#UI layer
+
+# - init -
+# add to team = input, corfimation, try except
+
+#remove = input,corfimation, try except
+
+#see player info = print team, format and get info
