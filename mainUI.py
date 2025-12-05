@@ -2,7 +2,8 @@ from logic_layer.LL_api import LL_API
 from Colors import Colers
 
 class Happy_paths:
-    ID_ = 0
+    HappyID = 0
+    Output_ID = 0
     def Happy_menu():
         print("\033[91m--------------------------------------\033[0m")
         print("\033[91m---           GLADIATORS           ---\033[0m")
@@ -19,6 +20,38 @@ class Happy_paths:
         print("\033[96m--- Back b)                        ---\033[0m")
         print("\033[96m--------------------------------------\033[0m")
     
+    def Happy_viewer():
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[91m---           GLADIATORS           ---\033[0m")
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[93m---   >Selected viewer             ---\033[0m")
+        print("\033[92m---                                ---\033[0m")
+        print("\033[92m---    #Information on team(1)     ---\033[0m")
+        print("\033[92m---    #Schedule(2)                ---\033[0m")
+        print("\033[92m---    #Result(3)                  ---\033[0m")
+        print("\033[92m---                                ---\033[0m")
+        print("\033[92m---    #Please select you option   ---\033[0m")
+        print("\033[92m---      (1,2,3 or b for back)     ---\033[0m")
+        print("\033[96m--------------------------------------\033[0m")
+        print("\033[96m---     #Pleas enter your input    ---\033[0m")
+        print("\033[96m--------------------------------------\033[0m")
+        print("\033[96m--- Back b)                        ---\033[0m")
+        print("\033[96m--------------------------------------\033[0m")
+
+    def Happy_captain():
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[91m---           GLADIATORS           ---\033[0m")
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[93m---   >Selected captain            ---\033[0m")
+        print("\033[92m---                                ---\033[0m")
+        print("\033[92m---       Input captains ID        ---\033[0m")
+        print("\033[92m---          from 1-number         ---\033[0m")
+        print("\033[92m---                                ---\033[0m")
+        print("\033[96m---     #Pleas enter your input    ---\033[0m")
+        print("\033[96m--------------------------------------\033[0m")
+        print("\033[96m--- Back b)                        ---\033[0m")
+        print("\033[96m--------------------------------------\033[0m")
+
     def Happy_organizer():
         print("\033[91m--------------------------------------\033[0m")
         print("\033[91m---           GLADIATORS           ---\033[0m")
@@ -84,26 +117,31 @@ class Happy_paths:
     if fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
         quit
     elif fyrst_input == "1":
-        ID_ = 1
+        HappyID = 1
         Happy_organizer()
     elif fyrst_input == "2":
-        ID_ = 2
-        
-    elif fyrst_input in ["3","b"]:
-        print("nice")
+        HappyID = 2
+        Happy_captain()
+    elif fyrst_input == "3":
+        Happy_viewer()
+    else:
+        print("back")
 
-    if ID_ == 1:
+    if HappyID == 1:
         input2 = input("")
         while input2 != "1" and input2 != "2" and input2 != "3" and input2 !="4" and input2 != "b":
             print("Please select a valid valiu")
         if input2 == "1":
+            OD = 1
             Happy_create_player()
         elif input2 == "2":
+            OD = 2
             Happy_create_tournament()
         elif input2 == "3":
+            OD = 3
             Happy_create_team()
         elif input2 == "4":
-            ID_ = 7
+            OD = 4
             Happy_make_captain()
         
 
