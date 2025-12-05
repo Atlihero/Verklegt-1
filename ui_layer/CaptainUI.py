@@ -28,12 +28,40 @@ class CaptainUI:
         # villa ef reynt er að bæta við manni sem er nú þegar í liði
 
 
-    def remove_from_team(self):
+    def remove_from_team(self, team_name: str):
         pass
-        input("Who do you want to remove?")
-        input("Are you sure you want to remove {name} from the team? Y/N")
-        remove_player = input("Please enter the name of the player you want to remove: ")
+        # get current team members
+        players = self.ll.get_team_members(team_name)
 
+        if not players:
+            print("There are no players currently in your team. Please add members to be able to remove members.")
+            return 
+        
+        print("\nPlayers in your team")
+        for index, p in enumerate (start = 1):
+            print(f"{index}. {p.name} | Handle: {p.handle}")
+
+        try:
+            selected = input("Please enter the number of who you want to remove: ")
+            selected_index = int(selected) - 1
+            if selected_index < 0 or selected_index >= len(players):
+                print("The number is not in the player's number range. Please select another number.")
+                return
+        except ValueError:
+            print("The number is not in the player's number range. Please select another number.")
+            return
+        
+        player_to_remove = players[selected_index]
+
+        confirmation = input("Are you sure you want to remove {name} from the team? Y/N")
+        if confirmation.upper() != "Y":
+            print("Removal cancelled. The player will not be removed from the team.")
+
+        try:
+            removed_player = self.ll.remove_from_team(team_name, player_to_remove.name)
+            print(f"{removed_player} has been removed from the team.")
+        except ValueError as error:
+            print("Error:", error) 
 
     def see_player_info(self):
         pass
