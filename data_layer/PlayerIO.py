@@ -1,16 +1,19 @@
 import csv
 from Models.Player import Player
 
-PLAYER_PATH: str = r"data_layer\_data\Players.csv"
-
-#Class for all the player info 
+PLAYER_PATH: str = r"_data\Players.csv"
+ 
 class PlayerIO:
 
     def get_players():
-            players = [] #Empty list for the player you are getting
-            with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile: #opens and reads the player.csv
-                reader = csv.reader(csvfile)   #read the lines in the csv
-                for row in reader: #for loop that checks each row
+            """
+            This function finds the selected player and puts him into an empty list
+            to be displayed
+            """
+            players = [] 
+            with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+                reader = csv.reader(csvfile)   
+                for row in reader:
                     if not row:
                         continue
 
@@ -28,6 +31,10 @@ class PlayerIO:
 
 
     def save_players(players: list[Player]):
+        """
+        This function takes and saves a player which has been created by using the csv writer to save him
+        and he now is in the players csv with all the details he needs
+        """
         with open(PLAYER_PATH, "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["Name", "DOB", "Address", "Phonenumber",
@@ -45,6 +52,9 @@ class PlayerIO:
                 ])
 
     def create_new_player(player: list):
+        """
+        This functions is used to write a new player into the csv file by using the csv writer
+        """
         try: 
             with open(PLAYER_PATH, "a",newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile) #here the user writes in what is needed for the player like name DOB etc.
@@ -55,6 +65,10 @@ class PlayerIO:
 
 
     def get_player_stats():
+        """
+        This function finds the stats of a selected player by using csv dictreader to find the right colum
+        and displayes them for the user
+        """
         try:
             Points = []
             with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
