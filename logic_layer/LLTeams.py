@@ -128,6 +128,9 @@ class LLTeams:
 		'''User wants to see information about teams in the tournament.'''
 
 		return list(self.teams)
+	
+
+	
 
 
 
