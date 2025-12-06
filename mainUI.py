@@ -112,7 +112,7 @@ class Happy_paths:
     Happy_menu()
     fyrst_input = "" #This code will change just testing
     while fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
-        print("Please select a valid valiu")
+        print("\033[100mEnter valid Input\033[0m")
         fyrst_input = input("")
     if fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
         quit
