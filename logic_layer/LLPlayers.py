@@ -16,7 +16,9 @@ class LLPlayer:
         return data.public_get_player()
     
     def get_player_statistics(self):
-        return super().get_player_statistics()
+        data = DataAPI()
+        return data.get_player_statistics()
+
 
     def validate_dob(dob_str: str) -> datetime: 
         '''Checks players date of birth and if the format fits the 

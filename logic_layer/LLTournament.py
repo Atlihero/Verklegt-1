@@ -62,5 +62,12 @@ class Tournament:
         print(f"TOURNAMENT WINNER: {winner}")
         return winner
 
+    def new_tourney(self):
+        data = DataAPI()
+        return data.new_tournament()
+    
+    def get_allTournamnets(self):
+        data = DataAPI()
+        return data.get_all_tournaments()
 
     
