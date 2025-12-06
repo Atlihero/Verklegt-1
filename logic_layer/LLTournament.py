@@ -4,7 +4,7 @@ class Tournament():
     def __init__(self, name : str ):
 
         self.tournament = name
-        self._next_game_id  = 1 
+        self._next_game_id  = 1
 
 
         self.teams = [ "Team1" , "Team2", "Team3 ", "Team4", "Team5", "Team6", "Team7", "Team8", 
@@ -112,23 +112,23 @@ class Tournament():
         self.status = status 
 
 
-# store all matches in a empty list 
+        # store all matches in a empty list 
 
         self.matches =  []     # where all the matches are being stored 
         self.rounds = {}       # where all the rounds are being stored 
 
 
-# brackets , round of 16, quartefinals, semifinals , final 
+        # brackets , round of 16, quartefinals, semifinals , final 
 
         if self.teams != 16 : 
             raise ValueError ("There has to be at least 16 teams in the Tournament!")
         
 
-# split 16 teams into two sides (8 teams on the left, 8 teams on the right)        #!!! can be more than 16 teams 
+        # split 16 teams into two sides (8 teams on the left, 8 teams on the right)        #!!! can be more than 16 teams 
         left_teams = self.teams[:8]
         right_teams = self.teams[8:]
 
-# rounds of the left teams
+        # rounds of the left teams
 
         round1_winners_left = self.play_round(left_teams) 
         round2_winners_left = self.play_round(round1_winners_left)
@@ -136,7 +136,7 @@ class Tournament():
         champion_left = round3_winners_left[0]
         print(f"The winner from the left side is , {champion_left} !")
 
-# rounds of the right teams
+    # rounds of the right teams
 
         round1_winners_right = self.play_round(right_teams)
         round2_winners_right = self.play_round (round1_winners_right)
@@ -148,7 +148,7 @@ class Tournament():
     def play_round(self, teams: list[str]) ->list [str]:
         winners = list[str] = []
 
-        # example this goes through the left teams , from 0 to 7 , in total 8 "left" teams
+        # 
 
         for  i in range (0, len(teams), 2):
              team1= teams[i]
@@ -172,7 +172,7 @@ class Tournament():
     finalists = self.play_round([champion_left, champion_right])
 
     final_winner = finalists[0]
-    print(f"The Tournamenyt winner is , {final_winner} !") 
+    print(f"The Tournamenyt winner is , {final_winner} !")
 
         
 
