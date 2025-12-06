@@ -1,30 +1,16 @@
 from logic_layer.LLPlayers import LLPlayer
 from logic_layer.LLTeams import LLTeams
+from logic_layer.LLTournament import Tournament
 
 class LL_API:
     def __init__(self):
         self.player = LLPlayer()
         self.team = LLTeams()
+        self.tournament = Tournament()
     
     """
     The Logic layer wrapper for the LLPlayer
     """
-    def getplayers(self):
-        "gets player and his information"
-        return self.player.get_all_players()
-    
-    def getPlayerPublic(self):
-        "gets the player for the public viewers"
-        return self.player.get_player_publicViewer()
-    
-    def getTeamPublic(self):
-        "gets the teams for the public viewer"
-        return self.team.get_team_public()
-    
-    def getPlayer_stats(self):
-        "Get the stats of players"
-        return self.player.get_player_statistics()
-
     def valid_dob(self, dob):
         "Validates players date of birth"
         return self.player.validate_dob(dob)
@@ -79,4 +65,41 @@ class LL_API:
     def view_teams(self):
         "Public viewer wants to view teams"
         return self.team.view_teams() 
+    
+
+    """
+    Logic wrapper for Tournament
+    """
+
+    def get_contactInfo(self):
+        "Gets the contact infro for the tournament contact"
+        return self.tournament.get_contact_info()
+    
+    def update_contactInfo(self):
+        "updates the info for the contact"
+        return self.tournament.update_contact_info()
+    
+    def register_team(self):
+        "registers the team to the tournament"
+        return self.tournament.register_team()
+    
+    def scheduleGames(self):
+        "schedules games for the tournament"
+        return self.tournament.schedule_games()
+    
+    def recordResults(self):
+        "records the info from a game and declares the winner"
+        return self.tournament.record_result()
+    
+    def sum_Logic(self):
+        "Idont know what this does"
+        return self.tournament.sum_logic()
+    
+    def brackets(self):
+        "sets the brackets of the tournament"
+        return self.tournament.brackets_of_tournament()
+    
+    def Round(self):
+        "the round for the tournament"
+        return self.tournament.play_round()
 
