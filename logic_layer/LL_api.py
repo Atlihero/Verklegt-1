@@ -17,6 +17,10 @@ class LL_API:
         "gets the player for the public viewers"
         return self.player.get_player_publicViewer()
     
+    def getTeamPublic(self):
+        "gets the teams for the public viewer"
+        return self.team.get_team_public()
+    
     def getPlayer_stats(self):
         "Get the stats of players"
         return self.player.get_player_statistics()

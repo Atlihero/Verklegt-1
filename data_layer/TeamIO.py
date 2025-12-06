@@ -12,9 +12,22 @@ class TeamIO:
                 reader  = csvfile.readlines() #reads the linse in the csv
                 for row in reader: #for loop that goes through the lines to look for the right team
                     Teams.append(row) #append the team chosen to the list
-            return Teams #returns the list
         except ValueError: #in case of wrong inputs
             return f"Error message to be decided"
+        return Teams #returns the list
+        
+    def getTeam_public(self):
+        try:
+            teams = []
+            captain = []
+            with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    teams.append(row["TeamName"])
+                    captain.append(row["Captain"])
+        except ValueError:
+            f"error message"
+        return teams, captain
 
     def add_new_team(team: list):
         '''create an empty team with no players'''
