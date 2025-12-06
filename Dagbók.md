@@ -152,3 +152,13 @@ Mættir á morgunfund eru allir nema Atli sem fær að lúlla aðeins lengur.
 
 **Staðan eftir daginn:**
 -	Skrifum laangan to-do lista yfir allt sem þarf að gera
+
+### Laugardagur 6.12.25 (Dagur 5 í viku 2)
+-Mættum fersk á bilinu 11:00 Daniel á afmæli big 20 Atli mætir með gjöf
+-Byrjum að gera welcome screen
+
+**Verkefni dagsin eru**
+-Fá einn feril til að virka í gegn frá UI til puplic viewer
+
+**Staðan eftir daginn**
+-to be 
