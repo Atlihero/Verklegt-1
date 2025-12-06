@@ -1,7 +1,3 @@
-from Models.Team import Team 
-from data_layer.TeamIO import TeamIO
-from data_layer.PlayerIO import PlayerIO
-
 class Tournament():
     def __init__(self, name : str ):
 
@@ -209,7 +205,7 @@ class Tournament():
     finalists = play_round([champion_left, champion_right])
 
     final_winner = finalists[0]
-    final_winner= print(f"The Tournamenyt winner is , {final_winner} !")
+    final_winner= print(f"The Tournamenyt winner is , {final_winner} !")e
 
 
 
@@ -220,7 +216,7 @@ if __name__ == "__main__":
 
 
 
-    
+
     
 
 
