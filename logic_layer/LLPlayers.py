@@ -77,5 +77,5 @@ class LLPlayer():
             raise ValueError("Link must start with 'http://' or 'https://'. Please try another link")
         return link
     
-    def create_player(name, dob_str, address, phone_number, player_email, player_handle, link):
-        return Player.Player(name, dob_str, address, phone_number, player_email, player_handle, link)
+    def create_player(name, dob_str, address, phone_number, player_email, player_handle, link, team = "", points = 0):
+        return Player.Player(name, dob_str, address, phone_number, player_email, player_handle, team, points, link)
