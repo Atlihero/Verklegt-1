@@ -1,5 +1,5 @@
-from LLPlayers import LLPlayer
-from LLTeams import LLTeams
+from logic_layer.LLPlayers import LLPlayer
+from logic_layer.LLTeams import LLTeams
 
 class LL_API:
     def __init__(self):
