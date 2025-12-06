@@ -1,4 +1,4 @@
-from logic_layer.LL_API import LL_API
+from logic_layer.LL_api import LL_API
 # from logic_layer.LLPlayers import LLPlayer
 # from logic_layer.LLTeams import LLTeams
 # from logic_layer.LLCaptain import LLCaptain
@@ -20,6 +20,8 @@ class CaptainUI:
     def add_to_team(self):
         pass
         input ("Who do you want to add to your team?")
+
+        
         # Input fyrir nafn
         # kalla í fallið add_player frá LLTeams klasa
         # búa til liðslista max 5 á listanum

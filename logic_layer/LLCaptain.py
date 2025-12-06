@@ -2,7 +2,6 @@ from data_layer.PlayerIO import PlayerIO
 from logic_layer.LLTeams import LLTeams
 
 class LLCaptain():
-class LLCaptain():
     
     MAX_TEAM_MEMBERS = 5
 
@@ -80,6 +79,7 @@ class LLCaptain():
         for player in team_players:
             if player.name == player_name:
                 return player
+        
         #if player not found
         raise ValueError("Player is not in this team. Please try another player.")
         
@@ -89,6 +89,7 @@ class LLCaptain():
 
     def organizer_player_info(self):
         all_players = PlayerIO.get_players()
-        for p in all_players:
+        return all_players
+
         
         
