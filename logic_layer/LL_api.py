@@ -82,3 +82,11 @@ class LL_API:
     def get_team_members(self, team_name):
         '''Return a list of Player objects in the team'''
         return self.captain.get_team_members(team_name)
+    
+    def cap_view_player_info(self, player_name, team_name):
+        '''Captain can see player info about members in his team'''
+        return self.captain.cap_see_player_info(player_name, team_name)
+
+    def organizer_view_player_info(self):
+        '''Organizer can see information about every player in the tournament'''
+        return self.captain.organizer_player_info()

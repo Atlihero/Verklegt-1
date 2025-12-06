@@ -1,4 +1,4 @@
-from logic_layer.LL_API import LL_API
+from logic_layer.LL_api import LL_API
 # from logic_layer.LLPlayers import LLPlayer
 # from logic_layer.LLTeams import LLTeams
 # from logic_layer.LLCaptain import LLCaptain
@@ -58,7 +58,7 @@ class CaptainUI:
             print("Removal cancelled. The player will not be removed from the team.")
 
         try:
-            removed_player = self.ll.remove_from_team(player_to_remove.name, team_name)
+            removed_player = self.ll.remove_player_from_team(player_to_remove.name, team_name)
             print(f"{removed_player} has been removed from the team.")
         except ValueError as error:
             print("Error:", error) 

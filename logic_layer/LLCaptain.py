@@ -45,9 +45,9 @@ class LLCaptain():
         player_found = None
 
         for p in all_players:
-                if p.name == player_name:
-                    player_found = p
-                    break
+            if p.name == player_name:
+                player_found = p
+                break
                     
         if player_found is None:
             raise ValueError ("This player does not exist. Please try another player.")
@@ -60,24 +60,20 @@ class LLCaptain():
         PlayerIO.save_players(all_players)
 
         return player_found
-        # input fyrir nafn sem á að eyða úr liðslista
-        # warning signs 'u sure u want to delete this person?'
-        # villa ef reynt er að taka út leikmann sem er ekki í liðinu
+    
 
     def cap_see_player_info(self, team_name: str, player_name: str):
-            '''Allows captains to see the players info that are on their team'''
-            team_players = self.get_team_members(team_name)
-            for player in team_players:
-                if player.name == player_name:
-                    return player
+        '''Allows captains to see the players info that are on their team'''
+        team_players = self.get_team_members(team_name)
+        for player in team_players:
+            if player.name == player_name:
+                return player
             #if player not found
-            raise ValueError("Player is not in this team. Please try another player.")
-            
-            # getur séð allar upplýsingar um leikmenn í sínu liði (eftir að hafa bætt leikmanni í liðið)
-            # setja upp töflu
+        raise ValueError("Player is not in this team. Please try another player.")
+    
             
 
     def organizer_player_info(self):
-        pass
-        # all_players = PlayerIO.get_players()
-        # for p in all_players:
+        '''Allows the organizer to see all the players information'''
+        all_players = PlayerIO.get_players()
+        return all_players
