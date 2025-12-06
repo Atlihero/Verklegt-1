@@ -57,7 +57,7 @@ class LLCaptain():
     
         player_found.team = ""
 
-        PlayerIO.save_players(all_players)
+        PlayerIO.create_new_player(all_players)
 
         return player_found
     
