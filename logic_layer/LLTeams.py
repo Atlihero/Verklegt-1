@@ -67,7 +67,7 @@ class LLTeams:
 		player_to_add.team = team.name
 
 		# Save player list through PlayerIO
-		PlayerIO.save_players(players)  
+		PlayerIO.create_new_player(players)  
 
 		return player_to_add
 

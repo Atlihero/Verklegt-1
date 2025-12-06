@@ -8,7 +8,8 @@ class PlayerIO:
         try:
             players = []
             with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
-                reader  = csvfile.readlines()
+                reader = csv.DictReader(csvfile)
+                #reader  = csvfile.readlines()
                 for row in reader:
                     print(row)
                     players.append(row)

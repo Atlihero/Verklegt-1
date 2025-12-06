@@ -36,43 +36,4 @@
 #     except ValueError:
 #         print("Invalid phone number. Try again.")
 
-def add_to_team(self):
-        ll = LLTeams()
-        
-        # find existing players
-        members = self.get_team_members()
-        if len(members) >= self.MAX_TEAM_MEMBERS:
-            raise ValueError("There are already 5 players in your team.")
-       
-        # Input fyrir nafn
-        # kalla í fallið add_player frá LLTeams klasa
-        # búa til liðslista max 5 á listanum
-        # 'do you want to add this person to your team? Y/N'
-        # villa ef reynt við 6. manni - Team is full
-        # villa ef reynt er að bæta við manni sem er nú þegar í liði
-        pass
-
-
-
-def remove_from_team(self):
-    remove_player = input("Please enter the name of the player you want to remove: ")
-    # input fyrir nafn sem á að eyða úr liðslista
-    # warning signs 'u sure u want to delete this person?'
-    # villa ef reynt er að taka út leikmann sem er ekki í liðinu
-
-    def player_name(self):
-        '''Asks user for full name'''
-        
-        name = input("Enter full name of player: ")
-        return name
-    
-    def player_address(self):
-        '''Asks user for home address'''
-        
-        address = input("Enter player's home address: ")
-        return address
-    
-     
-        dob = input("Enter player date of birth (DD/MM/YYYY): ")
-
     
