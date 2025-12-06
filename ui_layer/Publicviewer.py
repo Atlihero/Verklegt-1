@@ -10,3 +10,12 @@ class PublicViewer:
 
     player_dict = getplayerPublic()
     print(player_dict[userinput])
+
+    userinputTeams = int(input("Veldu númer liðs 1-18: "))        
+    def getTeamPublic():
+        api = LL_API()
+        teams = api.getTeamPublic()
+        return teams
+
+    teams, captain = getTeamPublic()
+    print(f"Team: {teams[userinputTeams]}, Captain: {captain[userinputTeams]}")
