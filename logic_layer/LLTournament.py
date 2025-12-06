@@ -124,7 +124,7 @@ class Tournament():
             raise ValueError ("There has to be at least 16 teams in the Tournament!")
         
 
-# split 16 teams into two sides (8 teams on the left, 8 teams on the right)
+# split 16 teams into two sides (8 teams on the left, 8 teams on the right)        #!!! can be more than 16 teams 
         left_teams = self.teams[:8]
         right_teams = self.teams[8:]
 
