@@ -34,7 +34,7 @@ class Happy_paths:
         print("\033[94m--------------------------------------\033[0m")
         print("\033[94m---     #Pleas enter your input    ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Back b)                        ---\033[0m")
+        print("\033[94m--- Exit b)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
     
     def Happy_viewer():
@@ -130,7 +130,8 @@ class Happy_paths:
     fyrst_input = "" #This code will change just testing
     while fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
         fyrst_input = input("")
-        print("\033[100mEnter valid Input\033[0m")
+        if fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
+            print("\033[100mEnter valid Input\033[0m")
     if fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
         quit
     elif fyrst_input == "1":
@@ -140,15 +141,17 @@ class Happy_paths:
         HappyID = 2
         Happy_captain()
     elif fyrst_input == "3":
+        HappyID = 3
         Happy_viewer()
     else:
-        print("back")
+        HappyID = 4
 
     if HappyID == 1:
         input2 = ""
         while input2 != "1" and input2 != "2" and input2 != "3" and input2 !="4" and input2 != "b":
             input2 = input("")
-            print("\033[100mEnter valid Input\033[0m")
+            if input2 != "1" and input2 != "2" and input2 != "3" and input2 !="4" and input2 != "b":
+                print("\033[100mEnter valid Input\033[0m")
         if input2 == "1":
             OD = 1
             Happy_create_player()
@@ -161,6 +164,16 @@ class Happy_paths:
         elif input2 == "4":
             OD = 4
             Happy_make_captain()
+    
+    if HappyID == 2:
+        input3 = input("Enter captain:")
+
+    if HappyID == 3:
+        input4 = input("Enter viewer:")
+
+    if HappyID == 4:
+        exit()
+        
         
 
 
