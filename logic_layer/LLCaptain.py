@@ -74,7 +74,7 @@ class LLCaptain():
     
 
     def cap_see_player_info(self, team_name: str, player_name: str):
-        '''Allows captains to see the players info that are on their team'''
+        '''Allows the captain of each team to see his players information'''
         team_players = self.get_team_members(team_name)
         for player in team_players:
             if player.name == player_name:
@@ -83,11 +83,9 @@ class LLCaptain():
         #if player not found
         raise ValueError("Player is not in this team. Please try another player.")
         
-        # getur séð allar upplýsingar um leikmenn í sínu liði (eftir að hafa bætt leikmanni í liðið)
-        # setja upp töflu
-        
 
     def organizer_player_info(self):
+        '''Allows the organizer to see all the players information'''
         all_players = PlayerIO.get_players()
         return all_players
 
