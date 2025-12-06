@@ -6,7 +6,7 @@ class LL_API:
     def __init__(self):
         self.player = LLPlayer()
         self.team = LLTeams()
-        self.tournament = Tournament()
+        self.tournament = Tournament("Default Name")
     
     """
     The Logic layer wrapper for the LLPlayer
@@ -35,6 +35,9 @@ class LL_API:
         "creates a new player"
         return self.player.create_player(name, dob_string, phone, email, handle, link)
     
+    def getPlayerpublic(self):
+        return self.player.get_player_publicViewer()
+    
     """
     Logic layer wrapper for the LLTeams
     """
@@ -49,6 +52,9 @@ class LL_API:
     def get_teams(self, name):
         "gets the team by name"
         return self.team.get_team_by_name(name)
+    
+    def getTeamPublic(self):
+        return self.team.get_team_public()
     
     def check_team(self, name):
         "Check if team has this name"
