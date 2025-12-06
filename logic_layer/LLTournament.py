@@ -213,6 +213,14 @@ class Tournament():
 
 
 
+if __name__ == "__main__":
+    t = Tournament("Debug Tournament")
+    result = t.sum_logic("Team1")
+    print("sum_logic('Team1') returned:", result)
+
+
+
+    
     
 
 
