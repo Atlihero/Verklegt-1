@@ -18,14 +18,14 @@ class PlayerIO:
     
     def get_player_PublicViewer(self):
         try:
-            players_handles = []
+            players = []
             with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                    players_handles.append(row["Handle"])
+                    players.append(row["Handle"])
         except ValueError:
             f"Error message"
-        return players_handles
+        return players
 
 
 
