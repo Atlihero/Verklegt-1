@@ -28,6 +28,18 @@ class PlayerIO:
 
             return players
         
+    def get_player_PublicViewer(self):
+        try:
+            players = []
+            team = []
+            with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    players.append(row["Handle"])
+                    team.append(row["Team"])
+        except ValueError:
+            f"Error message"
+        return players, team
 
 
     def save_players(players: list[Player]):
