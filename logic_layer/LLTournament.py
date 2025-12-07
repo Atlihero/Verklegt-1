@@ -1,4 +1,4 @@
-class Tournament():
+class LLTournament():
 
     #16 teams in the tournament
     def __init__(self, name : str ):
