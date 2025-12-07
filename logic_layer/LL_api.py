@@ -6,7 +6,7 @@ class LL_API:
     def __init__(self):
         self.player = LLPlayer()
         self.team = LLTeams()
-        self.tournament = Tournament()
+        self.tournament = LLTournament()
     
     """
     The Logic layer wrapper for the LLPlayer
