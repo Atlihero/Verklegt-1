@@ -1,7 +1,9 @@
-from logic_layer.LL_api import LL_API()
+from logic_layer.LL_api import LL_API
 
 class OrganizerUI:
 
+
+    def createTournament(self):
         unique_name = input("Create a unique name for the tournament: ")
         start_date = input("Select the start date of the tournament: ")
         end_date = input("Select end date for the tournament: ")
@@ -18,8 +20,7 @@ class OrganizerUI:
             "contact_person": contact_person,
             "contact_email": contact_email,
             "contact_phone": contact_phone
-        }
-
+            }
         api = LL_API()
-        result = api.create_new_tournaments(tournament_dict)
+        return api.create_new_tournaments(tournament_dict)
 
