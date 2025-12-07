@@ -51,7 +51,7 @@ class LLCaptain():
         player_to_add.get("Team") == team_name
 
         # Save updated player list
-        PlayerIO.create_new_player(all_players)
+        PlayerIO.save_players(all_players)
         return player_to_add
     
     
@@ -73,7 +73,7 @@ class LLCaptain():
     
         player_found.get("Team") == ""
 
-        PlayerIO.create_new_player(all_players)
+        PlayerIO.save_players(all_players)
         return player_found
     
 
