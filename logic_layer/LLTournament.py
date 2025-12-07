@@ -2,15 +2,10 @@ from Models.Tournament import Tournament
 from Models.Round import Round
 from data_layer.data_api import DataAPI
 
-class Tournament:
-    def __init__(self, name: str):
-        self.name = name
-        self.teams = [
-            "Team1", "Team2", "Team3", "Team4",
-            "Team5", "Team6", "Team7", "Team8",
-            "Team9", "Team10", "Team11", "Team12",
-            "Team13", "Team14", "Team15", "Team16"
-        ]
+class LLTournament:
+    def __init__(self):
+        self.data = DataAPI()
+        self.teams = self.data.get_all_Teams()
 
     def sum_logic(self, team_name: str) -> int:
         return len(team_name)
@@ -62,12 +57,19 @@ class Tournament:
         print(f"TOURNAMENT WINNER: {winner}")
         return winner
 
-    def new_tourney(self):
-        data = DataAPI()
-        return data.new_tournament()
+    def new_tourney(self, tournament_dict: dict):
+        row = [
+            tournament_dict["unique_name"],
+            tournament_dict["start_date"],
+            tournament_dict["end_date"],
+            tournament_dict["venue"],
+            tournament_dict["contact_person"],
+            tournament_dict["contact_email"],
+            tournament_dict["contact_phone"]
+        ]
+        return self.data.new_tournament(row)
+
     
     def get_allTournamnets(self):
-        data = DataAPI()
-        return data.get_all_tournaments()
-
+        return self.data.get_all_tournaments()
     

@@ -1,8 +1,8 @@
 import csv
 from Models.Game import Game
 
-TOURNAMENT_PATH: str = r"_data/Tournament.csv"
-GAMES_PATH: str = r"_data/Games.csv"
+TOURNAMENT_PATH: str = r"data_layer/_data/Tournament.csv"
+GAMES_PATH: str = r"data_layer/_data/Games.csv"
 
 class TournamentIO:
 
@@ -17,16 +17,16 @@ class TournamentIO:
         except ValueError: 
             return f"Error message to be decided"
 
-    def create_new_tournament(tournament: list):
+    def create_new_tournament(self, tournament: list):
         try: 
             with open(TOURNAMENT_PATH, "a",newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile)
-                writer.writerow(tournament) 
-            return f"New Tournament added :)"    
+                writer.writerow(tournament)    
         except ValueError: 
             f"Error message to be decided"
+        return f"New Tournament added :)" 
 
-    def create_new_game(games: list):
+    def create_new_game(self, games: list):
         try:
             with open(GAMES_PATH, "a", newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile)

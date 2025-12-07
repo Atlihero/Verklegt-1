@@ -1,12 +1,12 @@
 from logic_layer.LLPlayers import LLPlayer
 from logic_layer.LLTeams import LLTeams
-from logic_layer.LLTournament import Tournament
+from logic_layer.LLTournament import LLTournament
 
 class LL_API:
     def __init__(self):
         self.player = LLPlayer()
         self.team = LLTeams()
-        self.tournament = Tournament("Default Name")
+        self.tournament = LLTournament()
     
     """
     The Logic layer wrapper for the LLPlayer
@@ -90,8 +90,8 @@ class LL_API:
     def get_all_tournaments(self):
         return self.tournament.get_allTournamnets()
     
-    def create_new_tournaments(self):
-        return self.tournament.new_tourney()
+    def create_new_tournaments(self, tournament_dict: dict):
+        return self.tournament.new_tourney(tournament_dict)
     
     def brackets(self):
         return self.tournament.run_bracket()

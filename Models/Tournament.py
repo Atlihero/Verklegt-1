@@ -5,7 +5,7 @@
 
 class Tournament():
     def __init__(self, unique_name, start_date, end_date, venue, contact_person, contact_email, contact_phone):
-        self.unqie_name = unique_name
+        self.unique_name = unique_name
         self.start_date = start_date
         self.end_date = end_date
         self.venue = venue
@@ -15,11 +15,16 @@ class Tournament():
     
 
 
-    #Skilar öllum upplýsingum mótsins def í nýrri línu
-
     def __str__(self):
-        return f"{self.unqie_name}:\n{self.start_date}:\n{self.end_date}:\n{self.venue}\n{self.contact_person}\n{self.contact_email}\n{self.contact_phone}"
-    
+            return (
+            f"Tournament: {self.unique_name}\n"
+            f"Start: {self.start_date}\n"
+            f"End: {self.end_date}\n"
+            f"Venue: {self.venue}\n"
+            f"Contact: {self.contact_person}\n"
+            f"Email: {self.contact_email}\n"
+            f"Phone: {self.contact_phone}"
+        )
     
     def __repr__(self):
         return str(self)

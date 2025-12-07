@@ -65,12 +65,13 @@ class TeamIO:
         except ValueError:
             return "Villa eittvhað fór úsrkeiðis"
 
-    def get_all_teams() -> list:
+    def get_all_teams(self):
             '''returns a list of all team names'''
-            teams: list = []
+            teams = []
             try:
-                with open(TEAM_PATH, "a", newline="", encoding="utf-8") as csvfile:
-                    reader = csv.writer(csvfile)
+                with open(TEAM_PATH, "r", newline="", encoding="utf-8") as csvfile:
+                    reader = csv.reader(csvfile)
+                    header = next(reader, None)
                     for row in reader:
                         if row:
                             teams.append(row[0])
