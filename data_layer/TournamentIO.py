@@ -19,7 +19,7 @@ class TournamentIO:
 
     def create_new_tournament(self, tournament: list):
         try: 
-            with open(TOURNAMENT_PATH, "a",newline="", encoding="utf-8") as csvfile:
+            with open(TOURNAMENT_PATH, "a", newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow(tournament)    
         except ValueError: 

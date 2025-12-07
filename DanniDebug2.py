@@ -11,17 +11,29 @@ while True:
 
     if val == "1":
         userinput = int(input("Veldu ID leikmanns milli 1-57: "))
-        api = LL_API()
-        players, teams = api.getPlayerpublic()
-        print(f"Player: {players[userinput]}, Team: {teams[userinput]}")
+        class PublicViewer:     
+            def getplayerPublic():
+                api = LL_API()        
+                players = api.getPlayerpublic()
+                return players
+                
+            player, team = getplayerPublic()
+            print(f"Player: {player[userinput]}, Team: {team[userinput]}")
 
-    elif val == "2":
+    if val == "2":
         userinputTeams = int(input("Veldu númer liðs 1-18: "))
-        api = LL_API()
-        teams, captains = api.getTeamPublic()
-        print(f"Team: {teams[userinputTeams]}, Captain: {captains[userinputTeams]}")
+        class PublicViewer:
 
-    elif val == "3":
+            def getTeamPublic():
+                api = LL_API()
+                teams = api.getTeamPublic()
+                return teams
+
+            teams, captain = getTeamPublic()
+            print(f"Team: {teams[userinputTeams]}, Captain: {captain[userinputTeams]}")
+
+    
+    if val == "3":
         unique_name = input("Create a unique name for the tournament: ")
         start_date = input("Select the start date of the tournament: ")
         end_date = input("Select end date for the tournament: ")
@@ -30,20 +42,25 @@ while True:
         contact_email = input("What is the contact email for this tournament: ")
         contact_phone = input("What is the contact phone for this tournament: ")
 
-        tournament_dict = {
-            "unique_name": unique_name,
-            "start_date": start_date,
-            "end_date": end_date,
-            "venue": venue,
-            "contact_person": contact_person,
-            "contact_email": contact_email,
-            "contact_phone": contact_phone
-        }
+        class Organizer:
+            def createTournament(self):
+                tournament_dict = {
+                    "unique_name": unique_name,
+                    "start_date": start_date,
+                    "end_date": end_date,
+                    "venue": venue,
+                    "contact_person": contact_person,
+                    "contact_email": contact_email,
+                    "contact_phone": contact_phone
+                }
+                api = LL_API()
+                return api.create_new_tournaments(tournament_dict)
 
-        api = LL_API()
-        result = api.create_new_tournaments(tournament_dict)
-        print(result) 
+        organizer = Organizer()
+        tournament = organizer.createTournament()
+        print("Tournament has been created:", tournament)
 
-    elif val.upper() == "Q":
+    
+    if val == "Q":
         print("You have quit the program")
         break

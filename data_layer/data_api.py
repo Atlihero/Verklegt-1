@@ -50,9 +50,9 @@ class DataAPI:
         "add exactly 16 teams to the tournament"
         return self.team.add_teams_to_tournament(tournament_name, teams_list)
 
-    def new_tournament(self, tournament_dict):
+    def new_tournament(self, tournament_row: list):
         "Creates a new tournament in the csv"
-        return self.tournament.create_new_tournament(tournament_dict)
+        return self.tournament.create_new_tournament(tournament_row)
 
     def get_all_tournaments(self):
         "retrieves the tournaments from the csv"
