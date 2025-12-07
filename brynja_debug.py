@@ -105,3 +105,11 @@ class PlayerLL():
         existing_handles.append(handle)
         print("Handle has been added to the list")
         return handle
+    
+
+
+class CaptainUI:
+    def __init__(self, LLPlayers, LLTeams):
+        # self.players = LLPlayers
+        # self.teams = LLTeams
+        self.ll = LL_API()

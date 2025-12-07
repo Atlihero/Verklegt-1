@@ -1,9 +1,7 @@
 from logic_layer.LL_api import LL_API
 
 class CaptainUI:
-    def __init__(self, LLPlayers, LLTeams):
-        self.players = LLPlayers
-        self.teams = LLTeams
+    def __init__(self):
         self.ll = LL_API()
 
 
@@ -25,9 +23,9 @@ class CaptainUI:
             print("There are currently no players in your team. Please add members to be able to remove members.")
             return 
         
-        print("\nPlayers in your team")
+        print("\nPlayers in your team: ")
         for index, p in enumerate(start = 1):
-            print(f"{index}. {p.name} | Handle: {p.handle}")
+            print(f"{index}. {p.get("Name")} | Handle: {p.get("Handle")}")
 
         try:
             selected = input("Please enter the number of who you want to remove: ")
@@ -59,9 +57,9 @@ class CaptainUI:
             print("There are currently no players in your team. Please add members to be able to remove members.")
             return
         
-        print("\nPlayers in your team")
+        print("\nPlayers in your team: ")
         for index, p in enumerate(start = 1):
-            print(f"{index}. {p.name}")
+            print(f"{index}. {p.get("Name")}")
 
         try:
             selected = input("Please enter the number of whose information you want to see: ")
@@ -76,7 +74,7 @@ class CaptainUI:
         player_to_see = players[selected_index]
 
         try:
-            info = self.ll.cap_view_player_info(team_name, player_to_see.name)
+            info = self.ll.cap_view_player_info(team_name, player_to_see.get("Name"))
             print(f"\nPlayer Information for {player_to_see}:")
             for attr, value in vars(info).items():
                 print(f"{attr}: {value}")
@@ -98,7 +96,7 @@ class CaptainUI:
             return
 
         for p in players:
-            print(f"\nPlayer Information for {p.name}:")
+            print(f"\nPlayer Information for {p.get("Name")}:")
             for attr, value in vars(p).items():
                 print(f"{attr}: {value}")
             print("-" * 25)
