@@ -33,7 +33,8 @@ class LLPlayer():
             return dob
         except ValueError:
             raise ValueError ("Invalid date. Use DD/MM/YYYY")
-        
+
+	
     def validate_phone(self, phone_number: int) -> int:
         '''Validates the players phone number, if not then 
           the user tries again.'''
@@ -69,9 +70,9 @@ class LLPlayer():
         if len(ending) < 2 or len(ending) > 3 or not ending.isalpha():
             raise ValueError("The email must contain a valid ending. Please try again.")
             
-        
         return player_email
 
+	
     def validate_handle(self, handle: str) -> str:
         '''Checks players handle. It checks if the username 
         is already in use and then asks for a new username since no two players 
@@ -83,13 +84,15 @@ class LLPlayer():
 		# if the handle is unique then its added to the list
         LLPlayer.existing_handles.add(handle)
         return handle
-    
+
+	
     def validate_link(self, link: str) -> str:
         if not link:
             return "" # user didn't add a link
         if not (link.startswith("http://") or link.startswith("https://")):
             raise ValueError("Link must start with 'http://' or 'https://'. Please try another link")
         return link
-    
+
+	
     def create_player(self, name, dob_str, address, phone_number, player_email, player_handle, link):
         return Player.Player(name, dob_str, address, phone_number, player_email, player_handle, link)
