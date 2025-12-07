@@ -1,12 +1,14 @@
 from logic_layer.LLPlayers import LLPlayer
 from logic_layer.LLTeams import LLTeams
 from logic_layer.LLTournament import LLTournament
+from .LLCaptain import LLCaptain
 
 class LL_API:
     def __init__(self):
         self.player = LLPlayer()
         self.team = LLTeams()
         self.tournament = LLTournament()
+        self.captain = LLCaptain()
     
     """
     The Logic layer wrapper for the LLPlayer
