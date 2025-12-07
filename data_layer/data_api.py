@@ -19,10 +19,18 @@ class DataAPI:
     def get_all_players(self):
         "gets the players from the csv to the LL"
         return self.player.get_players()
+    
+    def public_get_player(self):
+        "Gets the player for the public viewers"
+        return self.player.get_player_PublicViewer()
 
     def add_team(self,team_dict):
         "adds a new team to the csv with the dict details"
         return self.team.create_new_team(team_dict)
+    
+    def getPublicTeam(self):
+        "gets the teams for the public viewer"
+        return self.team.getTeam_public()
 
     def add_player(self,player_dict):
         "adds a new player to the csv with the dict data"

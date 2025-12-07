@@ -1,12 +1,15 @@
 from .LLPlayers import LLPlayer
 from .LLTeams import LLTeams
 from .LLCaptain import LLCaptain
+from logic_layer.LLTournament import LLTournament
 
 class LL_API:
     def __init__(self):
         self.player = LLPlayer()
         self.team = LLTeams()
-        self.captain = LLCaptain()
+        #self.captain = LLCaptain()
+        self.captain = LLCaptain(self.player, self.team)
+        self.tournament = LLTournament()
     
     """
     The Logic layer wrapper for the LLPlayer
@@ -31,9 +34,9 @@ class LL_API:
         "validates the link of the new players"
         return self.player.validate_link(link)
     
-    def create_player(self, name, dob_string, phone, email, handle, link):
+    def create_player(self, name, dob_string, address, phone, email, handle, link=""):
         "creates a new player"
-        return self.player.create_player(name, dob_string, phone, email, handle, link)
+        return self.player.create_player(name, dob_string, address, phone, email, handle, link)
     
     """
     Logic layer wrapper for the LLTeams
@@ -54,9 +57,9 @@ class LL_API:
         "Check if team has this name"
         return self.team.team_exists(name)
 
-    def add_team(self, name, captain, asciiLogo):
+    def add_team(self, team_name, captain_name, asciiLogo):
         "creates a new team"
-        return self.team.create_team(name, captain, asciiLogo)
+        return self.team.create_team(team_name, captain_name, asciiLogo)
 
     def select_captains(self, team_name, new_captain):
         "selects a new captain for a team"
@@ -90,3 +93,40 @@ class LL_API:
     def organizer_view_player_info(self):
         '''Organizer can see information about every player in the tournament'''
         return self.captain.organizer_player_info()
+    
+
+    """
+    Logic wrapper for Tournament
+    """
+
+    def get_contactInfo(self):
+        "Gets the contact infro for the tournament contact"
+        return self.tournament.get_contact_info()
+    
+    def update_contactInfo(self):
+        "updates the info for the contact"
+        return self.tournament.update_contact_info()
+    
+    def register_team(self):
+        "registers the team to the tournament"
+        return self.tournament.register_team()
+    
+    def scheduleGames(self):
+        "schedules games for the tournament"
+        return self.tournament.schedule_games()
+    
+    def recordResults(self):
+        "records the info from a game and declares the winner"
+        return self.tournament.record_result()
+    
+    def sum_Logic(self):
+        "Idont know what this does"
+        return self.tournament.sum_logic()
+    
+    def brackets(self):
+        "sets the brackets of the tournament"
+        return self.tournament.brackets_of_tournament()
+    
+    def Round(self):
+        "the round for the tournament"
+        return self.tournament.play_round()
