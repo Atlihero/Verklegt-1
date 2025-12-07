@@ -162,3 +162,7 @@ Mættir á morgunfund eru allir nema Atli sem fær að lúlla aðeins lengur.
 
 **Staðan eftir daginn**
 -to be 
+
+### Sunnudagur 7.12.25 (Dagur 6 í viku 2)
+- Daníel Mættur um 12:00
+- Planið er að geta gert tournament
