@@ -1,6 +1,6 @@
 from logic_layer.LLPlayers import LLPlayer
 from logic_layer.LLTeams import LLTeams
-from logic_layer.LLTournament import Tournament
+from logic_layer.LLTournament import LLTournament
 
 class LL_API:
     def __init__(self):
