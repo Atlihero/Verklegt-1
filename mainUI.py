@@ -1,4 +1,4 @@
-from logic_layer.LL_api import LL_API
+#from logic_layer.LL_api import LL_API
 from Colors import Colers
 
 class Happy_paths:
@@ -87,10 +87,39 @@ class Happy_paths:
         print("\033[94m--------------------------------------\033[0m")
 
     def Happy_create_tournament():
-        print("tournament")
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[91m---           GLADIATORS           ---\033[0m")
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[93m---   >Selected Create tournament  ---\033[0m")
+        print("\033[94m---                                ---\033[0m")
+        print("\033[94m---    #Enter teams to compete     ---\033[0m")
+        print("\033[94m---            16+ teams           ---\033[0m")
+        print("\033[94m---                                ---\033[0m")
+        print("\033[94m---                                ---\033[0m")
+        print("\033[94m---                                ---\033[0m")
+        print("\033[94m--------------------------------------\033[0m")
+        print("\033[94m---     #Pleas enter your input    ---\033[0m")
+        print("\033[94m--------------------------------------\033[0m")
+        print("\033[94m--- Back b)                        ---\033[0m")
+        print("\033[94m--------------------------------------\033[0m")
 
     def Happy_create_team():
-        print("Create team")
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[91m---           GLADIATORS           ---\033[0m")
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[93m---   >Selected create team        ---\033[0m")
+        print("\033[94m---                                ---\033[0m")
+        print("\033[94m---    Enter teams name:           ---\033[0m")
+        print("\033[94m---                                ---\033[0m")
+        print("\033[94m---    Add players to team:        ---\033[0m")
+        print("\033[94m---                                ---\033[0m")
+        print("\033[94m---    Add players by typing       ---\033[0m")
+        print("\033[94m---           player ID            ---\033[0m")
+        print("\033[94m--------------------------------------\033[0m")
+        print("\033[94m---     #Pleas enter your input    ---\033[0m")
+        print("\033[94m--------------------------------------\033[0m")
+        print("\033[94m--- Back b)                        ---\033[0m")
+        print("\033[94m--------------------------------------\033[0m")
 
     def Happy_make_captain():
         print("\033[91m--------------------------------------\033[0m")
