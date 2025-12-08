@@ -1,14 +1,13 @@
 from datetime import datetime
 class LLOrganizer():
 
+    def __init__(self):
+        self.ll = LLOrganizer()
+
     def create_tournament(self):
         pass
 
-    def choose_date(self, start_date: str) -> datetime:
-        pass
-
-        '''Checks players date of birth and if the format fits the 
-        standards, then the user can continue inputting the information.'''
+    def choose_start_date(self, start_date: str) -> datetime:
 
         try:
             # change string input to datetime
@@ -20,8 +19,24 @@ class LLOrganizer():
             return start_date
         except ValueError:
             raise ValueError ("Invalid date. Use DD/MM/YYYY")
+    
+    def choose_end_date(self, end_date) -> datetime:
+
+        try:
+            # change string input to datetime
+            end_date = datetime.strptime(end_date, "%d/%m/%Y")
+            
+			# check if inputted date is in the future, then not valid
+            if end_date <= self.ll.choose_start_date():
+                raise ValueError("Date has to be after the start date. Please enter a valid date.")
+            return end_date
+        except ValueError:
+            raise ValueError ("Invalid date. Use DD/MM/YYYY")
+    
+
     def choose_location(self):
         pass
+        
 
     def choose_contanct(self):
         pass
