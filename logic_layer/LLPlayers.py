@@ -1,11 +1,25 @@
 from Models import Player
 from datetime import datetime
+from data_layer.data_api import DataAPI
 
 class LLPlayer():
     # because no names can be the same, doesn't add if they are the same
     existing_handles = set() 
 
-    def validate_dob(dob_str: str) -> datetime: 
+    def get_all_players(self):
+        data = DataAPI()
+        return data.get_all_players()
+    
+    def get_player_publicViewer(self):
+        data = DataAPI()
+        return data.public_get_player()
+    
+    def get_player_statistics(self):
+        data = DataAPI()
+        return data.get_player_statistics()
+
+
+    def validate_dob(self, dob_str: str) -> datetime: 
         '''Checks players date of birth and if the format fits the 
         standards, then the user can continue inputting the information.'''
 
@@ -19,8 +33,9 @@ class LLPlayer():
             return dob
         except ValueError:
             raise ValueError ("Invalid date. Use DD/MM/YYYY")
-        
-    def validate_phone(phone_number: int) -> int:
+
+	
+    def validate_phone(self, phone_number: int) -> int:
         '''Validates the players phone number, if not then 
           the user tries again.'''
 
@@ -30,7 +45,7 @@ class LLPlayer():
         return phone_number
             
 
-    def validate_email(player_email: str) -> str:
+    def validate_email(self, player_email: str) -> str:
         '''Checks players email address and if it is valid then he can contiue.
            Raises error messages when the input is not up to standards.'''
 
@@ -55,10 +70,10 @@ class LLPlayer():
         if len(ending) < 2 or len(ending) > 3 or not ending.isalpha():
             raise ValueError("The email must contain a valid ending. Please try again.")
             
-        
         return player_email
 
-    def validate_handle(handle: str) -> str:
+	
+    def validate_handle(self, handle: str) -> str:
         '''Checks players handle. It checks if the username 
         is already in use and then asks for a new username since no two players 
         can have the same username '''
@@ -69,13 +84,15 @@ class LLPlayer():
 		# if the handle is unique then its added to the list
         LLPlayer.existing_handles.add(handle)
         return handle
-    
-    def validate_link(link: str) -> str:
+
+	
+    def validate_link(self, link: str) -> str:
         if not link:
             return "" # user didn't add a link
         if not (link.startswith("http://") or link.startswith("https://")):
             raise ValueError("Link must start with 'http://' or 'https://'. Please try another link")
         return link
-    
-    def create_player(name, dob_str, address, phone_number, player_email, player_handle, link):
+
+	
+    def create_player(self, name, dob_str, address, phone_number, player_email, player_handle, link):
         return Player.Player(name, dob_str, address, phone_number, player_email, player_handle, link)

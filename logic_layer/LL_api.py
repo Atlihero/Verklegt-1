@@ -1,11 +1,13 @@
-from .LLPlayers import LLPlayer
-from .LLTeams import LLTeams
+from logic_layer.LLPlayers import LLPlayer
+from logic_layer.LLTeams import LLTeams
+from logic_layer.LLTournament import LLTournament
 from .LLCaptain import LLCaptain
 
 class LL_API:
     def __init__(self):
         self.player = LLPlayer()
         self.team = LLTeams()
+        self.tournament = LLTournament()
         self.captain = LLCaptain()
     
     """
@@ -68,6 +70,43 @@ class LL_API:
     
 
     """
+    Logic wrapper for Tournament
+    """
+
+    def get_contactInfo(self):
+        "Gets the contact infro for the tournament contact"
+        return self.tournament.get_contact_info()
+    
+    def update_contactInfo(self):
+        "updates the info for the contact"
+        return self.tournament.update_contact_info()
+    
+    def register_team(self):
+        "registers the team to the tournament"
+        return self.tournament.register_team()
+    
+    def scheduleGames(self):
+        "schedules games for the tournament"
+        return self.tournament.schedule_games()
+    
+    def recordResults(self):
+        "records the info from a game and declares the winner"
+        return self.tournament.record_result()
+    
+    def sum_Logic(self):
+        "Idont know what this does"
+        return self.tournament.sum_logic()
+    
+    def brackets(self):
+        "sets the brackets of the tournament"
+        return self.tournament.brackets_of_tournament()
+    
+    def Round(self):
+        "the round for the tournament"
+        return self.tournament.play_round()
+
+
+    """
     Logic layer wrapper for the LLCaptain
     """
 
@@ -82,3 +121,11 @@ class LL_API:
     def get_team_members(self, team_name):
         '''Return a list of Player objects in the team'''
         return self.captain.get_team_members(team_name)
+    
+    def cap_view_player_info(self, player_name, team_name):
+        '''Captain can see player info about members in his team'''
+        return self.captain.cap_see_player_info(player_name, team_name)
+
+    def organizer_view_player_info(self):
+        '''Organizer can see information about every player in the tournament'''
+        return self.captain.organizer_player_info()

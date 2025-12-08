@@ -1,8 +1,8 @@
 import csv
 from Models.Game import Game
 
-TOURNAMENT_PATH: str = r"_data\Tournament.csv"
-GAMES_PATH: str = r"_data\Games.csv"
+TOURNAMENT_PATH: str = r"_data/Tournament.csv"
+GAMES_PATH: str = r"_data/Games.csv"
 
 class TournamentIO:
 
