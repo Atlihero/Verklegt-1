@@ -4,6 +4,6 @@ class Organizer():
         self.adminLogin = adminLogin
         self.name = name 
     
-    #skila upllýsingunum
+    #skila upplýsingunum
     def __str__(self):
         return f"{self.adminLogin} \n {self.name}"
