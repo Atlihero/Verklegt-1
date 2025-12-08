@@ -16,7 +16,7 @@ class TeamIO:
         except ValueError: #in case of wrong inputs
             return f"Error message to be decided"
 
-    def add_new_team(team: list):
+    def _new_team(team: list):
         '''create an empty team with no players'''
         try: 
             with open(TEAM_PATH, "a",newline="", encoding="utf-8") as csvfile:
@@ -51,6 +51,27 @@ class TeamIO:
                 return "Teams added"
         except ValueError:
             return "Villa eittvhað fór úsrkeiðis"
+        
+    def get_team_wins_points(team_name: str):
+        """Finds wins and points for a team"""
+
+        with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
+            reader = csv.reader(csvfile)
+            header = next(reader, None)  # skip header
+
+            for row in reader:
+                # row = [TeamID, TeamName, Captain, Wins, Points]
+                if len(row) < 5:
+                    continue
+
+                name = row[1].strip('"')
+
+                if name == team_name:
+                    wins = int(row[3])
+                    points = int(row[4])
+                    return wins, points
+        
+        raise ValueError("Team was not found in Teams.csv")
 
     def get_all_teams() -> list:
             '''returns a list of all team names'''
