@@ -152,7 +152,7 @@ class LLTournament():
         '''want to return as a list, not a dict to have it easier to read'''
         tournament_list = [
             tournament_obj.unique_name,
-            tournament_obj.start_date.strftime("%d/%m/%Y"),
+            tournament_obj.start_date.strftime("%d/%m/%Y"), # takes out the timestamp
             tournament_obj.end_date.strftime("%d/%m/%Y"),
             tournament_obj.venue,
             tournament_obj.contact_person,
