@@ -109,6 +109,14 @@ class LL_API:
         "the round for the tournament"
         return self.tournament.play_round()
 
+    def get_all_tournaments(self):
+        return self.tournament.get_allTournamnets()
+
+    def create_new_tournament(self, tournament_obj: Tournament):
+        return self.tournament.new_tourney(tournament_obj)
+    
+    def brackets(self):
+        return self.tournament.run_bracket()
 
     """
     Logic layer wrapper for the LLCaptain
