@@ -1,7 +1,7 @@
 import csv
 from Models.Player import Player
 
-PLAYER_PATH: str = r"data_layer\_data\Players.csv"
+PLAYER_PATH: str = r"data_layer/_data/Players.csv"
  
 class PlayerIO:
 
@@ -12,7 +12,8 @@ class PlayerIO:
             """
             players = [] 
             with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
-                reader = csv.reader(csvfile)   
+                reader = csv.reader(csvfile)
+                #reader = csv.DictReader(csvfile) þurfum þennan frekar held ég, til að geta lesið skránna og skilað rétt
                 for row in reader:
                     if not row:
                         continue
@@ -21,13 +22,25 @@ class PlayerIO:
                     if row[0] == "Name":
                         continue
                         
-                    name, dob, address, phone, email, handle, team, points = row
+                    name, dob, address, phone, email, handle, link, team, points = row
 
-                    player = Player(name, dob, address, phone, email, handle, team, points)
+                    player = Player(name, dob, address, phone, email, handle, link, team, points)
                     players.append(player)
 
             return players
         
+    def get_player_PublicViewer(self):
+        try:
+            players = []
+            team = []
+            with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    players.append(row["Handle"])
+                    team.append(row["Team"])
+        except ValueError:
+            f"Error message"
+        return players, team
 
 
     def save_players(players: list[Player]):
@@ -38,7 +51,7 @@ class PlayerIO:
         with open(PLAYER_PATH, "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["Name", "DOB", "Address", "Phonenumber",
-                             "Email", "Handle", "Team", "Points"])
+                             "Email", "Handle", "link", "Team", "Points"])
             for p in players:
                 writer.writerow([
                     p.name,
@@ -47,6 +60,7 @@ class PlayerIO:
                     p.phone,
                     p.email,
                     p.handle,
+                    p.link,
                     p.team,
                     p.points,
                 ])
@@ -79,7 +93,3 @@ class PlayerIO:
         except ValueError:  #in case of wrong inputs 
             f"Error message to be decided"
         pass
-
-
-
-    
