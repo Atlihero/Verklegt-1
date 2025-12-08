@@ -33,9 +33,9 @@ class OrganizerUI:
                 print(error)
         
         while True:
-            contact_number = input("What is the contact phone for this tournament: ")
+            contact_phone = input("What is the contact phone for this tournament: ")
             try:
-                LL_API.valid_phone(contact_number)
+                LL_API.valid_phone(contact_phone)
                 break
             except ValueError as error:
                 print(error)
