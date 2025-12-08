@@ -21,9 +21,9 @@ class PlayerIO:
                     if row[0] == "Name":
                         continue
                         
-                    name, dob, address, phone, email, handle, team, points = row
+                    name, dob, address, phone, email, handle, link, team, points = row
 
-                    player = Player(name, dob, address, phone, email, handle, team, points)
+                    player = Player(name, dob, address, phone, email, handle, link, team, points)
                     players.append(player)
 
             return players
@@ -50,7 +50,7 @@ class PlayerIO:
         with open(PLAYER_PATH, "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["Name", "DOB", "Address", "Phonenumber",
-                             "Email", "Handle", "Team", "Points"])
+                             "Email", "Handle", "link", "Team", "Points"])
             for p in players:
                 writer.writerow([
                     p.name,
@@ -59,6 +59,7 @@ class PlayerIO:
                     p.phone,
                     p.email,
                     p.handle,
+                    p.link,
                     p.team,
                     p.points,
                 ])
