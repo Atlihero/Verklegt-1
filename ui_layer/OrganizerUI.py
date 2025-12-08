@@ -1,14 +1,23 @@
 from logic_layer.LL_api import LL_API
+from Models.Tournament import Tournament
 
-class OrganizerUI:
+class OrganizerUI():
 
     def createTournament(self):
-        unique_name = input("Create a unique name for the tournament: ")
-        
+        lapi = LL_API()
+    
+        while True:
+            unique_name = input("Create a unique name for the tournament: ")
+            try:
+                unique_name = lapi.valid_tournament_name(unique_name)
+                break
+            except ValueError as error:
+                print(error)
+
         while True:
             start_date = input("Select the start date of the tournament: ")
             try:
-                start_date = LL_API.valid_start_date(start_date)
+                start_date = lapi.valid_start_date(start_date)
                 break
             except ValueError as error:
                 print(error)
@@ -16,7 +25,7 @@ class OrganizerUI:
         while True:
             end_date = input("Select the end date of the tournament: ")
             try:
-                end_date = LL_API.valid_end_date(end_date)
+                end_date = lapi.valid_end_date(end_date, start_date)
                 break
             except ValueError as error:
                 print(error)
@@ -27,7 +36,7 @@ class OrganizerUI:
         while True:
             contact_email = input("What is the contact email for this tournament: ")
             try: 
-                LL_API.valid_email(contact_email)
+                lapi.valid_email(contact_email)
                 break
             except ValueError as error:
                 print(error)
@@ -35,20 +44,21 @@ class OrganizerUI:
         while True:
             contact_phone = input("What is the contact phone for this tournament: ")
             try:
-                LL_API.valid_phone(contact_phone)
+                lapi.valid_phone(contact_phone)
                 break
             except ValueError as error:
                 print(error)
         
         
-        tournament_dict = {
-            "unique_name": unique_name,
-            "start_date": start_date,
-            "end_date": end_date,
-            "venue": venue,
-            "contact_person": contact_person,
-            "contact_email": contact_email,
-            "contact_phone": contact_phone
-            }
-        api = LL_API()
-        return api.create_new_tournaments(tournament_dict)
+    # have it as an object not an dict.
+        tournament_obj = Tournament( 
+            unique_name=unique_name,
+            start_date=start_date,
+            end_date=end_date,
+            venue=venue,
+            contact_person=contact_person,
+            contact_email=contact_email,
+            contact_phone=contact_phone
+        )
+
+        return lapi.create_new_tournament(tournament_obj)

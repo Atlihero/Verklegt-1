@@ -3,15 +3,17 @@ from .LLTeams import LLTeams
 from .LLCaptain import LLCaptain
 from .LLTournament import LLTournament
 from .LLOrganizer import LLOrganizer
+from data_layer.TournamentIO import TournamentIO
+from Models.Tournament import Tournament
 
 class LL_API:
     def __init__(self):
         self.player = LLPlayer()
         self.team = LLTeams()
-        #self.captain = LLCaptain()
-        self.captain = LLCaptain(self.player, self.team)
+        self.captain = LLCaptain()
         self.tournament = LLTournament()
-        self.organizer = LLOrganizer
+        self.organizer = LLOrganizer()
+        self.tournamentio = TournamentIO()
     
     """
     The Logic layer wrapper for the LLPlayer
@@ -47,9 +49,10 @@ class LL_API:
         "loads a team from the csv"
         return self.team._load_teams_from_csv()
     
-    def add_player(self, team_name, player_name):
+    # þurfum þetta per se ekki
+    #def add_player(self, team_name, player_name):
         "add player to team"
-        return self.team.add_player_to_team(team_name, player_name)
+        #return self.team.add_player_to_team(team_name, player_name)
     
     def get_teams(self, name):
         "gets the team by name"
@@ -147,20 +150,23 @@ class LL_API:
     
     def get_all_tournaments(self):
         return self.tournament.get_allTournamnets()
-    
-    def create_new_tournaments(self, tournament_dict: dict):
-        return self.tournament.new_tourney(tournament_dict)
+
+    def create_new_tournament(self, tournament_obj: Tournament):
+        return self.tournament.new_tourney(tournament_obj)
     
     def brackets(self):
         return self.tournament.run_bracket()
-    
+  
 
     """
     Logic wrapper for Organizer
     """
 
-    def valid_start_date(self):
-        return self.organizer.choose_start_date()
+    def valid_tournament_name(self, name):
+        return self.organizer.tournament_name(name)
     
-    def valid_end_date(self):
-        return self.organizer.choose_end_date()
+    def valid_start_date(self, start_date):
+        return self.organizer.choose_start_date(start_date)
+    
+    def valid_end_date(self, end_date, start_date):
+        return self.organizer.choose_end_date(end_date, start_date)

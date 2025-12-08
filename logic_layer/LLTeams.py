@@ -9,7 +9,7 @@ class LLTeams:
 
 
 	def _load_teams_from_csv(self):
-		raw_rows = TeamIO.get_team()
+		raw_rows = TeamIO.get_team(self)
 		teams: list[Team] = []
 
 		for line in raw_rows:   # Loops each line from the csv
@@ -35,9 +35,9 @@ class LLTeams:
 
 		return teams
 
-
-	def add_player_to_team(self, team_name: str, player_name: str):
-		'''Captain wants to add a player to his team.'''
+# ættum ekki að þurfa þetta fall, erum með í LLCaptain.py sem tékkar líka á stærð á liðunu
+	'''def add_player_to_team(self, team_name: str, player_name: str):
+		Captain wants to add a player to his team.
 
 		# Check if team exists
 		team = self.get_team_by_name(team_name)
@@ -61,7 +61,7 @@ class LLTeams:
 		if player_to_add.team == team.name:
 			raise ValueError("The player is already in this team. Please choose another player.")
 		
-		'''# bæta við að ef leikmaður er í öðru liði'''
+		# bæta við að ef leikmaður er í öðru liði
 		
 		# Update Players team
 		player_to_add.team = team.name
@@ -69,7 +69,7 @@ class LLTeams:
 		# Save player list through PlayerIO
 		PlayerIO.create_new_player(players)  
 
-		return player_to_add
+		return player_to_add'''
 
 
 	def get_team_by_name(self, name: str): 

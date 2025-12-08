@@ -1,7 +1,6 @@
 from data_layer.PlayerIO import PlayerIO
-from logic_layer.LLTeams import LLTeams
+from .LLTeams import LLTeams
 from data_layer.data_api import DataAPI
-from logic_layer.LL_api import LL_API
 
 class LLCaptain():
     
@@ -19,8 +18,7 @@ class LLCaptain():
             
     def add_player_to_team(self, team_name: str, player_name: str):
         '''Used to check if team already has 5 players, '''
-        #team_players = self.get_team_members(team_name)
-        team = LL_API.get_teams(team_name)
+        team = self.ll_teams.get_team_by_name(team_name)
         if team is None:
             raise ValueError("Team not found")
         
@@ -32,7 +30,7 @@ class LLCaptain():
         # Get all players
         all_players = PlayerIO().get_players()
 
-        # Find the player to add
+        # Find the player to add from a list
         player_to_add = None
         for p in all_players:
             if p.get("Name") == player_name:
@@ -42,14 +40,14 @@ class LLCaptain():
         if player_to_add is None:
             raise ValueError("Player not found.")
 
-        # Check if player is already in a team
+        # have to check if player is already in a team
         if player_to_add.get("Team") not in (None, "", team_name):
             raise ValueError(f"{player_name} is already in another team.")
 
-        # Assign player to team
+        # if player not in any team then we add to our team
         player_to_add.get("Team") == team_name
 
-        # Save updated player list
+        # Update players.csv and save changes
         PlayerIO.save_players(all_players)
         return player_to_add
     
@@ -78,7 +76,6 @@ class LLCaptain():
 
     def cap_see_player_info(self, team_name: str, player_name: str):
         '''Allows captains to see the players info that are on their team'''
-        #team_players = self.get_team_members(team_name)
         team_players = self.get_team_members(team_name)
         for player in team_players:
             if player.get("Name") == player_name:
