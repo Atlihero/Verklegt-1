@@ -6,7 +6,7 @@ def main():
     stats_ll = LLStatistics()
 
     # === TEAM STATS TEST ===
-    team_name = "Black in Yellow"
+    team_name = "Explorer Crew"
 
     try:
         team_stats = stats_ll.calculate_team_stats(team_name)
@@ -31,7 +31,7 @@ def main():
 
     # === PLAYER STATS TEST ===
     print("\n=== Player stats test ===")
-    player_name = "Bruse wayne"   # veldu einhvern sem þú veist að er til í CSV
+    player_name = "Bruse wayne"   # chose a player that is in the csv
 
     try:
         p_stats = stats_ll.calculate_player_stats(player_name)
