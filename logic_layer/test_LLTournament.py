@@ -1,4 +1,4 @@
-from logic_layer.LLTournament import Tournament
+from LLTournament import Tournament
 
 def main():
     # create a tournament instance

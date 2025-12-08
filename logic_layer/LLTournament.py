@@ -7,7 +7,7 @@ class Tournament():
         self._next_game_id  = 1
 
 
-        self.teams = [ "Team1" , "Team2", "Team3 ", "Team4", "Team5", "Team6", "Team7", "Team8", 
+        self.teams = ["Team1" , "Team2", "Team3 ", "Team4", "Team5", "Team6", "Team7", "Team8", 
                     "Team9", "Team10", "Team11", "Team12", "Team13", "Team14", "Team15", "Team16"]
 
     # CONTACT Information 
@@ -120,13 +120,22 @@ class Tournament():
 
         # brackets , round of 16, quartefinals, semifinals , final 
 
-        if self.teams != 16 : 
+        if len(self.teams) < 16 : 
             raise ValueError ("There has to be at least 16 teams in the Tournament!")
+        
+        if self.teams % 2!= 0:
+            raise ValueError("The amount of teams has to be even")
         
 
         # split 16 teams into two sides (8 teams on the left, 8 teams on the right)        #!!! can be more than 16 teams 
         left_teams = self.teams[:8]
         right_teams = self.teams[8:]
+
+        # split an even Amount of Teams in two sides, more than 16
+
+        mid = len(self.teams) // 2 
+        left_teams = self.teams[:mid]
+        right_teams = self.teams[mid:]
 
         # rounds of the left teams
 
@@ -136,7 +145,7 @@ class Tournament():
         champion_left = round3_winners_left[0]
         print(f"The winner from the left side is , {champion_left} !")
 
-    # rounds of the right teams
+        # rounds of the right teams
 
         round1_winners_right = self.play_round(right_teams)
         round2_winners_right = self.play_round (round1_winners_right)
@@ -144,11 +153,18 @@ class Tournament():
         champion_right= round3_winners_right
         print(f"The winner from the right side is , {champion_right}")
 
+        # Úrslitaleikur / Final 
+
+        finalists = self.play_round([champion_left, champion_right])
+
+        final_winner = finalists[0]
+        print(f"The Tournamenyt winner is , {final_winner} !")
+
 
     def play_round(self, teams: list[str]) ->list [str]:
         winners = list[str] = []
 
-        # 
+        #th
 
         for  i in range (0, len(teams), 2):
              team1= teams[i]
@@ -165,15 +181,7 @@ class Tournament():
              else: 
                 winners.append(team2)
         
-        return winners 
-    
-    # Úrslitaleikur / FINAL
-
-    finalists = self.play_round([champion_left, champion_right])
-
-    final_winner = finalists[0]
-    print(f"The Tournamenyt winner is , {final_winner} !")
-
+        return winners
         
 
     
