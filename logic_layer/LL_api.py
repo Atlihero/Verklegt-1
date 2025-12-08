@@ -3,7 +3,6 @@ from .LLTeams import LLTeams
 from .LLCaptain import LLCaptain
 from .LLTournament import LLTournament
 from .LLOrganizer import LLOrganizer
-from data_layer.TournamentIO import TournamentIO
 from Models.Tournament import Tournament
 
 class LL_API:
@@ -13,7 +12,6 @@ class LL_API:
         self.captain = LLCaptain()
         self.tournament = LLTournament()
         self.organizer = LLOrganizer()
-        self.tournamentio = TournamentIO()
     
     """
     The Logic layer wrapper for the LLPlayer
