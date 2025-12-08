@@ -1,5 +1,6 @@
 from datetime import datetime
 from data_layer.data_api import DataAPI
+from data_layer.PlayerIO import PlayerIO
 
 class LLOrganizer():
     
@@ -48,7 +49,7 @@ class LLOrganizer():
         except ValueError:
             raise ValueError ("Invalid date. Use DD/MM/YYYY")
     
-	def organizer_player_info(self):
-        '''Allows the organizer to see all the players information'''
+    def organizer_player_info(self):
+        """Allows the organizer to see all the players information"""
         all_players = PlayerIO.get_players()
         return all_players
