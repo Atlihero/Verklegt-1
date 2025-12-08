@@ -1,31 +1,18 @@
 import csv
+from typing import Dict, Any, List      #skoða seinna
 from logic_layer.LLTeams import LLTeams
 from data_layer.TeamIO import TEAM_PATH
 from data_layer.PlayerIO import PlayerIO
 from data_layer.TeamIO import TeamIO
 
 class LLStatistics:
-#Data maniger !!!!
-
-#calculate team stats
-#calculate player stats
-#calculate club stats = B recuerment
-    #hvert lið tilheyrir club
-    # hefur einstakt nafn
-    # hefur sitt land og heimabæ
-
-    # !! tveir clubs ekki sama nafn og úr sama bæ
-
     def __init__(self):
         self.ll_teams = LLTeams()
 
 
-
-
-    def calculate_team_stats(self, team_name: str):
-        """stig eftir sigur mót og fram..
-        í hvaða mótum hann hefur tekið þátt í
-        """
+    def calculate_team_stats(self, team_name: str) -> Dict[str, Any]:
+        """Points after winning tournament,
+        what tournaments he has particapated in"""
 
         # Validate that team exists in LLTeams
         team = self.ll_teams.get_team_by_name(team_name)
@@ -59,25 +46,8 @@ class LLStatistics:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    def calculate_player_stats(self, player_name: str):
-        """player skorar mark == stats eða sigur == stats og fram. 
-        fyrir hvaða lið hann hefur spilað ef hann hefur skipt um lið
-        fyrir hvaða klúbba hann hefur spilað fyrir"""
+    def calculate_player_stats(self, player_name: str) -> Dict[str, Any]:
+        """ What team does he play for, what club"""
         
         # Get all players
         players = PlayerIO.get_players()
@@ -118,23 +88,15 @@ class LLStatistics:
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    def calculate_club_stats():
-        """mörk hjá club og sigur
-        hefur sitt land og heimabæ"""
+    def calculate_club_stats() -> Dict[str, Any]:
+        """Glubs poinst and wins
+        has a country and hometown"""
         pass
+
 
     def view_results():
-        "áhorfandi vill skoða úrslit leikja"
+        "viewer wants to view final results"
         pass
+
+
+
