@@ -1,8 +1,22 @@
 from datetime import datetime
+from data_layer.data_api import DataAPI
+
 class LLOrganizer():
 
-    def create_tournament(self):
-        pass
+    def tournament_name(self, name: str):
+        '''Checks if name is unique or missing a name'''
+        #check if name is just empty, so just space or something
+        name = name.strip()
+        if not name:
+            raise ValueError("Tournament name cannot be emtpy. Please enter a valid name.")
+        
+        existing_name = DataAPI.get_all_tournaments()
+        for name in existing_name:
+            if existing_name == name:
+                raise ValueError("Name already exists, please choose another one.")
+        
+        return name
+    
 
     def choose_date(self, start_date: str) -> datetime:
         pass
