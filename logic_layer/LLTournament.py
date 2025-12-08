@@ -24,6 +24,10 @@ class LLTournament():
         if new_phone:
             self.new_phone = new_phone
 
+    # def update_conta(self, contact: str="", email: str="" etc..)
+        # if contract is not None:
+        #   self.contract = contract etc..
+
 
     def register_team(self, team_name: str= "", players : list[str]= None):
         '''Scheme of registering a team, a team name cant be twice in one Tournament '''
@@ -33,11 +37,12 @@ class LLTournament():
         self.team_name = team_name
 
         if len(players) < 1: 
-            raise ValueError ("A team must have at least 1 player ")
+            raise ValueError ("A team must have at least 1 player. Please add more players to the team.")
         
         # new team object , not a paramater yk 
         team = team(name=team_name , players = players )
-        self.tournament.teams.append(team)
+        #team = {"name": team_name, "players": players} #??
+        self.tournament.teams.append(team) # þarf að gera tournament hér
         return team 
 
 
@@ -118,7 +123,7 @@ class LLTournament():
         round1_winners_right = self.play_round(right_teams)
         round2_winners_right = self.play_round (round1_winners_right)
         round3_winners_right = self.play_round (round2_winners_right)
-        champion_right= round3_winners_right
+        champion_right= round3_winners_right #[0]
         print(f"The winner from the right side is , {champion_right}")
 
 

@@ -130,3 +130,24 @@ class LL_API:
     def Round(self):
         "the round for the tournament"
         return self.tournament.play_round()
+    
+
+    """
+    Logic wrapper for Tournament
+    """    
+    def sum_Logic(self):
+        "Idont know what this does"
+        return self.tournament.sum_logic()
+    
+    def Round(self):
+        "the round for the tournament"
+        return self.tournament.play_round()
+    
+    def get_all_tournaments(self):
+        return self.tournament.get_allTournamnets()
+    
+    def create_new_tournaments(self, tournament_dict: dict):
+        return self.tournament.new_tourney(tournament_dict)
+    
+    def brackets(self):
+        return self.tournament.run_bracket()
