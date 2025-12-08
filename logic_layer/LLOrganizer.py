@@ -48,3 +48,7 @@ class LLOrganizer():
         except ValueError:
             raise ValueError ("Invalid date. Use DD/MM/YYYY")
     
+	def organizer_player_info(self):
+        '''Allows the organizer to see all the players information'''
+        all_players = PlayerIO.get_players()
+        return all_players
