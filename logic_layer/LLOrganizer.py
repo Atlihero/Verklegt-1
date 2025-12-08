@@ -3,11 +3,11 @@ from data_layer.data_api import DataAPI
 from data_layer.PlayerIO import PlayerIO
 
 class LLOrganizer():
+    
     def __init__(self):
         self.dapi = DataAPI()
     
     def tournament_name(self, name: str) -> str:
-        
         '''Checks if name is unique or missing a name'''
         # check if name is just empty, so just space or something
         name = name.strip()
@@ -23,7 +23,7 @@ class LLOrganizer():
        
 
     def choose_start_date(self, start_date: str) -> datetime:
-
+        '''Check if the start_date for a tournament is a valid date'''
         try:
             # change string input to datetime
             start_date = datetime.strptime(start_date, "%d/%m/%Y")
@@ -34,9 +34,10 @@ class LLOrganizer():
             return start_date
         except ValueError:
             raise ValueError ("Invalid date. Use DD/MM/YYYY")
+
     
     def choose_end_date(self, end_date, start_date) -> datetime:
-
+        '''Check if the end date for a tournament is a valid date'''
         try:
             # change string input to datetime
             end_date = datetime.strptime(end_date, "%d/%m/%Y")
@@ -49,14 +50,6 @@ class LLOrganizer():
             raise ValueError ("Invalid date. Use DD/MM/YYYY")
     
     def organizer_player_info(self):
-        '''Allows the organizer to see all the players information'''
+        """Allows the organizer to see all the players information"""
         all_players = PlayerIO.get_players()
         return all_players
-
-
-# create tournament
-    # skrá tengilið
-# choose location
-# choose start and end date
-# búa til leikjadagskrá
-# getur séð persónuupplýsingar

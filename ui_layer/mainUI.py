@@ -1,13 +1,13 @@
-from logic_layer.LL_api import LLAPI
-from logic_layer.LLPlayers import LLPlayer
-from logic_layer.LLStatistics import LLStatistics
-from logic_layer.LLTeams import LLTeams
-from logic_layer.LLTournament import LLTournament
+from logic_layer.LL_api import LL_API
+from ui_layer.Happy_path import Happy_paths
 
-class MainUI:
-    def __init__(self, LLAPI):
-        self.api = LLAPI
-        self.players = LLPlayer()
-        self.statistics = LLStatistics()
-        self.teams = LLTeams()
-        self.tournaments = LLTournament()
+class Uimain:
+    """bleb blob"""
+   
+    def __init__(self) -> None:
+        """sup laddara"""
+        LL_api = LL_API()
+        self.paths = Happy_paths()
+
+    def start(self) -> None:
+        """blobmaxing"""

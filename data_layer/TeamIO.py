@@ -4,7 +4,7 @@ TEAM_PATH: str = r"data_layer/_data/Teams.csv" #path to the teams csv
 
 class TeamIO:
 
-    def get_team(self):
+    def get_team():
         '''returns a list of players for a specific team'''
         try:
             Teams = [] #Empty list in which the team that is chosen goes into
@@ -12,11 +12,10 @@ class TeamIO:
                 reader  = csvfile.readlines() #reads the linse in the csv
                 for row in reader: #for loop that goes through the lines to look for the right team
                     Teams.append(row) #append the team chosen to the list
-            return Teams #returns the list
         except ValueError: #in case of wrong inputs
             return f"Error message to be decided"
-    
-    
+        return Teams #returns the list
+        
     def getTeam_public(self):
         try:
             teams = []
@@ -29,8 +28,7 @@ class TeamIO:
         except ValueError:
             f"error message"
         return teams, captain
-    
-    
+
     def _new_team(team: list):
         '''create an empty team with no players'''
         try: 
@@ -54,19 +52,7 @@ class TeamIO:
         except ValueError:  #in case of wrong inputs 
             f"Error message to be decided"
         pass
-
-
-    def add_new_team(self, team: list):
-        '''create an empty team with no players'''
-        try: 
-            with open(TEAM_PATH, "a",newline="", encoding="utf-8") as csvfile:
-                writer = csv.writer(csvfile) #here the user writes in the details needed for a team like the name
-                writer.writerow(team) #prints what was written in a new row
-            return f"New Team added :)"    
-        except ValueError:   #in case of wrong inputs 
-            f"Error message to be decided"
-
-
+        
     def add_teams_to_tournament(tournament: str, teams: list):
         if len(teams) != 16:
             return "Error, not enough teams in the tournament. There has to be 16 teams."
@@ -78,8 +64,7 @@ class TeamIO:
                 return "Teams added"
         except ValueError:
             return "Villa eittvhað fór úsrkeiðis"
-
-
+        
     def get_team_wins_points(team_name: str):
         """Finds wins and points for a team"""
 
@@ -100,16 +85,15 @@ class TeamIO:
                     return wins, points
         
         raise ValueError("Team was not found in Teams.csv")
-        
 
-    def get_all_teams(self) -> list:
+    def get_all_teams() -> list:
             '''returns a list of all team names'''
             teams: list = []
             try:
-                #with open(TEAM_PATH, "a", newline="", encoding="utf-8") as csvfile:
-                with open(TEAM_PATH, "r", newline="", encoding="utf-8") as csvfile:
-                    #reader = csv.writer(csvfile)
-                    reader = csv.reader(csvfile)
+                with open(TEAM_PATH, "a", newline="", encoding="utf-8") as csvfile:
+                #with open(TEAM_PATH, "r", newline="", encoding="utf-8") as csvfile: þetta virkar fyrir OrganizerUI
+                    reader = csv.writer(csvfile)
+                    #reader = csv.reader(csvfile)
                     for row in reader:
                         if row:
                             teams.append(row[0])

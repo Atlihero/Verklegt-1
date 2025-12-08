@@ -1,6 +1,7 @@
 from data_layer.PlayerIO import PlayerIO
-from .LLTeams import LLTeams
+from logic_layer.LLTeams import LLTeams
 from data_layer.data_api import DataAPI
+
 
 class LLCaptain():
     
@@ -8,18 +9,19 @@ class LLCaptain():
 
     def __init__(self):
         self.ll_teams = LLTeams()
-
+        
 
     def get_team_members(self, team_name: str):
         '''Check if players are in this team and return a list of members'''
         all_players = DataAPI.get_all_players()
         team_members = [p for p in all_players if p.get("Team") == team_name]
         return team_members
-            
 
+    
     def add_player_to_team(self, team_name: str, player_name: str):
         '''Used to check if team already has 5 players, '''
-        team = self.ll_teams.get_team_by_name(team_name)
+        #team_players = self.get_team_members(team_name)
+        team = self.ll_teams.get_teams(team_name)
         if team is None:
             raise ValueError("Team not found")
         
@@ -41,7 +43,7 @@ class LLCaptain():
         if player_to_add is None:
             raise ValueError("Player not found.")
 
-        # have to check if player is already in a team
+        # Check if player is already in a team
         if player_to_add.get("Team") not in (None, "", team_name):
             raise ValueError(f"{player_name} is already in another team.")
 
@@ -83,5 +85,4 @@ class LLCaptain():
                 return player
             #if player not found in the team
         raise ValueError("Player is not in this team. Please try another player.")
-    
-    
+        

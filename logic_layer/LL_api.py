@@ -1,7 +1,7 @@
-from .LLPlayers import LLPlayer
-from .LLTeams import LLTeams
+from logic_layer.LLPlayers import LLPlayer
+from logic_layer.LLTeams import LLTeams
+from logic_layer.LLTournament import LLTournament
 from .LLCaptain import LLCaptain
-from .LLTournament import LLTournament
 from .LLOrganizer import LLOrganizer
 from Models.Tournament import Tournament
 
@@ -9,9 +9,10 @@ class LL_API:
     def __init__(self):
         self.player = LLPlayer()
         self.team = LLTeams()
-        self.captain = LLCaptain()
         self.tournament = LLTournament()
+        self.captain = LLCaptain()
         self.organizer = LLOrganizer()
+
     
     """
     The Logic layer wrapper for the LLPlayer
@@ -47,10 +48,9 @@ class LL_API:
         "loads a team from the csv"
         return self.team._load_teams_from_csv()
     
-    # þurfum þetta per se ekki
-    #def add_player(self, team_name, player_name):
+    def add_player(self, team_name, player_name):
         "add player to team"
-        #return self.team.add_player_to_team(team_name, player_name)
+        return self.team.add_player_to_team(team_name, player_name)
     
     def get_teams(self, name):
         "gets the team by name"
@@ -60,9 +60,9 @@ class LL_API:
         "Check if team has this name"
         return self.team.team_exists(name)
 
-    def add_team(self, team_name, captain_name, asciiLogo):
+    def add_team(self, name, captain, asciiLogo):
         "creates a new team"
-        return self.team.create_team(team_name, captain_name, asciiLogo)
+        return self.team.create_team(name, captain, asciiLogo)
 
     def select_captains(self, team_name, new_captain):
         "selects a new captain for a team"
@@ -72,28 +72,6 @@ class LL_API:
         "Public viewer wants to view teams"
         return self.team.view_teams() 
     
-
-    """
-    Logic layer wrapper for the LLCaptain
-    """
-
-    def remove_player_from_team(self, team_name, player_name):
-        '''Captain removes a player from their team'''
-        return self.captain.remove_from_team(player_name, team_name)
-    
-    def add_player_to_team(self, team_name, player_name):
-        '''Captain adds a player to their team'''
-        return self.captain.add_player_to_team(team_name, player_name)
-
-    def get_team_members(self, team_name):
-        '''Return a list of Player objects in the team'''
-        return self.captain.get_team_members(team_name)
-    
-    def cap_view_player_info(self, player_name, team_name):
-        '''Captain can see player info about members in his team'''
-        return self.captain.cap_see_player_info(player_name, team_name)
-
-
 
     """
     Logic wrapper for Tournament
@@ -130,28 +108,34 @@ class LL_API:
     def Round(self):
         "the round for the tournament"
         return self.tournament.play_round()
-    
 
-    """
-    Logic wrapper for Tournament
-    """    
-    def sum_Logic(self):
-        "Idont know what this does"
-        return self.tournament.sum_logic()
-    
-    def Round(self):
-        "the round for the tournament"
-        return self.tournament.play_round()
-    
     def get_all_tournaments(self):
         return self.tournament.get_allTournamnets()
 
     def create_new_tournament(self, tournament_obj: Tournament):
         return self.tournament.new_tourney(tournament_obj)
     
-    def brackets(self):
-        return self.tournament.run_bracket()
-  
+
+    """
+    Logic layer wrapper for the LLCaptain
+    """
+
+    def remove_player_from_team(self, team_name, player_name):
+        '''Captain removes a player from their team'''
+        return self.captain.remove_from_team(player_name, team_name)
+    
+    def add_player_to_team(self, team_name, player_name):
+        '''Captain adds a player to their team'''
+        return self.captain.add_player_to_team(team_name, player_name)
+
+    def get_team_members(self, team_name):
+        '''Return a list of Player objects in the team'''
+        return self.captain.get_team_members(team_name)
+    
+    def cap_view_player_info(self, player_name, team_name):
+        '''Captain can see player info about members in his team'''
+        return self.captain.cap_see_player_info(player_name, team_name)
+
 
     """
     Logic wrapper for Organizer
@@ -165,8 +149,8 @@ class LL_API:
     
     def valid_end_date(self, end_date, start_date):
         return self.organizer.choose_end_date(end_date, start_date)
-    
+
     def organizer_view_player_info(self):
         '''Organizer can see information about every player in the tournament'''
         return self.organizer.organizer_player_info()
-    
+
