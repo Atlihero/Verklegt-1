@@ -9,7 +9,7 @@ class Uimain:
         LL_api = LL_API()
         self.paths = Happy_paths()
 
-    def __start__(self) -> None:
+    def start(self) -> None:
         """blobmaxing"""
         
     
