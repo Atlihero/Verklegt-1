@@ -2,6 +2,8 @@ from logic_layer.LLPlayers import LLPlayer
 from logic_layer.LLTeams import LLTeams
 from logic_layer.LLTournament import LLTournament
 from .LLCaptain import LLCaptain
+from .LLOrganizer import LLOrganizer
+from Models.Tournament import Tournament
 
 class LL_API:
     def __init__(self):
@@ -9,6 +11,8 @@ class LL_API:
         self.team = LLTeams()
         self.tournament = LLTournament()
         self.captain = LLCaptain()
+        self.organizer = LLOrganizer()
+
     
     """
     The Logic layer wrapper for the LLPlayer
@@ -33,9 +37,9 @@ class LL_API:
         "validates the link of the new players"
         return self.player.validate_link(link)
     
-    def create_player(self, name, dob_string, phone, email, handle, link):
+    def create_player(self, name, dob_string, address, phone, email, handle, link=""):
         "creates a new player"
-        return self.player.create_player(name, dob_string, phone, email, handle, link)
+        return self.player.create_player(name, dob_string, address, phone, email, handle, link)
     
     """
     Logic layer wrapper for the LLTeams
@@ -129,3 +133,18 @@ class LL_API:
     def organizer_view_player_info(self):
         '''Organizer can see information about every player in the tournament'''
         return self.captain.organizer_player_info()
+
+
+    """
+    Logic wrapper for Organizer
+    """
+
+    def valid_tournament_name(self, name):
+        return self.organizer.tournament_name(name)
+    
+    def valid_start_date(self, start_date):
+        return self.organizer.choose_start_date(start_date)
+    
+    def valid_end_date(self, end_date, start_date):
+        return self.organizer.choose_end_date(end_date, start_date)
+
