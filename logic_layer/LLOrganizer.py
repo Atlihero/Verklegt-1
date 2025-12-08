@@ -4,7 +4,7 @@ class LLOrganizer():
     def __init__(self):
         self.ll = LLOrganizer()
 
-    def create_tournament(self):
+    def tournament_name(self):
         pass
 
     def choose_start_date(self, start_date: str) -> datetime:
@@ -36,6 +36,7 @@ class LLOrganizer():
 
     def choose_location(self):
         pass
+        
         
 
     def choose_contanct(self):

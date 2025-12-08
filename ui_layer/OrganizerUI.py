@@ -21,13 +21,26 @@ class OrganizerUI:
             except ValueError as error:
                 print(error)
 
-
-
-        venue = input("Select the venue for the tournament: ")
+        venue = input("Enter the name of a venue (location) for the tournament: ")
         contact_person = input("Name the contact person for this tournament: ")
-        contact_email = input("What is the contact email for this tournament: ")
-        contact_phone = input("What is the contact phone for this tournament: ")
-
+        
+        while True:
+            contact_email = input("What is the contact email for this tournament: ")
+            try: 
+                LL_API.valid_email(contact_email)
+                break
+            except ValueError as error:
+                print(error)
+        
+        while True:
+            contact_number = input("What is the contact phone for this tournament: ")
+            try:
+                LL_API.valid_phone(contact_number)
+                break
+            except ValueError as error:
+                print(error)
+        
+        
         tournament_dict = {
             "unique_name": unique_name,
             "start_date": start_date,
