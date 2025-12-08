@@ -21,7 +21,7 @@ class LLCaptain():
     def add_player_to_team(self, team_name: str, player_name: str):
         '''Used to check if team already has 5 players, '''
         #team_players = self.get_team_members(team_name)
-        team = LL_API.get_teams(team_name)
+        team = self.ll_teams.get_teams(team_name)
         if team is None:
             raise ValueError("Team not found")
         
