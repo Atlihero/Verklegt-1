@@ -33,7 +33,7 @@ class LLCaptain():
         # Get all players
         all_players = PlayerIO().get_players()
 
-        # Find the player to add
+        # Find the player to add from a list
         player_to_add = None
         for p in all_players:
             if p.get("Name") == player_name:
@@ -47,10 +47,10 @@ class LLCaptain():
         if player_to_add.get("Team") not in (None, "", team_name):
             raise ValueError(f"{player_name} is already in another team.")
 
-        # Assign player to team
+        # if player not in any team then we add to our team
         player_to_add.get("Team") == team_name
 
-        # Save updated player list
+        # Update players.csv and save changes
         PlayerIO.save_players(all_players)
         return player_to_add
     
@@ -79,12 +79,11 @@ class LLCaptain():
 
     def cap_see_player_info(self, team_name: str, player_name: str):
         '''Allows captains to see the players info that are on their team'''
-        #team_players = self.get_team_members(team_name)
         team_players = self.get_team_members(team_name)
         for player in team_players:
             if player.get("Name") == player_name:
                 return player
-            #if player not found
+            #if player not found in the team
         raise ValueError("Player is not in this team. Please try another player.")
     
             
