@@ -18,9 +18,6 @@ class LLOrganizer():
         return name
     
 
-    def tournament_name(self):
-        pass
-
     def choose_start_date(self, start_date: str) -> datetime:
 
         try:
