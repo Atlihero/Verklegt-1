@@ -13,7 +13,13 @@ class OrganizerUI:
             except ValueError as error:
                 print(error)
 
-        end_date = input("Select end date for the tournament: ")
+        while True:
+            end_date = input("Select the end date of the tournament: ")
+            try:
+                end_date = LL_API.valid_end_date(end_date)
+                break
+            except ValueError as error:
+                print(error)
 
 
 

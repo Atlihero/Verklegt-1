@@ -160,4 +160,7 @@ class LL_API:
     """
 
     def valid_start_date(self):
-        return self.organizer.choose_start_date(start_date)
+        return self.organizer.choose_start_date()
+    
+    def valid_end_date(self):
+        return self.organizer.choose_end_date()
