@@ -97,6 +97,3 @@ class LLStatistics:
     def view_results():
         "viewer wants to view final results"
         pass
-
-
-

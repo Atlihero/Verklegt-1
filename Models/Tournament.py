@@ -15,9 +15,8 @@ class Tournament:
         self.contact_person = contact_person
         self.contact_email = contact_email
         self.contact_phone = contact_phone
-
-
-    "Skilar öllum upplýsingum mótsins í nýrri línu"
+    
+    #Skilar öllum upplýsingum mótsins def í nýrri línu
 
     def __str__(self, unique_name, start_date, end_date, venue, contact_person, contact_email, contact_phone):
         return f"{unique_name}:\n{start_date}:\n{end_date}:\n{venue}:\n{contact_person}:\n{contact_email}:\n{contact_phone}"
