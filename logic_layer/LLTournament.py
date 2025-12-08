@@ -1,3 +1,8 @@
+from Models.Tournament import Tournament 
+from Models.Round import Round 
+from data_layer.data_api import DataAPI
+
+
 class Tournament():
 
     #16 teams in the tournament
@@ -200,15 +205,6 @@ class Tournament():
                 winners.append(team2)
         
         return winners
-    
-
-
-
-
-
-
-        
-
     
 
 
