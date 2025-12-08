@@ -8,7 +8,6 @@ class LLCaptain():
 
     def __init__(self):
         self.ll_teams = LLTeams()
-        
 
 
     def get_team_members(self, team_name: str):
@@ -16,8 +15,8 @@ class LLCaptain():
         all_players = DataAPI.get_all_players()
         team_members = [p for p in all_players if p.get("Team") == team_name]
         return team_members
+            
 
-    
     def add_player_to_team(self, team_name: str, player_name: str):
         '''Used to check if team already has 5 players, '''
         team = self.ll_teams.get_team_by_name(team_name)
@@ -82,11 +81,7 @@ class LLCaptain():
         for player in team_players:
             if player.get("Name") == player_name:
                 return player
-            #if player not found
+            #if player not found in the team
         raise ValueError("Player is not in this team. Please try another player.")
     
-            
-    def organizer_player_info(self):
-        '''Allows the organizer to see all the players information'''
-        all_players = PlayerIO.get_players()
-        return all_players
+    

@@ -128,21 +128,3 @@ class CaptainUI:
             print("Error: ", error)
 
 
-    def organizer_see_info(self) -> None:
-        '''The organizer can see player information for every player in the tournament'''
-
-        try:
-            players = self.ll.organizer_view_player_info()
-        except ValueError as error:
-            print("Error: ", error)
-            return
-        
-        if not players:
-            print("There are no players in the tournament.")
-            return
-
-        for p in players:
-            print(f"\nPlayer Information for {p.get('Name')}:")
-            for attr, value in vars(p).items():
-                print(f"{attr}: {value}")
-            print("-" * 30)

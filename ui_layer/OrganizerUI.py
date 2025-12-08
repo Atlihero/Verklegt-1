@@ -3,13 +3,15 @@ from Models.Tournament import Tournament
 
 class OrganizerUI():
 
-    def createTournament(self):
-        lapi = LL_API()
+    def __init__(self):
+        self.ll = LL_API()
     
+    def createTournament(self) -> Tournament:
+        
         while True:
             unique_name = input("Create a unique name for the tournament: ")
             try:
-                unique_name = lapi.valid_tournament_name(unique_name)
+                unique_name = self.ll.valid_tournament_name(unique_name)
                 break
             except ValueError as error:
                 print(error)
@@ -17,7 +19,7 @@ class OrganizerUI():
         while True:
             start_date = input("Select the start date of the tournament: ")
             try:
-                start_date = lapi.valid_start_date(start_date)
+                start_date = self.ll.valid_start_date(start_date)
                 break
             except ValueError as error:
                 print(error)
@@ -25,7 +27,7 @@ class OrganizerUI():
         while True:
             end_date = input("Select the end date of the tournament: ")
             try:
-                end_date = lapi.valid_end_date(end_date, start_date)
+                end_date = self.ll.valid_end_date(end_date, start_date)
                 break
             except ValueError as error:
                 print(error)
@@ -36,7 +38,7 @@ class OrganizerUI():
         while True:
             contact_email = input("What is the contact email for this tournament: ")
             try: 
-                lapi.valid_email(contact_email)
+                self.ll.valid_email(contact_email)
                 break
             except ValueError as error:
                 print(error)
@@ -44,13 +46,12 @@ class OrganizerUI():
         while True:
             contact_phone = input("What is the contact phone for this tournament: ")
             try:
-                lapi.valid_phone(contact_phone)
+                self.ll.valid_phone(contact_phone)
                 break
             except ValueError as error:
                 print(error)
         
-        
-    # have it as an object not an dict.
+        # have it as an object not an dict.
         tournament_obj = Tournament( 
             unique_name=unique_name,
             start_date=start_date,
@@ -61,4 +62,22 @@ class OrganizerUI():
             contact_phone=contact_phone
         )
 
-        return lapi.create_new_tournament(tournament_obj)
+        return self.ll.create_new_tournament(tournament_obj)
+
+
+    def organizer_see_info(self) -> None:
+        '''The organizer can see player information for every player in the tournament'''
+        try:
+            players = self.ll.organizer_view_player_info()
+        except ValueError as error:
+            print("Error: ", error)
+            return
+        
+        if not players:
+            print("There are no players in the tournament.")
+            return
+
+        for p in players:
+            print(f"\nPlayer Information for {p.get('Name')}:")
+            for attr, value in vars(p).items():
+                print(f"{attr}: {value}")

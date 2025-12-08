@@ -3,7 +3,6 @@ from .LLTeams import LLTeams
 from .LLCaptain import LLCaptain
 from .LLTournament import LLTournament
 from .LLOrganizer import LLOrganizer
-from data_layer.TournamentIO import TournamentIO
 from Models.Tournament import Tournament
 
 class LL_API:
@@ -13,7 +12,6 @@ class LL_API:
         self.captain = LLCaptain()
         self.tournament = LLTournament()
         self.organizer = LLOrganizer()
-        self.tournamentio = TournamentIO()
     
     """
     The Logic layer wrapper for the LLPlayer
@@ -95,10 +93,7 @@ class LL_API:
         '''Captain can see player info about members in his team'''
         return self.captain.cap_see_player_info(player_name, team_name)
 
-    def organizer_view_player_info(self):
-        '''Organizer can see information about every player in the tournament'''
-        return self.captain.organizer_player_info()
-    
+
 
     """
     Logic wrapper for Tournament
@@ -170,3 +165,8 @@ class LL_API:
     
     def valid_end_date(self, end_date, start_date):
         return self.organizer.choose_end_date(end_date, start_date)
+    
+    def organizer_view_player_info(self):
+        '''Organizer can see information about every player in the tournament'''
+        return self.organizer.organizer_player_info()
+    
