@@ -5,7 +5,18 @@ class OrganizerUI:
     def createTournament(self):
         unique_name = input("Create a unique name for the tournament: ")
         start_date = input("Select the start date of the tournament: ")
+        while True:
+            start_date = input("Enter player date of birth (DD/MM/YYYY): ")
+            try:
+                start_date = LL_API.valid_start_date(start_date)
+                break
+            except ValueError as error:
+                print(error)
+
         end_date = input("Select end date for the tournament: ")
+
+
+        
         venue = input("Select the venue for the tournament: ")
         contact_person = input("Name the contact person for this tournament: ")
         contact_email = input("What is the contact email for this tournament: ")

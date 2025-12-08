@@ -20,6 +20,7 @@ class CaptainUI:
             else:
                 print("The number is not in the player's number range. Please select another number.")
                 return None
+                
         except ValueError:
             print("The number is not in the player's number range. Please select another number.")
             return None
@@ -48,7 +49,7 @@ class CaptainUI:
             print("There are currently no players in your team. Please add members to be able to remove members.")
             return 
         
-        # player_to_remove = self._select_player(players) # fallið sem velur leikmann
+        # player_to_remove = self._select_players(players) # fallið sem velur leikmann
         # if not player_to_remove:
         #      return
         
@@ -71,7 +72,7 @@ class CaptainUI:
 
         # player_name = player_to_remove.get("Name")
 
-        # if not self._confirm(f"Are you sure you want to remove {player_to_remove} from the team?"")
+        # if not self._confirm(f"Are you sure you want to remove {player_name} from the team?"")
         #   print("Removal cancelled. The player will not be removed from the team.")
         #   return
 
@@ -95,7 +96,7 @@ class CaptainUI:
             print("There are currently no players in your team. Please add members to be able to remove members.")
             return
         
-        # player_to_see = self._select_player(players) # fallið sem velur leikmann
+        # player_to_see = self._select_players(players) # fallið sem velur leikmann
         # if not player_to_see:
         #      return
 
@@ -115,7 +116,7 @@ class CaptainUI:
 
         player_to_see = players[selected_index] # eyða
 
-        # player_name = player_to_see_.get("Name")
+        # player_name = player_to_see.get("Name")
 
         try:
             info = self.ll.cap_view_player_info(team_name, player_to_see.get("Name"))
