@@ -115,8 +115,6 @@ class LL_API:
     def create_new_tournament(self, tournament_obj: Tournament):
         return self.tournament.new_tourney(tournament_obj)
     
-    def brackets(self):
-        return self.tournament.run_bracket()
 
     """
     Logic layer wrapper for the LLCaptain
