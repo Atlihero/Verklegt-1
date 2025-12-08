@@ -208,13 +208,3 @@ class Happy_paths:
 
     if HappyID == 4:
         exit()
-        
-        
-
-
-
-def scoobster(pink, reset, blue, neonblue, Yellow, gray, red, highlite, neongreen):
-    print(pink,"########################")
-    print(pink,"## ",highlite,"--Scooby doo--",reset,pink,"##")
-
-scoobster(*Colers.all_colers())
