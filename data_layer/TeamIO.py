@@ -91,7 +91,7 @@ class TeamIO:
             teams: list = []
             try:
                 with open(TEAM_PATH, "a", newline="", encoding="utf-8") as csvfile:
-                #with open(TEAM_PATH, "r", newline="", encoding="utf-8") as csvfile:
+                #with open(TEAM_PATH, "r", newline="", encoding="utf-8") as csvfile: þetta virkar fyrir OrganizerUI
                     reader = csv.writer(csvfile)
                     #reader = csv.reader(csvfile)
                     for row in reader:
