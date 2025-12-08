@@ -1,6 +1,6 @@
 from logic_layer.LLPlayers import LLPlayer
 from logic_layer.LLTeams import LLTeams
-from logic_layer.LLTournament import LLTournament
+from logic_layer.LLTournament import Tournament
 from .LLCaptain import LLCaptain
 from .LLOrganizer import LLOrganizer
 from Models.Tournament import Tournament
@@ -9,7 +9,7 @@ class LL_API:
     def __init__(self):
         self.player = LLPlayer()
         self.team = LLTeams()
-        self.tournament = LLTournament()
+        self.tournament = Tournament()
         self.captain = LLCaptain()
         self.organizer = LLOrganizer()
 
