@@ -53,6 +53,8 @@ class LLOrganizer():
         all_players = PlayerIO.get_players()
         return all_players
 
+    def choose_event(self):
+        pass
 
 # create tournament
     # skrá tengilið
