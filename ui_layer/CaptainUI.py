@@ -84,7 +84,6 @@ class CaptainUI:
 
     def organizer_see_info(self):
         '''The organizer can see player information for every player in the tournament'''
-
         try:
             players = self.ll.organizer_view_player_info()
         except ValueError as error:
@@ -100,3 +99,4 @@ class CaptainUI:
             for attr, value in vars(p).items():
                 print(f"{attr}: {value}")
             print("-" * 25)
+
