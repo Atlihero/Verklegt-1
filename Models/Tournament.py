@@ -15,8 +15,6 @@ class Tournament(Organizer):
         self.contact_email = contact_email
         self.contact_phone = contact_phone
     
-
-
     #Skilar öllum upplýsingum mótsins def í nýrri línu
 
     def __str__(self):
