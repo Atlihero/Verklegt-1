@@ -1,4 +1,4 @@
-from Models.Tournament import Tournament 
+from Models.Tournament import Tournament
 from Models.Round import Round 
 from data_layer.data_api import DataAPI
 
