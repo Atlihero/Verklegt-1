@@ -84,8 +84,4 @@ class LLCaptain():
             #if player not found in the team
         raise ValueError("Player is not in this team. Please try another player.")
     
-            
-    def organizer_player_info(self):
-        '''Allows the organizer to see all the players information'''
-        all_players = PlayerIO.get_players()
-        return all_players
+    
