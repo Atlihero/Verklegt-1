@@ -24,6 +24,10 @@ class LLTournament():
         if new_phone:
             self.new_phone = new_phone
 
+    # def update_conta(self, contact: str="", email: str="" etc..)
+        # if contract is not None:
+        #   self.contract = contract etc..
+
 
     def register_team(self, team_name: str= "", players : list[str]= None):
         '''Scheme of registering a team, a team name cant be twice in one Tournament '''
@@ -33,14 +37,15 @@ class LLTournament():
         self.team_name = team_name
 
         if len(players) < 1: 
-            raise ValueError ("A team must have at least 1 player ")
+            raise ValueError ("A team must have at least 1 player. Please add more players to the team.")
         
         # new team object , not a paramater yk 
-        team = team(name=team_name , players = players)
-        self.tournament.teams.append(team)
+        team = team(name=team_name , players = players )
+        #team = {"name": team_name, "players": players} #??
+        self.tournament.teams.append(team) # þarf að gera tournament hér
         return team 
 
-    # the logic of scheduling games, 
+
     def schedule_games(self, start_date : str = "", end_date : str =  "", teams : list = 0, venue : str = ""):
         '''The logic of scheduling games'''
         self.start_date = start_date 
@@ -48,9 +53,9 @@ class LLTournament():
         self.venue = venue 
         self.teams = teams 
 
-        # store all matches in a empty list 
-        self.matches =  [] # matches are stored 
-        self.rounds = {} # rounds are stored 
+    # store all matches in a empty list 
+        self.matches =  []     # matches are stored 
+        self.rounds = {}       # rounds are stored 
 
         # requirements to schedule a game  
         if len(teams) < 2 : 
@@ -64,8 +69,8 @@ class LLTournament():
         
         if not venue : 
             raise ValueError("There is no Venue to be played in. Please enter a venue location.")
+        
 
-    
     def record_result(self, game_result : int = 0, player_1id : str = "", player_2id : str = "", winner : str = "", outcome : str = "", score : str=  ""):
         '''Records results of games, final score, winner and player ids'''
         self.game_result = game_result
@@ -75,17 +80,15 @@ class LLTournament():
         self.outcome = outcome 
         self.score = score 
 
-        # The winner gets printed out 
+    # The winner gets printed out 
         if self.winner != "":
             print(f"{self.winner} has won the game!")
 
-    
+    # checks the length of the team names = strings, it is used for a "fake" scoring system for the def play_round
     def sum_logic(self, team_name: str) -> int:
-        '''checks the length of the team names = strings, it is used for a 
-        "fake" scoring system for the def play_round'''
         return len(team_name)
-        
 
+    
     def brackets_of_tournament(self, id : int = 0 , tournamentid : int = 0, type: str= "", totalItems: int = 0, totalRounds: int = 0, status: str = ""): 
         '''Brackets format of the tournament
         16 to 8 to 4 to 2 to 1 (winner!)'''
@@ -95,15 +98,16 @@ class LLTournament():
         self.totalItems = totalItems
         self.totalrounds = totalRounds
         self.status = status 
-
+        
         # store all matches in a empty list 
         self.matches =  [] # all matches are stored 
         self.rounds = {} # all rounds are stored 
-        
-        # brackets , round of 16, quartefinals, semifinals , final 
+
+        # brackets, round of 16, quartefinals, semifinals, finals
         if self.teams != 16 : 
             raise ValueError ("There has to be at least 16 teams in the Tournament!")
         
+
         # split 16 teams into two sides (8 teams on the left, 8 teams on the right)        #!!! can be more than 16 teams 
         left_teams = self.teams[:8]
         right_teams = self.teams[8:]
@@ -119,7 +123,7 @@ class LLTournament():
         round1_winners_right = self.play_round(right_teams)
         round2_winners_right = self.play_round (round1_winners_right)
         round3_winners_right = self.play_round (round2_winners_right)
-        champion_right= round3_winners_right
+        champion_right= round3_winners_right #[0]
         print(f"The winner from the right side is , {champion_right}")
 
 
@@ -135,18 +139,14 @@ class LLTournament():
 
              if score1 >= score2:
                 winners.append(team1)
-
              else: 
                 winners.append(team2)
         
         return winners 
     
     # Úrslitaleikur / FINAL
+
     finalists = self.play_round([champion_left, champion_right])
-    
+
     final_winner = finalists[0]
     print(f"The Tournamenyt winner is , {final_winner} !")
-
-
-
-    

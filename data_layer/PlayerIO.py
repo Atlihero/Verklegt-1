@@ -12,7 +12,8 @@ class PlayerIO:
             """
             players = [] 
             with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
-                reader = csv.reader(csvfile)   
+                #reader = csv.reader(csvfile) 
+                reader = csv.DictReader(csvfile)  
                 for row in reader:
                     if not row:
                         continue

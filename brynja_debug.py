@@ -1,5 +1,7 @@
 from Models import Player
 from datetime import datetime
+from logic_layer.LL_api import LL_API
+from logic_layer.LLTeams import LLTeams
 
 class PlayerLL():
 
@@ -8,6 +10,7 @@ class PlayerLL():
         
         name = input("Enter full name of player: ")
         return name
+        
         
     def player_dob(self): 
         '''Asks the user for their date of birth and checks if the format
@@ -105,3 +108,21 @@ class PlayerLL():
         existing_handles.append(handle)
         print("Handle has been added to the list")
         return handle
+    
+
+
+class CaptainUI:
+    def __init__(self, LLPlayers, LLTeams):
+        # self.players = LLPlayers
+        # self.teams = LLTeams
+        self.ll = LL_API()
+
+class LLCaptain():
+    
+    MAX_TEAM_MEMBERS = 5
+
+    def __init__(self):
+        self.ll_teams = LLTeams()
+    '''def __init__(self, ll_players, ll_teams):
+        self.ll_players = ll_players
+        self.ll_teams = ll_teams'''

@@ -51,8 +51,8 @@ class LLTeams:
 		player_to_add = None
 		for p in players:
 			if p.name == player_name:
-					player_to_add = p
-					break
+				player_to_add = p
+				break
 
 		# Check if player is already in this team
 		if player_to_add is None:
@@ -67,7 +67,7 @@ class LLTeams:
 		player_to_add.team = team.name
 
 		# Save player list through PlayerIO
-		PlayerIO.save_players(players)  
+		PlayerIO.create_new_player(players)  
 
 		return player_to_add
 
@@ -110,7 +110,7 @@ class LLTeams:
 		return new_team
 	
 
-	def select_captain(self, team_name: str, new_captain: str):
+	def select_captain(self, team_name: str, new_captain: str): # -> Team
 		'''Organizer wants to add a captain to a team.'''
 
 		team = self.get_team_by_name(team_name)

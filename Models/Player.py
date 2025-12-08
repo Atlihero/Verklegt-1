@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+
 from datetime import date
 
 class Player:
@@ -28,7 +28,6 @@ class Player:
         f"Phone   : {self.phone}\n" 
         f"Email   : {self.email}\n"
         f"Handle  : {self.handle}\n"
-        f"Link    : {self.link}\n"
         f"Team    : {self.team}\n"
         f"Points  : {self.points}\n"
         f"Link    : {self.link}"

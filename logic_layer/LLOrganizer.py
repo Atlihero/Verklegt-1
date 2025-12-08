@@ -10,6 +10,8 @@ class LLOrganizer():
     def choose_location(self):
         pass
 
+    def choose_contanct(self):
+        pass
 
 
 # create tournament
