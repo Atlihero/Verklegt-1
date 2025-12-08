@@ -147,6 +147,24 @@ class LLTournament():
     final_winner = finalists[0]
     print(f"The Tournamenyt winner is , {final_winner} !")
 
+# þarf að vera svo Organizer virki rétt!!
+    def new_tourney(self, tournament_obj: Tournament) -> list:
+        '''want to return as a list, not a dict to have it easier to read'''
+        tournament_list = [
+            tournament_obj.unique_name,
+            tournament_obj.start_date.strftime("%d/%m/%Y"),
+            tournament_obj.end_date.strftime("%d/%m/%Y"),
+            tournament_obj.venue,
+            tournament_obj.contact_person,
+            tournament_obj.contact_email,
+            tournament_obj.contact_phone
+        ]
+
+        return self.tournamentio.create_new_tournament(tournament_list)
+    
+    def get_allTournamnets(self):
+        return self.data.get_all_tournaments()
+
 
 
     
