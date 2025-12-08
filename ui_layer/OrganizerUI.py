@@ -4,24 +4,43 @@ class OrganizerUI:
 
     def createTournament(self):
         unique_name = input("Create a unique name for the tournament: ")
-        start_date = input("Select the start date of the tournament: ")
+        
         while True:
-            start_date = input("Enter player date of birth (DD/MM/YYYY): ")
+            start_date = input("Select the start date of the tournament: ")
             try:
                 start_date = LL_API.valid_start_date(start_date)
                 break
             except ValueError as error:
                 print(error)
 
-        end_date = input("Select end date for the tournament: ")
+        while True:
+            end_date = input("Select the end date of the tournament: ")
+            try:
+                end_date = LL_API.valid_end_date(end_date)
+                break
+            except ValueError as error:
+                print(error)
 
-
-        
-        venue = input("Select the venue for the tournament: ")
+        venue = input("Enter the name of a venue (location) for the tournament: ")
         contact_person = input("Name the contact person for this tournament: ")
-        contact_email = input("What is the contact email for this tournament: ")
-        contact_phone = input("What is the contact phone for this tournament: ")
-
+        
+        while True:
+            contact_email = input("What is the contact email for this tournament: ")
+            try: 
+                LL_API.valid_email(contact_email)
+                break
+            except ValueError as error:
+                print(error)
+        
+        while True:
+            contact_phone = input("What is the contact phone for this tournament: ")
+            try:
+                LL_API.valid_phone(contact_phone)
+                break
+            except ValueError as error:
+                print(error)
+        
+        
         tournament_dict = {
             "unique_name": unique_name,
             "start_date": start_date,

@@ -1,7 +1,8 @@
 from .LLPlayers import LLPlayer
 from .LLTeams import LLTeams
 from .LLCaptain import LLCaptain
-from logic_layer.LLTournament import LLTournament
+from .LLTournament import LLTournament
+from .LLOrganizer import LLOrganizer
 
 class LL_API:
     def __init__(self):
@@ -10,6 +11,7 @@ class LL_API:
         #self.captain = LLCaptain()
         self.captain = LLCaptain(self.player, self.team)
         self.tournament = LLTournament()
+        self.organizer = LLOrganizer
     
     """
     The Logic layer wrapper for the LLPlayer
@@ -151,3 +153,14 @@ class LL_API:
     
     def brackets(self):
         return self.tournament.run_bracket()
+    
+
+    """
+    Logic wrapper for Organizer
+    """
+
+    def valid_start_date(self):
+        return self.organizer.choose_start_date()
+    
+    def valid_end_date(self):
+        return self.organizer.choose_end_date()
