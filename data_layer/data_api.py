@@ -61,3 +61,6 @@ class DataAPI:
     def new_game(self, game_dict):
         "creates a new game in the csv"
         return self.tournament.create_new_game(game_dict)
+    
+    def create_new_tournaments(self, tournament_obj):
+       return self.tournament.create_new_tournament(tournament_obj)
