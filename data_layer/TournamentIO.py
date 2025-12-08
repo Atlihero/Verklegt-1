@@ -14,7 +14,7 @@ class TournamentIO:
             tournament = []
             with open(TOURNAMENT_PATH, "r", encoding="utf-8") as csvfile:
                 reader  = csvfile.readlines() 
-                #reader = csv.reader(csvfile)
+                #reader = csv.reader(csvfile) virkar með þessu fyrir Organizer
                 for row in reader:
                     tournament.append(row) 
             return tournament 
