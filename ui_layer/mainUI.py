@@ -20,6 +20,7 @@ class Uimain:
     def start(self) -> None:
         """Prints the game screen on terminal and controles the flow of information"""
         paths = Happy_paths
+        organizer = OrganizerUI
         while True:
             paths.Happy_logo()
             user_inp = input("Press any button to start: ")
@@ -37,6 +38,7 @@ class Uimain:
                     user_inp = input("Enter 1, 2, 3, 4 or b: ")
                     if user_inp == "1":
                         paths.Happy_create_player()
+                        organizer
                         exit()
                     elif user_inp == "2":
                         paths.Happy_create_tournament()
