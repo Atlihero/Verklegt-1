@@ -4,6 +4,7 @@ from logic_layer.LLTournament import LLTournament
 from .LLCaptain import LLCaptain
 from .LLOrganizer import LLOrganizer
 from Models.Tournament import Tournament
+from Models.Player import Player
 
 class LL_API:
     def __init__(self):
@@ -14,7 +15,7 @@ class LL_API:
         self.organizer = LLOrganizer()
 
     
-   """
+    """
     The Logic layer wrapper for the LLPlayer
     """
     def valid_name(self, name):
