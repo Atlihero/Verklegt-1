@@ -254,7 +254,7 @@ class LLTournament:
         print(f"TOURNAMENT WINNER: {winner}")
         return winner
 
-    def new_tourney(self, tournament_dict: Tournament):
+    '''def new_tourney(self, tournament_dict: Tournament):
         row = [
             tournament_dict.unique_name,
             tournament_dict.start_date,
@@ -264,7 +264,7 @@ class LLTournament:
             tournament_dict.contact_email,
             tournament_dict.contact_phone
         ]
-        return self.data.new_tournament(row)
+        return self.data.new_tournament(row)'''
     
     
     def add_game(self, game_dict: dict):
@@ -352,8 +352,16 @@ class LLTournament:
         return self.data.advance_round(tournament_name, match_number, winner)
     
 
+    def new_tourney(self, tournament_obj: Tournament):
+        '''want to return as a list, not a dict to have it easier to read'''
+        tournament_list = [
+            tournament_obj.unique_name,
+            tournament_obj.start_date.strftime("%d/%m/%Y"), # takes out the timestamp
+            tournament_obj.end_date.strftime("%d/%m/%Y"),
+            tournament_obj.venue,
+            tournament_obj.contact_person,
+            tournament_obj.contact_email,
+            tournament_obj.contact_phone
+        ]
 
-
-
-
-
+        return self.tournamentio.create_new_tournament(tournament_list)
