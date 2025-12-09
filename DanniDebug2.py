@@ -5,7 +5,7 @@ while True:
     print("1. Get players")
     print("2. Get team")
     print("3. Create tournament")
-    print("Q. Quit")
+    print("q. Quit")
 
     val = input("Veldu verkefni (1-3): ")
 
@@ -60,7 +60,38 @@ while True:
         tournament = organizer.createTournament()
         print("Tournament has been created:", tournament)
 
+    if val == "4":
+        def ui_create_tournament_with_games():
+            ll = LL_API()
+
+            print("\n=== Create New Tournament ===")
+            name = input("Enter tournament name: ")
+            start = input("Start date (YYYY-MM-DD): ")
+            end = input("End date (YYYY-MM-DD): ")
+            venue = input("Venue: ")
+            contact = input("Contact person: ")
+            email = input("Contact email: ")
+            phone = input("Contact phone: ")
+
+            tournament_dict = {
+                "unique_name": name,
+                "start_date": start,
+                "end_date": end,
+                "venue": venue,
+                "contact_person": contact,
+                "contact_email": email,
+                "contact_phone": phone
+            }
+
+            ll.newTournament(tournament_dict)
+
+            print("\nGenerating random games for this tournament...\n")
+            ll.generateGames(name)
+
+            print("\nTournament created and games generated successfully.\n")
+
+
     
-    if val == "Q":
+    if val == "q":
         print("You have quit the program")
         break

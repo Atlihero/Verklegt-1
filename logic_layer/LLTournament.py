@@ -1,6 +1,8 @@
 from Models.Tournament import Tournament
 from Models.Round import Round
 from data_layer.data_api import DataAPI
+import random
+from datetime import datetime
 
 class LLTournament:
     def __init__(self):
@@ -69,6 +71,74 @@ class LLTournament:
         ]
         return self.data.new_tournament(row)
 
+    def add_game(self, game_dict: dict):
+        row = [
+            game_dict["tournament_name"],
+            game_dict["round"],
+            game_dict["match_number"],
+            game_dict["match_date"],
+            game_dict["team_a"],
+            game_dict["team_b"],
+            game_dict["score_a"],
+            game_dict["score_b"],
+            game_dict["winner"],
+        ]
+        return self.data.new_game(row)
+
+    def create_game(self, tournament_name, round, match_number, match_date, team_a, team_b):
+        return [
+            tournament_name,
+            round,
+            match_number,
+            match_date,
+            team_a,
+            team_b,
+            None,
+            None,
+            None
+        ]
+
+    def generate_games(self, tournamnet_name: str):
+        if len(self.teams) < 16:
+            raise ValueError("You need 16 teams")
+        
+        shuffled = random.sample(self.teams, 16)
+        
+        rounds = [
+            ("R16", 8)
+            ("QF", 4)
+            ("SF", 2)
+            ("F", 1)
+        ]
+
+        all_games = []
+        match_number = 1
+
+        current_teams = shuffled
+
+        for round, match_count in rounds:
+            next_round_teams = []
+
+            for i in range(0, len(current_teams), 2):
+                team_a = current_teams[i]
+                team_b = current_teams[i + 1]
+
+                game_row = self.create_game(
+                    tournament_name = tournamnet_name,
+                    round = round,
+                    match_number = match_number,
+                    team_a = team_a,
+                    team_b = team_b
+                )
+                self.data.new_game(game_row)
+                all_games.append(game_row)
+
+                match_number += 1
+
+            current_teams = ["TBD"] * (match_count)
+
+        return all_games
+    
     
     def get_allTournamnets(self):
         return self.data.get_all_tournaments()

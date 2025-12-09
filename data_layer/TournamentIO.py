@@ -13,9 +13,9 @@ class TournamentIO:
                 reader  = csvfile.readlines() 
                 for row in reader:
                     Tournament.append(row) 
-            return Tournament 
         except ValueError: 
             return f"Error message to be decided"
+        return Tournament 
 
     def create_new_tournament(self, tournament: list):
         try: 
@@ -26,13 +26,13 @@ class TournamentIO:
             f"Error message to be decided"
         return f"New Tournament added :)" 
 
-    def create_new_game(self, games: list):
+    def create_new_game(self, game_row: list):
         try:
             with open(GAMES_PATH, "a", newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile)
-                writer.writerow(games)
-            return f"New Game added"
+                writer.writerow(game_row)
         except ValueError:
             return "Error"
+        return f"New Game added"
 
         

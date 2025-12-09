@@ -58,6 +58,6 @@ class DataAPI:
         "retrieves the tournaments from the csv"
         return self.tournament.get_tournaments()
 
-    def new_game(self, game_dict):
+    def new_game(self, row: list):
         "creates a new game in the csv"
-        return self.tournament.create_new_game(game_dict)
+        return self.tournament.create_new_game(row)
