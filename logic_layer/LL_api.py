@@ -165,18 +165,30 @@ class LL_API:
         return self.captain.cap_see_player_info(player_name, team_name)
 
 
+
     """
     Logic wrapper for Organizer
     """
 
     def valid_tournament_name(self, name):
+        '''Validates if the tournament name is unique'''
         return self.organizer.tournament_name(name)
     
     def valid_start_date(self, start_date):
+        '''Validates if the tournament start date is in the future of the day today'''
         return self.organizer.choose_start_date(start_date)
     
     def valid_end_date(self, end_date, start_date):
+        '''Validates if the tournament end date is later than the start date'''
         return self.organizer.choose_end_date(end_date, start_date)
+    
+    def valid_tournament_location(self, location):
+        '''Validates if the tournament has a location'''
+        return self.organizer.tournament_location(location)
+    
+    def valid_tournament_contact(self, contact_name):
+        '''Validates the contact persons name'''
+        return self.organizer.tournament_contact_name(contact_name)
 
     def organizer_view_player_info(self):
         '''Organizer can see information about every player in the tournament'''
