@@ -5,7 +5,7 @@ PLAYER_PATH: str = r"data_layer/_data/Players.csv"
  
 class PlayerIO:
  
-  def get_players(self):
+    def get_players(self):
         """
             This function finds the selected player and puts him into an empty list
             to be displayed
@@ -45,7 +45,7 @@ class PlayerIO:
                 #players.append(player)
         return players
 
-   def get_player_PublicViewer(self):
+    def get_player_PublicViewer(self):
         try:
             players = []
             team = []
