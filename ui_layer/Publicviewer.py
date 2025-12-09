@@ -1,21 +1,21 @@
 from logic_layer.LL_api import LL_API
-
+api = LL_API()
 class PublicViewer:
-    
-    userinput = int(input("Veldu ID leikmanns milli 1-57: "))
-    def getplayerPublic():
-        api = LL_API()        
-        players = api.getPlayerPublic()
+
+    def getplayerPublic():      
+        players = api.get_playerPublic()
         return players
-
-    player_dict = getplayerPublic()
-    print(player_dict[userinput])
-
-    userinputTeams = int(input("Veldu númer liðs 1-18: "))        
-    def getTeamPublic():
-        api = LL_API()
-        teams = api.getTeamPublic()
+    
+    def getTeamsPublic():
+        teams = api.get_teams_public()
         return teams
+    
+    def view_schedule(games, title="Current Games"):
+        print(f"\n=== {title} ===")
+        for g in games:
+            print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
+                f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
+            return games
 
-    teams, captain = getTeamPublic()
-    print(f"Team: {teams[userinputTeams]}, Captain: {captain[userinputTeams]}")
+        tournament_name = input("Enter tournament name: ").strip()
+        games = api.get_game_by_tournamentName(tournament_name)

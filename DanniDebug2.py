@@ -4,12 +4,11 @@ while True:
     print("\nValmynd:")
     print("1. Get players")
     print("2. Get team")
-    print("3. Create tournament")
-    print("4. create tournament with games")
-    print("5. Update results")
+    print("3. create tournament with games")
+    print("4. Update results")
     print("q. Quit")
 
-    val = input("Veldu verkefni (1-5): ")
+    val = input("Veldu verkefni (1-4): ")
 
     if val == "1":
         userinput = int(input("Veldu ID leikmanns milli 1-57: "))
@@ -36,32 +35,6 @@ while True:
 
     
     if val == "3":
-        class Organizer:
-            def createTournament(self):
-                unique_name = input("Create a unique name for the tournament: ")
-                start_date = input("Select the start date of the tournament: ")
-                end_date = input("Select end date for the tournament: ")
-                venue = input("Select the venue for the tournament: ")
-                contact_person = input("Name the contact person for this tournament: ")
-                contact_email = input("What is the contact email for this tournament: ")
-                contact_phone = input("What is the contact phone for this tournament: ")
-                tournament_dict = {
-                    "unique_name": unique_name,
-                    "start_date": start_date,
-                    "end_date": end_date,
-                    "venue": venue,
-                    "contact_person": contact_person,
-                    "contact_email": contact_email,
-                    "contact_phone": contact_phone
-                }
-                api = LL_API()
-                return api.create_new_tournaments(tournament_dict)
-
-        organizer = Organizer()
-        tournament = organizer.createTournament()
-        print("Tournament has been created:", tournament)
-
-    if val == "4":
         class Organizer:
             def UI_create_tournament():
                 print("\n=== Create New Tournament ===")
@@ -93,7 +66,7 @@ while True:
         Organizer.UI_create_tournament()
 
 
-    if val == "5":
+    if val == "4":
         class Organizer:
             ll = LL_API()
             games = ll.get_game()
