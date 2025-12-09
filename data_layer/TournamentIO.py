@@ -107,6 +107,7 @@ class TournamentIO:
         games = self.get_all_games()
 
         """
+        These are if commands that determine the advance order by match number
         From Round of 16 to QF
         And then from QF to SF
         and then from SF to F
@@ -124,7 +125,7 @@ class TournamentIO:
             slot = "team_a" if match_number == 13 else "team_b"
         
         else:
-            return f"{winner} is the champion"
+            return f"{winner} is the Winner"
         
         for game in games:
             if game["tournament_name"] == tournament_name and int(game["match_number"]) == next_game:

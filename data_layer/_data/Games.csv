@@ -1,16 +1,32 @@
 tournament_name,round,match_number,match_date,team_a,team_b,score_a,score_b,winner
-Daniel,R16,1,2025-12-09,7,13,,,
-Daniel,R16,2,2025-12-09,6,TeamID,,,
-Daniel,R16,3,2025-12-09,5,10,,,
-Daniel,R16,4,2025-12-09,11,15,,,
-Daniel,R16,5,2025-12-09,16,8,,,
-Daniel,R16,6,2025-12-09,9,17,,,
-Daniel,R16,7,2025-12-09,4,2,,,
-Daniel,R16,8,2025-12-09,1,14,,,
-Daniel,QF,9,2025-12-09,TBD,TBD,,,
-Daniel,QF,10,2025-12-09,TBD,TBD,,,
-Daniel,QF,11,2025-12-09,TBD,TBD,,,
-Daniel,QF,12,2025-12-09,TBD,TBD,,,
-Daniel,SF,13,2025-12-09,TBD,TBD,,,
-Daniel,SF,14,2025-12-09,TBD,TBD,,,
-Daniel,F,15,2025-12-09,TBD,TBD,,,
+Daniel,R16,1,2025-12-09,Arcane Crew,Pink Stars,1,2,Pink Stars
+Daniel,R16,2,2025-12-09,Blockheads,Fireflies,1,2,Fireflies
+Daniel,R16,3,2025-12-09,Payload,Poké Pals,1,2,Poké Pals
+Daniel,R16,4,2025-12-09,Black in Yellow,Street Squad,1,2,Street Squad
+Daniel,R16,5,2025-12-09,Shadow Clan,Limit Breakers,1,2,Limit Breakers
+Daniel,R16,6,2025-12-09,Spartan Squad,TeamName,1,2,TeamName
+Daniel,R16,7,2025-12-09,Fantom,Silver Blades,1,2,Silver Blades
+Daniel,R16,8,2025-12-09,Red Dragons,Blue Shells,1,2,Blue Shells
+Daniel,QF,9,2025-12-09,Pink Stars,Fireflies,1,2,Fireflies
+Daniel,QF,10,2025-12-09,Poké Pals,Street Squad,1,2,Street Squad
+Daniel,QF,11,2025-12-09,Limit Breakers,TeamName,1,2,TeamName
+Daniel,QF,12,2025-12-09,Silver Blades,Blue Shells,1,2,Blue Shells
+Daniel,SF,13,2025-12-09,Fireflies,Street Squad,1,4,Street Squad
+Daniel,SF,14,2025-12-09,TeamName,Blue Shells,2,4,Blue Shells
+Daniel,F,15,2025-12-09,Street Squad,Blue Shells,3,2,Street Squad
+
+Daníel2,R16,1,2025-12-21,Blockheads,Black in Yellow,,,
+Daníel2,R16,2,2025-12-21,Pink Stars,TeamName,,,
+Daníel2,R16,3,2025-12-21,Red Dragons,Payload,,,
+Daníel2,R16,4,2025-12-21,Explorer Crew,Poké Pals,,,
+Daníel2,R16,5,2025-12-21,Fantom,Fireflies,,,
+Daníel2,R16,6,2025-12-21,Arcane Crew,Shadow Clan,,,
+Daníel2,R16,7,2025-12-21,Anti Krambúðin,Limit Breakers,,,
+Daníel2,R16,8,2025-12-21,Spartan Squad,Blue Shells,,,
+Daníel2,QF,9,2025-12-21,TBD,TBD,,,
+Daníel2,QF,10,2025-12-21,TBD,TBD,,,
+Daníel2,QF,11,2025-12-21,TBD,TBD,,,
+Daníel2,QF,12,2025-12-21,TBD,TBD,,,
+Daníel2,SF,13,2025-12-21,TBD,TBD,,,
+Daníel2,SF,14,2025-12-21,TBD,TBD,,,
+Daníel2,F,15,2025-12-21,TBD,TBD,,,

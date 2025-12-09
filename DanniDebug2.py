@@ -1,4 +1,10 @@
 from logic_layer.LL_api import LL_API
+api = LL_API()
+def show_games(games, title="Current Games"):
+    print(f"\n=== {title} ===")
+    for g in games:
+        print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
+              f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
 
 while True:
     print("\nValmynd:")
@@ -95,34 +101,39 @@ while True:
 
     if val == "5":
         class Organizer:
-            ll = LL_API()
-            games = ll.get_game()
+            tournament_name = input("Enter tournament name: ").strip()
+            games = api.get_game_by_tournamentName(tournament_name)
 
-            print("\n=== Current Games ===")
-            for g in games:
-                print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
-                    f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
+            if not games:
+                print("\nNo games found for this tournament.\n")
+                
+            show_games(games, "Current Games")
 
-            # Get user input
             match_number = int(input("\nEnter match number to update: "))
             score_a = int(input("Enter score for team A: "))
             score_b = int(input("Enter score for team B: "))
 
-            result = ll.updateGame(match_number, score_a, score_b)
+            result = api.updateGame(match_number, score_a, score_b)
+
             winner = result["winner"]
             tournament_name = result["tournament_name"]
 
+            # If a winner exists, advance
             if winner:
-                advance_result = ll.advance_round(tournament_name, match_number, winner)
+                advance_result = api.advance_round(tournament_name, match_number, winner)
                 print(advance_result)
+
+                # ⭐ IF THIS WAS THE FINAL MATCH (F = match 15), SHOW WINNER BANNER
+                if result["round"] == "F":
+                    print("\n==============================")
+                    print(f"🏆  TOURNAMENT WINNER: {winner}  🏆")
+                    print("==============================\n")
+
             else:
                 print("Game is a draw. Winner cannot advance.")
 
-            updated_games = ll.get_game()
-            print("\n=== Updated Games ===")
-            for g in updated_games:
-                print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
-                    f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
+            updated_games = api.get_game()
+            show_games(updated_games, "Updated Games")
 
     if val == "q":
         print("You have quit the program")
