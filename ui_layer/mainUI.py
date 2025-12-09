@@ -19,14 +19,14 @@ class Uimain:
 
     def start(self) -> None:
         """Prints the game screen on terminal and controles the flow of information"""
-        paths = Happy_paths
-        organizer = OrganizerUI
+        Happy_paths
+        organizer = OrganizerUI()
         while True:
-            paths.Happy_logo()
+            Happy_paths.Happy_logo()
             user_inp = input("Press any button to start: ")
             """Here the code starts"""
             if user_inp != 1:
-                paths.Happy_menu()
+                Happy_paths.Happy_menu()
                 user_inp = input("Enter 1, 2, 3 or b: ")
                 
                 
@@ -34,29 +34,29 @@ class Uimain:
 
                 if user_inp == "1":
                     """Now we are in Organizer and can chose what we will do there"""
-                    paths.Happy_organizer() #This is the organizer
+                    Happy_paths.Happy_organizer() #This is the organizer
                     user_inp = input("Enter 1, 2, 3, 4 or b: ")
                     if user_inp == "1": #Here you creata a new player
-                        paths.Happy_create_player()
-                        organizer
+                        Happy_paths.Happy_create_player()
+                        organizer.get_player_info()
                         exit()
                     elif user_inp == "2": #Here you create a tournament
-                        paths.Happy_create_tournament()
+                        Happy_paths.Happy_create_tournament()
                         exit()
                     elif user_inp == "3": #Here you create a team
-                        paths.Happy_create_team()
+                        Happy_paths.Happy_create_team()
                         exit()
                     elif user_inp == "4": #here you make a player a captain
-                        paths.Happy_make_captain()
+                        Happy_paths.Happy_make_captain()
                     elif user_inp == "b": #return back to starting psition
                         os.system('cls')
                         continue
                 elif user_inp == "2": #This is the Captain
-                    paths.Happy_captain()
+                    Happy_paths.Happy_captain()
                     user_inp = input("")
                     exit()
                 elif user_inp == "3": #This is the puplic viewer
-                    paths.Happy_viewer()
+                    Happy_paths.Happy_viewer()
                 elif user_inp == "b": #return back to the start
                     os.system('cls')
                     continue

@@ -136,7 +136,7 @@ class Happy_paths:
         print("\033[94m--- Back b)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
 
-
+    @staticmethod
     def Happy_create_player():
         print("\033[91m--------------------------------------\033[0m")
         print("\033[91m---           GLADIATORS           ---\033[0m")
