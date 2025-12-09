@@ -96,7 +96,7 @@ while True:
     if val == "5":
         class Organizer:
             ll = LL_API()
-            games = ll.get_game()  # assuming you have a method to get all games
+            games = ll.get_game() 
             print("\n=== Current Games ===")
             for g in games:
                 print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "

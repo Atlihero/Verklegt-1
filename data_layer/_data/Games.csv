@@ -1,7 +1,7 @@
 tournament_name,round,match_number,match_date,team_a,team_b,score_a,score_b,winner
-Búllan,R16,1,TBD,Explorer Crew,Arcane Crew,4,3,Explorer Crew
-Búllan,R16,2,TBD,Black in Yellow,Fantom,1,6,Fantom
-Búllan,R16,3,TBD,Street Squad,Blue Shells,4,2,Street Squad
+Búllan,R16,1,TBD,Explorer Crew,Arcane Crew,,,
+Búllan,R16,2,TBD,Black in Yellow,Fantom,,,
+Búllan,R16,3,TBD,Street Squad,Blue Shells,,,
 Búllan,R16,4,TBD,Spartan Squad,Fireflies,,,
 Búllan,R16,5,TBD,Anti Krambúðin,Blockheads,,,
 Búllan,R16,6,TBD,Limit Breakers,Fatal Force,,,
