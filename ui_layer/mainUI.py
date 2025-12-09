@@ -7,7 +7,9 @@ class Uimain:
     def __init__(self) -> None:
         """sup laddara"""
         LL_api = LL_API()
-        self.paths = Happy_paths()
+        self.paths = Happy_paths(LL_api)
 
     def start(self) -> None:
         """blobmaxing"""
+        happy = Happy_paths()
+        happy.Happy_create_team()
