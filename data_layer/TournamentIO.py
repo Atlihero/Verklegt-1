@@ -48,6 +48,7 @@ class TournamentIO:
     
     def update_games(self, match_number: int, score_a: int, score_b: int):
         games = self.get_all_games()
+        winner = None
 
         update = False
         for game in games:
@@ -63,6 +64,10 @@ class TournamentIO:
                 
                 else:
                     game["winner"] = None
+
+                winner = game["winner"]
+                current_round = game["round"]
+                tournament_name = game["tournament_name"]
                 
                 update = True
 
@@ -76,6 +81,5 @@ class TournamentIO:
             writer.writeheader()
             for g in games:
                 writer.writerow(g)
-        return f"updated"
-
-
+        
+        return {"winner": winner, "round": current_round, "tournament_name": tournament_name}

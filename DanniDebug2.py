@@ -86,7 +86,7 @@ while True:
                 ll.create_new_tournaments(tournament_dict)
 
                 print("\nGenerating random games for this tournament...\n")
-                ll.generateGames(name)
+                ll.generateGames(name, start)
 
                 print("\nTournament created and games generated successfully.\n")
         
@@ -108,7 +108,7 @@ while True:
 
             result = ll.updateGame(match_number, score_a, score_b)
             print(result)
-    
+
     if val == "q":
         print("You have quit the program")
         break

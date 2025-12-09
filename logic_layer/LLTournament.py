@@ -2,6 +2,7 @@ from Models.Tournament import Tournament
 from Models.Round import Round
 from data_layer.data_api import DataAPI
 import random
+from datetime import datetime
 
 class LLTournament:
     def __init__(self):
@@ -97,7 +98,7 @@ class LLTournament:
             None
         ]
 
-    def generate_games(self, tournament_name: str):
+    def generate_games(self, tournament_name: str, start_date: str):
         if len(self.teams) < 16:
             raise ValueError("You need 16 teams")
         
@@ -112,6 +113,8 @@ class LLTournament:
 
         all_games = []
         match_number = 1
+        current_date = datetime.strptime(start_date, "%Y-%m-%d")
+
 
         current_teams = shuffled
 
@@ -121,11 +124,13 @@ class LLTournament:
                 team_a = current_teams[i]
                 team_b = current_teams[i + 1]
 
+                match_date = current_date.strftime("%Y-%m-%d")
+
                 game_row = self.create_game(
                     tournament_name = tournament_name,
                     round = round,
                     match_number = match_number,
-                    match_date = "TBD",
+                    match_date = match_date,
                     team_a = team_a,
                     team_b = team_b
                 )
