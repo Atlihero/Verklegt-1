@@ -7,7 +7,8 @@ class Player:
     Búa til __init__ fall sem tekur inn nafn, fæðingardag, heimili,
     email, viðurnefni(gamertag), og link að samfélagsmiðli
     """
-    def __init__(self, name, dob, phone, address, email, handle, link, team=None, points=0):        self.name: str = name
+    def __init__(self, name, dob, phone, address, email, handle, link, team=None, points=0):        
+        self.name: str = name
         self.dob: date = dob
         self.address: int = address
         self.phone: str = phone
