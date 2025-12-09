@@ -45,7 +45,6 @@ class DataAPI:
         return self.player.get_player_stats()
 
 
-    #Pæling að breyta þessum
     def add_team_to_tournament(self, tournament_name, teams_list):
         "add exactly 16 teams to the tournament"
         return self.team.add_teams_to_tournament(tournament_name, teams_list)
