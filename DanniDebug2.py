@@ -83,7 +83,7 @@ while True:
                     "contact_phone": phone
                 }
                 ll = LL_API()
-                ll.create_new_tournaments(tournament_dict)
+                ll.create_new_tournament(tournament_dict)
 
                 print("\nGenerating random games for this tournament...\n")
                 ll.generateGames(name, start)
