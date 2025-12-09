@@ -17,10 +17,10 @@ class LLTeams:
             if not line or line.startswith("TeamID"):
                 continue  # skip empty lines and header
 
-            # Split á kommu og hreinsa bil + "
+            # Split on the comma and strip space + "
             parts = [p.strip(' "') for p in line.split(",")]
 
-            # We need: TeamID, TeamName, Captain, wins, points
+            # We need: TeamID, TeamName, Captain, Wins, Points
             if len(parts) < 5:
                 continue
 
