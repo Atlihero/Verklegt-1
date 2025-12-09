@@ -62,13 +62,12 @@ class OrganizerUI():
                 print(error)
 
         while True:
-            link = input("Enter a link (press 'Enter' to skip): ")
+            link = input("Enter a link to a social media platform (press 'Enter' to skip): ")
             try:
                 link = self.lapi.validate_link(link)
                 break
             except ValueError as error:
                 print(error)
-
 
         player_obj = Player(
             name = name,
@@ -77,16 +76,13 @@ class OrganizerUI():
             phone = phone_number,
             email = player_email,
             handle = handle,
-            link = link,
             team = None,
-            points = None
+            points = None,
+            link = link
         )
-
+        print("Player successfully created!")
         return self.lapi.create_player(player_obj)
 
-        #player = self.lapi.create_new_player(name, dob, address, phone_number, player_email, handle, link)
-        #print("Player created successfully!")
-        #return player
 
     def createTournament(self):
     
@@ -148,13 +144,13 @@ class OrganizerUI():
         
     # have it as an object not an dict so it is easier to return and read.
         tournament_obj = Tournament( 
-            unique_name=unique_name,
-            start_date=start_date,
-            end_date=end_date,
-            venue=venue,
-            contact_person=contact_person,
-            contact_email=contact_email,
-            contact_phone=contact_phone
+            unique_name = unique_name,
+            start_date = start_date,
+            end_date = end_date,
+            venue = venue,
+            contact_person = contact_person,
+            contact_email = contact_email,
+            contact_phone = contact_phone
         )
 
         return self.lapi.create_new_tournament(tournament_obj)

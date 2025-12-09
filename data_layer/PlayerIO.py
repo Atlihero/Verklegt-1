@@ -6,32 +6,46 @@ PLAYER_PATH: str = r"data_layer/_data/Players.csv"
 class PlayerIO:
 
     def get_players(self):
-            """
+        """
             This function finds the selected player and puts him into an empty list
             to be displayed
-            """
-            players = [] 
-            with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
-                #reader = csv.reader(csvfile) 
-                reader = csv.DictReader(csvfile)  
-                for row in reader:
-                    if not row:
-                        continue
+        """
+        players = [] 
+        with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+            #reader = csv.reader(csvfile) 
+            # keys are the header in the csv file
+            reader = csv.DictReader(csvfile)  
+            for row in reader:
+                if not row and not row.get("Name"): # skip empty rows that don't have 'name' in the header
+                    continue
 
-                    # If the line is too short then fill with blank
-                    #if row[0] == "Name":
-                    #    continue
+                # If the line is too short then fill with blank
+                #if row[0] == "Name":
+                #    continue
+                
+                if "Link" not in row:
+                    row["Link"] = "" # empty if link is not in header
+                
+                player = Player(
+                        row["Name"],
+                        row["DOB"],
+                        row["Address"],
+                        row["Phonenumber"],
+                        row["Email"],
+                        row["Handle"],
+                        row["Team"],
+                        row["Points"],
+                        row["Link"]
+                        )
 
-                    if row.get("Name"):
-                       continue
-                        
-                    name, dob, address, phone, email, handle, team, points = row
-
-                    player = Player(name, dob, address, phone, email, handle, team, points)
-                    players.append(player)
-
-            return players
-        
+                #name, dob, address, phone, email, handle, team, points, link = row    
+                
+                players.append(player)
+                #player = Player(name, dob, address, phone, email, handle, team, points, link)
+                #players.append(player)
+        return players
+    
+    
     def get_player_PublicViewer(self):
         try:
             players = []
@@ -54,7 +68,7 @@ class PlayerIO:
         with open(PLAYER_PATH, "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["Name", "DOB", "Address", "Phonenumber",
-                             "Email", "Handle", "Team", "Points"])
+                             "Email", "Handle", "Team", "Points", "Link"])
             for p in players:
                 writer.writerow([
                     p.name,
@@ -65,6 +79,7 @@ class PlayerIO:
                     p.handle,
                     p.team,
                     p.points,
+                    p.link
                 ])
 
     def create_new_player(player: list):
@@ -95,3 +110,4 @@ class PlayerIO:
         except ValueError:  #in case of wrong inputs 
             f"Error message to be decided"
         pass
+
