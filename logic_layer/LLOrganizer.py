@@ -15,7 +15,11 @@ class LLOrganizer():
             raise ValueError("Tournament name cannot be emtpy. Please enter a valid name.")
         
         existing_tournament_names = self.dapi.get_all_tournaments()
-        existing_name = [row[0] for row in existing_tournament_names if row]
+        existing_name = []
+        for row in existing_tournament_names:
+            if row: #check if row is not empty, to prevent error
+                existing_name.append(row[0])
+
         if name in existing_name:
             raise ValueError("Name already exists, please choose another one.")
 
