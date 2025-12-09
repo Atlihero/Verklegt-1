@@ -33,7 +33,7 @@ class LLTeams:
                 Team(
                     name=parts[1],       	
                     captain=parts[2],    	
-                    asciiLogo="",        	# Logo for later
+                    asciiLogo="", # Logo for later
                     wins = int(parts[3]),	
                     points = int(parts[4])	
                 )
