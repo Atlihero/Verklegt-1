@@ -4,32 +4,48 @@ from Models.Player import Player
 PLAYER_PATH: str = r"data_layer/_data/Players.csv"
  
 class PlayerIO:
-
-    def get_players():
-            """
+ 
+  def get_players(self):
+        """
             This function finds the selected player and puts him into an empty list
             to be displayed
-            """
-            players = [] 
-            with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
-                reader = csv.reader(csvfile)
-                #reader = csv.DictReader(csvfile) þurfum þennan frekar held ég, til að geta lesið skránna og skilað rétt
-                for row in reader:
-                    if not row:
-                        continue
+        """
+        players = [] 
+        with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+            #reader = csv.reader(csvfile) 
+            reader = csv.DictReader(csvfile) #reader = csv.DictReader(csvfile) þurfum þennan frekar held ég, til að geta lesið skránna og skilað rétt
 
-                    # If the line is too short then fill with blank
-                    if row[0] == "Name":
-                        continue
-                        
-                    name, dob, address, phone, email, handle, link, team, points = row
+            for row in reader:
+                if not row and not row.get("Name"):
+                    continue
 
-                    player = Player(name, dob, address, phone, email, handle, link, team, points)
-                    players.append(player)
+                # If the line is too short then fill with blank
+                #if row[0] == "Name":
+                #    continue
+                
+                if "Link" not in row:
+                    row["Link"] = "" # empty if link is not in header
+                
+                player = Player(
+                        row["Name"],
+                        row["DOB"],
+                        row["Address"],
+                        row["Phonenumber"],
+                        row["Email"],
+                        row["Handle"],
+                        row["Team"],
+                        row["Points"],
+                        row["Link"]
+                        )
 
-            return players
-        
-    def get_player_PublicViewer(self):
+                #name, dob, address, phone, email, handle, team, points, link = row    
+                
+                players.append(player)
+                #player = Player(name, dob, address, phone, email, handle, team, points, link)
+                #players.append(player)
+        return players
+
+   def get_player_PublicViewer(self):
         try:
             players = []
             team = []
