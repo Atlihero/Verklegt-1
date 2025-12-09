@@ -116,7 +116,6 @@ class LLTournament:
         current_teams = shuffled
 
         for round, match_count in rounds:
-            next_round_teams = []
 
             for i in range(0, len(current_teams), 2):
                 team_a = current_teams[i]
@@ -138,6 +137,9 @@ class LLTournament:
             current_teams = ["TBD"] * (match_count)
 
         return all_games
+    
+    def update_winner(self):
+
     
 
     def get_allTournamnets(self):

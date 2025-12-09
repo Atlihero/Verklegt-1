@@ -35,4 +35,13 @@ class TournamentIO:
             return "Error"
         return f"New Game added"
 
-        
+    def get_all_games(self):
+        games = []
+        try:
+            with open(GAMES_PATH, "r", encoding="utf-8") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    games.append(row)
+        except FileNotFoundError:
+            return []
+        return games
