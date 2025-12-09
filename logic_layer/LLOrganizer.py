@@ -17,11 +17,7 @@ class LLOrganizer():
             raise ValueError("Tournament name cannot be emtpy. Please enter a valid name.")
         
         existing_tournament_names = self.dapi.get_all_tournaments()
-        existing_name = []
-        for row in existing_tournament_names:
-            if row: #check if row is not empty, to prevent error
-                existing_name.append(row[0])
-
+        existing_name = [row[0] for row in existing_tournament_names if row]
         if name in existing_name:
             raise ValueError("Name already exists, please choose another one.")
 
@@ -55,6 +51,26 @@ class LLOrganizer():
         except ValueError:
             raise ValueError ("Invalid date. Use DD/MM/YYYY")
     
+
+    def tournament_location(self, location: str) -> str:
+        '''Checks if name is unique or missing a name'''
+        # check if name is just empty, so just space or something
+        location = location.strip()
+        if not location:
+            raise ValueError("Tournament location cannot be emtpy. Please enter a location.")
+
+        return location
+    
+
+    def tournament_contact_name(self, contact_name: str) -> str:
+        '''Checks if name is unique or missing a name'''
+        # check if name is just empty, so just space or something
+        contact_name = contact_name.strip()
+        if not contact_name:
+            raise ValueError("Contact name cannot be emtpy. Please enter a contact person.")
+        return contact_name
+    
+
     def organizer_player_info(self):
         """Allows the organizer to see all the players information"""
         all_players = self.playerio.get_players()

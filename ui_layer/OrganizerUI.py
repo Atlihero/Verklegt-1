@@ -10,7 +10,14 @@ class OrganizerUI():
 
     def get_player_info(self):
     
-        name = input("Enter full name of player: ")
+        while True:
+            name = input("Enter full name of player: ")
+            try:
+                name = self.lapi.valid_name(name)
+                break
+            except ValueError as error:
+                print(error)
+
 
         while True:
             dob_str = input("Enter player date of birth (DD/MM/YYYY): ")
@@ -20,7 +27,14 @@ class OrganizerUI():
             except ValueError as error:
                 print(error)
             
-        address = input("Enter player's home address: ")
+        while True:
+            address = input("Enter player's home address: ")
+            try:
+                address = self.lapi.valid_address(address)
+                break
+            except ValueError as error:
+                print(error) 
+        
     
         while True:
             phone_number = input("Enter player's phone number: ")

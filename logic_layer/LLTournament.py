@@ -76,5 +76,5 @@ class LLTournament:
 
         return self.tournamentio.create_new_tournament(tournament_list)
     
-    def get_allTournamnets(self):
+    def get_allTournaments(self):
         return self.data.get_all_tournaments()

@@ -1,39 +1,30 @@
-# from datetime import datetime
+#klúbbur
+# = unique name
+# have its own colors
+# have country and hometown
 
-# def player_info():
-#     date_input=(input("Enter a date (DD/MM/YYYY): "))
+#be able to keep the point for each club, be able to see who won each game both team and club
+#should be able to find a player and what club he has played for
 
-#     try:
-#         entered_date = datetime.strptime(date_input, "%d/%m/%Y")
-
-#         if entered_date > datetime.now():
-#             print("The date cannot be in the future.")
-#             return player_info()
-
-#         else:
-#             day = entered_date.day
-#             month = entered_date.month
-#             year = entered_date.year
-
-#             return f'{day}/{month}/{year}'
-    
-#     except ValueError:
-#         print("Invalid date. Use DD/MM/YYYY.")
-#         return player_info()
+# for each club
+    # what team has the most point 
+    # what team has most wins
+    # what team has the most in earnings
+    # what team has competed in the most games
 
 
-# date_input = player_info()
+from ui_layer.OrganizerUI import OrganizerUI
 
-# print(date_input)
+def main():
+    ui = OrganizerUI()
 
+    print("--- Create Player ---")
+    player = ui.get_player_info()
+    print(player)
 
+    print("\n--- Create Tournament ---")
+    tournament = ui.createTournament()
+    print(tournament)
 
-# def player_phone():
-#     phone_number = input("Enter player's phone number: ")
-#     try:
-        
-                        
-#     except ValueError:
-#         print("Invalid phone number. Try again.")
-
-    
+if __name__ == "__main__":
+    main()

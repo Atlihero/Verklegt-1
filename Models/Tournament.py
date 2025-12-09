@@ -16,7 +16,7 @@ class Tournament():
     #Skilar öllum upplýsingum mótsins def í nýrri línu
 
     def __str__(self):
-        return f"{self.uniquee_name}:\n{self.start_date}:\n{self.end_date}:\n{self.venue}\n{self.contact_person}\n{self.contact_email}\n{self.contact_phone}"
+        return f"{self.unique_name}:\n{self.start_date}:\n{self.end_date}:\n{self.venue}\n{self.contact_person}\n{self.contact_email}\n{self.contact_phone}"
     
     
     def __repr__(self):

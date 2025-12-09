@@ -18,6 +18,15 @@ class LLPlayer():
     def get_player_statistics(self):
         return self.data.get_player_statistics()
 
+    def validate_name(self, name: str) -> str:
+        '''Checks if name is unique or missing a name'''
+        # check if name is just empty, so just space or something
+        name = name.strip()
+        if not name:
+            raise ValueError("Player name cannot be emtpy. Please enter a valid name.")
+        
+        return name
+
 
     def validate_dob(self, dob_str: str) -> datetime: 
         '''Checks players date of birth and if the format fits the 
@@ -33,6 +42,15 @@ class LLPlayer():
             return dob
         except ValueError:
             raise ValueError ("Invalid date. Use DD/MM/YYYY")
+        
+    def validate_address(self, address: str) -> str:
+        '''Checks if name is unique or missing a name'''
+        # check if name is just empty, so just space or something
+        address = address.strip()
+        if not address:
+            raise ValueError("Player's address name cannot be emtpy. Please enter a valid address.")
+        
+        return address
         
     def validate_phone(self, phone_number: int) -> int:
         '''Validates the players phone number, if not then 
@@ -76,9 +94,13 @@ class LLPlayer():
         '''Checks players handle. It checks if the username 
         is already in use and then asks for a new username since no two players 
         can have the same username '''
-        
+        handle = handle.strip()
+
         if handle in LLPlayer.existing_handles:
             raise ValueError("This handle is already taken. Please try another one.")
+        
+        if not handle:
+            raise ValueError("Player's handle name cannot be emtpy. Please enter a handle.")
         
 		# if the handle is unique then its added to the list
         LLPlayer.existing_handles.add(handle)
