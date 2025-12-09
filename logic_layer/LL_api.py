@@ -41,6 +41,10 @@ class LL_API:
         "creates a new player"
         return self.player.create_player(name, dob_string, address, phone, email, handle, link)
     
+    def get_playerPublic(self):
+        "Gets the team for the public viewer"
+        return self.player.get_player_publicViewer()
+    
     """
     Logic layer wrapper for the LLTeams
     """
@@ -55,6 +59,10 @@ class LL_API:
     def get_teams(self, name):
         "gets the team by name"
         return self.team.get_team_by_name(name)
+    
+    def get_teams_public(self):
+        "gets the teams for the public viewer to see"
+        return self.team.getTeamsPublic()
     
     def check_team(self, name):
         "Check if team has this name"

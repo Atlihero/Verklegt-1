@@ -2,11 +2,16 @@ from Models.Team import Team
 from Models.Player import Player
 from data_layer.TeamIO import TeamIO
 from data_layer.PlayerIO import PlayerIO
+from data_layer.data_api import DataAPI
 
 
 class LLTeams:
     def __init__(self): 
         self.teams: list[Team] = self._load_teams_from_csv()
+
+    def getTeamsPublic(self):
+        data = DataAPI()
+        return data.getPublicTeam()
 
     def _load_teams_from_csv(self) -> list[Team]:
         raw_rows = TeamIO.get_team()
