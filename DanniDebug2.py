@@ -35,7 +35,6 @@ while True:
 
     
     if val == "3":
-
         class Organizer:
             def createTournament(self):
                 unique_name = input("Create a unique name for the tournament: ")

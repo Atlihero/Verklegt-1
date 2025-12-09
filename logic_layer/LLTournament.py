@@ -58,7 +58,7 @@ class LLTournament:
         print(f"TOURNAMENT WINNER: {winner}")
         return winner
 
-    def new_tourney(self, tournament_dict: dict):
+    def new_tourney(self, tournament_dict: Tournament):
         row = [
             tournament_dict["unique_name"],
             tournament_dict["start_date"],
