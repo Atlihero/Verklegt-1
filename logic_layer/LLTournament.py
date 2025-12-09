@@ -138,9 +138,6 @@ class LLTournament:
 
         return all_games
     
-    def update_winner(self):
-
-    
 
     def get_allTournamnets(self):
         return self.data.get_all_tournaments()
