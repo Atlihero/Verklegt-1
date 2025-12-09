@@ -116,13 +116,13 @@ class LLTournament:
         current_date = datetime.strptime(start_date, "%Y-%m-%d")
 
 
-        current_teams = shuffled
+        round_teams = shuffled
 
         for round, match_count in rounds:
-
-            for i in range(0, len(current_teams), 2):
-                team_a = current_teams[i]
-                team_b = current_teams[i + 1]
+            next_round_teams = ["TBD"] * (match_count)
+            for i in range(0, len(round_teams), 2):
+                team_a = round_teams[i]
+                team_b = round_teams[i + 1]
 
                 match_date = current_date.strftime("%Y-%m-%d")
 
@@ -138,8 +138,8 @@ class LLTournament:
                 all_games.append(game_row)
 
                 match_number += 1
-
-            current_teams = ["TBD"] * (match_count)
+            
+            round_teams = next_round_teams
 
         return all_games
     
