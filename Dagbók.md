@@ -195,4 +195,7 @@ Mættir á morgunfund eru allir nema Atli og Brynja. Brynja svaf aðeins lengur 
 -	Klára LLTournament
 
 **Staðan eftir daginn í dag:**
-- 
+- LLPlayers var lagað og er núna tilbúið
+- OrganizerUI var klárað, núna er hægt að búa til player og tournament og það bætist inn í csv skrána
+- Unnum í mainUi og það er farið að looka
+- Tengdum saman skrár þannig að hægt sé að búa til leikmann í mainUi og hann save-ast í data_layer
