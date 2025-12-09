@@ -5,6 +5,7 @@ from .LLCaptain import LLCaptain
 from .LLOrganizer import LLOrganizer
 from .LLTournament import LLTournament
 from Models.Tournament import Tournament
+from Models.Player import Player
 
 class LL_API:
     def __init__(self):
@@ -47,9 +48,12 @@ class LL_API:
         '''Validates the link of the new players'''
         return self.player.validate_link(link)
     
-    def create_player(self, name, dob_string, address, phone, email, handle, link=""):
-        '''Creates a new player'''
-        return self.player.create_player(name, dob_string, address, phone, email, handle, link)
+    #def create_new_player(self, name, dob_string, address, phone, email, handle, link=""):
+    #    '''Creates a new player'''
+    #    return self.player.create_player(name, dob_string, address, phone, email, handle, link)
+    
+    def create_player(self, player_obj: Player):
+        return self.player.create_player(player_obj)
     
     def get_playerPublic(self):
         '''Gets the team for the public viewer'''

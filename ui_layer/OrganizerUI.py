@@ -1,5 +1,6 @@
 from logic_layer.LL_api import LL_API
 from Models.Tournament import Tournament
+from Models.Player import Player
 
 
 class OrganizerUI():
@@ -68,9 +69,24 @@ class OrganizerUI():
             except ValueError as error:
                 print(error)
 
-        player = self.lapi.create_player(name, dob, address, phone_number, player_email, handle, link)
-        print("Player created successfully!")
-        return player
+
+        player_obj = Player(
+            name = name,
+            dob = dob_str,
+            address = address,
+            phone = phone_number,
+            email = player_email,
+            handle = handle,
+            link = link,
+            team = None,
+            points = None
+        )
+
+        return self.lapi.create_player(player_obj)
+
+        #player = self.lapi.create_new_player(name, dob, address, phone_number, player_email, handle, link)
+        #print("Player created successfully!")
+        #return player
 
     def createTournament(self):
     
@@ -98,9 +114,21 @@ class OrganizerUI():
             except ValueError as error:
                 print(error)
 
-        venue = input("Enter the name of a venue (location) for the tournament: ")
+        while True:
+            venue = input("Enter the name of a venue (location) for the tournament: ")
+            try:
+                venue = self.lapi.valid_tournament_location(venue)
+                break
+            except ValueError as error:
+                print(error)
         
-        contact_person = input("Name the contact person for this tournament: ")
+        while True:
+            try:
+                contact_person = input("Name the contact person for this tournament: ")
+                contact_person = self.lapi.valid_tournament_contact(contact_person)
+                break
+            except ValueError as error:
+                print(error)
         
         while True:
             contact_email = input("What is the contact email for this tournament: ")

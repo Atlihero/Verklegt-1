@@ -5,7 +5,7 @@ PLAYER_PATH: str = r"data_layer/_data/Players.csv"
  
 class PlayerIO:
 
-    def get_players():
+    def get_players(self):
             """
             This function finds the selected player and puts him into an empty list
             to be displayed
@@ -19,8 +19,11 @@ class PlayerIO:
                         continue
 
                     # If the line is too short then fill with blank
-                    if row[0] == "Name":
-                        continue
+                    #if row[0] == "Name":
+                    #    continue
+
+                    if row.get("Name"):
+                       continue
                         
                     name, dob, address, phone, email, handle, team, points = row
 

@@ -1,13 +1,16 @@
 from Models import Player
 from datetime import datetime
 from data_layer.data_api import DataAPI
+from data_layer.PlayerIO import PlayerIO
 
 class LLPlayer():
     # because no names can be the same, doesn't add if they are the same
-    existing_handles = set() 
+    #existing_handles = set() 
+    #existing_handles = []
 
     def __init__(self):
         self.data = DataAPI()
+        self.playerio = PlayerIO
 
     def get_all_players(self):
         return self.data.get_all_players()
@@ -24,7 +27,7 @@ class LLPlayer():
         name = name.strip()
         if not name:
             raise ValueError("Player name cannot be emtpy. Please enter a valid name.")
-        
+    
         return name
 
 
@@ -96,15 +99,27 @@ class LLPlayer():
         can have the same username '''
         handle = handle.strip()
 
-        if handle in LLPlayer.existing_handles:
-            raise ValueError("This handle is already taken. Please try another one.")
+        #if handle in LLPlayer.existing_handles:
+        #    raise ValueError("This handle is already taken. Please try another one.")
         
         if not handle:
             raise ValueError("Player's handle name cannot be emtpy. Please enter a handle.")
         
-		# if the handle is unique then its added to the list
-        LLPlayer.existing_handles.add(handle)
+        existing_usernames = self.data.get_all_players()
+        existing_handles = [
+            player["Handle"] 
+            for player in existing_usernames
+            if "Handle" in player
+            ]
+        
+        if handle in existing_handles:
+            raise ValueError("Handle is already in use, please choose another one.")
+
         return handle
+
+		# if the handle is unique then its added to the list
+        #LLPlayer.existing_handles.add(handle)
+        #return handle
     
     def validate_link(self, link: str) -> str:
         if not link:
@@ -113,5 +128,21 @@ class LLPlayer():
             raise ValueError("Link must start with 'http://' or 'https://'. Please try another link")
         return link
     
-    def create_player(self, name, dob_str, address, phone_number, player_email, player_handle, link):
-        return Player.Player(name, dob_str, address, phone_number, player_email, player_handle, link)
+    #def create_player(self, name, dob_str, address, phone_number, player_email, player_handle, link):
+    #    return Player.Player(name, dob_str, address, phone_number, player_email, player_handle, link)
+
+    def create_player(self, player_obj: Player) -> Player:
+    
+        player_list = [ 
+            player_obj.name,
+            player_obj.dob,
+            player_obj.address,
+            player_obj.phone,
+            player_obj.email,
+            player_obj.handle,
+            player_obj.link,
+            player_obj.team,
+            player_obj.points
+        ]
+
+        return self.playerio.create_new_player(player_list)
