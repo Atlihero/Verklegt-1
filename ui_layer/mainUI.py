@@ -19,4 +19,15 @@ class Uimain:
     def start(self) -> None:
         """Prints the game screen on terminal and controles the flow of information"""
         paths = Happy_paths
-        return paths.Happy_logo()
+        while True:
+            paths.Happy_logo()
+            user_inp = input("Press any button to start: ")
+            if user_inp != 1:
+                paths.Happy_menu()
+                user_inp = input("Enter 1, 2, 3 or b: ")
+                if user_inp == "1":
+                    paths.Happy_organizer()
+                    user_inp = input("Enter 1, 2, 3, 4 or b: ")
+                    exit()
+                else:
+                    exit()
