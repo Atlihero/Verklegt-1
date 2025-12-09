@@ -256,13 +256,13 @@ class LLTournament:
 
     def new_tourney(self, tournament_dict: Tournament):
         row = [
-            tournament_dict["unique_name"],
-            tournament_dict["start_date"],
-            tournament_dict["end_date"],
-            tournament_dict["venue"],
-            tournament_dict["contact_person"],
-            tournament_dict["contact_email"],
-            tournament_dict["contact_phone"]
+            tournament_dict.unique_name,
+            tournament_dict.start_date,
+            tournament_dict.end_date,
+            tournament_dict.venue,
+            tournament_dict.contact_person,
+            tournament_dict.contact_email,
+            tournament_dict.contact_phone
         ]
         return self.data.new_tournament(row)
 
@@ -308,7 +308,7 @@ class LLTournament:
 
         all_games = []
         match_number = 1
-        current_date = datetime.strptime(start_date, "%Y-%m-%d")
+        current_date = start_date
 
 
         round_teams = shuffled
@@ -319,7 +319,7 @@ class LLTournament:
                 team_a = round_teams[i]
                 team_b = round_teams[i + 1]
 
-                match_date = current_date.strftime("%Y-%m-%d")
+                match_date = current_date.strftime("%d/%m/%Y")
 
                 game_row = self.create_game(
                     tournament_name = tournament_name,

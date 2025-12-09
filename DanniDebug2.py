@@ -1,5 +1,7 @@
 from logic_layer.LL_api import LL_API
+from Models.Tournament import Tournament
 api = LL_API()
+
 def show_games(games, title="Current Games"):
     print(f"\n=== {title} ===")
     for g in games:
@@ -68,36 +70,73 @@ while True:
         print("Tournament has been created:", tournament)
 
     if val == "4":
-        class Organizer:
-            def UI_create_tournament():
-                print("\n=== Create New Tournament ===")
-                name = input("Enter tournament name: ")
-                start = input("Start date (YYYY-MM-DD): ")
-                end = input("End date (YYYY-MM-DD): ")
-                venue = input("Venue: ")
-                contact = input("Contact person: ")
-                email = input("Contact email: ")
-                phone = input("Contact phone: ")
+        class OrganizerUI():
 
-                tournament_dict = {
-                    "unique_name": name,
-                    "start_date": start,
-                    "end_date": end,
-                    "venue": venue,
-                    "contact_person": contact,
-                    "contact_email": email,
-                    "contact_phone": phone
-                }
-                ll = LL_API()
-                ll.create_new_tournament(tournament_dict)
+            def createTournament(self):
+                lapi = LL_API()
+            
+                while True:
+                    unique_name = input("Create a unique name for the tournament: ")
+                    try:
+                        unique_name = lapi.valid_tournament_name(unique_name)
+                        break
+                    except ValueError as error:
+                        print(error)
 
-                print("\nGenerating random games for this tournament...\n")
-                ll.generateGames(name, start)
+                while True:
+                    start_date = input("Select the start date of the tournament: ")
+                    try:
+                        start_date = lapi.valid_start_date(start_date)
+                        break
+                    except ValueError as error:
+                        print(error)
 
-                print("\nTournament created and games generated successfully.\n")
+                while True:
+                    end_date = input("Select the end date of the tournament: ")
+                    try:
+                        end_date = lapi.valid_end_date(end_date, start_date)
+                        break
+                    except ValueError as error:
+                        print(error)
+
+                venue = input("Enter the name of a venue (location) for the tournament: ")
+                
+                contact_person = input("Name the contact person for this tournament: ")
+                
+                while True:
+                    contact_email = input("What is the contact email for this tournament: ")
+                    try: 
+                        lapi.valid_email(contact_email)
+                        break
+                    except ValueError as error:
+                        print(error)
+                
+                while True:
+                    contact_phone = input("What is the contact phone for this tournament: ")
+                    try:
+                        lapi.valid_phone(contact_phone)
+                        break
+                    except ValueError as error:
+                        print(error)
+                
+            # have it as an object not an dict so it is easier to return and read.
+                tournament_obj = Tournament( 
+                    unique_name=unique_name,
+                    start_date=start_date,
+                    end_date=end_date,
+                    venue=venue,
+                    contact_person=contact_person,
+                    contact_email=contact_email,
+                    contact_phone=contact_phone
+                )
+                lapi.generateGames(unique_name, start_date)
+                return lapi.create_new_tournament(tournament_obj)
         
-        Organizer.UI_create_tournament()
-
+        ui = OrganizerUI()
+        created_tournament = ui.createTournament()
+        print(created_tournament)
+                
+        
 
     if val == "5":
         class Organizer:
@@ -106,7 +145,7 @@ while True:
 
             if not games:
                 print("\nNo games found for this tournament.\n")
-                
+
             show_games(games, "Current Games")
 
             match_number = int(input("\nEnter match number to update: "))
