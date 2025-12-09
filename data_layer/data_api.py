@@ -58,10 +58,21 @@ class DataAPI:
         "retrieves the tournaments from the csv"
         return self.tournament.get_tournaments()
 
-    def new_game(self, game_dict):
-        "creates a new game in the csv"
-        return self.tournament.create_new_game(game_dict)
-
 # þessi þarf að vera 
     def create_new_tournaments(self, tournament_obj):
        return self.tournament.create_new_tournament(tournament_obj)
+
+    def new_game(self, row: list):
+        "creates a new game in the csv"
+        return self.tournament.create_new_game(row)
+
+    def get_games(self):
+        "gets the games from the tournamnet"
+        return self.tournament.get_all_games()
+    
+    def update_game(self, match_number: int, score_a: int, score_b: int):
+        "updates the game based on the score inputted"
+        return self.tournament.update_games(match_number, score_a, score_b)
+    
+    def advance_round(self, tournament_name: str, match_number: int, winner: str):
+        return self.tournament.advance(tournament_name, match_number, winner)
