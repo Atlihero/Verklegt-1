@@ -15,16 +15,17 @@ while True:
     print("3. Create tournament")
     print("4. create tournament with games")
     print("5. Update results")
+    print("6. Show Games")
     print("q. Quit")
 
-    val = input("Veldu verkefni (1-5): ")
+    val = input("Veldu verkefni (1-6): ")
 
     if val == "1":
         userinput = int(input("Veldu ID leikmanns milli 1-57: "))
         class PublicViewer:     
             def getplayerPublic():
                 api = LL_API()        
-                players = api.getPlayerpublic()
+                players = api.get_playerPublic()
                 return players
                 
             player, team = getplayerPublic()
@@ -36,7 +37,7 @@ while True:
 
             def getTeamPublic():
                 api = LL_API()
-                teams = api.getTeamPublic()
+                teams = api.get_teams_public()
                 return teams
 
             teams, captain = getTeamPublic()
@@ -173,6 +174,21 @@ while True:
 
             updated_games = api.get_game()
             show_games(updated_games, "Updated Games")
+
+        
+    if val == "6":
+        class PublicViewer:
+            def view_schedule(games, title="Current Games"):
+                print(f"\n=== {title} ===")
+                for g in games:
+                    print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
+                        f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
+                return games
+
+        tournament_name = input("Enter tournament name: ").strip()
+        games = api.get_game_by_tournamentName(tournament_name)
+
+        schedule = PublicViewer.view_schedule(games)
 
     if val == "q":
         print("You have quit the program")
