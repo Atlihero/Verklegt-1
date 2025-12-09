@@ -17,9 +17,19 @@ class Tournament(Organizer):
     
     #Skilar öllum upplýsingum mótsins def í nýrri línu
 
+    #def __str__(self):
+    #   return f"{self.unique_name}:\n{self.start_date}:\n{self.end_date}:\n{self.venue}\n{self.contact_person}\n{self.contact_email}\n{self.contact_phone}"
+
     def __str__(self):
-        return f"{self.unique_name}:\n{self.start_date}:\n{self.end_date}:\n{self.venue}\n{self.contact_person}\n{self.contact_email}\n{self.contact_phone}"
-    
+        return (
+        f"Name: {self.unique_name}:\n"
+        f"Start date: {self.start_date}:\n"
+        f"End date: {self.end_date}:\n"
+        f"Location: {self.venue}\n"
+        f"Contact person: {self.contact_person}\n"
+        f"Contact person email: {self.contact_email}\n"
+        f"Contact person phone: {self.contact_phone}"
+        )
     
     def __repr__(self):
         return str(self)
