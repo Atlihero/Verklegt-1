@@ -34,34 +34,35 @@ class Uimain:
 
                 if user_inp == "1":
                     """Now we are in Organizer and can chose what we will do there"""
-                    paths.Happy_organizer()
+                    paths.Happy_organizer() #This is the organizer
                     user_inp = input("Enter 1, 2, 3, 4 or b: ")
-                    if user_inp == "1":
+                    if user_inp == "1": #Here you creata a new player
                         paths.Happy_create_player()
                         organizer
                         exit()
-                    elif user_inp == "2":
+                    elif user_inp == "2": #Here you create a tournament
                         paths.Happy_create_tournament()
                         exit()
-                    elif user_inp == "3":
+                    elif user_inp == "3": #Here you create a team
                         paths.Happy_create_team()
                         exit()
-                    elif user_inp == "4":
+                    elif user_inp == "4": #here you make a player a captain
                         paths.Happy_make_captain()
-                    elif user_inp == "b":
+                    elif user_inp == "b": #return back to starting psition
                         os.system('cls')
                         continue
-                elif user_inp == "2":
+                elif user_inp == "2": #This is the Captain
                     paths.Happy_captain()
                     user_inp = input("")
                     exit()
-                elif user_inp == "3":
+                elif user_inp == "3": #This is the puplic viewer
                     paths.Happy_viewer()
-                elif user_inp == "b":
+                elif user_inp == "b": #return back to the start
                     os.system('cls')
                     continue
-                else:
+                else: # if you enter an invalid input
                     print("invalid input")
+                    #need to find a way to return to input not back or exit
                     exit()
-            else:
+            else: #stops the code if you some how manige to give int not string which should not be possible
                 exit()
