@@ -151,7 +151,7 @@ Mættir á morgunfund eru allir nema Atli sem fær að lúlla aðeins lengur.
 - Skipuleggja hvað þarf að gera til að klára verkefnið
 
 **Staðan eftir daginn:**
--	Skrifum laangan to-do lista yfir allt sem þarf að gera
+-	Skrifum laangan to-do lista yfir allt sem þarf að gera ✅
 
 ### Laugardagur 6.12.25 (Dagur 5 í viku 2)
 -Mættum fersk á bilinu 11:00 Daniel á afmæli big 20 Atli mætir með gjöf
@@ -167,3 +167,32 @@ Mættir á morgunfund eru allir nema Atli sem fær að lúlla aðeins lengur.
 - Daníel Mættur um 12:00
 - Planið er að geta gert tournament og haldið leiki því
 - Næst að búa til tournament frá UI
+
+### Mánudagur 8.12.25 (Dagur 1 vika 3)
+
+Mættir á morgunfund eru: Brynja, Elvar og Karen.
+Daníel er veikur heima í dag, Atli er á leiðinni, bara aðeins seinir.
+
+**Verkefni dagsins eru:**
+-	Klára LLTeams (fínpússa) ✅
+-	Klára LLTournament (fínpússa) ✅
+-	Byrja á LLOrganizer ✅
+-	Halda áfram með LLStatistics ✅
+-	Fara yfir hvað á eftir að gera ✅ 
+
+**Staðan eftir daginn í dag:**
+- Kláraðum LLOrganizer
+- Unnið í Ui layer
+  - Tengja saman til að láta virka
+
+### Þriðjudagur 9.12.25 (Dagur 2 vika 3)
+Mættir á morgunfund eru allir nema Atli og Brynja. Brynja svaf aðeins lengur til að reyna að losna við kvef. 
+
+**Verkefni dagsins eru:**
+- Vinna í UI layer
+  - Main og menu
+-	Vinna í skýrslunni
+-	Klára LLTournament
+
+**Staðan eftir daginn í dag:**
+- 
