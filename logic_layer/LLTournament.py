@@ -353,24 +353,6 @@ class LLTournament:
     
 
 
-    def new_tourney(self, tournament_obj: Tournament):
-        '''want to return as a list, not a dict to have it easier to read'''
-        tournament_list = [
-            tournament_obj.unique_name,
-            tournament_obj.start_date.strftime("%d/%m/%Y"), # takes out the timestamp
-            tournament_obj.end_date.strftime("%d/%m/%Y"),
-            tournament_obj.venue,
-            tournament_obj.contact_person,
-            tournament_obj.contact_email,
-            tournament_obj.contact_phone
-        ]
-
-        return self.tournamentio.create_new_tournament(tournament_list)
-
-
-    def get_allTournaments(self):
-        return self.data.get_all_tournaments()
-
 
 
 
