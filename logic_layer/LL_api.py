@@ -99,6 +99,11 @@ class LL_API:
     def generateGames(self, tournament_name: str):
         return self.tournament.generate_games(tournament_name)
     
+    def updateGame(self, match_number: int, score_a: int, score_b: int):
+        return self.tournament.update_games(match_number, score_a, score_b)
+    
     def newTournament(self):
         return self.tournament.new_tourney()
 
+    def get_game(self):
+        return self.tournament.get_all_games()

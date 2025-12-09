@@ -6,9 +6,10 @@ while True:
     print("2. Get team")
     print("3. Create tournament")
     print("4. create tournament with games")
+    print("5. Update results")
     print("q. Quit")
 
-    val = input("Veldu verkefni (1-4): ")
+    val = input("Veldu verkefni (1-5): ")
 
     if val == "1":
         userinput = int(input("Veldu ID leikmanns milli 1-57: "))
@@ -92,6 +93,21 @@ while True:
         Organizer.UI_create_tournament()
 
 
+    if val == "5":
+        class Organizer:
+            ll = LL_API()
+            games = ll.get_game()  # assuming you have a method to get all games
+            print("\n=== Current Games ===")
+            for g in games:
+                print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
+                    f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
+
+            match_number = int(input("\nEnter match number to update: "))
+            score_a = int(input("Enter score for team A: "))
+            score_b = int(input("Enter score for team B: "))
+
+            result = ll.updateGame(match_number, score_a, score_b)
+            print(result)
     
     if val == "q":
         print("You have quit the program")

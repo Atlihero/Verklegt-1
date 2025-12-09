@@ -61,3 +61,11 @@ class DataAPI:
     def new_game(self, row: list):
         "creates a new game in the csv"
         return self.tournament.create_new_game(row)
+
+    def get_games(self):
+        "gets the games from the tournamnet"
+        return self.tournament.get_all_games()
+    
+    def update_game(self, match_number: int, score_a: int, score_b: int):
+        "updates the game based on the score inputted"
+        return self.tournament.update_games(match_number, score_a, score_b)

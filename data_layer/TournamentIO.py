@@ -45,3 +45,37 @@ class TournamentIO:
         except FileNotFoundError:
             return []
         return games
+    
+    def update_games(self, match_number: int, score_a: int, score_b: int):
+        games = self.get_all_games()
+
+        update = False
+        for game in games:
+            if int(game["match_number"]) == match_number:
+                game["score_a"] = score_a
+                game["score_b"] = score_b
+
+                if score_a > score_b:
+                    game["winner"] = game["team_a"]
+                
+                elif score_b > score_a:
+                    game["winner"] = game["team_b"]
+                
+                else:
+                    game["winner"] = None
+                
+                update = True
+
+        if not update:
+            return f"No game found"
+        
+        fieldnames = ["tournament_name","round","match_number","match_date",
+                      "team_a","team_b","score_a","score_b","winner"]
+        with open(GAMES_PATH, "w", newline="", encoding="utf-8") as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            for g in games:
+                writer.writerow(g)
+        return f"updated"
+
+

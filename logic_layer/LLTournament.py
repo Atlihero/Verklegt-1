@@ -138,6 +138,11 @@ class LLTournament:
 
         return all_games
     
+    def update_games(self, match_number: int, score_a: int, score_b: int):
+        return self.data.update_game(match_number, score_a, score_b)
+
+    def get_all_games(self):
+        return self.data.get_games()
 
     def get_allTournamnets(self):
         return self.data.get_all_tournaments()
