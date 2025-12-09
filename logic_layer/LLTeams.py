@@ -6,10 +6,11 @@ class LLTeams:
 
 	def __init__(self):
 		self.teams: list[Team] = self._load_teams_from_csv()
+		self.teamio = TeamIO()
 
 
 	def _load_teams_from_csv(self):
-		raw_rows = TeamIO.get_team(self)
+		raw_rows = self.teamio.get_team(self)
 		teams: list[Team] = []
 
 		for line in raw_rows:   # Loops each line from the csv
@@ -105,7 +106,7 @@ class LLTeams:
 		# Saving in CSV throguh TeamIO
 		# teams start with 0 wins and points
 		row_for_csv = [str(new_id), new_team.name, new_team.captain, 0, 0]
-		TeamIO.add_new_team(row_for_csv)
+		self.teamio.add_new_team(row_for_csv)
 
 		return new_team
 	

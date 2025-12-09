@@ -6,17 +6,17 @@ class LLPlayer():
     # because no names can be the same, doesn't add if they are the same
     existing_handles = set() 
 
+    def __init__(self):
+        self.data = DataAPI()
+
     def get_all_players(self):
-        data = DataAPI()
-        return data.get_all_players()
+        return self.data.get_all_players()
     
     def get_player_publicViewer(self):
-        data = DataAPI()
-        return data.public_get_player()
+        return self.data.public_get_player()
     
     def get_player_statistics(self):
-        data = DataAPI()
-        return data.get_player_statistics()
+        return self.data.get_player_statistics()
 
 
     def validate_dob(self, dob_str: str) -> datetime: 

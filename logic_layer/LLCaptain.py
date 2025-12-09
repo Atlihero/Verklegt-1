@@ -8,11 +8,13 @@ class LLCaptain():
 
     def __init__(self):
         self.ll_teams = LLTeams()
+        self.playerio = PlayerIO()
+        self.dapi = DataAPI()
 
 
     def get_team_members(self, team_name: str):
         '''Check if players are in this team and return a list of members'''
-        all_players = DataAPI.get_all_players()
+        all_players = self.dapi.get_all_players()
         team_members = [p for p in all_players if p.get("Team") == team_name]
         return team_members
             
@@ -29,7 +31,7 @@ class LLCaptain():
             raise ValueError ("There are already 5 players in this team.")
        
         # Get all players
-        all_players = PlayerIO().get_players()
+        all_players = self.playerio.get_players()
 
         # Find the player to add from a list
         player_to_add = None
@@ -49,13 +51,13 @@ class LLCaptain():
         player_to_add.get("Team") == team_name
 
         # Update players.csv and save changes
-        PlayerIO.save_players(all_players)
+        self.playerio.save_players(all_players)
         return player_to_add
     
     
     def remove_from_team(self, player_name: str, team_name: str):
         '''Allows captain to remove a player from team'''
-        all_players = PlayerIO.get_players()
+        all_players = self.playerio.get_players()
         player_found = None
 
         for p in all_players:
@@ -71,7 +73,7 @@ class LLCaptain():
     
         player_found.get("Team") == ""
 
-        PlayerIO.save_players(all_players)
+        self.playerio.save_players(all_players)
         return player_found
     
 
