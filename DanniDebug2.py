@@ -5,9 +5,10 @@ while True:
     print("1. Get players")
     print("2. Get team")
     print("3. Create tournament")
+    print("4. create tournament with games")
     print("q. Quit")
 
-    val = input("Veldu verkefni (1-3): ")
+    val = input("Veldu verkefni (1-4): ")
 
     if val == "1":
         userinput = int(input("Veldu ID leikmanns milli 1-57: "))
@@ -61,34 +62,33 @@ while True:
         print("Tournament has been created:", tournament)
 
     if val == "4":
-        def ui_create_tournament_with_games():
-            ll = LL_API()
+        class Organizer:
+            def ui_create_tournament_with_games():
+                print("\n=== Create New Tournament ===")
+                name = input("Enter tournament name: ")
+                start = input("Start date (YYYY-MM-DD): ")
+                end = input("End date (YYYY-MM-DD): ")
+                venue = input("Venue: ")
+                contact = input("Contact person: ")
+                email = input("Contact email: ")
+                phone = input("Contact phone: ")
 
-            print("\n=== Create New Tournament ===")
-            name = input("Enter tournament name: ")
-            start = input("Start date (YYYY-MM-DD): ")
-            end = input("End date (YYYY-MM-DD): ")
-            venue = input("Venue: ")
-            contact = input("Contact person: ")
-            email = input("Contact email: ")
-            phone = input("Contact phone: ")
+                tournament_dict = {
+                    "unique_name": name,
+                    "start_date": start,
+                    "end_date": end,
+                    "venue": venue,
+                    "contact_person": contact,
+                    "contact_email": email,
+                    "contact_phone": phone
+                }
+                ll = LL_API()
+                ll.newTournament(tournament_dict)
 
-            tournament_dict = {
-                "unique_name": name,
-                "start_date": start,
-                "end_date": end,
-                "venue": venue,
-                "contact_person": contact,
-                "contact_email": email,
-                "contact_phone": phone
-            }
+                print("\nGenerating random games for this tournament...\n")
+                ll.generateGames(name)
 
-            ll.newTournament(tournament_dict)
-
-            print("\nGenerating random games for this tournament...\n")
-            ll.generateGames(name)
-
-            print("\nTournament created and games generated successfully.\n")
+                print("\nTournament created and games generated successfully.\n")
 
 
     
