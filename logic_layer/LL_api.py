@@ -1,6 +1,6 @@
 from logic_layer.LLPlayers import LLPlayer
 from logic_layer.LLTeams import LLTeams
-from logic_layer.LLTournament import LLTournament
+from logic_layer.LLTournament import Tournament
 from .LLCaptain import LLCaptain
 from .LLOrganizer import LLOrganizer
 from Models.Tournament import Tournament
@@ -9,7 +9,7 @@ class LL_API:
     def __init__(self):
         self.player = LLPlayer()
         self.team = LLTeams()
-        self.tournament = LLTournament()
+        self.tournament = Tournament()
         self.captain = LLCaptain()
         self.organizer = LLOrganizer()
 
@@ -41,6 +41,10 @@ class LL_API:
         "creates a new player"
         return self.player.create_player(name, dob_string, address, phone, email, handle, link)
     
+    def get_playerPublic(self):
+        "Gets the team for the public viewer"
+        return self.player.get_player_publicViewer()
+    
     """
     Logic layer wrapper for the LLTeams
     """
@@ -55,6 +59,10 @@ class LL_API:
     def get_teams(self, name):
         "gets the team by name"
         return self.team.get_team_by_name(name)
+    
+    def get_teams_public(self):
+        "gets the teams for the public viewer to see"
+        return self.team.getTeamsPublic()
     
     def check_team(self, name):
         "Check if team has this name"
@@ -136,10 +144,6 @@ class LL_API:
         '''Captain can see player info about members in his team'''
         return self.captain.cap_see_player_info(player_name, team_name)
 
-    def organizer_view_player_info(self):
-        '''Organizer can see information about every player in the tournament'''
-        return self.captain.organizer_player_info()
-
 
     """
     Logic wrapper for Organizer
@@ -153,4 +157,8 @@ class LL_API:
     
     def valid_end_date(self, end_date, start_date):
         return self.organizer.choose_end_date(end_date, start_date)
+
+    def organizer_view_player_info(self):
+        '''Organizer can see information about every player in the tournament'''
+        return self.organizer.organizer_player_info()
 

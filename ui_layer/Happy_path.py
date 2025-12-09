@@ -1,5 +1,6 @@
-#from logic_layer.LL_api import LL_API
-from Colors import Colers
+from logic_layer.LL_api import LL_API
+
+
 
 class Happy_paths:
     HappyID = 0
@@ -156,7 +157,7 @@ class Happy_paths:
 
     Happy_logo()
     Happy_menu()
-    fyrst_input = "" #This code will change just testing
+    fyrst_input = "" #Will take user input and take him to selected page and give ID to know at what page user is at
     while fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
         fyrst_input = input("")
         if fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
@@ -174,8 +175,8 @@ class Happy_paths:
         Happy_viewer()
     else:
         HappyID = 4
-
-    if HappyID == 1:
+        
+    if HappyID == 1: #all paths for orginazer
         input2 = ""
         while input2 != "1" and input2 != "2" and input2 != "3" and input2 !="4" and input2 != "b":
             input2 = input("")
@@ -194,21 +195,16 @@ class Happy_paths:
             OD = 4
             Happy_make_captain()
     
-    if HappyID == 2:
-        input3 = input("Enter captain:")
+    if HappyID == 2: #all paths for captain
+        input3 =1
+        while input3 == 1: #captins id
+            input3 = input("")
+            if input3 != 1:
+                print("\033[100mEnter valid Input\033[0m")
+        input3 = input("Enter captain ID:")
 
     if HappyID == 3:
         input4 = input("Enter viewer:")
 
     if HappyID == 4:
         exit()
-        
-        
-
-
-
-def scoobster(pink, reset, blue, neonblue, Yellow, gray, red, highlite, neongreen):
-    print(pink,"########################")
-    print(pink,"## ",highlite,"--Scooby doo--",reset,pink,"##")
-
-scoobster(*Colers.all_colers())

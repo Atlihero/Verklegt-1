@@ -12,7 +12,7 @@ while True:
         class PublicViewer:     
             def getplayerPublic():
                 api = LL_API()        
-                players = api.getPlayerpublic()
+                players = api.get_playerPublic()
                 return players
                 
             player, team = getplayerPublic()
@@ -24,7 +24,7 @@ while True:
 
             def getTeamPublic():
                 api = LL_API()
-                teams = api.getTeamPublic()
+                teams = api.get_teams_public()
                 return teams
 
             teams, captain = getTeamPublic()
