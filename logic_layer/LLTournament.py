@@ -353,7 +353,7 @@ class LLTournament:
     
 
 
-   def new_tourney(self, tournament_obj: Tournament):
+    def new_tourney(self, tournament_obj: Tournament):
         '''want to return as a list, not a dict to have it easier to read'''
         tournament_list = [
             tournament_obj.unique_name,
@@ -366,8 +366,8 @@ class LLTournament:
         ]
 
         return self.tournamentio.create_new_tournament(tournament_list)
-    
-    
+
+
     def get_allTournaments(self):
         return self.data.get_all_tournaments()
 
