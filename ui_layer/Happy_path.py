@@ -3,8 +3,7 @@ from logic_layer.LL_api import LL_API
 
 
 class Happy_paths:
-    HappyID = 0
-    Output_ID = 0
+
     def Happy_logo():
         print(r"     _       __     __                              __             ____  __  ___ ")
         print(r"    | |     / /__  / /________  ____ ___  ___      / /_____       / __ \/ / / ( )_____")
