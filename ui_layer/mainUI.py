@@ -29,14 +29,26 @@ class Uimain:
                 user_inp = input("Enter 1, 2, 3 or b: ")
                 
                 
-                """Here we select Organizer captain viewer"""
+                """Here we select Organizer or captain or viewer"""
 
                 if user_inp == "1":
+                    """Now we are in Organizer and can chose what we will do there"""
                     paths.Happy_organizer()
                     user_inp = input("Enter 1, 2, 3, 4 or b: ")
                     if user_inp == "1":
                         paths.Happy_create_player()
                         exit()
+                    elif user_inp == "2":
+                        paths.Happy_create_tournament()
+                        exit()
+                    elif user_inp == "3":
+                        paths.Happy_create_team()
+                        exit()
+                    elif user_inp == "4":
+                        paths.Happy_make_captain()
+                    elif user_inp == "b":
+                        os.system('cls')
+                        continue
                 elif user_inp == "2":
                     paths.Happy_captain()
                     user_inp = input("")
@@ -47,6 +59,7 @@ class Uimain:
                     os.system('cls')
                     continue
                 else:
+                    print("invalid input")
                     exit()
             else:
                 exit()
