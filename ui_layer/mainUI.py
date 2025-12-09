@@ -21,6 +21,7 @@ class Uimain:
         """Prints the game screen on terminal and controles the flow of information"""
         Happy_paths
         organizer = OrganizerUI()
+        api = LL_API()
         while True:
             Happy_paths.Happy_logo()
             user_inp = input("Press any button to start: ")
@@ -38,16 +39,19 @@ class Uimain:
                     user_inp = input("Enter 1, 2, 3, 4 or b: ")
                     if user_inp == "1": #Here you creata a new player
                         Happy_paths.Happy_create_player()
-                        organizer.get_player_info()
+                        organizer.create_player()
                         exit()
                     elif user_inp == "2": #Here you create a tournament
                         Happy_paths.Happy_create_tournament()
+                        organizer.createTournament()
                         exit()
                     elif user_inp == "3": #Here you create a team
                         Happy_paths.Happy_create_team()
+                        api.add_team()
                         exit()
                     elif user_inp == "4": #here you make a player a captain
                         Happy_paths.Happy_make_captain()
+                        api.select_captains()
                     elif user_inp == "b": #return back to starting psition
                         os.system('cls')
                         continue

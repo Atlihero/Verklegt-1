@@ -364,4 +364,4 @@ class LLTournament:
             tournament_obj.contact_phone
         ]
 
-        return self.tournamentio.create_new_tournament(tournament_list)
+        return self.tournamentio.create_new_tournament(tournament_list) #fix this shit
