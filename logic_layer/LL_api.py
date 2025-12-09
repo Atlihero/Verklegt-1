@@ -1,6 +1,6 @@
 from logic_layer.LLPlayers import LLPlayer
 from logic_layer.LLTeams import LLTeams
-from logic_layer.LLTournament import Tournament
+from logic_layer.LLTournament import LLTournament
 from .LLCaptain import LLCaptain
 from .LLOrganizer import LLOrganizer
 from Models.Tournament import Tournament
@@ -9,7 +9,7 @@ class LL_API:
     def __init__(self):
         self.player = LLPlayer()
         self.team = LLTeams()
-        self.tournament = Tournament()
+        self.tournament = LLTournament()
         self.captain = LLCaptain()
         self.organizer = LLOrganizer()
 
@@ -122,6 +122,26 @@ class LL_API:
 
     def create_new_tournament(self, tournament_obj: Tournament):
         return self.tournament.new_tourney(tournament_obj)
+    
+    def generateGames(self, tournament_name: str, start_date: str):
+        return self.tournament.generate_games(tournament_name, start_date)
+    
+    def updateGame(self, match_number: int, score_a: int, score_b: int):
+        return self.tournament.update_games(match_number, score_a, score_b)
+    
+    def newTournament(self):
+        return self.tournament.new_tourney()
+
+    def get_game(self):
+        return self.tournament.get_all_games()
+
+    def advance_round(self, tournament_name: str, match_number: int, winner: str):
+        return self.tournament.advance(tournament_name ,match_number, winner)
+    
+    def get_game_by_tournamentName(self, tournament_name):
+        games = self.tournament.get_all_games()
+        return [g for g in games if g["tournament_name"] == tournament_name]
+
     
 
     """

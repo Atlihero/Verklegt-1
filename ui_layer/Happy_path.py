@@ -155,56 +155,56 @@ class Happy_paths:
         print("\033[94m--- Back b)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
 
-    Happy_logo()
-    Happy_menu()
-    fyrst_input = "" #Will take user input and take him to selected page and give ID to know at what page user is at
-    while fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
-        fyrst_input = input("")
-        if fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
-            print("\033[100mEnter valid Input\033[0m")
-    if fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
-        quit
-    elif fyrst_input == "1":
-        HappyID = 1
-        Happy_organizer()
-    elif fyrst_input == "2":
-        HappyID = 2
-        Happy_captain()
-    elif fyrst_input == "3":
-        HappyID = 3
-        Happy_viewer()
-    else:
-        HappyID = 4
+    # Happy_logo()
+    # Happy_menu()
+    # fyrst_input = "" #Will take user input and take him to selected page and give ID to know at what page user is at
+    # while fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
+    #     fyrst_input = input("")
+    #     if fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
+    #         print("\033[100mEnter valid Input\033[0m")
+    # if fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
+    #     quit
+    # elif fyrst_input == "1":
+    #     HappyID = 1
+    #     Happy_organizer()
+    # elif fyrst_input == "2":
+    #     HappyID = 2
+    #     Happy_captain()
+    # elif fyrst_input == "3":
+    #     HappyID = 3
+    #     Happy_viewer()
+    # else:
+    #     HappyID = 4
         
-    if HappyID == 1: #all paths for orginazer
-        input2 = ""
-        while input2 != "1" and input2 != "2" and input2 != "3" and input2 !="4" and input2 != "b":
-            input2 = input("")
-            if input2 != "1" and input2 != "2" and input2 != "3" and input2 !="4" and input2 != "b":
-                print("\033[100mEnter valid Input\033[0m")
-        if input2 == "1":
-            OD = 1
-            Happy_create_player()
-        elif input2 == "2":
-            OD = 2
-            Happy_create_tournament()
-        elif input2 == "3":
-            OD = 3
-            Happy_create_team()
-        elif input2 == "4":
-            OD = 4
-            Happy_make_captain()
+    # if HappyID == 1: #all paths for orginazer
+    #     input2 = ""
+    #     while input2 != "1" and input2 != "2" and input2 != "3" and input2 !="4" and input2 != "b":
+    #         input2 = input("")
+    #         if input2 != "1" and input2 != "2" and input2 != "3" and input2 !="4" and input2 != "b":
+    #             print("\033[100mEnter valid Input\033[0m")
+    #     if input2 == "1":
+    #         OD = 1
+    #         Happy_create_player()
+    #     elif input2 == "2":
+    #         OD = 2
+    #         Happy_create_tournament()
+    #     elif input2 == "3":
+    #         OD = 3
+    #         Happy_create_team()
+    #     elif input2 == "4":
+    #         OD = 4
+    #         Happy_make_captain()
     
-    if HappyID == 2: #all paths for captain
-        input3 =1
-        while input3 == 1: #captins id
-            input3 = input("")
-            if input3 != 1:
-                print("\033[100mEnter valid Input\033[0m")
-        input3 = input("Enter captain ID:")
+    # if HappyID == 2: #all paths for captain
+    #     input3 =1
+    #     while input3 == 1: #captins id
+    #         input3 = input("")
+    #         if input3 != 1:
+    #             print("\033[100mEnter valid Input\033[0m")
+    #     input3 = input("Enter captain ID:")
 
-    if HappyID == 3:
-        input4 = input("Enter viewer:")
+    # if HappyID == 3:
+    #     input4 = input("Enter viewer:")
 
-    if HappyID == 4:
-        exit()
+    # if HappyID == 4:
+    #     exit()
