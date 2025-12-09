@@ -63,7 +63,14 @@ class TournamentIO:
                     game["winner"] = game["team_b"]
                 
                 else:
-                    game["winner"] = None
+                    while score_a == score_b:
+                        print("It's a draw. Re-enter the scores:")
+                        score_a = int(input(f"Score for {game['team_a']}: "))
+                        score_b = int(input(f"Score for {game['team_b']}: "))
+                    
+                    game["score_a"] = score_a
+                    game["score_b"] = score_b
+                    game["winner"] = game["team_a"] if score_a > score_b else game["team_b"]
 
                 winner = game["winner"]
                 current_round = game["round"]

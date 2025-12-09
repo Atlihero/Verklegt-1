@@ -1,16 +1,16 @@
 tournament_name,round,match_number,match_date,team_a,team_b,score_a,score_b,winner
-Group_17,R16,1,2025-12-06,Blockheads,Red Dragons,2,1,Blockheads
-Group_17,R16,2,2025-12-06,Pink Stars,Fireflies,1,2,Fireflies
-Group_17,R16,3,2025-12-06,Arcane Crew,Blue Shells,2,5,Blue Shells
-Group_17,R16,4,2025-12-06,Limit Breakers,Street Squad,1,2,Street Squad
-Group_17,R16,5,2025-12-06,Fatal Force,Spartan Squad,1,5,Spartan Squad
-Group_17,R16,6,2025-12-06,Shadow Clan,Fantom,6,4,Shadow Clan
-Group_17,R16,7,2025-12-06,Poké Pals,Silver Blades,1,4,Silver Blades
-Group_17,R16,8,2025-12-06,Black in Yellow,Payload,1,3,Payload
-Group_17,QF,9,2025-12-06,Blockheads,Fireflies,1,3,Fireflies
-Group_17,QF,10,2025-12-06,Blue Shells,Street Squad,2,4,Street Squad
-Group_17,QF,11,2025-12-06,Spartan Squad,Shadow Clan,1,3,Shadow Clan
-Group_17,QF,12,2025-12-06,Silver Blades,Payload,1,5,Payload
-Group_17,SF,13,2025-12-06,Fireflies,Street Squad,4,3,Fireflies
-Group_17,SF,14,2025-12-06,Shadow Clan,Payload,4,3,Shadow Clan
-Group_17,F,15,2025-12-06,Fireflies,Shadow Clan,1,0,Fireflies
+Group_17,R16,1,2025-12-06,Blockheads,Red Dragons,,,
+Group_17,R16,2,2025-12-06,Pink Stars,Fireflies,,,
+Group_17,R16,3,2025-12-06,Arcane Crew,Blue Shells,,,
+Group_17,R16,4,2025-12-06,Limit Breakers,Street Squad,,,
+Group_17,R16,5,2025-12-06,Fatal Force,Spartan Squad,,,
+Group_17,R16,6,2025-12-06,Shadow Clan,Fantom,,,
+Group_17,R16,7,2025-12-06,Poké Pals,Silver Blades,,,
+Group_17,R16,8,2025-12-06,Black in Yellow,Payload,,,
+Group_17,QF,9,2025-12-06,TBD,TBD,,,
+Group_17,QF,10,2025-12-06,TBD,TBD,,,
+Group_17,QF,11,2025-12-06,TBD,TBD,,,
+Group_17,QF,12,2025-12-06,TBD,TBD,,,
+Group_17,SF,13,2025-12-06,TBD,TBD,,,
+Group_17,SF,14,2025-12-06,TBD,TBD,,,
+Group_17,F,15,2025-12-06,TBD,TBD,,,
