@@ -1,16 +1,16 @@
 tournament_name,round,match_number,match_date,team_a,team_b,score_a,score_b,winner
-Example Tournament,Round of 16,1,2025-12-10,Fantom,Anti Krambúðin,0,1,Anti Krambúðin
-Example Tournament,Round of 16,2,2025-12-10,Black in Yellow,Arcane Crew,1,0,Black in Yellow
-Example Tournament,Round of 16,3,2025-12-11,Red Dragons,Payload,3,5,Payload
-Example Tournament,Round of 16,4,2025-12-11,Blue Shells,Fireflies,2,4,Fireflies
-Example Tournament,Round of 16,5,2025-12-12,Spartan Squad,Explorer Crew,1,6,Explorer Crew
-Example Tournament,Round of 16,6,2025-12-12,Blockheads,Fatal Force,2,1,Blockheads
-Example Tournament,Round of 16,7,2025-12-13,Poké Pals,Street Squad,1,0,Poké Pals
-Example Tournament,Round of 16,8,2025-12-13,Silver Blades,Pink Stars,3,1,Silver Blades
-Example Tournament,QF,9,2025-12-14,Anti Krambúðin,Black in Yellow,5,4,Anti Krambúðin
-Example Tournament,QF,10,2025-12-14,Payload,Fireflies,2,3,Fireflies
-Example Tournament,QF,11,2025-12-15,Explorer Crew,Blockheads,3,5,Blockheads
-Example Tournament,QF,12,2025-12-15,Poké Pals,Silver Blades,2,5,Silver Blades
-Example Tournament,SF,13,2025-12-16,Anti Krambúðin,Fireflies,5,1,Anti Krambúðin
-Example Tournament,SF,14,2025-12-17,Blockheads,Silver Blades,3,1,Blockheads
-Example Tournament,F,15,2025-12-20,Anti Krambúðin,Blockheads,4,3,Anti Krambúðin
+HRingurinn,R16,1,TBD,Poké Pals,Red Dragons,,,
+HRingurinn,R16,2,TBD,Arcane Crew,Anti Krambúðin,,,
+HRingurinn,R16,3,TBD,Explorer Crew,Fireflies,,,
+HRingurinn,R16,4,TBD,Blue Shells,Shadow Clan,,,
+HRingurinn,R16,5,TBD,Spartan Squad,Fantom,,,
+HRingurinn,R16,6,TBD,Pink Stars,Payload,,,
+HRingurinn,R16,7,TBD,Fatal Force,Black in Yellow,,,
+HRingurinn,R16,8,TBD,Limit Breakers,Street Squad,,,
+HRingurinn,QF,9,TBD,TBD,TBD,,,
+HRingurinn,QF,10,TBD,TBD,TBD,,,
+HRingurinn,QF,11,TBD,TBD,TBD,,,
+HRingurinn,QF,12,TBD,TBD,TBD,,,
+HRingurinn,SF,13,TBD,TBD,TBD,,,
+HRingurinn,SF,14,TBD,TBD,TBD,,,
+HRingurinn,F,15,TBD,TBD,TBD,,,

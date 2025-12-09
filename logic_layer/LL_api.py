@@ -96,8 +96,8 @@ class LL_API:
     def brackets(self):
         return self.tournament.run_bracket()
     
-    def generateGames(self):
-        return self.tournament.generate_games()
+    def generateGames(self, tournament_name: str):
+        return self.tournament.generate_games(tournament_name)
     
     def newTournament(self):
         return self.tournament.new_tourney()

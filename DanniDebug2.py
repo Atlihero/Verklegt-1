@@ -63,7 +63,7 @@ while True:
 
     if val == "4":
         class Organizer:
-            def ui_create_tournament_with_games():
+            def UI_create_tournament():
                 print("\n=== Create New Tournament ===")
                 name = input("Enter tournament name: ")
                 start = input("Start date (YYYY-MM-DD): ")
@@ -83,12 +83,14 @@ while True:
                     "contact_phone": phone
                 }
                 ll = LL_API()
-                ll.newTournament(tournament_dict)
+                ll.create_new_tournaments(tournament_dict)
 
                 print("\nGenerating random games for this tournament...\n")
                 ll.generateGames(name)
 
                 print("\nTournament created and games generated successfully.\n")
+        
+        Organizer.UI_create_tournament()
 
 
     
