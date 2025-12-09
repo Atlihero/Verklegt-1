@@ -24,12 +24,12 @@ class LLStatistics:
 
         # Get all players and filter the ones in this team
         players = PlayerIO.get_players()
-        players_in_team = [p for p in players if p.team == team_name]
+        players_in_team = [p for p in players if p.team == team_name] # þarf líklegast að vera p.get("Team") == team_name
 
         # Find player with most points
         top_scorer = None
         if players_in_team:
-            top_scorer = max(players_in_team, key=lambda p: p.points)
+            top_scorer = max(players_in_team, key=lambda p: p.points) # p.get("Points")
 
         tournaments_won = 0
         player_most_wins = None
@@ -41,9 +41,7 @@ class LLStatistics:
             "top_scorer": top_scorer,
             "tournaments_won": tournaments_won,
             "player_most_wins": player_most_wins
-
         }
-
 
 
     def calculate_player_stats(self, player_name: str) -> Dict[str, Any]:
@@ -71,7 +69,6 @@ class LLStatistics:
 
         # Find players team
         team_name = getattr(player, "team", "")
-
 
         #PLACE HOLDER FOR LATER 
         games_won = 0
