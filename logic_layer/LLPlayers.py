@@ -4,22 +4,23 @@ from data_layer.data_api import DataAPI
 from data_layer.PlayerIO import PlayerIO
 
 class LLPlayer():
-    # because no names can be the same, doesn't add if they are the same
-    #existing_handles = set() 
-    #existing_handles = []
 
     def __init__(self):
         self.data = DataAPI()
         self.playerio = PlayerIO
 
+
     def get_all_players(self):
         return self.data.get_all_players()
     
+
     def get_player_publicViewer(self):
         return self.data.public_get_player()
     
+
     def get_player_statistics(self):
         return self.data.get_player_statistics()
+
 
     def validate_name(self, name: str) -> str:
         '''Checks if name is unique or missing a name'''
@@ -46,6 +47,7 @@ class LLPlayer():
         except ValueError:
             raise ValueError ("Invalid date. Use DD/MM/YYYY")
         
+
     def validate_address(self, address: str) -> str:
         '''Checks if name is unique or missing a name'''
         # check if name is just empty, so just space or something
@@ -55,6 +57,7 @@ class LLPlayer():
         
         return address
         
+
     def validate_phone(self, phone_number: int) -> int:
         '''Validates the players phone number, if not then 
           the user tries again.'''
@@ -89,37 +92,27 @@ class LLPlayer():
         ending = domain_parts[-1]
         if len(ending) < 2 or len(ending) > 3 or not ending.isalpha():
             raise ValueError("The email must contain a valid ending. Please try again.")
-            
-        
+
         return player_email
+
 
     def validate_handle(self, handle: str) -> str:
         '''Checks players handle. It checks if the username 
         is already in use and then asks for a new username since no two players 
         can have the same username '''
-        handle = handle.strip()
-
-        #if handle in LLPlayer.existing_handles:
-        #    raise ValueError("This handle is already taken. Please try another one.")
         
+        handle = handle.strip()
         if not handle:
             raise ValueError("Player's handle name cannot be emtpy. Please enter a handle.")
         
         existing_usernames = self.data.get_all_players()
-        existing_handles = [
-            player["Handle"] 
-            for player in existing_usernames
-            if "Handle" in player
-            ]
+        existing_handles = [p.handle for p in existing_usernames]
         
         if handle in existing_handles:
             raise ValueError("Handle is already in use, please choose another one.")
 
         return handle
 
-		# if the handle is unique then its added to the list
-        #LLPlayer.existing_handles.add(handle)
-        #return handle
     
     def validate_link(self, link: str) -> str:
         if not link:
@@ -140,9 +133,9 @@ class LLPlayer():
             player_obj.phone,
             player_obj.email,
             player_obj.handle,
-            player_obj.link,
             player_obj.team,
-            player_obj.points
+            player_obj.points,
+            player_obj.link
         ]
 
         return self.playerio.create_new_player(player_list)
