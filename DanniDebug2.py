@@ -96,18 +96,36 @@ while True:
     if val == "5":
         class Organizer:
             ll = LL_API()
-            games = ll.get_game() 
+            games = ll.get_game()  # Get all games
+
             print("\n=== Current Games ===")
             for g in games:
                 print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
                     f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
 
+            # Get user input
             match_number = int(input("\nEnter match number to update: "))
             score_a = int(input("Enter score for team A: "))
             score_b = int(input("Enter score for team B: "))
 
+            # 1️⃣ Update the game score and winner
             result = ll.updateGame(match_number, score_a, score_b)
-            print(result)
+            winner = result["winner"]
+            tournament_name = result["tournament_name"]
+
+            if winner:
+                # 2️⃣ Advance the winner to the next round
+                advance_result = ll.advance_round(tournament_name, match_number, winner)
+                print(advance_result)
+            else:
+                print("Game is a draw. Winner cannot advance.")
+
+            # 3️⃣ Show updated bracket
+            updated_games = ll.get_game()
+            print("\n=== Updated Games ===")
+            for g in updated_games:
+                print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
+                    f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
 
     if val == "q":
         print("You have quit the program")

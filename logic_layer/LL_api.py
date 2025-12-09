@@ -107,3 +107,6 @@ class LL_API:
 
     def get_game(self):
         return self.tournament.get_all_games()
+
+    def advance_round(self, tournament_name: str, match_number: int, winner: str):
+        return self.tournament.advance(tournament_name ,match_number, winner)

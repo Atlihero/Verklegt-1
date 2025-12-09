@@ -152,3 +152,6 @@ class LLTournament:
     def get_allTournamnets(self):
         return self.data.get_all_tournaments()
     
+    def advance(self, tournament_name: str, match_number: int, winner: str):
+        return self.data.advance_round(tournament_name, match_number, winner)
+    
