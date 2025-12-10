@@ -53,7 +53,7 @@ class Uimain:
                     elif user_inp == "3": #Here you create a team
                         organizer.create_team_ui(self)
                     elif user_inp == "4":
-                        organizer.update_result(self)
+                        organizer.update_result()
                         exit()
                     elif user_inp == "5": #here you make a player a captain
                         Happy_paths.Happy_make_captain()
