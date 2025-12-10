@@ -158,12 +158,10 @@ while True:
             winner = result["winner"]
             tournament_name = result["tournament_name"]
 
-            # If a winner exists, advance
             if winner:
                 advance_result = api.advance_round(tournament_name, match_number, winner)
                 print(advance_result)
 
-                # ⭐ IF THIS WAS THE FINAL MATCH (F = match 15), SHOW WINNER BANNER
                 if result["round"] == "F":
                     print("\n==============================")
                     print(f"🏆  TOURNAMENT WINNER: {winner}  🏆")
