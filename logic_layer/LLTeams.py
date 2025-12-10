@@ -11,7 +11,7 @@ class LLTeams:
 
 
     def getTeamsPublic(self):
-        '''Fyrir public viewer svo hann sjái liðin '''
+        '''So the public viewer can see the teams.'''
         data = DataAPI()
         return data.getPublicTeam()
 
@@ -88,16 +88,19 @@ class LLTeams:
 
 
     def team_exists(self, name: str) -> bool:
+        '''Checks if a team with the inputted name already exists.'''
         return self.get_team_by_name(name) is not None  # Checks if a team has this name
 
 
     def new_team(self, name: str, captain: str = None, asciiLogo: str = "") -> Team:
+        '''Create a new team and add it to the csv file.'''
         new_team = Team(name = name, captain = captain, asciiLogo = asciiLogo)
         self.teams.append(new_team)
 
+        # saves the new team in the data_layer
         DataAPI().add_team(name, captain, asciiLogo)
 
-        return new_team
+        return new_team # The team is now in the csv file.
 
 
     def select_captain(self, team_name: str, new_captain: str) -> Team:
@@ -114,5 +117,5 @@ class LLTeams:
 
 
     def view_teams(self) -> list[Team]:
-        '''Spectator wants to see information about a team'''
+        '''Spectator wants to see information about a team. Returns a list of all teams.'''
         return list(self.teams)
