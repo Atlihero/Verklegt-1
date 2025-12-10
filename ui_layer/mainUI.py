@@ -72,13 +72,24 @@ class Uimain:
                 
                 elif user_inp == "2": #This is the Captain
 
-
                     """Now we are in CAPTAIN"""
 
+                    if not captain.select_captain_and_team():
+                        continue # go back to main menue if captain not foudn
+                   
+                    Happy_paths.Happy_captain_add_or_info()
+                    cap_choice = input("").strip().lower()
 
-                    Happy_paths.Happy_captain()
-                    user_inp = input("")
-                    exit()
+
+                    if cap_choice == "1":
+                        captain.add_to_team()
+                    elif cap_choice == "2":
+                        captain.remove_from_team()
+                    elif cap_choice == "3":
+                        captain.cap_see_player_info()
+                    elif cap_choice == "b":
+                        os.system("cls")
+                        continue
 
 
                 elif user_inp == "3": #This is the puplic viewer
@@ -129,3 +140,6 @@ class Uimain:
             else: #stops the code if you some how manige to give int not string which should not be possible
                 self.start()
                 
+
+
+
