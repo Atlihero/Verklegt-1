@@ -29,15 +29,15 @@ class TeamIO:
             f"error message"
         return teams, captain
 
-    def add_new_team(team: list):
+    def create_new_team(self, name: str, captain: str = None, asciiLogo: str = ""):
         '''create an empty team with no players'''
         try: 
-            with open(TEAM_PATH, "a",newline="", encoding="utf-8") as csvfile:
+            with open(TEAM_PATH, "a", newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile) #here the user writes in the details needed for a team like the name
-                writer.writerow(team) #prints what was written in a new row
-            return f"New Team added :)"    
+                writer.writerow([name, captain, asciiLogo]) #prints what was written in a new row 
         except ValueError:   #in case of wrong inputs 
             f"Error message to be decided"
+        return f"New Team added :)" 
 
     def get_team_stats():
         try:
