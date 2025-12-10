@@ -8,7 +8,7 @@ class TeamIO:
         '''Returns a list of players for a specific team'''
         try:
             teams = [] # Empty list in which the team that is chosen goes into
-            with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
+            with open(TEAM_PATH, "r", encoding = "utf-8") as csvfile:
                 reader  = csvfile.readlines() # Reads the linse in the csv
                 for row in reader: # For loop that goes through the lines to look for the right team
                     teams.append(row) # Append the team chosen to the list
@@ -23,7 +23,7 @@ class TeamIO:
         try:
             teams = [] 
             captain = []
-            with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
+            with open(TEAM_PATH, "r", encoding = "utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     teams.append(row["TeamName"])
@@ -38,7 +38,7 @@ class TeamIO:
         try:
             Wins = [] # Empty list for the wins of teams
             Points = [] # Empty list for the points of teams
-            with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
+            with open(TEAM_PATH, "r", encoding = "utf-8") as csvfile:
                 reader = csv.DictReader(csvfile) #reads the file like a dictionary
                 for row in reader: 
                 # Adds the wins to wins list based on the number in the wins column in the csv
@@ -54,7 +54,7 @@ class TeamIO:
     def create_new_team(self, name: str, captain: str = None, asciiLogo: str = "") -> str:
         '''create an empty team with no players'''
         try: 
-            with open(TEAM_PATH, "a",newline="", encoding="utf-8") as csvfile:
+            with open(TEAM_PATH, "a",newline = "", encoding = "utf-8") as csvfile:
         # The user writes in the details needed for a team like the name
                 writer = csv.writer(csvfile) 
                 writer.writerow([name, captain, asciiLogo]) # Prints what was written in a new row 
@@ -68,7 +68,7 @@ class TeamIO:
         if len(teams) != 16:
             return "Error, not enough teams in the tournament. There have to be at least 16 teams."
         try:
-            with open(TEAM_PATH, "a", newline="", encoding="utf-8") as csvfile:
+            with open(TEAM_PATH, "a", newline = "", encoding = "utf-8") as csvfile:
                 writer = csv.writer(csvfile)
                 for team in teams:
                     writer.writerow([tournament, team])
@@ -79,7 +79,7 @@ class TeamIO:
 
     def get_team_wins_points(team_name: str) -> str:
         '''Finds wins and points for a team'''
-        with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
+        with open(TEAM_PATH, "r", encoding = "utf-8") as csvfile:
             reader = csv.reader(csvfile)
             header = next(reader, None)  # skip header
 
@@ -102,7 +102,7 @@ class TeamIO:
         '''returns a list of all team names'''
         teams = []
         try:
-            with open(TEAM_PATH, "r", newline="", encoding="utf-8") as csvfile:
+            with open(TEAM_PATH, "r", newline = "", encoding = "utf-8") as csvfile:
                 reader = csv.reader(csvfile)
                 for row in reader:
                     if row:
