@@ -138,7 +138,7 @@ while True:
 
                 if result["round"] == "F":
                     print("\n==============================")
-                    print(f"🏆  TOURNAMENT WINNER: {winner}  🏆")
+                    print(f" TOURNAMENT WINNER: {winner} ")
                     print("==============================\n")
 
             else:

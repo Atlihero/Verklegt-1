@@ -209,13 +209,7 @@ class OrganizerUI():
             # ⭐ IF THIS WAS THE FINAL MATCH (F = match 15), SHOW WINNER BANNER
             if result["round"] == "F":
                 print("\n==============================")
-                print(f"🏆  TOURNAMENT WINNER: {winner}  🏆")
-                print("==============================\n")
-            # ⭐ IF THIS WAS THE FINAL MATCH (F = match 15), SHOW WINNER BANNER
-            if result["round"] == "F":
-                print("\n==============================")
-                print(f"🏆  TOURNAMENT WINNER: {winner}  🏆")
-                print("==============================\n")
+                print(f" TOURNAMENT WINNER: {winner} ")
 
         else:
             print("Game is a draw. Winner cannot advance.")
