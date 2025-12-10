@@ -171,7 +171,7 @@ while True:
                 print("\n=== Create a New Team ===")
                 
                 team_name = input("Enter Team Name: ").strip()
-                captain = input("Enter Captain Name (optional): ").strip() or None
+                captain = None
                 ascii_logo = input("Enter ASCII Logo (optional): ").strip() or None
 
                 new_team = api.add_team(name=team_name, captain=captain, asciiLogo=ascii_logo)

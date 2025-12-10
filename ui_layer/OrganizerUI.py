@@ -231,7 +231,7 @@ class OrganizerUI():
         print("\n=== Create a New Team ===")
                 
         team_name = input("Enter Team Name: ").strip()
-        captain = input("Enter Captain Name (optional): ").strip() or None
+        captain = None
         ascii_logo = input("Enter ASCII Logo (optional): ").strip() or None
 
         new_team = self.lapi.add_team(name=team_name, captain=captain, asciiLogo=ascii_logo)
@@ -255,4 +255,4 @@ class OrganizerUI():
             for attr, value in vars(p).items():
                 print(f"{attr}: {value}")
 
-#vantar make team og create captain!!!
+#vantar create captain!!!
