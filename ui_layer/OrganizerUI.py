@@ -219,8 +219,7 @@ class OrganizerUI():
 
         else:
             print("Game is a draw. Winner cannot advance.")
-        else:
-            print("Game is a draw. Winner cannot advance.")
+
 
         updated_games = self.lapi.get_game()
         show_games(updated_games, "Updated Games")
