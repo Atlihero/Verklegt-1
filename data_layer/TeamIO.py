@@ -41,7 +41,7 @@ class TeamIO:
                 writer.writerow(team) # Prints what was written in a new row
             return f"New team has been added!" 
         except ValueError: # In case of wrong inputs 
-            f"Error message to be decided"
+            f"Failed to add a new team."
 
     def get_team_stats():
         '''Gathers wins and points for a team and puts in a list for easy access'''
