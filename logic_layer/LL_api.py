@@ -15,6 +15,7 @@ class LL_API:
         self.captain = LLCaptain()
         self.organizer = LLOrganizer()
 
+    
     '''The Logic layer wrapper for the LLPlayer'''
 
     def valid_name(self, name):
