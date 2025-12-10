@@ -40,7 +40,11 @@ class Uimain:
                     if user_inp == "1": #Here you creata a new player
                         Happy_paths.Happy_create_player()
                         organizer.create_player()
-                        exit()
+                        print("Playr was made")
+                        user_inp = input("Press any button to exit:")
+                        if user_inp != 1:
+                            os.system('cls')
+                            continue
                     elif user_inp == "2": #Here you create a tournament
                         Happy_paths.Happy_create_tournament()
                         organizer.createTournament()
