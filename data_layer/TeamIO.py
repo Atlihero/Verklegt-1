@@ -31,25 +31,7 @@ class TeamIO:
         except ValueError:
             f"Failed to display the captain and the team name. Please try again."
         return teams, captain
-    
-
-    def get_team_stats(self) -> list:
-        '''Gathers wins and points for a team and puts in a list for easy access'''
-        try:
-            Wins = [] # Empty list for the wins of teams
-            Points = [] # Empty list for the points of teams
-            with open(TEAM_PATH, "r", encoding = "utf-8") as csvfile:
-                reader = csv.DictReader(csvfile) #reads the file like a dictionary
-                for row in reader: 
-                # Adds the wins to wins list based on the number in the wins column in the csv
-                    Wins.append(row["Wins"]) 
-                # Adds the points to points list based on the number in the points column in the csv
-                    Points.append(row["Points"]) 
-                return Wins, Points # Returns both of those lists with updated numbers
-        except ValueError:  # In case of wrong inputs 
-            f"Failed to display the points and wins of the team. Please try again."
-        pass
-        
+            
 
     def create_new_team(self, name: str, captain: str = None, asciiLogo: str = "") -> str:
         '''create an empty team with no players'''
@@ -76,27 +58,6 @@ class TeamIO:
         except ValueError:
             return "Failed to add the team to the tournament. Please try again."
 
-
-    def get_team_wins_points(team_name: str) -> str:
-        '''Finds wins and points for a team'''
-        with open(TEAM_PATH, "r", encoding = "utf-8") as csvfile:
-            reader = csv.reader(csvfile)
-            header = next(reader, None)  # skip header
-
-            for row in reader:
-                # row = [TeamID, TeamName, Captain, Wins, Points]
-                if len(row) < 5:
-                    continue
-
-                name = row[1].strip('"')
-
-                if name == team_name:
-                    wins = int(row[3])
-                    points = int(row[4])
-                    return wins, points
-                
-        raise ValueError("Team was not found in Teams.csv file. Please try again.")
-        
 
     def get_all_teams(self) -> list:
         '''returns a list of all team names'''
