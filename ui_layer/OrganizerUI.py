@@ -86,6 +86,7 @@ class OrganizerUI():
             handle = handle,
             link = link,
             team = None,
+            points = None
         )
 
         return self.lapi.create_player(player_obj)
@@ -162,7 +163,7 @@ class OrganizerUI():
             contact_email=contact_email,
             contact_phone=contact_phone
         )
-        self.lapi.generateGames(unique_name, start_date)
+
         return self.lapi.create_new_tournament(tournament_obj)
 
     def update_result(self):
