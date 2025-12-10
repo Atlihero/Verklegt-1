@@ -10,7 +10,7 @@ class LLPlayer():
         self.playerio = PlayerIO
 
 
-    def get_all_players(self):
+    def get_players(self):
         return self.data.get_all_players()
     
 

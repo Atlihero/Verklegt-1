@@ -73,5 +73,5 @@ class LLOrganizer():
 
     def organizer_player_info(self):
         """Allows the organizer to see all the players information"""
-        all_players = self.playerio.get_players()
+        all_players = self.dapi.get_all_players()
         return all_players

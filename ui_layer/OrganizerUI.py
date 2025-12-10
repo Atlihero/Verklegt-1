@@ -215,19 +215,8 @@ class OrganizerUI():
 
     def organizer_see_info(self) -> None:
         '''The organizer can see player information for every player in the tournament'''
-        try:
-            players = self.lapi.organizer_view_player_info()
-        except ValueError as error:
-            print("Error: ", error)
-            return
-        
-        if not players:
-            print("There are no players in the tournament.")
-            return
-
-        for p in players:
-            print(f"\nPlayer Information for {p.get('Name')}:")
-            for attr, value in vars(p).items():
-                print(f"{attr}: {value}")
+        userinput = int(input("Veldu ID leikmanns milli 1-48: ")) 
+        player = self.lapi.organizer_view_player_info()
+        print(f"Player: {player[userinput]}")
 
 #vantar create captain!!!

@@ -17,11 +17,15 @@ class LL_API:
 
     
     '''The Logic layer wrapper for the LLPlayer'''
+    def get_all_players(self):
+        '''Gets the players for Organizer to see'''
+        return self.player.get_players()
+
 
     def valid_name(self, name):
         '''Validates player full name.'''
         return self.player.validate_name(name)
-
+    
     def valid_dob(self, dob):
         '''Validates players date of birth.'''
         return self.player.validate_dob(dob)
