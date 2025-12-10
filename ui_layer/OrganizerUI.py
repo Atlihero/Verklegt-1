@@ -227,6 +227,17 @@ class OrganizerUI():
         show_games(updated_games, "Updated Games")
 
 
+    def create_team_ui(self):
+        print("\n=== Create a New Team ===")
+                
+        team_name = input("Enter Team Name: ").strip()
+        captain = input("Enter Captain Name (optional): ").strip() or None
+        ascii_logo = input("Enter ASCII Logo (optional): ").strip() or None
+
+        new_team = self.lapi.add_team(name=team_name, captain=captain, asciiLogo=ascii_logo)
+        print(f"Team '{new_team.name}' created successfully!")
+        return new_team
+
     def organizer_see_info(self) -> None:
         '''The organizer can see player information for every player in the tournament'''
         try:
