@@ -97,38 +97,6 @@ class LL_API:
     Logic wrapper for Tournament
     """
 
-    def get_contactInfo(self):
-        "Gets the contact infro for the tournament contact"
-        return self.tournament.get_contact_info()
-    
-    def update_contactInfo(self):
-        "updates the info for the contact"
-        return self.tournament.update_contact_info()
-    
-    def register_team(self):
-        "registers the team to the tournament"
-        return self.tournament.register_team()
-    
-    def scheduleGames(self):
-        "schedules games for the tournament"
-        return self.tournament.schedule_games()
-    
-    def recordResults(self):
-        "records the info from a game and declares the winner"
-        return self.tournament.record_result()
-    
-    def sum_Logic(self):
-        "Idont know what this does"
-        return self.tournament.sum_logic()
-    
-    def brackets(self):
-        "sets the brackets of the tournament"
-        return self.tournament.brackets_of_tournament()
-    
-    def Round(self):
-        "the round for the tournament"
-        return self.tournament.play_round()
-
     def get_all_tournaments(self):
         return self.tournament.get_allTournamnets()
     
