@@ -97,7 +97,7 @@ class Uimain:
                     """Now we are in BACK"""
 
 
-                    os.system('cls')
+                    clear_term()
                     continue
 
 
