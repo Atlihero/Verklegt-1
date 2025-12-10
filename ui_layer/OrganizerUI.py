@@ -84,8 +84,8 @@ class OrganizerUI():
             phone = phone_number,
             email = player_email,
             handle = handle,
-            link = link,
             team = None,
+            link = link
         )
 
         return self.lapi.create_player(player_obj)
