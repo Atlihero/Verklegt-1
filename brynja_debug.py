@@ -144,3 +144,6 @@ class PlayerIO:
             f"Error message to be decided"
         pass
 
+
+
+#[p for p in all_players if p.get("Team") == team_name]
