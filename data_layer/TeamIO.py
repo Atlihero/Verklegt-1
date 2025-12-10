@@ -29,7 +29,6 @@ class TeamIO:
                     captain.append(row["Captain"])
         except ValueError:
             f"Failed to display the captain and the team name."
-            "error message"
         return teams, captain
     
     
@@ -45,6 +44,7 @@ class TeamIO:
             f"Error message to be decided"
 
     def get_team_stats():
+        '''Gathers wins and points for a team and puts in a list for easy access'''
         try:
             Wins = [] # Empty list for the wins of teams
             Points = [] # Empty list for the points of teams
@@ -57,8 +57,8 @@ class TeamIO:
                     Points.append(row["Points"]) 
                 return Wins, Points # Returns both of those lists with updated numbers
         except ValueError:  # In case of wrong inputs 
-            return f"Error message to be decided"
-        pass
+            return f"Failed to display the points and wins of the team."
+        #pass
 
 
     def add_new_team(self, team: list):
@@ -73,6 +73,7 @@ class TeamIO:
 
 
     def add_teams_to_tournament(tournament: str, teams: list):
+
         if len(teams) != 16:
             return "Error, not enough teams in the tournament. There have to be at least 16 teams."
         try:
@@ -80,14 +81,13 @@ class TeamIO:
                 writer = csv.writer(csvfile)
                 for team in teams:
                     writer.writerow([tournament, team])
-                return "Teams added"
+                return "The team has been added to the tournament."
         except ValueError:
-            return "Villa eittvhað fór úsrkeiðis"
+            return "Failed to add the team to the tournament."
 
 
     def get_team_wins_points(team_name: str):
-        """Finds wins and points for a team"""
-
+        '''Finds wins and points for a team'''
         with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
             reader = csv.reader(csvfile)
             header = next(reader, None)  # skip header
