@@ -9,7 +9,7 @@ class PublicViewer:
 
 
     def getTeamsPublic(self):
-        userinput = int(input("Select team id 1-16"))
+        userinput = int(input("Select team id 1-16: "))
         teams, captain = api.get_teams_public()
         print(f"Team: {teams[userinput-1]}, Captain: {captain[userinput-1]}")
     
