@@ -339,8 +339,8 @@ class LLTournament:
 
         return all_games
     
-    def update_games(self, match_number: int, score_a: int, score_b: int):
-        return self.data.update_game(match_number, score_a, score_b)
+    def update_games(self, tournament_name, match_number: int, score_a: int, score_b: int):
+        return self.data.update_game(tournament_name, match_number, score_a, score_b)
 
     def get_all_games(self):
         return self.data.get_games()
@@ -364,4 +364,4 @@ class LLTournament:
             tournament_obj.contact_phone
         ]
 
-        return self.tournamentio.create_new_tournament(tournament_list)
+        return self.data.create_new_tournaments(tournament_list)

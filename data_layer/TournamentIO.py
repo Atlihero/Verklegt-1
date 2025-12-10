@@ -58,13 +58,13 @@ class TournamentIO:
             return []
         return games
     
-    def update_games(self, match_number: int, score_a: int, score_b: int):
+    def update_games(self, tournament_name: str, match_number: int, score_a: int, score_b: int):
         games = self.get_all_games()
         winner = None
 
         update = False
         for game in games:
-            if int(game["match_number"]) == match_number:
+            if  game["tournament_name"] == tournament_name and int(game["match_number"]) == match_number:
                 game["score_a"] = score_a
                 game["score_b"] = score_b
 

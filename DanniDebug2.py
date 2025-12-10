@@ -64,7 +64,7 @@ while True:
                     "contact_phone": contact_phone
                 }
                 api = LL_API()
-                return api.create_new_tournaments(tournament_dict)
+                return api.create_new_tournament(tournament_dict)
 
         organizer = Organizer()
         tournament = organizer.createTournament()
@@ -153,7 +153,7 @@ while True:
             score_a = int(input("Enter score for team A: "))
             score_b = int(input("Enter score for team B: "))
 
-            result = api.updateGame(match_number, score_a, score_b)
+            result = api.updateGame(tournament_name, match_number, score_a, score_b)
 
             winner = result["winner"]
             tournament_name = result["tournament_name"]
