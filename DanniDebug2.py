@@ -178,7 +178,6 @@ while True:
                 print(f"Team '{new_team.name}' created successfully!")
                 return new_team
 
-        # Create an instance of OrganizerUI
         ui = OrganizerUI()
         new_team = ui.create_team_ui()
 
