@@ -51,7 +51,7 @@ class Uimain:
                         organizer.createTournament(self)
                         exit()
                     elif user_inp == "3": #Here you create a team
-                        organizer.create_team_ui(self)
+                        organizer.create_team_ui()
                     elif user_inp == "4":
                         organizer.update_result()
                         exit()
