@@ -36,7 +36,7 @@ class Uimain:
                     """Now we are in Organizer and can chose what we will do there"""
                     paths.Happy_organizer() #This is the organizer
                     user_inp = input("Enter 1-6 or b: ")
-                    if user_inp == "1": #Here you creata a new player
+                    if user_inp == "1": #Here you create a new player
                         organizer.get_player_info(self)
                         exit()
                     elif user_inp == "2": #Here you create a tournament
