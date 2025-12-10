@@ -199,3 +199,15 @@ Mættir á morgunfund eru allir nema Atli og Brynja. Brynja svaf aðeins lengur 
 - OrganizerUI var klárað, núna er hægt að búa til player og tournament og það bætist inn í csv skrána
 - Unnum í mainUi og það er farið að looka
 - Tengdum saman skrár þannig að hægt sé að búa til leikmann í mainUi og hann save-ast í data_layer
+
+### Miðvikudagur 10.12.25 (Dagur 3 Vika 3)
+Mættir á morgundund eru Brynja, Christian, Daníel og Elvar, morgunfundur var tekinn aðeins seinna en vanalega. Karen og Atli eru aðeins sein.
+
+Á morgunfundi var rætt **verkefni dagsins**, sem eru nánast bara þau sömu og verkefni gærdagsins. 
+- Halda þarf áfram að tengja saman lögin
+- Vinna í skýrslunni það sam var eftir eftir gærdaginn.
+- Fara yfir kóðann og samræma komment og docstring-a. Og samræma uppsetningu á kóðanum
+
+**Staðan eftir daginn í dag:**
+- Komin mjög vel á veg með að tengja saman lögin
+- Skýrslan er að mestu tilbúin, bara á eftir að bæta inn í hana myndum úr kerfinu.
