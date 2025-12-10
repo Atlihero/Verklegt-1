@@ -1,8 +1,9 @@
 from logic_layer.LLPlayers import LLPlayer
 from logic_layer.LLTeams import LLTeams
-from logic_layer.LLTournament import LLTournament
+from logic_layer.LLTournament import Tournament
 from .LLCaptain import LLCaptain
 from .LLOrganizer import LLOrganizer
+from .LLTournament import LLTournament
 from Models.Tournament import Tournament
 from Models.Player import Player
 
@@ -14,36 +15,34 @@ class LL_API:
         self.captain = LLCaptain()
         self.organizer = LLOrganizer()
 
-    
-    """
-    The Logic layer wrapper for the LLPlayer
-    """
+    '''The Logic layer wrapper for the LLPlayer'''
+
     def valid_name(self, name):
-        '''Validates player full name'''
+        '''Validates player full name.'''
         return self.player.validate_name(name)
 
     def valid_dob(self, dob):
-        '''Validates players date of birth'''
+        '''Validates players date of birth.'''
         return self.player.validate_dob(dob)
     
     def valid_address(self, address):
-        '''Validates player's address'''
+        '''Validates player's address.'''
         return self.player.validate_address(address)
     
     def valid_phone(self, phone):
-        '''Validates the phone number'''
+        '''Validates the phone number.'''
         return self.player.validate_phone(phone) 
     
     def valid_email(self, email):
-        '''Validates the email'''
+        '''Validates the email.'''
         return self.player.validate_email(email)
     
     def valid_handle(self, handle):
-        '''Validates the handle of new players'''
+        '''Validates the handle of new players.'''
         return self.player.validate_handle(handle)
     
     def validate_link(self, link):
-        '''Validates the link of the new players'''
+        '''Validates the link of the new players.'''
         return self.player.validate_link(link)
     
     #def create_new_player(self, name, dob_string, address, phone, email, handle, link=""):
@@ -51,85 +50,81 @@ class LL_API:
     #    return self.player.create_player(name, dob_string, address, phone, email, handle, link)
     
     def create_player(self, player_obj: Player):
+        '''Creates a new player.'''
         return self.player.create_player(player_obj)
     
     def get_playerPublic(self):
-        '''Gets the team for the public viewer'''
+        '''Gets the team for the public viewer.'''
         return self.player.get_player_publicViewer()
-
     
-    """
-    Logic layer wrapper for the LLTeams
-    """
+
+    '''Logic layer wrapper for the LLTeams'''
+
     def load_team(self):
-        "loads a team from the csv"
+        '''Loads a team from the csv.'''
         return self.team._load_teams_from_csv()
     
     def add_player(self, team_name, player_name):
-        "add player to team"
+        '''Add player to team.'''
         return self.team.add_player_to_team(team_name, player_name)
     
     def get_teams(self, name):
-        "gets the team by name"
+        '''Gets the team by name.'''
         return self.team.get_team_by_name(name)
     
     def get_teams_public(self):
-        "gets the teams for the public viewer to see"
+        '''Gets the teams for the public viewer to see.'''
         return self.team.getTeamsPublic()
     
     def check_team(self, name):
-        "Check if team has this name"
+        '''Check if team has this name.'''
         return self.team.team_exists(name)
 
-    def add_team(self, name: str, captain: str = None, asciiLogo: str = ""):
+    def add_team(self, name, captain, asciiLogo):
+        '''Creates a new team.'''
         return self.team.new_team(name, captain, asciiLogo)
 
     def select_captains(self, team_name, new_captain):
-        "selects a new captain for a team"
+        '''Selects a new captain for a team'''
         return self.team.select_captain(team_name, new_captain)
 
     def view_teams(self):
-        "Public viewer wants to view teams"
+        '''Public viewer wants to view teams'''
         return self.team.view_teams() 
     
 
-    """
-    Logic wrapper for Tournament
-    """
+    '''Logic wrapper for Tournament'''
 
     def get_all_tournaments(self):
+        '''List of all tournaments that have been made'''
         return self.tournament.get_allTournamnets()
     
-    def get_tournamentNames(self):
+    def get_tournament_names(self):
+        '''List of all names of tournaments that have been'''
         return self.tournament.get_tournament_names()
 
     def create_new_tournament(self, tournament_obj: Tournament):
+        '''Creates a new tournament in the csv file'''
         return self.tournament.new_tourney(tournament_obj)
     
-    def generateGames(self, tournament_name: str, start_date: str):
+    def generate_games(self, tournament_name: str, start_date: str):
+        '''Makes games for the tournament'''
         return self.tournament.generate_games(tournament_name, start_date)
     
-    def updateGame(self, tournament_name: str, match_number: int, score_a: int, score_b: int):
+    def update_game(self, tournament_name: str, match_number: int, score_a: int, score_b: int):
+        '''Updates score of each game that has been played in the tournament'''       
         return self.tournament.update_games(tournament_name, match_number, score_a, score_b)
-    
-    def newTournament(self):
-        return self.tournament.new_tourney()
 
     def get_game(self):
+        '''Finds all games in the csv file.'''
         return self.tournament.get_all_games()
 
     def advance_round(self, tournament_name: str, match_number: int, winner: str):
+        '''Determines what team advances to the next round of the tournament'''
         return self.tournament.advance(tournament_name ,match_number, winner)
-    
-    def get_game_by_tournamentName(self, tournament_name):
-        games = self.tournament.get_all_games()
-        return [g for g in games if g["tournament_name"] == tournament_name]
 
-    
 
-    """
-    Logic layer wrapper for the LLCaptain
-    """
+    '''Logic layer wrapper for the LLCaptain'''
 
     def remove_player_from_team(self, team_name, player_name):
         '''Captain removes a player from their team'''
@@ -148,10 +143,7 @@ class LL_API:
         return self.captain.cap_see_player_info(player_name, team_name)
 
 
-
-    """
-    Logic wrapper for Organizer
-    """
+    '''Logic wrapper for Organizer'''
 
     def valid_tournament_name(self, name):
         '''Validates if the tournament name is unique'''
