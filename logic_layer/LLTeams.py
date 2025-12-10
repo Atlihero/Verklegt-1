@@ -14,7 +14,7 @@ class LLTeams:
         return data.getPublicTeam()
 
     def _load_teams_from_csv(self) -> list[Team]:
-        raw_rows = TeamIO.get_team()
+        raw_rows = TeamIO.get_team(self)
         teams: list[Team] = []
 
         for line in raw_rows:  # Loops each line from the csv

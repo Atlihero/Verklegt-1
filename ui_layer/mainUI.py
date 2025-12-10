@@ -59,10 +59,14 @@ class Uimain:
                     elif user_inp == "2": #Here you create a tournament
                         Happy_paths.Happy_create_tournament()
                         organizer.createTournament()
-                        exit()
+                        user_inp = input("Press any button to exit:")
+                        if user_inp != 1:
+                            clear_term() #clear screen
+                            continue
+
                     elif user_inp == "3": #Here you create a team
                         Happy_paths.Happy_create_team()
-                        api.add_team()
+                        organizer.create_team_ui()
                         exit()
                     elif user_inp == "4": #here you make a player a captain
                         Happy_paths.Happy_make_captain()
