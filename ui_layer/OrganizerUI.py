@@ -86,7 +86,6 @@ class OrganizerUI():
             handle = handle,
             link = link,
             team = None,
-            points = None
         )
 
         return self.lapi.create_player(player_obj)

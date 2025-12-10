@@ -10,7 +10,7 @@ class Uimain:
     location and gives restrictions depending of user input"""
     def __init__(self) -> None:
         """gets logic_layer as a variable"""
-        LL = LL_API()
+        self.lapi = LL_API()
         self.captain = CaptainUI()
         self.publicviewer = PublicViewer()
         self.organizer = OrganizerUI()
@@ -37,7 +37,7 @@ class Uimain:
                     paths.Happy_organizer() #This is the organizer
                     user_inp = input("Enter 1, 2, 3, 4 or b: ")
                     if user_inp == "1": #Here you creata a new player
-                        organizer.get_player_info()
+                        organizer.get_player_info(self)
                         exit()
                     elif user_inp == "2": #Here you create a tournament
                         organizer.createTournament()
