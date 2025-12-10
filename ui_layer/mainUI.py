@@ -33,8 +33,13 @@ class Uimain:
                 
                 """Here we select Organizer or captain or viewer"""
 
+
                 if user_inp == "1":
-                    """Now we are in Organizer and can chose what we will do there"""
+
+
+                    """Now we are in ORGANIZER and can chose what we will do there"""
+
+
                     Happy_paths.Happy_organizer() #This is the organizer
                     user_inp = input("Enter 1, 2, 3, 4 or b: ")
                     if user_inp == "1": #Here you creata a new player
@@ -59,18 +64,43 @@ class Uimain:
                     elif user_inp == "b": #return back to starting psition
                         os.system('cls')
                         continue
+
+
                 elif user_inp == "2": #This is the Captain
+
+
+                    """Now we are in CAPTAIN"""
+
+
                     Happy_paths.Happy_captain()
                     user_inp = input("")
                     exit()
+
+
                 elif user_inp == "3": #This is the puplic viewer
+
+
+                    """Now we are in VIWER"""
+
+
                     Happy_paths.Happy_viewer()
+
+
                 elif user_inp == "b": #return back to the start
+
+                    """Now we are in BACK"""
+
+
                     os.system('cls')
                     continue
+
+
                 else: # if you enter an invalid input
+
+                    """now this is for invalid input"""
                     print("invalid input")
                     #need to find a way to return to input not back or exit
                     exit()
+            
             else: #stops the code if you some how manige to give int not string which should not be possible
                 exit()
