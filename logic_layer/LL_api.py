@@ -132,6 +132,9 @@ class LL_API:
 
     def get_all_tournaments(self):
         return self.tournament.get_allTournamnets()
+    
+    def get_tournamentNames(self):
+        return self.tournament.get_tournament_names()
 
     def create_new_tournament(self, tournament_obj: Tournament):
         return self.tournament.new_tourney(tournament_obj)

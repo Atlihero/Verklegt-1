@@ -57,6 +57,10 @@ class DataAPI:
     def get_all_tournaments(self):
         "retrieves the tournaments from the csv"
         return self.tournament.get_tournaments()
+    
+    def get_tournamentNames(self):
+        "retrieves the tournament names"
+        return self.tournament.get_tournament_names()
 
 # þessi þarf að vera 
     def create_new_tournaments(self, tournament_obj):
