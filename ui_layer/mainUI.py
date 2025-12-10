@@ -45,10 +45,10 @@ class Uimain:
                     Happy_paths.Happy_organizer() #This is the organizer
                     user_inp = input("Enter 1-6 or b: ")
                     if user_inp == "1": #Here you create a new player
-                        organizer.create_player(self)
+                        organizer.create_player()
                         exit()
                     elif user_inp == "2": #Here you create a tournament
-                        organizer.createTournament(self)
+                        organizer.createTournament()
                         exit()
                     elif user_inp == "3": #Here you create a team
                         organizer.create_team_ui()
@@ -58,7 +58,7 @@ class Uimain:
                     elif user_inp == "5": #here you make a player a captain
                         Happy_paths.Happy_make_captain()
                     elif user_inp == "6":
-                        organizer.organizer_see_info(self)
+                        organizer.organizer_see_info()
                         exit()
                     elif user_inp == "b": #return back to starting psition
                         os.system('cls')
