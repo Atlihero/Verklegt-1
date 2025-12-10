@@ -165,6 +165,24 @@ while True:
 
         schedule = PublicViewer.view_schedule(games)
 
+    
+    if val == "6":
+        class OrganizerUI:
+            def create_team_ui(self):
+                print("\n=== Create a New Team ===")
+                
+                team_name = input("Enter Team Name: ").strip()
+                captain = input("Enter Captain Name (optional): ").strip() or None
+                ascii_logo = input("Enter ASCII Logo (optional): ").strip() or None
+
+                new_team = api.add_team(name=team_name, captain=captain, asciiLogo=ascii_logo)
+                print(f"Team '{new_team.name}' created successfully!")
+                return new_team
+
+        # Create an instance of OrganizerUI
+        ui = OrganizerUI()
+        new_team = ui.create_team_ui()
+
     if val == "q":
         print("You have quit the program")
         break

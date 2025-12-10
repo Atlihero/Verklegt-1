@@ -4,6 +4,8 @@ from data_layer.TeamIO import TeamIO
 from data_layer.PlayerIO import PlayerIO
 from data_layer.data_api import DataAPI
 
+api = DataAPI()
+
 
 class LLTeams:
     def __init__(self): 
@@ -84,33 +86,11 @@ class LLTeams:
     def team_exists(self, name: str) -> bool:
         return self.get_team_by_name(name) is not None  # Checks if a team has this name
 
-    def create_team(self, name: str, captain: str, asciiLogo: str) -> Team:
-        "Organizer wants to create a team"
-        # Checks whether it has a name, captain and a unique name
-        if not name.strip():
-            raise ValueError("Name can not be empty")
-        if not captain.strip():
-            raise ValueError("Captain can not be empty")
-        if self.team_exists(name):
-            raise ValueError("Another team already has this name")
-
-        # Creating team object
-        new_team = Team(name=name.strip(), captain=captain.strip(), asciiLogo=asciiLogo)
-
-        # Updating in memory
+    def new_team(self, name: str, captain: str = None, asciiLogo: str = "") -> Team:
+        new_team = Team(name=name, captain=captain, asciiLogo=asciiLogo)
         self.teams.append(new_team)
 
-        new_id = len(self.teams)
-
-        # Saving in CSV through TeamIO
-        row_for_csv = [
-            str(new_id),
-            new_team.name,
-            new_team.captain,
-            new_team.wins,
-            new_team.points
-        ]
-        TeamIO.add_new_team(row_for_csv)
+        DataAPI().add_team(name, captain, asciiLogo)
 
         return new_team
 

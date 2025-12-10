@@ -37,11 +37,10 @@ class Uimain:
                     paths.Happy_organizer() #This is the organizer
                     user_inp = input("Enter 1, 2, 3, 4 or b: ")
                     if user_inp == "1": #Here you creata a new player
-                        paths.Happy_create_player()
-                        organizer
+                        organizer.get_player_info()
                         exit()
                     elif user_inp == "2": #Here you create a tournament
-                        paths.Happy_create_tournament()
+                        organizer.createTournament()
                         exit()
                     elif user_inp == "3": #Here you create a team
                         paths.Happy_create_team()

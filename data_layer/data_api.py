@@ -24,9 +24,9 @@ class DataAPI:
         "Gets the player for the public viewers"
         return self.player.get_player_PublicViewer()
 
-    def add_team(self,team_dict):
+    def add_team(self, name: str, captain: str, asciiLogo: str):
         "adds a new team to the csv with the dict details"
-        return self.team.create_new_team(team_dict)
+        return self.team.create_new_team(name, captain, asciiLogo)
     
     def getPublicTeam(self):
         "gets the teams for the public viewer"

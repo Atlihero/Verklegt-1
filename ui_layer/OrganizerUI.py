@@ -185,12 +185,10 @@ class OrganizerUI():
         winner = result["winner"]
         tournament_name = result["tournament_name"]
 
-        # If a winner exists, advance
         if winner:
             advance_result = self.lapi.advance_round(tournament_name, match_number, winner)
             print(advance_result)
 
-            # ⭐ IF THIS WAS THE FINAL MATCH (F = match 15), SHOW WINNER BANNER
             if result["round"] == "F":
                 print("\n==============================")
                 print(f"🏆  TOURNAMENT WINNER: {winner}  🏆")
@@ -201,6 +199,8 @@ class OrganizerUI():
 
         updated_games = self.lapi.get_game()
         show_games(updated_games, "Updated Games")
+
+    def create_team(self, name, captain, asciiLogo):
 
 
     def organizer_see_info(self) -> None:

@@ -1,17 +1,17 @@
-TeamName,Captain
-SegFault Spartans,SegFaultSam
-NullPointer Ninjas,NullPointerNina
-OffByOne Offense,OffByOneOlaf
-Pepsi Max Punishers,PepsiMaxPalli
-Chuck Norris Fan Club,RoundhouseRik
-IndentationError Invaders,IndentationErrorIna
-Assembly Avengers,MovAxMaria
-Datalab Dominators,BitTwiddlerBjarni
-Bomblab Bombers,BombDefusalDori
-StackOverflow Stackers,CopyPasteKalli
-CacheHit Crusaders,L1CacheLara
-WhileTrue Tryhards,WhileTrueWendy
-Segmentation Foul,SegmentationFoulStebbi
-RaceCondition Racers,RaceConditionRagnhildur
-Undefined Behavior United,UBUnitedUlfar
-Pepsi Max Overflow,PepsiMaxOverflowPetra
+TeamName,Captain,asciiLogo
+SegFault Spartans,SegFaultSam,
+NullPointer Ninjas,NullPointerNina,
+OffByOne Offense,OffByOneOlaf,
+Pepsi Max Punishers,PepsiMaxPalli,
+Chuck Norris Fan Club,RoundhouseRik,
+IndentationError Invaders,IndentationErrorIna,
+Assembly Avengers,MovAxMaria,
+Datalab Dominators,BitTwiddlerBjarni,
+Bomblab Bombers,BombDefusalDori,
+StackOverflow Stackers,CopyPasteKalli,
+CacheHit Crusaders,L1CacheLara,
+WhileTrue Tryhards,WhileTrueWendy,
+Segmentation Foul,SegmentationFoulStebbi,
+RaceCondition Racers,RaceConditionRagnhildur,
+Undefined Behavior United,UBUnitedUlfar,
+Pepsi Max Overflow,PepsiMaxOverflowPetra,

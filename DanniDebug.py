@@ -92,11 +92,10 @@ while True:
 
     if val == "5":
         teamName = input("TeamName: ")
-        captain = "No Captain"
-        wins = 0
-        points = 0
+        captain = None
 
-        team = [teamName, captain, wins, points]
+
+        team = [teamName, captain]
          
         class TeamIO:
             def create_new_team(team: list):
