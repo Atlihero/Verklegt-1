@@ -104,9 +104,15 @@ class Uimain:
                 else: # if you enter an invalid input
 
                     """now this is for invalid input"""
-                    print("invalid input")
                     #need to find a way to return to input not back or exit
-                    exit()
+                    print("invalid input")
+                    user_inp = input("Press any button to exit:")
+                    if user_inp != 1:
+                        clear_term()
+                        self.start()
+                        
+                    
             
             else: #stops the code if you some how manige to give int not string which should not be possible
                 exit()
+                
