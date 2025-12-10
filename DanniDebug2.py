@@ -5,7 +5,7 @@ api = LL_API()
 def show_games(games, title="Current Games"):
     print(f"\n=== {title} ===")
     for g in games:
-        print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
+        print(f"{g['match_number']:>2}: {g['round']} {g['match_date']}| {g['team_a']} vs {g['team_b']} | "
               f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
 
 while True:
@@ -15,6 +15,7 @@ while True:
     print("3. create tournament with games")
     print("4. Update results")
     print("5. Show Games")
+    print("6. Create new team")
     print("q. Quit")
 
     val = input("Veldu verkefni (1-5): ")
