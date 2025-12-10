@@ -5,6 +5,12 @@ from ui_layer.Publicviewer import PublicViewer
 from ui_layer.CaptainUI import CaptainUI
 import os
 
+def clear_term():
+    if os.name == 'nt':
+        _ =os.system('cls')
+    else:
+        _ = os.system('clear')
+
 class Uimain:
     """This class suplies information from logic layer to its correct 
     location and gives restrictions depending of user input"""
@@ -48,7 +54,7 @@ class Uimain:
                         print("Playr was made") 
                         user_inp = input("Press any button to exit:")
                         if user_inp != 1:
-                            print('\x1b[2J') #clear screen
+                            clear_term() #clear screen
                             continue
                     elif user_inp == "2": #Here you create a tournament
                         Happy_paths.Happy_create_tournament()
@@ -62,7 +68,7 @@ class Uimain:
                         Happy_paths.Happy_make_captain()
                         api.select_captains()
                     elif user_inp == "b": #return back to starting psition
-                        print('\x1b[2J') # clear screen
+                        clear_term() # clear screen
                         continue
 
 
