@@ -7,7 +7,7 @@ import os
 
 def clear_term():
     if os.name == 'nt':
-        _ =os.system('cls')
+        _ = os.system('cls')
     else:
         _ = os.system('clear')
 
