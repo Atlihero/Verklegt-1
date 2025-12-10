@@ -74,6 +74,7 @@ class LLTeams:
 
         return player_to_add
 
+
     def get_team_by_name(self, name: str) -> Team | None:
         """Checks for the team and returns it if found, or None if not"""
         for team in self.teams:
@@ -81,8 +82,10 @@ class LLTeams:
                 return team
         return None
 
+
     def team_exists(self, name: str) -> bool:
         return self.get_team_by_name(name) is not None  # Checks if a team has this name
+
 
     def create_team(self, name: str, captain: str, asciiLogo: str) -> Team:
         "Organizer wants to create a team"
@@ -99,7 +102,6 @@ class LLTeams:
 
         # Updating in memory
         self.teams.append(new_team)
-
         new_id = len(self.teams)
 
         # Saving in CSV through TeamIO
@@ -110,9 +112,10 @@ class LLTeams:
             new_team.wins,
             new_team.points
         ]
-        TeamIO.add_new_team(row_for_csv)
 
+        TeamIO.add_new_team(row_for_csv)
         return new_team
+
 
     def select_captain(self, team_name: str, new_captain: str) -> Team:
         "Organizer wants to chose a captain"
@@ -124,8 +127,8 @@ class LLTeams:
             raise ValueError("The captain can not be empty")
 
         team.captain = new_captain.strip()
-
         return team
+
 
     def view_teams(self) -> list[Team]:
         "Spectator wants to see information about a team"

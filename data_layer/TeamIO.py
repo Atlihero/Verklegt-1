@@ -1,25 +1,26 @@
 import csv
 
-TEAM_PATH: str = r"data_layer/_data/Teams.csv" #path to the teams csv
+TEAM_PATH: str = r"data_layer/_data/Teams.csv" # Path to the teams csv
 
 class TeamIO:
 
     def get_team(self):
-        '''returns a list of players for a specific team'''
+        '''Returns a list of players for a specific team'''
         try:
-            Teams = [] #Empty list in which the team that is chosen goes into
+            Teams = [] # Empty list in which the team that is chosen goes into
             with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
-                reader  = csvfile.readlines() #reads the linse in the csv
-                for row in reader: #for loop that goes through the lines to look for the right team
-                    Teams.append(row) #append the team chosen to the list
-            return Teams #returns the list
-        except ValueError: #in case of wrong inputs
-            return f"Error message to be decided"
+                reader  = csvfile.readlines() # Reads the linse in the csv
+                for row in reader: # For loop that goes through the lines to look for the right team
+                    Teams.append(row) # Append the team chosen to the list
+            return Teams # Returns the list
+        except ValueError: # In case of wrong inputs
+            return f"It was not possible to return a new list of players for the team."
     
     
     def getTeam_public(self):
+        '''Only shows captain and team name for the public viewer '''
         try:
-            teams = []
+            teams = [] 
             captain = []
             with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
@@ -27,49 +28,53 @@ class TeamIO:
                     teams.append(row["TeamName"])
                     captain.append(row["Captain"])
         except ValueError:
-            f"error message"
+            f"Failed to display the captain and the team name."
+            "error message"
         return teams, captain
     
     
     def _new_team(team: list):
-        '''create an empty team with no players'''
+        '''Create an empty team with no players'''
         try: 
             with open(TEAM_PATH, "a",newline="", encoding="utf-8") as csvfile:
-                writer = csv.writer(csvfile) #here the user writes in the details needed for a team like the name
-                writer.writerow(team) #prints what was written in a new row
-            return f"New Team added :)"    
-        except ValueError:   #in case of wrong inputs 
+        # The user writes in the details needed for a team like the name
+                writer = csv.writer(csvfile) 
+                writer.writerow(team) # Prints what was written in a new row
+            return f"New team has been added!" 
+        except ValueError: # In case of wrong inputs 
             f"Error message to be decided"
 
     def get_team_stats():
         try:
-            Wins = [] #empty list for the wins of teams
-            Points = [] #empty list for the points of teams
+            Wins = [] # Empty list for the wins of teams
+            Points = [] # Empty list for the points of teams
             with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
                 reader = csv.DictReader(csvfile) #reads the file like a dictionary
                 for row in reader: 
-                    Wins.append(row["Wins"]) #adds the wins to the wins list based on the number in the wins column in the csv
-                    Points.append(row["Points"]) #adds the points to the points list based on the number in the points column in the csv
-                return Wins, Points #returns both of those lists and now 
-        except ValueError:  #in case of wrong inputs 
-            f"Error message to be decided"
+                # Adds the wins to wins list based on the number in the wins column in the csv
+                    Wins.append(row["Wins"]) 
+                # Adds the points to points list based on the number in the points column in the csv
+                    Points.append(row["Points"]) 
+                return Wins, Points # Returns both of those lists with updated numbers
+        except ValueError:  # In case of wrong inputs 
+            return f"Error message to be decided"
         pass
 
 
     def add_new_team(self, team: list):
-        '''create an empty team with no players'''
+        '''Create an empty team with no players'''
         try: 
             with open(TEAM_PATH, "a",newline="", encoding="utf-8") as csvfile:
-                writer = csv.writer(csvfile) #here the user writes in the details needed for a team like the name
-                writer.writerow(team) #prints what was written in a new row
-            return f"New Team added :)"    
-        except ValueError:   #in case of wrong inputs 
+                writer = csv.writer(csvfile) # Here the user writes in the details needed for a team like the name
+                writer.writerow(team) # Prints what was written in a new row
+            return f"New team has been added!"    
+        except ValueError:   # In case of wrong inputs 
             f"Error message to be decided"
 
 
     def add_teams_to_tournament(tournament: str, teams: list):
         if len(teams) != 16:
-            return "Error, not enough teams in the tournament. There has to be 16 teams."
+            return "Error, not enough teams in the tournament. There have to be at least 16 teams."
         try:
             with open(TEAM_PATH, "a", newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile)

@@ -3,6 +3,12 @@ from Models.Tournament import Tournament
 from Models.Player import Player
 
 
+def show_games(games, title="Current Games"):
+    print(f"\n=== {title} ===")
+    for g in games:
+        print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
+            f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
+
 class OrganizerUI():
 
     def __init__(self):
@@ -155,6 +161,43 @@ class OrganizerUI():
 
         return self.lapi.create_new_tournament(tournament_obj)
 
+
+    def update_result(self):
+        tournament_name = input("Enter tournament name: ").strip()
+        games = self.lapi.get_game_by_tournamentName(tournament_name)
+
+        if not games:
+            print("\nNo games found for this tournament.\n")
+
+        show_games(games, "Current Games")
+
+        match_number = int(input("\nEnter match number to update: "))
+        score_a = int(input("Enter score for team A: "))
+        score_b = int(input("Enter score for team B: "))
+
+        result = self.lapi.updateGame(match_number, score_a, score_b)
+
+        winner = result["winner"]
+        tournament_name = result["tournament_name"]
+
+        # If a winner exists, advance
+        if winner:
+            advance_result = self.lapi.advance_round(tournament_name, match_number, winner)
+            print(advance_result)
+
+            # ⭐ IF THIS WAS THE FINAL MATCH (F = match 15), SHOW WINNER BANNER
+            if result["round"] == "F":
+                print("\n==============================")
+                print(f"🏆  TOURNAMENT WINNER: {winner}  🏆")
+                print("==============================\n")
+
+        else:
+            print("Game is a draw. Winner cannot advance.")
+
+        updated_games = self.lapi.get_game()
+        show_games(updated_games, "Updated Games")
+
+
     def organizer_see_info(self) -> None:
         '''The organizer can see player information for every player in the tournament'''
         try:
@@ -171,3 +214,22 @@ class OrganizerUI():
             print(f"\nPlayer Information for {p.get('Name')}:")
             for attr, value in vars(p).items():
                 print(f"{attr}: {value}")
+
+
+    def create_captain(self):
+        '''The organizer adds a captain to a team'''
+        pass
+        try:
+
+
+        except ValueError as error:
+            print("Error", error)
+            return
+        
+        
+
+    def make_team(self):
+        pass
+        #def select_captains(self, team_name, new_captain):
+
+#vantar make team og create captain!!!
