@@ -25,7 +25,7 @@ class CaptainUI:
         
         print("\nPlayers in your team: ")
         for index, p in enumerate(start = 1):
-            print(f"{index}. {p.get("Name")} | Handle: {p.get("Handle")}")
+            print(f"{index}. {p.get('Name')} | Handle: {p.get('Handle')}")
 
         try:
             selected = input("Please enter the number of who you want to remove: ")
@@ -59,7 +59,7 @@ class CaptainUI:
         
         print("\nPlayers in your team: ")
         for index, p in enumerate(start = 1):
-            print(f"{index}. {p.get("Name")}")
+            print(f"{index}. {p.get('Name')}")
 
         try:
             selected = input("Please enter the number of whose information you want to see: ")

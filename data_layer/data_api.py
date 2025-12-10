@@ -24,9 +24,9 @@ class DataAPI:
         "Gets the player for the public viewers"
         return self.player.get_player_PublicViewer()
 
-    def add_team(self,team_dict):
+    def add_team(self, name: str, captain: str, asciiLogo: str):
         "adds a new team to the csv with the dict details"
-        return self.team.create_new_team(team_dict)
+        return self.team.create_new_team(name, captain, asciiLogo)
     
     def getPublicTeam(self):
         "gets the teams for the public viewer"
@@ -36,16 +36,6 @@ class DataAPI:
         "adds a new player to the csv with the dict data"
         return self.player.create_new_player(player_dict)
 
-    def get_team_statistics(self):
-        "Retrieves team statistics"
-        return self.team.get_team_stats()
-
-    def get_player_statistics(self):
-        "retrieves the player statistics"
-        return self.player.get_player_stats()
-
-
-    #Pæling að breyta þessum
     def add_team_to_tournament(self, tournament_name, teams_list):
         "add exactly 16 teams to the tournament"
         return self.team.add_teams_to_tournament(tournament_name, teams_list)
@@ -57,11 +47,26 @@ class DataAPI:
     def get_all_tournaments(self):
         "retrieves the tournaments from the csv"
         return self.tournament.get_tournaments()
-
-    def new_game(self, game_dict):
-        "creates a new game in the csv"
-        return self.tournament.create_new_game(game_dict)
+    
+    def get_tournamentNames(self):
+        "retrieves the tournament names"
+        return self.tournament.get_tournament_names()
 
 # þessi þarf að vera 
     def create_new_tournaments(self, tournament_obj):
        return self.tournament.create_new_tournament(tournament_obj)
+
+    def new_game(self, row: list):
+        "creates a new game in the csv"
+        return self.tournament.create_new_game(row)
+
+    def get_games(self):
+        "gets the games from the tournamnet"
+        return self.tournament.get_all_games()
+    
+    def update_game(self, tournament_name: str, match_number: int, score_a: int, score_b: int):
+        "updates the game based on the score inputted"
+        return self.tournament.update_games(tournament_name, match_number, score_a, score_b)
+    
+    def advance_round(self, tournament_name: str, match_number: int, winner: str):
+        return self.tournament.advance(tournament_name, match_number, winner)
