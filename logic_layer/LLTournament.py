@@ -2,7 +2,7 @@ from Models.Tournament import Tournament
 from Models.Round import Round
 from data_layer.data_api import DataAPI
 import random
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 
@@ -43,6 +43,11 @@ class LLTournament:
         if len(self.teams) < 16:
             raise ValueError("You need 16 teams")
         
+        if isinstance(start_date, str):
+            current_date = datetime.strptime(start_date, "%d/%m/%Y")
+        else:
+            current_date = start_date 
+            
         shuffled = random.sample(self.teams, 16)
         
         rounds = [
@@ -54,8 +59,6 @@ class LLTournament:
 
         all_games = []
         match_number = 1
-        current_date = start_date
-
 
         round_teams = shuffled
 
@@ -81,6 +84,8 @@ class LLTournament:
                 match_number += 1
             
             round_teams = next_round_teams
+            
+            current_date += timedelta(days=1)
 
         return all_games
     
