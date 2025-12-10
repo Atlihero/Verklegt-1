@@ -15,7 +15,10 @@ class LLCaptain():
     def get_team_members(self, team_name: str):
         '''Check if players are in this team and return a list of members'''
         all_players = self.dapi.get_all_players()
-        team_members = [p for p in all_players if p.get("Team") == team_name]
+        team_members = [] 
+        for p in all_players:
+            if p.get("Team") == team_name:
+                team_members.append(p)
         return team_members
             
 
