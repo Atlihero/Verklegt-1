@@ -74,7 +74,7 @@ class LL_API:
     
 
     """
-    Logic wrapper for Tournament
+    Logic wrapper for LLTournament
     """
 
     def get_contactInfo(self):
@@ -138,7 +138,7 @@ class LL_API:
 
 
     """
-    Logic wrapper for Organizer
+    Logic wrapper for LLOrganizer
     """
 
     def valid_tournament_name(self, name):

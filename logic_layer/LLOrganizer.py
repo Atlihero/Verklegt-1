@@ -57,3 +57,7 @@ class LLOrganizer():
         """Allows the organizer to see all the players information"""
         all_players = PlayerIO.get_players()
         return all_players
+
+
+#create team - er fall i LLteam sem er create team 
+#create captain - select captain í LLteam

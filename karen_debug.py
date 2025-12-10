@@ -12,3 +12,9 @@
     # what team has the most in earnings
     # what team has competed in the most games
 
+def club_name():
+    unique_name = 
+    pass
+
+def 
+
