@@ -27,7 +27,6 @@ class PlayerIO:
                         row["Email"],
                         row["Handle"],
                         row["Team"],
-                        row["Points"],
                         row["Link"]
                         ) 
                 players.append(player) # Add the newly made player to the players list
@@ -57,7 +56,7 @@ class PlayerIO:
         with open(PLAYER_PATH, "w", newline = "", encoding = "utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["Name", "DOB", "Address", "Phonenumber",
-                             "Email", "Handle", "Team", "Points", "Link"])
+                             "Email", "Handle", "Team", "Link"])
             for p in players:
                 writer.writerow([
                     p.name,
@@ -67,7 +66,6 @@ class PlayerIO:
                     p.email,
                     p.handle,
                     p.team,
-                    p.points,
                     p.link
                 ])
 
