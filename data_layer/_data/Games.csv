@@ -1,17 +1,16 @@
 tournament_name,round,match_number,match_date,team_a,team_b,score_a,score_b,winner
-Daniel,R16,1,2025-12-09,Arcane Crew,Pink Stars,1,2,Pink Stars
-Daniel,R16,2,2025-12-09,Blockheads,Fireflies,1,2,Fireflies
-Daniel,R16,3,2025-12-09,Payload,Poké Pals,1,2,Poké Pals
-Daniel,R16,4,2025-12-09,Black in Yellow,Street Squad,1,2,Street Squad
-Daniel,R16,5,2025-12-09,Shadow Clan,Limit Breakers,1,2,Limit Breakers
-Daniel,R16,6,2025-12-09,Spartan Squad,TeamName,1,2,TeamName
-Daniel,R16,7,2025-12-09,Fantom,Silver Blades,1,2,Silver Blades
-Daniel,R16,8,2025-12-09,Red Dragons,Blue Shells,1,2,Blue Shells
-Daniel,QF,9,2025-12-09,Pink Stars,Fireflies,1,2,Fireflies
-Daniel,QF,10,2025-12-09,Poké Pals,Street Squad,1,2,Street Squad
-Daniel,QF,11,2025-12-09,Limit Breakers,TeamName,1,2,TeamName
-Daniel,QF,12,2025-12-09,Silver Blades,Blue Shells,1,2,Blue Shells
-Daniel,SF,13,2025-12-09,Fireflies,Street Squad,1,4,Street Squad
-Daniel,SF,14,2025-12-09,TeamName,Blue Shells,2,4,Blue Shells
-Daniel,F,15,2025-12-09,Street Squad,Blue Shells,3,2,Street Squad
-
+HRingurinn,R16,1,12/12/2025,RaceCondition Racers,Segmentation Foul,,,
+HRingurinn,R16,2,12/12/2025,OffByOne Offense,TeamName,,,
+HRingurinn,R16,3,12/12/2025,Chuck Norris Fan Club,CacheHit Crusaders,,,
+HRingurinn,R16,4,12/12/2025,IndentationError Invaders,Datalab Dominators,,,
+HRingurinn,R16,5,12/12/2025,StackOverflow Stackers,Assembly Avengers,,,
+HRingurinn,R16,6,12/12/2025,Undefined Behavior United,Bomblab Bombers,,,
+HRingurinn,R16,7,12/12/2025,NullPointer Ninjas,WhileTrue Tryhards,,,
+HRingurinn,R16,8,12/12/2025,Pepsi Max Punishers,Pepsi Max Overflow,,,
+HRingurinn,QF,9,13/12/2025,TBD,TBD,,,
+HRingurinn,QF,10,13/12/2025,TBD,TBD,,,
+HRingurinn,QF,11,13/12/2025,TBD,TBD,,,
+HRingurinn,QF,12,13/12/2025,TBD,TBD,,,
+HRingurinn,SF,13,14/12/2025,TBD,TBD,,,
+HRingurinn,SF,14,14/12/2025,TBD,TBD,,,
+HRingurinn,F,15,15/12/2025,TBD,TBD,,,

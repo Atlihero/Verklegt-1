@@ -1,5 +1,5 @@
-from Models.Game import Game
-from Models.Organizer import organizer
+#from Models.Game import Game
+#from Models.Organizer import Organizer
 
 class Tournament:
     

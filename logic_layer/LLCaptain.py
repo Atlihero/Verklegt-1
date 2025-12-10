@@ -1,6 +1,7 @@
 from data_layer.PlayerIO import PlayerIO
 from logic_layer.LLTeams import LLTeams
 from data_layer.data_api import DataAPI
+from Models.Player import Player
 
 
 class LLCaptain():
@@ -9,80 +10,135 @@ class LLCaptain():
 
     def __init__(self):
         self.ll_teams = LLTeams()
+        self.data_api = DataAPI()
+
+    def _get_all_players(self) -> list[Player]:
+        """Get all players as Player objects."""
+        return self.data_api.get_all_players() or []
+
+
+    def _player_to_dict(self, p: Player) -> dict:
+        """Convert a Player object to a dict"""
+        return{
+                "Name": getattr(p, "name", ""),
+                "DOB": getattr(p, "dob", ""),
+                "Address": getattr(p, "address", ""),
+                "Phonenumber": getattr(p, "phone", ""),
+                "Email": getattr(p, "email", ""),
+                "Handle": getattr(p, "handle", ""),
+                "Team": getattr(p, "team", ""),
+
+        }
+
+
+
         
 
-    def get_team_members(self, team_name: str):
-        '''Check if players are in this team and return a list of members'''
-        all_players = DataAPI.get_all_players()
-        team_members = [p for p in all_players if p.get("Team") == team_name]
-        return team_members
+    def get_team_members(self, team_name: str) -> list[dict]:
+        '''Check if players are in this team and return a list of members dicts'''
+        team_name = (team_name or "").strip()
+        all_players = self._get_all_players()
+        
+
+        team_players: list[Player] = [
+            p for p in all_players
+            if  (getattr(p,"team", "") or "").strip() == team_name
+        ]
+        return [self._player_to_dict(p) for p in team_players]
+    
+    def get_available_players(self, team_name: str) -> list[dict]:
+        '''Return players that do not belong to any team'''
+        all_players = self._get_all_players()
+        
+        free_players: list[Player] =  [
+            p for p in all_players
+            if not ((getattr(p, "team", "") or "").strip())
+        ]
+
+        return [self._player_to_dict(p) for p in free_players]
 
     
-    def add_player_to_team(self, team_name: str, player_name: str):
+    def add_player_to_team(self, team_name: str, player_name: str) -> dict:
         '''Used to check if team already has 5 players, '''
+
+        team_name = (team_name or "").strip()
+        player_name = (player_name or "").strip()
+
         #team_players = self.get_team_members(team_name)
-        team = self.ll_teams.get_teams(team_name)
+        team = self.ll_teams.get_team_by_name(team_name)
         if team is None:
             raise ValueError("Team not found")
         
-        team_players = self.get_team_members(team_name)
-        # check if there are 5 people in team
-        if len(team_players) > self.MAX_TEAM_MEMBERS:
+
+        all_players = self._get_all_players()
+
+        team_players = [
+            p for p in all_players
+            if (getattr(p, "team", "") or "").strip() == team_name
+        ]
+        if len(team_players) >= self.MAX_TEAM_MEMBERS:
             raise ValueError ("There are already 5 players in this team.")
        
-        # Get all players
-        all_players = PlayerIO().get_players()
 
-        # Find the player to add from a list
-        player_to_add = None
+        player_to_add: Player | None = None
         for p in all_players:
-            if p.get("Name") == player_name:
+            if (getattr(p, "name", "") or "").strip() == player_name:
                 player_to_add = p
                 break
 
         if player_to_add is None:
             raise ValueError("Player not found.")
 
-        # Check if player is already in a team
-        if player_to_add.get("Team") not in (None, "", team_name):
+        # Check if player is already in another team
+        current_team = (getattr(player_to_add, "team","") or "").strip()
+        if current_team not in ("", team_name):
             raise ValueError(f"{player_name} is already in another team.")
+        
+        # Add player to this team
+        player_to_add.team = team_name
 
-        # if player not in any team then we add to our team
-        player_to_add.get("Team") == team_name
-
-        # Update players.csv and save changes
+        # Save changes
         PlayerIO.save_players(all_players)
-        return player_to_add
+        return self._player_to_dict(player_to_add)
     
     
-    def remove_from_team(self, player_name: str, team_name: str):
+    def remove_from_team(self, player_name: str, team_name: str) -> dict:
         '''Allows captain to remove a player from team'''
-        all_players = PlayerIO.get_players()
-        player_found = None
+        player_name = (player_name or "").strip()
+        team_name = (team_name or "").strip()
+
+        all_players = self._get_all_players()
+        player_found: Player | None = None
 
         for p in all_players:
-            if p.get("Name") == player_name:
+            if (getattr(p, "name", "") or "").strip() == player_name:
                 player_found = p
                 break
                     
         if player_found is None:
             raise ValueError ("This player does not exist. Please try another player.")
         
-        if player_found.get("Team") != team_name:
+        if (getattr(player_found, "team", "") or "").strip() != team_name:
             raise ValueError ("The player is not in this team. Please try another player.")
     
-        player_found.get("Team") == ""
+        player_found.team = ""
 
         PlayerIO.save_players(all_players)
-        return player_found
+        return self._player_to_dict(player_found)
     
 
-    def cap_see_player_info(self, team_name: str, player_name: str):
+    def cap_see_player_info(self, player_name: str, team_name: str) -> dict:
         '''Allows captains to see the players info that are on their team'''
-        team_players = self.get_team_members(team_name)
-        for player in team_players:
-            if player.get("Name") == player_name:
-                return player
+        player_name = (player_name or "").strip()
+        team_name = (team_name or "").strip()
+
+        all_players  =self._get_all_players()
+
+        for p in all_players:
+            if ((getattr(p, "name", "") or "").strip() == player_name and
+                (getattr(p, "team", "") or "").strip() == team_name):
+                return self._player_to_dict(p)
+            
             #if player not found in the team
         raise ValueError("Player is not in this team. Please try another player.")
         

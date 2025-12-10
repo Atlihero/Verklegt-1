@@ -57,6 +57,10 @@ class DataAPI:
     def get_all_tournaments(self):
         "retrieves the tournaments from the csv"
         return self.tournament.get_tournaments()
+    
+    def get_tournamentNames(self):
+        "retrieves the tournament names"
+        return self.tournament.get_tournament_names()
 
 # þessi þarf að vera 
     def create_new_tournaments(self, tournament_obj):
@@ -70,9 +74,9 @@ class DataAPI:
         "gets the games from the tournamnet"
         return self.tournament.get_all_games()
     
-    def update_game(self, match_number: int, score_a: int, score_b: int):
+    def update_game(self, tournament_name: str, match_number: int, score_a: int, score_b: int):
         "updates the game based on the score inputted"
-        return self.tournament.update_games(match_number, score_a, score_b)
+        return self.tournament.update_games(tournament_name, match_number, score_a, score_b)
     
     def advance_round(self, tournament_name: str, match_number: int, winner: str):
         return self.tournament.advance(tournament_name, match_number, winner)

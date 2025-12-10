@@ -1,2 +1,2 @@
-TournamentName,startDate,endDate,Venue,contactPerson,contatEmail,contactPhone
-Daniel,2025-12-09,2025-12-20,HR,daniel,daniel@gmail.com,123-4567
+tournamentName,startDate,endDate,Venue,contactPerson,contatEmail,contactPhone
+HRingurinn,12/12/2025,20/12/2025,HR,Danie,daniel@gmail.com,1234567

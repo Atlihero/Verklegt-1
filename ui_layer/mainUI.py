@@ -15,12 +15,14 @@ class Uimain:
         self.publicviewer = PublicViewer()
         self.organizer = OrganizerUI()
         
+        
 
 
     def start(self) -> None:
         """Prints the game screen on terminal and controles the flow of information"""
         Happy_paths
         organizer = OrganizerUI()
+        captain = CaptainUI()
         api = LL_API()
         while True:
             Happy_paths.Happy_logo()
@@ -52,13 +54,72 @@ class Uimain:
                     elif user_inp == "4": #here you make a player a captain
                         Happy_paths.Happy_make_captain()
                         api.select_captains()
-                    elif user_inp == "b": #return back to starting psition
+                    elif user_inp == "b": #return back to starting position
                         os.system('cls')
                         continue
+
+
+
                 elif user_inp == "2": #This is the Captain
                     Happy_paths.Happy_captain()
-                    user_inp = input("")
-                    exit()
+                    # first pick which captain (this also sets current_team_name)
+                    if not captain.select_captain_and_team():
+                        continue # go back to main menue if captain not foudn
+                    
+                    Happy_paths.Happy_captain_add_or_info()
+                    cap_choice = input("").strip().lower()
+
+                    if cap_choice == "1":
+                        captain.add_to_team()
+                    elif cap_choice == "2":
+                        captain.remove_from_team()
+                    elif cap_choice == "3":
+                        captain.cap_see_player_info()
+                    elif cap_choice == "b":
+                        os.system("cls")
+                        continue
+
+
+
+
+
+                    """if user_inp == "1": #Here you Add Player to Team
+                        Happy_paths.Happy_captain_add_or_info()
+                        captain.add_to_team()
+                        exit() 
+                        
+
+                    if user_inp == "2": #Here you See Information on Captains
+                        Happy_paths.Happy_captain_player_to_inspect()
+                        captain.cap_see_player_info()
+                        
+                        if user_inp == "x": #Here you Select Player To Inspect
+                            Happy_paths.Happy_captain_inspecting_information()
+                            captain.cap_see_player_info()
+                           
+
+                            if user_inp == "x": #Here you Select Information
+                                x
+
+
+
+                    elif user_inp == "b": #return back to starting position
+                        os.system('cls')
+                        continue   """
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    
                 elif user_inp == "3": #This is the puplic viewer
                     Happy_paths.Happy_viewer()
                 elif user_inp == "b": #return back to the start

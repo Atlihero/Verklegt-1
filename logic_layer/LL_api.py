@@ -173,6 +173,9 @@ class LL_API:
         '''Return a list of Player objects in the team'''
         return self.captain.get_team_members(team_name)
     
+    def get_available_players_for_captain(self, team_name):
+        return self.captain.get_available_players(team_name)
+    
     def cap_view_player_info(self, player_name, team_name):
         '''Captain can see player info about members in his team'''
         return self.captain.cap_see_player_info(player_name, team_name)

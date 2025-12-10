@@ -17,9 +17,20 @@ class TournamentIO:
                 #reader = csv.reader(csvfile) virkar með þessu fyrir Organizer
                 for row in reader:
                     tournament.append(row) 
-            return tournament 
         except ValueError: 
             return f"Error message to be decided"
+        return tournament 
+    
+    def get_tournament_names(self):
+        try:
+            tournament_names = []
+            with open(TOURNAMENT_PATH, "r", encoding="utf-8") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    tournament_names.append(row["tournamentName"])
+        except FileNotFoundError:
+            return "Nothing found"
+        return tournament_names
 
     def create_new_tournament(self, tournament: list):
         """
@@ -58,13 +69,13 @@ class TournamentIO:
             return []
         return games
     
-    def update_games(self, match_number: int, score_a: int, score_b: int):
+    def update_games(self, tournament_name: str, match_number: int, score_a: int, score_b: int):
         games = self.get_all_games()
         winner = None
 
         update = False
         for game in games:
-            if int(game["match_number"]) == match_number:
+            if  game["tournament_name"] == tournament_name and int(game["match_number"]) == match_number:
                 game["score_a"] = score_a
                 game["score_b"] = score_b
 
@@ -140,4 +151,3 @@ class TournamentIO:
             for g in games:
                 writer.writerow(g)
         return f"{winner} advances"
-
