@@ -1,5 +1,5 @@
 tournament_name,round,match_number,match_date,team_a,team_b,score_a,score_b,winner
-HRingurinn,R16,1,12/12/2025,RaceCondition Racers,Segmentation Foul,,,
+HRingurinn,R16,1,12/12/2025,RaceCondition Racers,Segmentation Foul,5,3,RaceCondition Racers
 HRingurinn,R16,2,12/12/2025,OffByOne Offense,TeamName,,,
 HRingurinn,R16,3,12/12/2025,Chuck Norris Fan Club,CacheHit Crusaders,,,
 HRingurinn,R16,4,12/12/2025,IndentationError Invaders,Datalab Dominators,4,1,IndentationError Invaders
@@ -7,7 +7,7 @@ HRingurinn,R16,5,12/12/2025,StackOverflow Stackers,Assembly Avengers,,,
 HRingurinn,R16,6,12/12/2025,Undefined Behavior United,Bomblab Bombers,,,
 HRingurinn,R16,7,12/12/2025,NullPointer Ninjas,WhileTrue Tryhards,,,
 HRingurinn,R16,8,12/12/2025,Pepsi Max Punishers,Pepsi Max Overflow,,,
-HRingurinn,QF,9,13/12/2025,TBD,TBD,,,
+HRingurinn,QF,9,13/12/2025,RaceCondition Racers,TBD,,,
 HRingurinn,QF,10,13/12/2025,TBD,IndentationError Invaders,,,
 HRingurinn,QF,11,13/12/2025,TBD,TBD,,,
 HRingurinn,QF,12,13/12/2025,TBD,TBD,,,
