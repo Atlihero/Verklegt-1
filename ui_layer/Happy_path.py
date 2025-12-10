@@ -1,10 +1,5 @@
-from logic_layer.LL_api import LL_API
-
-
-
 class Happy_paths:
-    HappyID = 0
-    Output_ID = 0
+    @staticmethod
     def Happy_logo():
         print(r"     _       __     __                              __             ____  __  ___ ")
         print(r"    | |     / /__  / /________  ____ ___  ___      / /_____       / __ \/ / / ( )_____")
@@ -21,7 +16,7 @@ class Happy_paths:
         print(r"     / /____>  </ /_/ /  / /_/ /| |/ / /_/ / /_/ / /_/ / / / / / /_/ /_/ /_/ ") 
         print(r"    /_____/_/|_|\__/_/   \__,_/ |___/\__,_/\__, /\__,_/_/ /_/ /___/\__,_(_) ") 
         print(r"                                          /____/")
-
+    @staticmethod
     def Happy_menu():
         print("\033[91m--------------------------------------\033[0m")
         print("\033[91m---           GLADIATORS           ---\033[0m")
@@ -37,7 +32,7 @@ class Happy_paths:
         print("\033[94m--------------------------------------\033[0m")
         print("\033[94m--- Exit b)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
-    
+    @staticmethod
     def Happy_viewer():
         print("\033[91m--------------------------------------\033[0m")
         print("\033[91m---           GLADIATORS           ---\033[0m")
@@ -55,7 +50,7 @@ class Happy_paths:
         print("\033[94m--------------------------------------\033[0m")
         print("\033[94m--- Back b)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
-
+    @staticmethod
     def Happy_captain():
         print("\033[91m--------------------------------------\033[0m")
         print("\033[91m---           GLADIATORS           ---\033[0m")
@@ -69,7 +64,7 @@ class Happy_paths:
         print("\033[94m--------------------------------------\033[0m")
         print("\033[94m--- Back b)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
-
+    @staticmethod
     def Happy_organizer():
         print("\033[91m--------------------------------------\033[0m")
         print("\033[91m---           GLADIATORS           ---\033[0m")
@@ -86,7 +81,7 @@ class Happy_paths:
         print("\033[94m--------------------------------------\033[0m")
         print("\033[94m--- Back b)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
-
+    @staticmethod
     def Happy_create_tournament():
         print("\033[91m--------------------------------------\033[0m")
         print("\033[91m---           GLADIATORS           ---\033[0m")
@@ -103,7 +98,7 @@ class Happy_paths:
         print("\033[94m--------------------------------------\033[0m")
         print("\033[94m--- Back b)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
-
+    @staticmethod
     def Happy_create_team():
         print("\033[91m--------------------------------------\033[0m")
         print("\033[91m---           GLADIATORS           ---\033[0m")
@@ -121,7 +116,7 @@ class Happy_paths:
         print("\033[94m--------------------------------------\033[0m")
         print("\033[94m--- Back b)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
-
+    @staticmethod
     def Happy_make_captain():
         print("\033[91m--------------------------------------\033[0m")
         print("\033[91m---           GLADIATORS           ---\033[0m")
@@ -137,7 +132,7 @@ class Happy_paths:
         print("\033[94m--- Back b)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
 
-
+    @staticmethod
     def Happy_create_player():
         print("\033[91m--------------------------------------\033[0m")
         print("\033[91m---           GLADIATORS           ---\033[0m")
@@ -146,11 +141,13 @@ class Happy_paths:
         print("\033[94m---                                ---\033[0m")
         print("\033[94m---    #Input players information  ---\033[0m")
         print("\033[94m---                                ---\033[0m")
-        print("\033[94m---    #Name                       ---\033[0m")
+        print("\033[94m---    #Full name                  ---\033[0m")
         print("\033[94m---    #Date of birth              ---\033[0m")
-        print("\033[94m---    #email                      ---\033[0m")
+        print("\033[94m---    #Home address               ---\033[0m")
         print("\033[94m---    #Phone                      ---\033[0m")
-        print("\033[94m---    #gamertag                   ---\033[0m")
+        print("\033[94m---    #email                      ---\033[0m")
+        print("\033[94m---    #Handle                     ---\033[0m")
+        print("\033[94m---    #link(optional)             ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
         print("\033[94m--- Back b)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")

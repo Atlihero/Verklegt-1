@@ -4,6 +4,7 @@ from logic_layer.LLTournament import LLTournament
 from .LLCaptain import LLCaptain
 from .LLOrganizer import LLOrganizer
 from Models.Tournament import Tournament
+from Models.Player import Player
 
 class LL_API:
     def __init__(self):
@@ -17,33 +18,45 @@ class LL_API:
     """
     The Logic layer wrapper for the LLPlayer
     """
+    def valid_name(self, name):
+        '''Validates player full name'''
+        return self.player.validate_name(name)
+
     def valid_dob(self, dob):
-        "Validates players date of birth"
+        '''Validates players date of birth'''
         return self.player.validate_dob(dob)
     
+    def valid_address(self, address):
+        '''Validates player's address'''
+        return self.player.validate_address(address)
+    
     def valid_phone(self, phone):
-        "validates the phone number"
+        '''Validates the phone number'''
         return self.player.validate_phone(phone) 
     
     def valid_email(self, email):
-        "Validates the email"
+        '''Validates the email'''
         return self.player.validate_email(email)
     
     def valid_handle(self, handle):
-        "validates the handle of new players"
+        '''Validates the handle of new players'''
         return self.player.validate_handle(handle)
     
     def validate_link(self, link):
-        "validates the link of the new players"
+        '''Validates the link of the new players'''
         return self.player.validate_link(link)
     
-    def create_player(self, name, dob_string, address, phone, email, handle, link=""):
-        "creates a new player"
-        return self.player.create_player(name, dob_string, address, phone, email, handle, link)
+    #def create_new_player(self, name, dob_string, address, phone, email, handle, link=""):
+    #    '''Creates a new player'''
+    #    return self.player.create_player(name, dob_string, address, phone, email, handle, link)
+    
+    def create_player(self, player_obj: Player):
+        return self.player.create_player(player_obj)
     
     def get_playerPublic(self):
-        "Gets the team for the public viewer"
+        '''Gets the team for the public viewer'''
         return self.player.get_player_publicViewer()
+
     
     """
     Logic layer wrapper for the LLTeams
@@ -165,20 +178,31 @@ class LL_API:
         return self.captain.cap_see_player_info(player_name, team_name)
 
 
+
     """
     Logic wrapper for Organizer
     """
 
     def valid_tournament_name(self, name):
+        '''Validates if the tournament name is unique'''
         return self.organizer.tournament_name(name)
     
     def valid_start_date(self, start_date):
+        '''Validates if the tournament start date is in the future of the day today'''
         return self.organizer.choose_start_date(start_date)
     
     def valid_end_date(self, end_date, start_date):
+        '''Validates if the tournament end date is later than the start date'''
         return self.organizer.choose_end_date(end_date, start_date)
+    
+    def valid_tournament_location(self, location):
+        '''Validates if the tournament has a location'''
+        return self.organizer.tournament_location(location)
+    
+    def valid_tournament_contact(self, contact_name):
+        '''Validates the contact persons name'''
+        return self.organizer.tournament_contact_name(contact_name)
 
     def organizer_view_player_info(self):
         '''Organizer can see information about every player in the tournament'''
         return self.organizer.organizer_player_info()
-

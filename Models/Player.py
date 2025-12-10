@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass #TODO: this is not being used
 from datetime import date
 
 class Player:
@@ -7,7 +7,7 @@ class Player:
     Búa til __init__ fall sem tekur inn nafn, fæðingardag, heimili,
     email, viðurnefni(gamertag), og samfélagsmiðli
     """
-    def __init__(self, name="", dob="", address="", phone="", email="", handle="", link="", team="", points=0):
+    def __init__(self, name, dob, phone, address, email, handle, link, team=None, points=0):        
         self.name: str = name
         self.dob: date = dob
         self.address: int = address

@@ -6,7 +6,9 @@ class LLOrganizer():
     
     def __init__(self):
         self.dapi = DataAPI()
+        self.playerio = PlayerIO()
     
+
     def tournament_name(self, name: str) -> str:
         '''Checks if name is unique or missing a name'''
         # check if name is just empty, so just space or something
@@ -49,7 +51,27 @@ class LLOrganizer():
         except ValueError:
             raise ValueError ("Invalid date. Use DD/MM/YYYY")
     
+
+    def tournament_location(self, location: str) -> str:
+        '''Checks if name is unique or missing a name'''
+        # check if name is just empty, so just space or something
+        location = location.strip()
+        if not location:
+            raise ValueError("Tournament location cannot be emtpy. Please enter a location.")
+
+        return location
+    
+
+    def tournament_contact_name(self, contact_name: str) -> str:
+        '''Checks if name is unique or missing a name'''
+        # check if name is just empty, so just space or something
+        contact_name = contact_name.strip()
+        if not contact_name:
+            raise ValueError("Contact name cannot be emtpy. Please enter a contact person.")
+        return contact_name
+    
+
     def organizer_player_info(self):
         """Allows the organizer to see all the players information"""
-        all_players = PlayerIO.get_players()
+        all_players = self.playerio.get_players()
         return all_players

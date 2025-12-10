@@ -5,7 +5,7 @@ PLAYER_PATH: str = r"data_layer/_data/Players.csv"
  
 class PlayerIO:
 
-    def get_players():
+    def get_players(self):
             """
             This function finds the selected player and puts him into an empty list
             to be displayed

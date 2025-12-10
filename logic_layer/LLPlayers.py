@@ -1,22 +1,34 @@
-from Models import Player
+from Models.Player import Player
 from datetime import datetime
 from data_layer.data_api import DataAPI
+from data_layer.PlayerIO import PlayerIO
 
 class LLPlayer():
     # because no names can be the same, doesn't add if they are the same
-    existing_handles = set() 
+    #existing_handles = set() 
+    #existing_handles = []
+
+    def __init__(self):
+        self.data = DataAPI()
+        self.playerio = PlayerIO
 
     def get_all_players(self):
-        data = DataAPI()
-        return data.get_all_players()
+        return self.data.get_all_players()
     
     def get_player_publicViewer(self):
-        data = DataAPI()
-        return data.public_get_player()
+        return self.data.public_get_player()
     
     def get_player_statistics(self):
-        data = DataAPI()
-        return data.get_player_statistics()
+        return self.data.get_player_statistics()
+
+    def validate_name(self, name: str) -> str:
+        '''Checks if name is unique or missing a name'''
+        # check if name is just empty, so just space or something
+        name = name.strip()
+        if not name:
+            raise ValueError("Player name cannot be emtpy. Please enter a valid name.")
+    
+        return name
 
 
     def validate_dob(self, dob_str: str) -> datetime: 
@@ -33,8 +45,16 @@ class LLPlayer():
             return dob
         except ValueError:
             raise ValueError ("Invalid date. Use DD/MM/YYYY")
-
-	
+        
+    def validate_address(self, address: str) -> str:
+        '''Checks if name is unique or missing a name'''
+        # check if name is just empty, so just space or something
+        address = address.strip()
+        if not address:
+            raise ValueError("Player's address name cannot be emtpy. Please enter a valid address.")
+        
+        return address
+        
     def validate_phone(self, phone_number: int) -> int:
         '''Validates the players phone number, if not then 
           the user tries again.'''
@@ -70,29 +90,59 @@ class LLPlayer():
         if len(ending) < 2 or len(ending) > 3 or not ending.isalpha():
             raise ValueError("The email must contain a valid ending. Please try again.")
             
+        
         return player_email
 
-	
     def validate_handle(self, handle: str) -> str:
         '''Checks players handle. It checks if the username 
         is already in use and then asks for a new username since no two players 
         can have the same username '''
+        handle = handle.strip()
+
+        #if handle in LLPlayer.existing_handles:
+        #    raise ValueError("This handle is already taken. Please try another one.")
         
-        if handle in LLPlayer.existing_handles:
-            raise ValueError("This handle is already taken. Please try another one.")
+        if not handle:
+            raise ValueError("Player's handle name cannot be emtpy. Please enter a handle.")
         
-		# if the handle is unique then its added to the list
-        LLPlayer.existing_handles.add(handle)
+        existing_usernames: list[Player] = self.data.get_all_players()
+        existing_handles = [
+            player.handle
+            for player in existing_usernames
+            if getattr(player, 'handle', None)
+            ]
+        
+        if handle in existing_handles:
+            raise ValueError("Handle is already in use, please choose another one.")
+
         return handle
 
-	
+		# if the handle is unique then its added to the list
+        #LLPlayer.existing_handles.add(handle)
+        #return handle
+    
     def validate_link(self, link: str) -> str:
         if not link:
             return "" # user didn't add a link
         if not (link.startswith("http://") or link.startswith("https://")):
             raise ValueError("Link must start with 'http://' or 'https://'. Please try another link")
         return link
+    
+    #def create_player(self, name, dob_str, address, phone_number, player_email, player_handle, link):
+    #    return Player.Player(name, dob_str, address, phone_number, player_email, player_handle, link)
 
-	
-    def create_player(self, name, dob_str, address, phone_number, player_email, player_handle, link):
-        return Player.Player(name, dob_str, address, phone_number, player_email, player_handle, link)
+    def create_player(self, player_obj: Player) -> Player:
+    
+        player_list = [ 
+            player_obj.name,
+            player_obj.dob,
+            player_obj.address,
+            player_obj.phone,
+            player_obj.email,
+            player_obj.handle,
+            player_obj.link,
+            player_obj.team,
+            player_obj.points
+        ]
+
+        return self.playerio.create_new_player(player_list)

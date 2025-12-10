@@ -29,7 +29,7 @@ class TeamIO:
             f"error message"
         return teams, captain
 
-    def _new_team(team: list):
+    def add_new_team(team: list):
         '''create an empty team with no players'''
         try: 
             with open(TEAM_PATH, "a",newline="", encoding="utf-8") as csvfile:

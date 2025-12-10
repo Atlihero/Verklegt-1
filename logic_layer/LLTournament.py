@@ -254,18 +254,19 @@ class LLTournament:
         print(f"TOURNAMENT WINNER: {winner}")
         return winner
 
-    def new_tourney(self, tournament_dict: Tournament):
+    '''def new_tourney(self, tournament_dict: Tournament):
         row = [
-            tournament_dict["unique_name"],
-            tournament_dict["start_date"],
-            tournament_dict["end_date"],
-            tournament_dict["venue"],
-            tournament_dict["contact_person"],
-            tournament_dict["contact_email"],
-            tournament_dict["contact_phone"]
+            tournament_dict.unique_name,
+            tournament_dict.start_date,
+            tournament_dict.end_date,
+            tournament_dict.venue,
+            tournament_dict.contact_person,
+            tournament_dict.contact_email,
+            tournament_dict.contact_phone
         ]
-        return self.data.new_tournament(row)
-
+        return self.data.new_tournament(row)'''
+    
+    
     def add_game(self, game_dict: dict):
         row = [
             game_dict["tournament_name"],
@@ -308,7 +309,7 @@ class LLTournament:
 
         all_games = []
         match_number = 1
-        current_date = datetime.strptime(start_date, "%Y-%m-%d")
+        current_date = start_date
 
 
         round_teams = shuffled
@@ -319,7 +320,7 @@ class LLTournament:
                 team_a = round_teams[i]
                 team_b = round_teams[i + 1]
 
-                match_date = current_date.strftime("%Y-%m-%d")
+                match_date = current_date.strftime("%d/%m/%Y")
 
                 game_row = self.create_game(
                     tournament_name = tournament_name,
@@ -351,10 +352,16 @@ class LLTournament:
         return self.data.advance_round(tournament_name, match_number, winner)
     
 
+    def new_tourney(self, tournament_obj: Tournament):
+        '''want to return as a list, not a dict to have it easier to read'''
+        tournament_list = [
+            tournament_obj.unique_name,
+            tournament_obj.start_date.strftime("%d/%m/%Y"), # takes out the timestamp
+            tournament_obj.end_date.strftime("%d/%m/%Y"),
+            tournament_obj.venue,
+            tournament_obj.contact_person,
+            tournament_obj.contact_email,
+            tournament_obj.contact_phone
+        ]
 
-
-
-
-
-
-
+        return self.new_tourney(tournament_list) #fix this shit
