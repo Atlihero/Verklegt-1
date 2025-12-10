@@ -126,3 +126,21 @@ class LLCaptain():
     '''def __init__(self, ll_players, ll_teams):
         self.ll_players = ll_players
         self.ll_teams = ll_teams'''
+    
+
+
+class PlayerIO:
+     def get_player_stats(self) -> list:
+        '''This function finds the stats of a selected player by using csv
+          dictreader to find the right colum and displayes them for the user'''
+        try:
+            Points = []
+            with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    Points.append(row["Points"])
+                return Points
+        except ValueError:  #in case of wrong inputs 
+            f"Error message to be decided"
+        pass
+
