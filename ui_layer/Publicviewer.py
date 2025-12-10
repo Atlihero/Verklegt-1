@@ -14,7 +14,7 @@ class PublicViewer:
         print(f"Team: {teams[userinput-1]}, Captain: {captain[userinput-1]}")
     
     def view_schedule(title="Current Games"):
-        tournaments = api.get_tournamentNames()
+        tournaments = api.get_tournament_names()
         print(tournaments)
 
         tournament_name = input("Enter tournament name: ").strip()
