@@ -48,8 +48,8 @@ class Uimain:
                     if user_inp == "1": #Here you create a new player
                         Happy_paths.Happy_create_player()
                         organizer.create_player()
-                        print("Player has been made")
-                        user_inp = input("Press any button to continue")
+                        Happy_paths.player_was_made()
+                        user_inp = input("Press any button to return to start")
                         if user_inp  != 1:
                             clear_term()
                             self.start()
