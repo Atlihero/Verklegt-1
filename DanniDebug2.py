@@ -21,7 +21,7 @@ while True:
     val = input("Veldu verkefni (1-5): ")
 
     if val == "1":
-        userinput = int(input("Veldu ID leikmanns milli 1-57: "))
+        userinput = int(input("Veldu ID leikmanns milli 1-48: "))
         class PublicViewer:     
             def getplayerPublic():
                 api = LL_API()        
