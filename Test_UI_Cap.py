@@ -1,7 +1,7 @@
-from logic_layer.LL_api import LL_API
+from data_layer.data_api import DataAPI
 
-api = LL_API()
-teams = api.view_teams()
-print("Loaded teams:", teams)
-for t in teams:
-    print("Team:", t.name, "| Captain:", t.captain)
+data = DataAPI()
+players = data.get_all_players()
+
+for p in players[:5]:
+    print(p.name, "| team:", p.team)

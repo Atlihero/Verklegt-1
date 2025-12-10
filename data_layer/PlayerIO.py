@@ -22,12 +22,12 @@ class PlayerIO:
                 player = Player(
                         row["Name"],
                         row["DOB"],
-                        row["Phonenumber"],
                         row["Address"],
+                        row["Phonenumber"],
                         row["Email"],
                         row["Handle"],
-                        row["Link"],
-                        row["Team"]
+                        row["Team"],
+                        row["Link"]
                         ) 
                 players.append(player) # Add the newly made player to the players list
         

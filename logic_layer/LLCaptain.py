@@ -142,3 +142,47 @@ class LLCaptain():
             #if player not found in the team
         raise ValueError("Player is not in this team. Please try another player.")
         
+
+    def update_player_contact(
+            self,
+            player_name: str,
+            team_name: str,
+            new_phone: str,
+            new_address: str,
+            new_email: str,
+    ) -> dict:
+
+
+        '''Update phone, address and email for a player in a team.'''
+        player_name = (player_name or "").strip()
+        team_name = (team_name or "").strip()
+
+        all_players = self._get_all_players()
+        player: Player | None = None
+
+        # Find the player in this team
+        for p in all_players:
+            name = (getattr(p, "name", "") or "").strip()
+            team = (getattr(p, "team", "") or "").strip()
+            if name == player_name and team == team_name:
+                player = p
+                break
+
+        if player is None:
+            raise ValueError("Player is not in this team. Please try another player.")
+            
+        # Only update field if the captain actually typed something
+        if new_phone.strip() != "":
+            player.phone = new_phone.strip()
+
+        if new_address.strip() != "":
+            player.address = new_address.strip()
+
+        if new_email.strip() != "":
+            player.email = new_email.strip()
+
+        # Save all players back to csv
+        PlayerIO.save_players(all_players)
+
+        # Return update info as dict
+        return self._player_to_dict(player)

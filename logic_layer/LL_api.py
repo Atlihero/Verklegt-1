@@ -149,6 +149,12 @@ class LL_API:
     def cap_view_player_info(self, player_name, team_name):
         '''Captain can see player info about members in his team'''
         return self.captain.cap_see_player_info(player_name, team_name)
+    
+    def update_player_contact(self, player_name: str, team_name: str, new_phone: str, new_address:str, new_email: str):
+        '''Captain updates a players phone, address and email (empty strings mean no change)'''
+        return self.captain.update_player_contact(
+            player_name, team_name, new_phone, new_address, new_email
+        )
 
 
 

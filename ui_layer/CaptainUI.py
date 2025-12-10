@@ -229,5 +229,36 @@ class CaptainUI:
             print(f"\nPlayer Information for {player_name}:")
             for key, value in info.items():
                 print(f"{key}: {value}")
+
+            print("\nDo you want to edit this player's contact info?")
+            choice = input("Change phone/address/email? (y/n): ").strip().lower()
+
+            if choice != "y":
+                return
+        
+            current_phone = info.get("Phonenumber", "")
+            current_address = info.get("Address", "")
+            current_email = info.get("Email", "")
+
+            print("\nLeave field empty to keep current value.")
+            new_phone = input(f"New phone  (current: {current_phone}): ").strip()
+            new_address = input(f"New address (current: {current_address}): ").strip()
+            new_email = input(f"New email   (current: {current_email}): ").strip()
+
+            updated_info = self.ll.update_player_contact(
+                player_name,
+                self.current_team_name,
+                new_phone,
+                new_address,
+                new_email
+            )
+
+
+            print("\nUpdated player info:")
+            for key, value in updated_info.items():
+                print(f"{key}: {value}")
+
+
+
         except ValueError as error:
             print("Error:", error)
