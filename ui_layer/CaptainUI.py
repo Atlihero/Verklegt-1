@@ -6,20 +6,19 @@ class CaptainUI:
         self.ll = LL_API()
         self.current_team_name: str | None = None
 
-    # ----------------- internal helpers -----------------
+    # 
 
     def _ensure_team_selected(self) -> bool:
-        """Make sure a team is selected; if not, ask the user to pick one."""
+        """Make sure a team is selected, if not, ask the user to pick one."""
         if self.current_team_name is not None:
             return True
         return self.select_captain_and_team()
 
-    # ----------------- choose which captain/team -----------------
+    # chose which Captain or Team
 
     def select_captain_and_team(self) -> bool:
         """
-        Let the user choose which team they are captain of.
-        Uses LL_API.view_teams() which returns Team objects.
+        Make the user choose which team they are captain of.
         """
         teams = self.ll.view_teams()
 
@@ -52,7 +51,7 @@ class CaptainUI:
 
             print(f"Please enter a number between 1 and {len(teams)}.")
 
-    # ----------------- list helpers -----------------
+    
 
     def _get_and_show_team_members(self) -> list[dict]:
         """Get team members for current team (as dicts) and print them."""
@@ -97,7 +96,10 @@ class CaptainUI:
             print(f"{index}. {name}")
         return players_sorted
 
-    # ----------------- captain actions -----------------
+
+
+
+    # Captain actions
 
     def add_to_team(self):
         """Captain adds a player (who has no team) to their team."""
@@ -108,9 +110,7 @@ class CaptainUI:
         if not players:
             return
 
-        selected = input(
-            "Enter the number of the player you want to add (or 'b' for back): "
-        ).strip().lower()
+        selected = input("Enter the number of the player you want to add (or 'b' for back): ").strip().lower()
 
         if selected == "b":
             print("Cancelled adding player.")
@@ -164,9 +164,7 @@ class CaptainUI:
             else:
                 print(f"{index}. {name}")
 
-        selected = input(
-            "Please enter the number of who you want to remove (or 'b' for back): "
-        ).strip().lower()
+        selected = input("Please enter the number of who you want to remove (or 'b' for back): ").strip().lower()
 
         if selected == "b":
             print("Removal cancelled.")
@@ -227,7 +225,6 @@ class CaptainUI:
         player_name = player_to_see.get("Name", "Unknown")
 
         try:
-            # NOTE: LL_API takes (player_name, team_name)
             info = self.ll.cap_view_player_info(player_name, self.current_team_name)
             print(f"\nPlayer Information for {player_name}:")
             for key, value in info.items():
