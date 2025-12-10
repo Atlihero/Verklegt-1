@@ -10,7 +10,7 @@ class Uimain:
     location and gives restrictions depending of user input"""
     def __init__(self) -> None:
         """gets logic_layer as a variable"""
-        LL_api = LL_API()
+        LL = LL_API()
         self.captain = CaptainUI()
         self.publicviewer = PublicViewer()
         self.organizer = OrganizerUI()
