@@ -27,7 +27,7 @@ class TournamentIO:
             with open(TOURNAMENT_PATH, "r", encoding = "utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                    tournament_names.append(row["TournamentName"]) 
+                    tournament_names.append(row["tournamentName"]) 
         except FileNotFoundError:
             return "No older tournaments name found"
         return tournament_names
