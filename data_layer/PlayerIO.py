@@ -34,7 +34,6 @@ class PlayerIO:
                         row["Email"],
                         row["Handle"],
                         row["Team"],
-                        row["Points"],
                         row["Link"]
                         )
 
