@@ -339,14 +339,17 @@ class LLTournament:
 
         return all_games
     
-    def update_games(self, match_number: int, score_a: int, score_b: int):
-        return self.data.update_game(match_number, score_a, score_b)
+    def update_games(self, tournament_name, match_number: int, score_a: int, score_b: int):
+        return self.data.update_game(tournament_name, match_number, score_a, score_b)
 
     def get_all_games(self):
         return self.data.get_games()
 
     def get_allTournamnets(self):
         return self.data.get_all_tournaments()
+    
+    def get_tournament_names(self):
+        return self.data.get_tournamentNames()
     
     def advance(self, tournament_name: str, match_number: int, winner: str):
         return self.data.advance_round(tournament_name, match_number, winner)
@@ -364,4 +367,4 @@ class LLTournament:
             tournament_obj.contact_phone
         ]
 
-        return self.new_tourney(tournament_list) #fix this shit
+        return self.data.create_new_tournaments(tournament_list)

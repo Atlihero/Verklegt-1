@@ -132,6 +132,9 @@ class LL_API:
 
     def get_all_tournaments(self):
         return self.tournament.get_allTournamnets()
+    
+    def get_tournamentNames(self):
+        return self.tournament.get_tournament_names()
 
     def create_new_tournament(self, tournament_obj: Tournament):
         return self.tournament.new_tourney(tournament_obj)
@@ -139,8 +142,8 @@ class LL_API:
     def generateGames(self, tournament_name: str, start_date: str):
         return self.tournament.generate_games(tournament_name, start_date)
     
-    def updateGame(self, match_number: int, score_a: int, score_b: int):
-        return self.tournament.update_games(match_number, score_a, score_b)
+    def updateGame(self, tournament_name: str, match_number: int, score_a: int, score_b: int):
+        return self.tournament.update_games(tournament_name, match_number, score_a, score_b)
     
     def newTournament(self):
         return self.tournament.new_tourney()
