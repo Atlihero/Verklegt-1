@@ -1,5 +1,4 @@
 import csv
-from Models.Game import Game
 
 TOURNAMENT_PATH: str = r"data_layer/_data/Tournament.csv"
 GAMES_PATH: str = r"data_layer/_data/Games.csv"
