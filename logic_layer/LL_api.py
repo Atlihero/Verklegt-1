@@ -81,9 +81,8 @@ class LL_API:
         "Check if team has this name"
         return self.team.team_exists(name)
 
-    def add_team(self, name, captain, asciiLogo):
-        "creates a new team"
-        return self.team.create_team(name, captain, asciiLogo)
+    def add_team(self, name: str, captain: str = None, asciiLogo: str = ""):
+        return self.team.new_team(name, captain, asciiLogo)
 
     def select_captains(self, team_name, new_captain):
         "selects a new captain for a team"
@@ -98,40 +97,11 @@ class LL_API:
     Logic wrapper for Tournament
     """
 
-    def get_contactInfo(self):
-        "Gets the contact infro for the tournament contact"
-        return self.tournament.get_contact_info()
-    
-    def update_contactInfo(self):
-        "updates the info for the contact"
-        return self.tournament.update_contact_info()
-    
-    def register_team(self):
-        "registers the team to the tournament"
-        return self.tournament.register_team()
-    
-    def scheduleGames(self):
-        "schedules games for the tournament"
-        return self.tournament.schedule_games()
-    
-    def recordResults(self):
-        "records the info from a game and declares the winner"
-        return self.tournament.record_result()
-    
-    def sum_Logic(self):
-        "Idont know what this does"
-        return self.tournament.sum_logic()
-    
-    def brackets(self):
-        "sets the brackets of the tournament"
-        return self.tournament.brackets_of_tournament()
-    
-    def Round(self):
-        "the round for the tournament"
-        return self.tournament.play_round()
-
     def get_all_tournaments(self):
         return self.tournament.get_allTournamnets()
+    
+    def get_tournamentNames(self):
+        return self.tournament.get_tournament_names()
 
     def create_new_tournament(self, tournament_obj: Tournament):
         return self.tournament.new_tourney(tournament_obj)
@@ -139,8 +109,8 @@ class LL_API:
     def generateGames(self, tournament_name: str, start_date: str):
         return self.tournament.generate_games(tournament_name, start_date)
     
-    def updateGame(self, match_number: int, score_a: int, score_b: int):
-        return self.tournament.update_games(match_number, score_a, score_b)
+    def updateGame(self, tournament_name: str, match_number: int, score_a: int, score_b: int):
+        return self.tournament.update_games(tournament_name, match_number, score_a, score_b)
     
     def newTournament(self):
         return self.tournament.new_tourney()

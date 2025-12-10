@@ -5,20 +5,20 @@ api = LL_API()
 def show_games(games, title="Current Games"):
     print(f"\n=== {title} ===")
     for g in games:
-        print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
+        print(f"{g['match_number']:>2}: {g['round']} {g['match_date']}| {g['team_a']} vs {g['team_b']} | "
               f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
 
 while True:
     print("\nValmynd:")
     print("1. Get players")
     print("2. Get team")
-    print("3. Create tournament")
-    print("4. create tournament with games")
-    print("5. Update results")
-    print("6. Show Games")
+    print("3. create tournament with games")
+    print("4. Update results")
+    print("5. Show Games")
+    print("6. Create new team")
     print("q. Quit")
 
-    val = input("Veldu verkefni (1-6): ")
+    val = input("Veldu verkefni (1-5): ")
 
     if val == "1":
         userinput = int(input("Veldu ID leikmanns milli 1-57: "))
@@ -43,34 +43,7 @@ while True:
             teams, captain = getTeamPublic()
             print(f"Team: {teams[userinputTeams]}, Captain: {captain[userinputTeams]}")
 
-    
     if val == "3":
-        class Organizer:
-            def createTournament(self):
-                unique_name = input("Create a unique name for the tournament: ")
-                start_date = input("Select the start date of the tournament: ")
-                end_date = input("Select end date for the tournament: ")
-                venue = input("Select the venue for the tournament: ")
-                contact_person = input("Name the contact person for this tournament: ")
-                contact_email = input("What is the contact email for this tournament: ")
-                contact_phone = input("What is the contact phone for this tournament: ")
-                tournament_dict = {
-                    "unique_name": unique_name,
-                    "start_date": start_date,
-                    "end_date": end_date,
-                    "venue": venue,
-                    "contact_person": contact_person,
-                    "contact_email": contact_email,
-                    "contact_phone": contact_phone
-                }
-                api = LL_API()
-                return api.create_new_tournaments(tournament_dict)
-
-        organizer = Organizer()
-        tournament = organizer.createTournament()
-        print("Tournament has been created:", tournament)
-
-    if val == "4":
         class OrganizerUI():
 
             def createTournament(self):
@@ -139,8 +112,10 @@ while True:
                 
         
 
-    if val == "5":
+    if val == "4":
         class Organizer:
+            tournaments = api.get_tournamentNames()
+            print(tournaments)
             tournament_name = input("Enter tournament name: ").strip()
             games = api.get_game_by_tournamentName(tournament_name)
 
@@ -153,20 +128,18 @@ while True:
             score_a = int(input("Enter score for team A: "))
             score_b = int(input("Enter score for team B: "))
 
-            result = api.updateGame(match_number, score_a, score_b)
+            result = api.updateGame(tournament_name, match_number, score_a, score_b)
 
             winner = result["winner"]
             tournament_name = result["tournament_name"]
 
-            # If a winner exists, advance
             if winner:
                 advance_result = api.advance_round(tournament_name, match_number, winner)
                 print(advance_result)
 
-                # ⭐ IF THIS WAS THE FINAL MATCH (F = match 15), SHOW WINNER BANNER
                 if result["round"] == "F":
                     print("\n==============================")
-                    print(f"🏆  TOURNAMENT WINNER: {winner}  🏆")
+                    print(f" TOURNAMENT WINNER: {winner} ")
                     print("==============================\n")
 
             else:
@@ -176,7 +149,7 @@ while True:
             show_games(updated_games, "Updated Games")
 
         
-    if val == "6":
+    if val == "5":
         class PublicViewer:
             def view_schedule(games, title="Current Games"):
                 print(f"\n=== {title} ===")
@@ -184,11 +157,31 @@ while True:
                     print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
                         f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
                 return games
+            
+        tournaments = api.get_tournamentNames()
+        print(tournaments)
 
         tournament_name = input("Enter tournament name: ").strip()
         games = api.get_game_by_tournamentName(tournament_name)
 
         schedule = PublicViewer.view_schedule(games)
+
+    if val == "6":
+        class OrganizerUI:
+            def create_team_ui(self):
+                print("\n=== Create a New Team ===")
+                
+                team_name = input("Enter Team Name: ").strip()
+                captain = None
+                ascii_logo = input("Enter ASCII Logo (optional): ").strip() or None
+
+                new_team = api.add_team(name=team_name, captain=captain, asciiLogo=ascii_logo)
+                print(f"Team '{new_team.name}' created successfully!")
+                return new_team
+
+        ui = OrganizerUI()
+        new_team = ui.create_team_ui()
+
 
     if val == "q":
         print("You have quit the program")

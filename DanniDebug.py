@@ -93,10 +93,8 @@ while True:
     if val == "5":
         teamName = input("TeamName: ")
         captain = "No Captain"
-        wins = 0
-        points = 0
 
-        team = [teamName, captain, wins, points]
+        team = [teamName, captain]
          
         class TeamIO:
             def create_new_team(team: list):
@@ -114,8 +112,6 @@ while True:
         userinput = int(input("Sláðu inn númer liðs: "))
         class TeamIO:
             def get_team_stats():
-                Wins = []
-                Points = []
                 Team_name = []
                 with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
                     reader = csv.DictReader(csvfile)
@@ -126,8 +122,6 @@ while True:
                     return Team_name, Wins, Points
         Team_name, Wins, Points = TeamIO.get_team_stats() 
         print(f"{Team_name[userinput]}")
-        print(f"{Wins[userinput]} Wins")
-        print(f"{Points[userinput]} Points")
 
     
     if val == "7":

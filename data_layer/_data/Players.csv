@@ -1,4 +1,4 @@
-Name,DOB,Address,Phonenumber,Email,Handle,Team
+Name,DOB,Address,Phonenumber,Email,Handle,Team,Link
 Sam Segfault,12/04/2003,Studentagata 1 Reykjavik,3546110001,segfault.sam@example.com,SegFaultSam,SegFault Spartans
 Sara Stacksmash,23/09/2004,Studentagata 2 Reykjavik,3546110002,stacksmash.sara@example.com,StackSmashSara,SegFault Spartans
 Karl Coredump,08/01/2005,Studentagata 3 Reykjavik,3546110003,core.karl@example.com,CoreDumpKarl,SegFault Spartans
@@ -47,3 +47,4 @@ Vala Volatile,28/08/2005,UBgata 3 Reykjavik,3546110045,vala.volatile@example.com
 Petra PepsiOverflow,07/07/2003,Fizzgata 1 Reykjavik,3546110046,petra.pepsioverflow@example.com,PepsiMaxOverflowPetra,Pepsi Max Overflow
 Bogi Buffer,25/01/2004,Fizzgata 2 Reykjavik,3546110047,bogi.buffer@example.com,BufferOverflowBogi,Pepsi Max Overflow
 Sif Canary,29/03/2005,Fizzgata 3 Reykjavik,3546110048,sif.canary@example.com,StackCanarySif,Pepsi Max Overflow
+Daniel,06/12/2005,Akranes,1234567,daniel@gmail.com,DanielDR,,

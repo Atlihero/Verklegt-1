@@ -6,7 +6,7 @@ from Models.Player import Player
 def show_games(games, title="Current Games"):
     print(f"\n=== {title} ===")
     for g in games:
-        print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
+        print(f"{g['match_number']:>2}: {g['round']} {g['match_date']}| {g['team_a']} vs {g['team_b']} | "
               f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
 
 
@@ -86,7 +86,6 @@ class OrganizerUI():
             handle = handle,
             link = link,
             team = None,
-            points = None
         )
 
         return self.lapi.create_player(player_obj)
@@ -163,11 +162,12 @@ class OrganizerUI():
             contact_email=contact_email,
             contact_phone=contact_phone
         )
-
+        self.lapi.generateGames(unique_name, start_date)
         return self.lapi.create_new_tournament(tournament_obj)
 
-        
     def update_result(self):
+        tournaments = self.lapi.get_tournamentNames()
+        print(tournaments)
         tournament_name = input("Enter tournament name: ").strip()
         games = self.lapi.get_game_by_tournamentName(tournament_name)
 
@@ -180,7 +180,7 @@ class OrganizerUI():
         score_a = int(input("Enter score for team A: "))
         score_b = int(input("Enter score for team B: "))
 
-        result = self.lapi.updateGame(match_number, score_a, score_b)
+        result = self.lapi.updateGame(tournament_name, match_number, score_a, score_b)
 
         winner = result["winner"]
         tournament_name = result["tournament_name"]
@@ -190,18 +190,28 @@ class OrganizerUI():
             advance_result = self.lapi.advance_round(tournament_name, match_number, winner)
             print(advance_result)
 
-            # ⭐ IF THIS WAS THE FINAL MATCH (F = match 15), SHOW WINNER BANNER
             if result["round"] == "F":
                 print("\n==============================")
-                print(f"🏆  TOURNAMENT WINNER: {winner}  🏆")
-                print("==============================\n")
+                print(f" TOURNAMENT WINNER: {winner} ")
 
         else:
             print("Game is a draw. Winner cannot advance.")
 
+
         updated_games = self.lapi.get_game()
         show_games(updated_games, "Updated Games")
 
+
+    def create_team_ui(self):
+        print("\n=== Create a New Team ===")
+                
+        team_name = input("Enter Team Name: ").strip()
+        captain = None
+        ascii_logo = input("Enter ASCII Logo (optional): ").strip() or None
+
+        new_team = self.lapi.add_team(name=team_name, captain=captain, asciiLogo=ascii_logo)
+        print(f"Team '{new_team.name}' created successfully!")
+        return new_team
 
     def organizer_see_info(self) -> None:
         '''The organizer can see player information for every player in the tournament'''
@@ -220,4 +230,4 @@ class OrganizerUI():
             for attr, value in vars(p).items():
                 print(f"{attr}: {value}")
 
-#vantar make team og create captain!!!
+#vantar create captain!!!

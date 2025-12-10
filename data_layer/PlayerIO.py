@@ -4,27 +4,20 @@ from Models.Player import Player
 PLAYER_PATH: str = r"data_layer/_data/Players.csv"
  
 class PlayerIO:
- 
-    def get_players(self):
-        """
-            This function finds the selected player and puts him into an empty list
-            to be displayed
-        """
+
+    def get_players(self) -> list:
+        '''This function finds the selected player and puts him into an empty 
+            list to be displayed'''
         players = [] 
-        with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
-            #reader = csv.reader(csvfile) 
-            reader = csv.DictReader(csvfile) #reader = csv.DictReader(csvfile) þurfum þennan frekar held ég, til að geta lesið skránna og skilað rétt
+        with open(PLAYER_PATH, "r", encoding = "utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)  
 
             for row in reader:
-                if not row and not row.get("Name"):
+                if not row and not row.get("Name"): # skip empty rows that don't have 'name' in the header
                     continue
 
-                # If the line is too short then fill with blank
-                #if row[0] == "Name":
-                #    continue
-                
                 if "Link" not in row:
-                    row["Link"] = "" # empty if link is not in header
+                    row["Link"] = "" # returns empty if 'link' is not in header
                 
                 player = Player(
                         row["Name"],
@@ -34,40 +27,36 @@ class PlayerIO:
                         row["Email"],
                         row["Handle"],
                         row["Team"],
-                        row["Points"],
                         row["Link"]
-                        )
-
-                #name, dob, address, phone, email, handle, team, points, link = row    
-                
-                players.append(player)
-                #player = Player(name, dob, address, phone, email, handle, team, points, link)
-                #players.append(player)
+                        ) 
+                players.append(player) # Add the newly made player to the players list
+        
         return players
-
-    def get_player_PublicViewer(self):
+    
+    
+    def get_player_PublicViewer(self) -> list:
+        '''Shows name and the handle of a player for the publiv viewer'''
         try:
-            players = []
+            # Use lists to store each players name and handle and their team
+            players = [] 
             team = []
-            with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+            with open(PLAYER_PATH, "r", encoding = "utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     players.append(row["Handle"])
                     team.append(row["Team"])
         except ValueError:
-            f"Error message"
+            f"Failed to display the name and handle of the player. Please try again."
         return players, team
 
 
     def save_players(players: list[Player]):
-        """
-        This function takes and saves a player which has been created by using the csv writer to save him
-        and he now is in the players csv with all the details he needs
-        """
-        with open(PLAYER_PATH, "w", newline="", encoding="utf-8") as csvfile:
+        '''Saves a player which has been created by using the csv writer 
+        to save him and is the player now in the csv with all the details needed'''
+        with open(PLAYER_PATH, "w", newline = "", encoding = "utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["Name", "DOB", "Address", "Phonenumber",
-                             "Email", "Handle", "link", "Team", "Points"])
+                             "Email", "Handle", "Team", "Link"])
             for p in players:
                 writer.writerow([
                     p.name,
@@ -76,36 +65,18 @@ class PlayerIO:
                     p.phone,
                     p.email,
                     p.handle,
-                    p.link,
                     p.team,
-                    p.points,
+                    p.link
                 ])
 
+
     def create_new_player(player: list):
-        """
-        This functions is used to write a new player into the csv file by using the csv writer
-        """
+        '''Used to write a new player into the csv file by using the csv writer'''
         try: 
-            with open(PLAYER_PATH, "a",newline="", encoding="utf-8") as csvfile:
-                writer = csv.writer(csvfile) #here the user writes in what is needed for the player like name DOB etc.
-                writer.writerow(player) #prints what was written in a new row
-            return f"New player added :)"    
-        except ValueError:   #in case of wrong inputs 
-            f"Error message to be decided"
-
-
-    def get_player_stats():
-        """
-        This function finds the stats of a selected player by using csv dictreader to find the right colum
-        and displayes them for the user
-        """
-        try:
-            Points = []
-            with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for row in reader:
-                    Points.append(row["Points"])
-                return Points
-        except ValueError:  #in case of wrong inputs 
-            f"Error message to be decided"
-        pass
+            with open(PLAYER_PATH, "a",newline = "", encoding = "utf-8") as csvfile:
+            # The user writes in what is needed for the player: name, DOB etc.
+                writer = csv.writer(csvfile) 
+                writer.writerow(player) # Prints what was written in a new row
+            return f"New player has been added!"    
+        except ValueError:   # In case of wrong inputs 
+            f"Failed to add a new player. Please try again."

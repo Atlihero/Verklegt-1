@@ -5,6 +5,12 @@ from ui_layer.Publicviewer import PublicViewer
 from ui_layer.CaptainUI import CaptainUI
 import os
 
+def clear_term():
+    if os.name == 'nt':
+        _ = os.system('cls')
+    else:
+        _ = os.system('clear')
+
 class Uimain:
     """This class suplies information from logic layer to its correct 
     location and gives restrictions depending of user input"""
@@ -35,99 +41,91 @@ class Uimain:
                 
                 """Here we select Organizer or captain or viewer"""
 
+
                 if user_inp == "1":
                     """Now we are in Organizer and can chose what we will do there"""
                     Happy_paths.Happy_organizer() #This is the organizer
-                    user_inp = input("Enter 1, 2, 3, 4 or b: ")
-                    if user_inp == "1": #Here you creata a new player
-                        Happy_paths.Happy_create_player()
+                    user_inp = input("Enter 1-6 or b: ")
+                    if user_inp == "1": #Here you create a new player
                         organizer.create_player()
-                        exit()
+                        print("Player has been made")
+                        user_inp = input("Press any button to continue")
+                        if user_inp  != 1:
+                            clear_term()
+                            self.start()
                     elif user_inp == "2": #Here you create a tournament
-                        Happy_paths.Happy_create_tournament()
                         organizer.createTournament()
                         exit()
                     elif user_inp == "3": #Here you create a team
-                        Happy_paths.Happy_create_team()
-                        api.add_team()
+                        organizer.create_team_ui()
+                    elif user_inp == "4":
+                        organizer.update_result()
                         exit()
-                    elif user_inp == "4": #here you make a player a captain
+                    elif user_inp == "5": #here you make a player a captain
                         Happy_paths.Happy_make_captain()
-                        api.select_captains()
-                    elif user_inp == "b": #return back to starting position
+                    elif user_inp == "6":
+                        organizer.organizer_see_info()
+                        exit()
+                    elif user_inp == "b": #return back to starting psition
                         os.system('cls')
                         continue
-
-
-
+                
                 elif user_inp == "2": #This is the Captain
+
+
+                    """Now we are in CAPTAIN"""
+
+
                     Happy_paths.Happy_captain()
-                    # first pick which captain (this also sets current_team_name)
-                    if not captain.select_captain_and_team():
-                        continue # go back to main menue if captain not foudn
-                    
-                    Happy_paths.Happy_captain_add_or_info()
-                    cap_choice = input("").strip().lower()
-
-                    if cap_choice == "1":
-                        captain.add_to_team()
-                    elif cap_choice == "2":
-                        captain.remove_from_team()
-                    elif cap_choice == "3":
-                        captain.cap_see_player_info()
-                    elif cap_choice == "b":
-                        os.system("cls")
-                        continue
-
-
-
-
-
-                    """if user_inp == "1": #Here you Add Player to Team
-                        Happy_paths.Happy_captain_add_or_info()
-                        captain.add_to_team()
-                        exit() 
-                        
-
-                    if user_inp == "2": #Here you See Information on Captains
-                        Happy_paths.Happy_captain_player_to_inspect()
-                        captain.cap_see_player_info()
-                        
-                        if user_inp == "x": #Here you Select Player To Inspect
-                            Happy_paths.Happy_captain_inspecting_information()
-                            captain.cap_see_player_info()
-                           
-
-                            if user_inp == "x": #Here you Select Information
-                                x
-
-
-
-                    elif user_inp == "b": #return back to starting position
-                        os.system('cls')
-                        continue   """
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    
-                elif user_inp == "3": #This is the puplic viewer
-                    Happy_paths.Happy_viewer()
-                elif user_inp == "b": #return back to the start
-                    os.system('cls')
-                    continue
-                else: # if you enter an invalid input
-                    print("invalid input")
-                    #need to find a way to return to input not back or exit
+                    user_inp = input("")
                     exit()
+
+
+                elif user_inp == "3": #This is the puplic viewer
+
+
+                    """Now we are in VIWER"""
+                    Happy_paths.Happy_viewer()
+                    user_inp = input("Enter 1, 2, 3 or b")
+                    if user_inp == "1":
+                        print("nice guys")#information on teams
+                        api.get_teams_public()
+                    elif user_inp == "2":
+                        print("epic")#schedual
+                        api.scheduleGames()
+                        exit()
+                    elif user_inp == "3":
+                        print("123") #result
+                        
+                        exit()
+                    else:
+                        self.start()
+                        exit()
+                  
+
+
+                elif user_inp == "b": #return back to the start
+
+
+                    """Now we are in EXIT"""
+
+
+                    clear_term()
+                    self.start()
+
+
+                else: # if you enter an invalid input
+
+                    """now this is for invalid input"""
+                    #need to find a way to return to input not back or exit
+                    print("invalid input")
+                    user_inp = input("Press any button to exit:")
+                    if user_inp != 1:
+                        clear_term()
+                        self.start()
+                        
+                    
+            
             else: #stops the code if you some how manige to give int not string which should not be possible
-                exit()
+                self.start()
+                
