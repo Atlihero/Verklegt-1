@@ -81,9 +81,8 @@ class LL_API:
         "Check if team has this name"
         return self.team.team_exists(name)
 
-    def add_team(self, name, captain, asciiLogo):
-        "creates a new team"
-        return self.team.create_team(name, captain, asciiLogo)
+    def add_team(self, name: str, captain: str = None, asciiLogo: str = ""):
+        return self.team.new_team(name, captain, asciiLogo)
 
     def select_captains(self, team_name, new_captain):
         "selects a new captain for a team"
