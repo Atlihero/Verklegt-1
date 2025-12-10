@@ -124,7 +124,6 @@ class LLPlayer():
             player_obj.email,
             player_obj.handle,
             player_obj.team,
-            player_obj.points,
             player_obj.link
         ]
 
