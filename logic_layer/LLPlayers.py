@@ -18,10 +18,6 @@ class LLPlayer():
         return self.data.public_get_player()
     
 
-    def get_player_statistics(self):
-        return self.data.get_player_statistics()
-
-
     def validate_name(self, name: str) -> str:
         '''Checks if name is unique or missing a name'''
         # check if name is just empty, so just space or something

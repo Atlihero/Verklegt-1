@@ -36,16 +36,6 @@ class DataAPI:
         "adds a new player to the csv with the dict data"
         return self.player.create_new_player(player_dict)
 
-    def get_team_statistics(self):
-        "Retrieves team statistics"
-        return self.team.get_team_stats()
-
-    def get_player_statistics(self):
-        "retrieves the player statistics"
-        return self.player.get_player_stats()
-
-
-    #Pæling að breyta þessum
     def add_team_to_tournament(self, tournament_name, teams_list):
         "add exactly 16 teams to the tournament"
         return self.team.add_teams_to_tournament(tournament_name, teams_list)
