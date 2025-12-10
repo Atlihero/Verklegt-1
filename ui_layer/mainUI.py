@@ -54,17 +54,18 @@ class Uimain:
                             self.start()
                     elif user_inp == "2": #Here you create a tournament
                         organizer.createTournament()
-                        exit()
+                        self.start()
                     elif user_inp == "3": #Here you create a team
                         organizer.create_team_ui()
+                        self.start()
                     elif user_inp == "4":
                         organizer.update_result()
-                        exit()
+                        self.start()
                     elif user_inp == "5": #here you make a player a captain
                         Happy_paths.Happy_make_captain()
                     elif user_inp == "6":
                         organizer.organizer_see_info()
-                        exit()
+                        self.start()
                     elif user_inp == "b": #return back to starting psition
                         os.system('cls')
                         continue
