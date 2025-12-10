@@ -46,6 +46,7 @@ class Uimain:
                     Happy_paths.Happy_organizer() #This is the organizer
                     user_inp = input("Enter 1-6 or b: ")
                     if user_inp == "1": #Here you create a new player
+                        Happy_paths.Happy_create_player()
                         organizer.create_player()
                         print("Player has been made")
                         user_inp = input("Press any button to continue")
@@ -53,17 +54,21 @@ class Uimain:
                             clear_term()
                             self.start()
                     elif user_inp == "2": #Here you create a tournament
+                        Happy_paths.Happy_create_tournament()
                         organizer.createTournament()
                         self.start()
                     elif user_inp == "3": #Here you create a team
+                        Happy_paths.Happy_create_team()
                         organizer.create_team_ui()
                         self.start()
                     elif user_inp == "4":
+                        Happy_paths.Happy_Update_result()
                         organizer.update_result()
                         self.start()
                     elif user_inp == "5": #here you make a player a captain
                         Happy_paths.Happy_make_captain()
                     elif user_inp == "6":
+                        Happy_paths.Happy_information()
                         organizer.organizer_see_info()
                         self.start()
                     elif user_inp == "b": #return back to starting psition
