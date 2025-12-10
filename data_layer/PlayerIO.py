@@ -9,7 +9,7 @@ class PlayerIO:
         '''This function finds the selected player and puts him into an empty 
             list to be displayed'''
         players = [] 
-        with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+        with open(PLAYER_PATH, "r", encoding = "utf-8") as csvfile:
             reader = csv.DictReader(csvfile)  
 
             for row in reader:
@@ -41,7 +41,7 @@ class PlayerIO:
             # Use lists to store each players name and handle and their team
             players = [] 
             team = []
-            with open(PLAYER_PATH, "r", encoding="utf-8") as csvfile:
+            with open(PLAYER_PATH, "r", encoding = "utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     players.append(row["Handle"])
@@ -54,7 +54,7 @@ class PlayerIO:
     def save_players(players: list[Player]):
         '''Saves a player which has been created by using the csv writer 
         to save him and is the player now in the csv with all the details needed'''
-        with open(PLAYER_PATH, "w", newline="", encoding="utf-8") as csvfile:
+        with open(PLAYER_PATH, "w", newline = "", encoding = "utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["Name", "DOB", "Address", "Phonenumber",
                              "Email", "Handle", "Team", "Points", "Link"])
@@ -75,7 +75,7 @@ class PlayerIO:
     def create_new_player(player: list):
         '''Used to write a new player into the csv file by using the csv writer'''
         try: 
-            with open(PLAYER_PATH, "a",newline="", encoding="utf-8") as csvfile:
+            with open(PLAYER_PATH, "a",newline = "", encoding = "utf-8") as csvfile:
             # The user writes in what is needed for the player: name, DOB etc.
                 writer = csv.writer(csvfile) 
                 writer.writerow(player) # Prints what was written in a new row
