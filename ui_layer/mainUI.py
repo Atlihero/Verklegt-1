@@ -46,7 +46,11 @@ class Uimain:
                     user_inp = input("Enter 1-6 or b: ")
                     if user_inp == "1": #Here you create a new player
                         organizer.create_player()
-                        exit()
+                        print("Player has been made")
+                        user_inp = input("Press any button to continue")
+                        if user_inp  != 1:
+                            clear_term()
+                            self.start()
                     elif user_inp == "2": #Here you create a tournament
                         organizer.createTournament()
                         exit()
