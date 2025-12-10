@@ -180,8 +180,8 @@ while True:
                 return new_team
 
         # Create an instance of OrganizerUI
-        ui = OrganizerUI()
-        new_team = ui.create_team_ui()
+            ui = OrganizerUI()
+            new_team = ui.create_team_ui()
 
     if val == "q":
         print("You have quit the program")
