@@ -128,6 +128,9 @@ class LL_API:
         '''Determines what team advances to the next round of the tournament'''
         return self.tournament.advance(tournament_name ,match_number, winner)
 
+    def get_game_by_tournamentName(self, tournament_name):
+        games = self.tournament.get_all_games()
+        return [g for g in games if g["tournament_name"] == tournament_name]
 
     '''Logic layer wrapper for the LLCaptain'''
 

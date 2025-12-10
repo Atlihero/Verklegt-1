@@ -180,7 +180,7 @@ class OrganizerUI():
         score_a = int(input("Enter score for team A: "))
         score_b = int(input("Enter score for team B: "))
 
-        result = self.lapi.updateGame(tournament_name, match_number, score_a, score_b)
+        result = self.lapi.update_game(tournament_name, match_number, score_a, score_b)
 
         winner = result["winner"]
         tournament_name = result["tournament_name"]
@@ -198,7 +198,7 @@ class OrganizerUI():
             print("Game is a draw. Winner cannot advance.")
 
 
-        updated_games = self.lapi.get_game()
+        updated_games = self.lapi.get_game_by_tournamentName(tournament_name)
         show_games(updated_games, "Updated Games")
 
 
