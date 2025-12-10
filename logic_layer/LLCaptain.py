@@ -47,7 +47,7 @@ class LLCaptain():
         all_players = self.playerio.get_players()
         player_to_add = None
         for p in all_players:
-            if p.get("Name") == player_name:
+            if p.get("Name") == player_name.strip:
                 player_to_add = p
                 break
 
@@ -55,7 +55,9 @@ class LLCaptain():
             raise ValueError("Player not found.")
 
         # Check if the player is already in a team
-        if player_to_add.get("Team") not in (None, "", team_name):
+        current_team = player_to_add.get("Team")
+        # Ff current_team = True and current_team is not = team_name then the player is already in another team
+        if current_team and current_team != team_name.strip():
             raise ValueError(f"{player_name} is already in another team.")
 
         # If player not in any team then we add him to our team
@@ -73,14 +75,14 @@ class LLCaptain():
         all_players = self.playerio.get_players()
         player_to_remove = None
         for p in all_players:
-            if p.get("Name") == player_name:
+            if p.get("Name") == player_name.strip():
                 player_to_remove = p
                 break
                     
         if player_to_remove is None:
             raise ValueError ("This player does not exist. Please try another player.")
         
-        if player_to_remove.get("Team") != team_name:
+        if player_to_remove.get("Team") != team_name.strip():
             raise ValueError ("The player is not in this team. Please try another player.")
     
         player_to_remove.get("Team") == ""
@@ -94,7 +96,7 @@ class LLCaptain():
         # Get the members in the team       
         team_players = self.get_team_members(team_name)
         for player in team_players:
-            if player.get("Name") == player_name:
+            if player.get("Name") == player_name.strip():
                 return player
             #if player not found in the team
         raise ValueError("Player is not in this team. Please try another player.")
