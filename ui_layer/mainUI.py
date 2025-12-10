@@ -35,18 +35,23 @@ class Uimain:
                 if user_inp == "1":
                     """Now we are in Organizer and can chose what we will do there"""
                     paths.Happy_organizer() #This is the organizer
-                    user_inp = input("Enter 1, 2, 3, 4 or b: ")
+                    user_inp = input("Enter 1-6 or b: ")
                     if user_inp == "1": #Here you creata a new player
                         organizer.get_player_info(self)
                         exit()
                     elif user_inp == "2": #Here you create a tournament
-                        organizer.createTournament()
+                        organizer.createTournament(self)
                         exit()
                     elif user_inp == "3": #Here you create a team
-                        paths.Happy_create_team()
+                        organizer.create_team_ui(self)
+                    elif user_inp == "4":
+                        organizer.update_result(self)
                         exit()
-                    elif user_inp == "4": #here you make a player a captain
+                    elif user_inp == "5": #here you make a player a captain
                         paths.Happy_make_captain()
+                    elif user_inp == "6":
+                        organizer.organizer_see_info(self)
+                        exit()
                     elif user_inp == "b": #return back to starting psition
                         os.system('cls')
                         continue

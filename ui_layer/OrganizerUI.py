@@ -162,11 +162,13 @@ class OrganizerUI():
             contact_email=contact_email,
             contact_phone=contact_phone
         )
-
+        self.lapi.generateGames(unique_name, start_date)
         return self.lapi.create_new_tournament(tournament_obj)
 
         
     def update_result(self):
+        tournaments = self.lapi.get_tournamentNames()
+        print(tournaments)
         tournament_name = input("Enter tournament name: ").strip()
         games = self.lapi.get_game_by_tournamentName(tournament_name)
 
@@ -179,7 +181,7 @@ class OrganizerUI():
         score_a = int(input("Enter score for team A: "))
         score_b = int(input("Enter score for team B: "))
 
-        result = self.lapi.updateGame(match_number, score_a, score_b)
+        result = self.lapi.updateGame(tournament_name, match_number, score_a, score_b)
 
         winner = result["winner"]
         tournament_name = result["tournament_name"]
@@ -190,7 +192,7 @@ class OrganizerUI():
 
             if result["round"] == "F":
                 print("\n==============================")
-                print(f"🏆  TOURNAMENT WINNER: {winner}  🏆")
+                print(f" TOURNAMENT WINNER: {winner} ")
                 print("==============================\n")
 
         else:

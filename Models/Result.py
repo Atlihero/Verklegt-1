@@ -1,10 +1,10 @@
 from Models.Game import Game
 
 class Result(Game):
-    def __init__(self, score_A, score_B, winner):
+    def __init__(self, score_a, score_b, winner):
         super().__init__()
-        self.score_A = score_A
-        self.score_B = score_B
+        self.score_A = score_a
+        self.score_B = score_b
         self.winner = winner
 
     def __str__(self):
