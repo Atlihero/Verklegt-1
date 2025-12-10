@@ -12,15 +12,25 @@ class LLCaptain():
         self.dapi = DataAPI()
 
 
-    def get_team_members(self, team_name: str):
+    def get_team_members(self, team_name: str) -> list:
         '''Check if players are in this team and return a list of members'''
         all_players = self.dapi.get_all_players()
         team_members = [] 
         for p in all_players:
-            if p.get("Team") == team_name:
+            if p.get("Team") == team_name.strip():
                 team_members.append(p)
         return team_members
             
+    
+    def get_available_players(self, team_name: str) -> list:
+        '''Return availale players as a list if they are not a member of any team'''
+        all_players = self.dapi.get_all_players()
+        available_players = []
+        for p in all_players:
+    # if p.get("Team") is nothing or if p.get("Team").strip() are empty then it appends to the list
+            if p.get("Team") is None or p.get("Team").strip() == "":
+                available_players.append(p)
+
 
     def add_player_to_team(self, team_name: str, player_name: str):
         '''Used to check if team already has 5 players, '''
@@ -41,7 +51,7 @@ class LLCaptain():
                 player_to_add = p
                 break
 
-        if player_to_add is None:
+        if player_to_add is None: # Check if empty
             raise ValueError("Player not found.")
 
         # Check if the player is already in a team
