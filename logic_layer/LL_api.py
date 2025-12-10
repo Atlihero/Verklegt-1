@@ -11,15 +11,12 @@ class LL_API:
     def __init__(self):
         self.player = LLPlayer()
         self.team = LLTeams()
-        #self.tournament = None #Tournament()
         self.tournament = LLTournament()
         self.captain = LLCaptain()
         self.organizer = LLOrganizer()
 
-    
-    """
-    The Logic layer wrapper for the LLPlayer
-    """
+    '''The Logic layer wrapper for the LLPlayer'''
+
     def valid_name(self, name):
         '''Validates player full name'''
         return self.player.validate_name(name)
@@ -59,9 +56,9 @@ class LL_API:
         '''Gets the team for the public viewer'''
         return self.player.get_player_publicViewer()
     
-    """
-    Logic layer wrapper for the LLTeams
-    """
+
+    '''Logic layer wrapper for the LLTeams'''
+
     def load_team(self):
         '''Loads a team from the csv'''
         return self.team._load_teams_from_csv()
@@ -95,52 +92,34 @@ class LL_API:
         return self.team.view_teams() 
     
 
-    """
-    Logic wrapper for Tournament
-    """
-
-    def get_contactInfo(self):
-        "Gets the contact infro for the tournament contact"
-        return self.tournament.get_contact_info()
-    
-    def update_contactInfo(self):
-        "updates the info for the contact"
-        return self.tournament.update_contact_info()
-    
-    def register_team(self):
-        "registers the team to the tournament"
-        return self.tournament.register_team()
-    
-    def scheduleGames(self):
-        "schedules games for the tournament"
-        return self.tournament.schedule_games()
-    
-    def recordResults(self):
-        "records the info from a game and declares the winner"
-        return self.tournament.record_result()
-    
-    def sum_Logic(self):
-        "Idont know what this does"
-        return self.tournament.sum_logic()
-    
-    def brackets(self):
-        "sets the brackets of the tournament"
-        return self.tournament.brackets_of_tournament()
-    
-    def Round(self):
-        "the round for the tournament"
-        return self.tournament.play_round()
+    '''Logic wrapper for Tournament'''
 
     def get_all_tournaments(self):
-        return self.tournament.get_allTournaments()
+        return self.tournament.get_allTournamnets()
+    
+    def get_tournamentNames(self):
+        return self.tournament.get_tournament_names()
 
     def create_new_tournament(self, tournament_obj: Tournament):
         return self.tournament.new_tourney(tournament_obj)
     
+    def generateGames(self, tournament_name: str, start_date: str):
+        return self.tournament.generate_games(tournament_name, start_date)
+    
+    def updateGame(self, tournament_name: str, match_number: int, score_a: int, score_b: int):
+        return self.tournament.update_games(tournament_name, match_number, score_a, score_b)
+    
+    def newTournament(self):
+        return self.tournament.new_tourney()
 
-    """
-    Logic layer wrapper for the LLCaptain
-    """
+    def get_game(self):
+        return self.tournament.get_all_games()
+
+    def advance_round(self, tournament_name: str, match_number: int, winner: str):
+        return self.tournament.advance(tournament_name ,match_number, winner)
+
+
+    '''Logic layer wrapper for the LLCaptain'''
 
     def remove_player_from_team(self, team_name, player_name):
         '''Captain removes a player from their team'''
@@ -159,9 +138,7 @@ class LL_API:
         return self.captain.cap_see_player_info(player_name, team_name)
 
 
-    """
-    Logic wrapper for Organizer
-    """
+    '''Logic wrapper for Organizer'''
 
     def valid_tournament_name(self, name):
         '''Validates if the tournament name is unique'''

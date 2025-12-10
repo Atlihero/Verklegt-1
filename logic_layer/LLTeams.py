@@ -9,11 +9,15 @@ class LLTeams:
     def __init__(self): 
         self.teams: list[Team] = self._load_teams_from_csv()
 
+
     def getTeamsPublic(self):
+        '''Fyrir public viewer svo hann sjái liðin '''
         data = DataAPI()
         return data.getPublicTeam()
 
+
     def _load_teams_from_csv(self) -> list[Team]:
+        '''Gets teams from the csv file and puts in a list'''
         raw_rows = TeamIO.get_team(self)
         teams: list[Team] = []
 
@@ -42,7 +46,7 @@ class LLTeams:
         return teams
 
     def add_player_to_team(self, team_name: str, player_name: str) -> Player:
-        "Captain wants to add a player to his team"
+        '''Captain wants to add a player to his team'''
 
         # Check if team exists
         team = self.get_team_by_name(team_name)
@@ -76,7 +80,7 @@ class LLTeams:
 
 
     def get_team_by_name(self, name: str) -> Team | None:
-        """Checks for the team and returns it if found, or None if not"""
+        '''Checks for the team and returns it if found, or None if not'''
         for team in self.teams:
             if team.name == name:
                 return team
@@ -87,49 +91,28 @@ class LLTeams:
         return self.get_team_by_name(name) is not None  # Checks if a team has this name
 
 
-    def create_team(self, name: str, captain: str, asciiLogo: str) -> Team:
-        "Organizer wants to create a team"
-        # Checks whether it has a name, captain and a unique name
-        if not name.strip():
-            raise ValueError("Name can not be empty")
-        if not captain.strip():
-            raise ValueError("Captain can not be empty")
-        if self.team_exists(name):
-            raise ValueError("Another team already has this name")
-
-        # Creating team object
-        new_team = Team(name=name.strip(), captain=captain.strip(), asciiLogo=asciiLogo)
-
-        # Updating in memory
+    def new_team(self, name: str, captain: str = None, asciiLogo: str = "") -> Team:
+        new_team = Team(name = name, captain = captain, asciiLogo = asciiLogo)
         self.teams.append(new_team)
-        new_id = len(self.teams)
 
-        # Saving in CSV through TeamIO
-        row_for_csv = [
-            str(new_id),
-            new_team.name,
-            new_team.captain,
-            new_team.wins,
-            new_team.points
-        ]
+        DataAPI().add_team(name, captain, asciiLogo)
 
-        TeamIO.add_new_team(row_for_csv)
         return new_team
 
 
     def select_captain(self, team_name: str, new_captain: str) -> Team:
-        "Organizer wants to chose a captain"
+        '''Organizer wants to chose a captain'''
 
         team = self.get_team_by_name(team_name)
         if team is None:
-            raise ValueError("Team with this name was not found")
+            raise ValueError("Team with this name was not found. Please use another name.")
         if not new_captain.strip():
-            raise ValueError("The captain can not be empty")
+            raise ValueError("The name of the captain can not be empt. Please use another name. ")
 
         team.captain = new_captain.strip()
         return team
 
 
     def view_teams(self) -> list[Team]:
-        "Spectator wants to see information about a team"
+        '''Spectator wants to see information about a team'''
         return list(self.teams)

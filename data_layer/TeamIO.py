@@ -9,10 +9,10 @@ class TeamIO:
         try:
             teams = [] # Empty list in which the team that is chosen goes into
             with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
-                reader  = csvfile.readlines() # Reads the linse in the csv
+                reader  = csvfile.readlines() # Reads the lines in the csv
                 for row in reader: # For loop that goes through the lines to look for the right team
                     teams.append(row) # Append the team chosen to the list
-            return teams # Returns the list
+            return teams 
         except ValueError: # In case of wrong inputs
             f"It was not possible to return a new list of players for the team. Please try again."
         return teams # Returns the list
@@ -33,8 +33,8 @@ class TeamIO:
         return teams, captain
     
 
-    def get_team_stats(self) -> list:
-        '''Gathers wins and points for a team and puts in a list for easy access'''
+    '''def get_team_stats(self) -> list:
+        Gathers wins and points for a team and puts in a list for easy access
         try:
             Wins = [] # Empty list for the wins of teams
             Points = [] # Empty list for the points of teams
@@ -48,7 +48,7 @@ class TeamIO:
                 return Wins, Points # Returns both of those lists with updated numbers
         except ValueError:  # In case of wrong inputs 
             f"Failed to display the points and wins of the team. Please try again."
-        pass
+        pass'''
         
 
     def create_new_team(self, name: str, captain: str = None, asciiLogo: str = "") -> str:
