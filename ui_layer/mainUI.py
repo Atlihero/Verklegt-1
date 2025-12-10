@@ -28,6 +28,7 @@ class Uimain:
         Happy_paths
         organizer = OrganizerUI()
         api = LL_API()
+        publicViewer = PublicViewer()
         while True:
             Happy_paths.Happy_logo()
             user_inp = input("Press any button to start: ")
@@ -86,7 +87,7 @@ class Uimain:
                     Happy_paths.Happy_viewer()
                     user_inp = input("Enter 1-3 or b")
                     if user_inp == "1":
-                        self.publicviewer.getplayerPublic()
+                        publicViewer.getplayerPublic()
                         exit()
                     elif user_inp == "2":
                         self.publicviewer.getTeamsPublic()

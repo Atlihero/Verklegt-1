@@ -1,14 +1,17 @@
 from logic_layer.LL_api import LL_API
 api = LL_API()
 class PublicViewer:
-
-    def getplayerPublic():      
-        players = api.get_playerPublic()
-        return players
     
-    def getTeamsPublic():
-        teams = api.get_teams_public()
-        return teams
+    def getplayerPublic(self):
+        userinput = int(input("Veldu ID leikmanns milli 1-48: "))  
+        player, team = api.get_playerPublic()
+        print(f"Player: {player[userinput-1]}, Team: {team[userinput-1]}")
+
+
+    def getTeamsPublic(self):
+        userinput = int(input("Select team id 1-16"))
+        teams, captain = api.get_teams_public()
+        print(f"Team: {teams[userinput-1]}, Captain: {captain[userinput-1]}")
     
     def view_schedule(title="Current Games"):
         tournaments = api.get_tournamentNames()
