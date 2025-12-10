@@ -17,9 +17,20 @@ class TournamentIO:
                 #reader = csv.reader(csvfile) virkar með þessu fyrir Organizer
                 for row in reader:
                     tournament.append(row) 
-            return tournament 
         except ValueError: 
             return f"Error message to be decided"
+        return tournament 
+    
+    def get_tournament_names(self):
+        try:
+            tournament_names = []
+            with open(TOURNAMENT_PATH, "r", encoding="utf-8") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    tournament_names.append(row["tournamentName"])
+        except FileNotFoundError:
+            return "Nothing found"
+        return tournament_names
 
     def create_new_tournament(self, tournament: list):
         """
