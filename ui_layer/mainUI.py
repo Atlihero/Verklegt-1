@@ -88,13 +88,13 @@ class Uimain:
                     user_inp = input("Enter 1-3 or b")
                     if user_inp == "1":
                         publicViewer.getplayerPublic()
-                        exit()
+                        self.start()
                     elif user_inp == "2":
                         self.publicviewer.getTeamsPublic()
-                        exit()
+                        self.start()
                     elif user_inp == "3":
                         self.publicviewer.view_schedule()
-                        exit()
+                        self.start()
                     else:
                         self.start()
                         exit()
