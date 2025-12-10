@@ -26,7 +26,7 @@ class DataAPI:
 
     def add_team(self,team_dict):
         "adds a new team to the csv with the dict details"
-        return self.team.create_new_team(team_dict)
+        return self.team.add_new_team(team_dict)
     
     def getPublicTeam(self):
         "gets the teams for the public viewer"

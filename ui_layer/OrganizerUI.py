@@ -30,7 +30,7 @@ class OrganizerUI():
         while True:
             dob_str = input("Enter player date of birth (DD/MM/YYYY): ")
             try:
-                dob = self.lapi.valid_dob(dob_str)
+                dob = self.lapi.valid_dob(dob_str) #blud are we fr dob er síðan ekkert notað
                 break
             except ValueError as error:
                 print(error)
@@ -219,3 +219,5 @@ class OrganizerUI():
             print(f"\nPlayer Information for {p.get('Name')}:")
             for attr, value in vars(p).items():
                 print(f"{attr}: {value}")
+
+#vantar make team og create captain!!!
