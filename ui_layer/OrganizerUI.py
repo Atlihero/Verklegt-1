@@ -166,7 +166,7 @@ class OrganizerUI():
         return self.lapi.create_new_tournament(tournament_obj)
 
     def update_result(self):
-        tournaments = self.lapi.get_tournamentNames()
+        tournaments = self.lapi.get_tournament_names()
         print(tournaments)
         tournament_name = input("Enter tournament name: ").strip()
         games = self.lapi.get_game_by_tournamentName(tournament_name)
