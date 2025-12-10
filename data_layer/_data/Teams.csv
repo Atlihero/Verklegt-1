@@ -1,17 +1,17 @@
 TeamName,Captain,asciiLogo
-SegFault Spartans,SegFaultSam
-NullPointer Ninjas,NullPointerNina
-OffByOne Offense,OffByOneOlaf
-Pepsi Max Punishers,PepsiMaxPalli
-Chuck Norris Fan Club,RoundhouseRik
-IndentationError Invaders,IndentationErrorIna
-Assembly Avengers,MovAxMaria
-Datalab Dominators,BitTwiddlerBjarni
-Bomblab Bombers,BombDefusalDori
-StackOverflow Stackers,CopyPasteKalli
-CacheHit Crusaders,L1CacheLara
-WhileTrue Tryhards,WhileTrueWendy
-Segmentation Foul,SegmentationFoulStebbi
-RaceCondition Racers,RaceConditionRagnhildur
-Undefined Behavior United,UBUnitedUlfar
-Pepsi Max Overflow,PepsiMaxOverflowPetra
+SegFault Spartans,SegFaultSam,ASCII_SPARTAN_HELMET
+NullPointer Ninjas,NullPointerNina,ASCII_NINJA_SHADOW
+OffByOne Offense,OffByOneOlaf,ASCII_FENCEPOST_BUG
+Pepsi Max Punishers,PepsiMaxPalli,ASCII_PEPSI_CAN
+Chuck Norris Fan Club,RoundhouseRik,ASCII_ROUNDHOUSE_KICK
+IndentationError Invaders,IndentationErrorIna,ASCII_INDENT_ICON
+Assembly Avengers,MovAxMaria,ASCII_OPCODES
+Datalab Dominators,BitTwiddlerBjarni,ASCII_BITMASK
+Bomblab Bombers,BombDefusalDori,ASCII_BOMB_WIRE
+StackOverflow Stackers,CopyPasteKalli,ASCII_STACK_FRAME
+CacheHit Crusaders,L1CacheLara,ASCII_CACHE_LINES
+WhileTrue Tryhards,WhileTrueWendy,ASCII_LOOP_ICON
+Segmentation Foul,SegmentationFoulStebbi,ASCII_RED_CARD
+RaceCondition Racers,RaceConditionRagnhildur,ASCII_CHECKERED_FLAG
+Undefined Behavior United,UBUnitedUlfar,ASCII_GLITCHED_LOGO
+Pepsi Max Overflow,PepsiMaxOverflowPetra,ASCII_OVERFLOWING_CAN
