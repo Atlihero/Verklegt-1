@@ -16,7 +16,7 @@ class OrganizerUI():
         self.lapi = LL_API()
 
 
-    def get_player_info(self):
+    def create_player(self):
     
         while True:
             name = input("Enter full name of player: ")
@@ -30,7 +30,7 @@ class OrganizerUI():
         while True:
             dob_str = input("Enter player date of birth (DD/MM/YYYY): ")
             try:
-                dob = self.lapi.valid_dob(dob_str)
+                dob = self.lapi.valid_dob(dob_str) #blud are we fr dob er síðan ekkert notað
                 break
             except ValueError as error:
                 print(error)
@@ -170,21 +170,37 @@ class OrganizerUI():
     def update_result(self):
         tournament_name = input("Enter tournament name: ").strip()
         games = self.lapi.get_game_by_tournamentName(tournament_name)
+    def update_result(self):
+        tournament_name = input("Enter tournament name: ").strip()
+        games = self.lapi.get_game_by_tournamentName(tournament_name)
 
         if not games:
             print("\nNo games found for this tournament.\n")
+        if not games:
+            print("\nNo games found for this tournament.\n")
 
+        show_games(games, "Current Games")
         show_games(games, "Current Games")
 
         match_number = int(input("\nEnter match number to update: "))
         score_a = int(input("Enter score for team A: "))
         score_b = int(input("Enter score for team B: "))
+        match_number = int(input("\nEnter match number to update: "))
+        score_a = int(input("Enter score for team A: "))
+        score_b = int(input("Enter score for team B: "))
 
+        result = self.lapi.updateGame(match_number, score_a, score_b)
         result = self.lapi.updateGame(match_number, score_a, score_b)
 
         winner = result["winner"]
         tournament_name = result["tournament_name"]
+        winner = result["winner"]
+        tournament_name = result["tournament_name"]
 
+        # If a winner exists, advance
+        if winner:
+            advance_result = self.lapi.advance_round(tournament_name, match_number, winner)
+            print(advance_result)
         # If a winner exists, advance
         if winner:
             advance_result = self.lapi.advance_round(tournament_name, match_number, winner)
@@ -195,10 +211,18 @@ class OrganizerUI():
                 print("\n==============================")
                 print(f"🏆  TOURNAMENT WINNER: {winner}  🏆")
                 print("==============================\n")
+            # ⭐ IF THIS WAS THE FINAL MATCH (F = match 15), SHOW WINNER BANNER
+            if result["round"] == "F":
+                print("\n==============================")
+                print(f"🏆  TOURNAMENT WINNER: {winner}  🏆")
+                print("==============================\n")
 
         else:
             print("Game is a draw. Winner cannot advance.")
 
+
+        updated_games = self.lapi.get_game()
+        show_games(updated_games, "Updated Games")
         updated_games = self.lapi.get_game()
         show_games(updated_games, "Updated Games")
 
@@ -210,7 +234,7 @@ class OrganizerUI():
         except ValueError as error:
             print("Error: ", error)
             return
-            
+        
         if not players:
             print("There are no players in the tournament.")
             return
@@ -219,3 +243,5 @@ class OrganizerUI():
             print(f"\nPlayer Information for {p.get('Name')}:")
             for attr, value in vars(p).items():
                 print(f"{attr}: {value}")
+
+#vantar make team og create captain!!!

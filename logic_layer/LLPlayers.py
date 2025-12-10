@@ -1,4 +1,4 @@
-from Models import Player
+from Models.Player import Player
 from datetime import datetime
 from data_layer.data_api import DataAPI
 from data_layer.PlayerIO import PlayerIO
@@ -105,8 +105,12 @@ class LLPlayer():
         if not handle:
             raise ValueError("Player's handle name cannot be emtpy. Please enter a handle.")
         
-        existing_usernames = self.data.get_all_players()
-        existing_handles = [p.handle for p in existing_usernames]
+        existing_usernames: list[Player] = self.data.get_all_players()
+        existing_handles = [
+            player.handle
+            for player in existing_usernames
+            if getattr(player, 'handle', None)
+            ]
         
         if handle in existing_handles:
             raise ValueError("Handle is already in use, please choose another one.")
