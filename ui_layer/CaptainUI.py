@@ -67,22 +67,23 @@ class CaptainUI:
         return players
 
     def _get_and_show_available_players(self) -> list[Player]:
-        '''Show all players that are NOT in any team.'''
+        """Show all players that are NOT in any team."""
 
-        players: list[Player] = self.ll.get_available_players_for_captain(self.current_team_name)
+        players: list[Player] = self.ll.get_available_players_for_captain(
+            self.current_team_name
+        )
         if not players:
             print("There are no free players to add.")
             return []
 
         # Sort alphabetically by Name
-        players_sorted = sorted(
-            players,
-            key=lambda p: p.name.lower())
+        players_sorted = sorted(players, key=lambda p: p.name.lower())
 
         print("\nAvailable players (no team yet):")
         for index, p in enumerate(players_sorted, start=1):
             print(f"{index}. {p.name}")
         return players_sorted
+
 
 
 
@@ -109,7 +110,6 @@ class CaptainUI:
         try:
             self.ll.add_player_to_team(self.current_team_name, player_name)
             print(f"{player_name} has been added to {self.current_team_name}.")
-
         except ValueError as error:
             print("Error:", error)
 
@@ -138,9 +138,16 @@ class CaptainUI:
                 players.append(p)
 
 
+
+
+
         if not players:
             print("There are no players to remove (only the captain exists).")
             return
+
+
+
+
 
         print(f"\nPlayers in {self.current_team_name} (excluding captain {captain_name}):")
         for index, p in enumerate(players, start=1):
@@ -173,15 +180,21 @@ class CaptainUI:
 
     def cap_see_player_info(self):
         '''Captain can see detailed info about a player in their own team.'''
-
         players = self._get_and_show_team_members()
+
+
         if not players:
+
             return
+
 
         selected = input("Please enter the number of whose information you want to see: ").strip().lower()
 
         selected_index = int(selected) - 1
         if selected_index < 0 or selected_index >= len(players):
+
+
+
             print("The number is not in the player's number range. Please select another number.")
             return
 

@@ -12,11 +12,11 @@ class DataAPI:
     '''Data wrapper for PlayerIO'''
 
     def add_player(self,player_dict):
-        '''Ads a new player to the csv with the dict data'''
+        '''Adds a new player to the csv file'''
         return self.player.create_new_player(player_dict)
 
     def get_all_players(self):
-        '''Gets the players from the csv to the LL'''
+        '''Gets the players from the csv and ready for the logic layer'''
         return self.player.get_players()
 
     def public_get_player(self):
@@ -27,15 +27,15 @@ class DataAPI:
     '''Data wrapper for TeamIO'''
 
     def get_all_teams(self):
-        '''Gets all the teams an puts them in a list'''
+        '''Gets all the teams and puts them in a list'''
         return self.team.get_all_teams()
 
     def get_teams(self):
-        '''Gets the teams from the csv to the LL'''
+        '''Gets the teams from the csv and ready for the logic layer'''
         return self.team.get_team()
 
     def add_team(self, name: str, captain: str, asciiLogo: str):
-        '''Adds a new team to the csv with the dict details'''
+        '''Adds a new team to the csv file'''
         return self.team.create_new_team(name, captain, asciiLogo)
     
     def get_public_team(self):
@@ -43,21 +43,17 @@ class DataAPI:
         return self.team.get_team_public()
 
     def add_team_to_tournament(self, tournament_name, teams_list):
-        '''Add exactly 16 teams to the tournament'''
+        '''Add teams to the tournament'''
         return self.team.add_teams_to_tournament(tournament_name, teams_list)
 
 
     '''Data wrapper for TournamentIO'''
 
-    def new_tournament(self, tournament_dict):
-        '''Creates a new tournament in the csv'''
-        return self.tournament.create_new_tournament(tournament_dict)
-
     def get_all_tournaments(self):
-        '''Retrieves the tournaments from the csv'''
+        '''Retrieves the tournaments from the csv file'''
         return self.tournament.get_tournaments()
     
-    def get_tournamentNames(self):
+    def get_tournament_names(self):
         '''Retrieves the tournament names'''
         return self.tournament.get_tournament_names()
 
@@ -66,15 +62,15 @@ class DataAPI:
         return self.tournament.create_new_tournament(tournament_obj)
 
     def new_game(self, row: list):
-        '''Creates a new game in the csv'''
+        '''Creates a new game in the csv file'''
         return self.tournament.create_new_game(row)
 
     def get_games(self):
-        '''Gets the games from the tournamnet'''
+        '''Gets the games from the tournament'''
         return self.tournament.get_all_games()
     
     def update_game(self, tournament_name: str, match_number: int, score_a: int, score_b: int):
-        '''Updates the game based on the score inputted'''
+        '''Updates the game based on the inputted score'''
         return self.tournament.update_games(tournament_name, match_number, score_a, score_b)
     
     def advance_round(self, tournament_name: str, match_number: int, winner: str):

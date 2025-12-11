@@ -9,7 +9,7 @@ class TeamIO:
         try:
             teams = [] # Empty list in which the team that is chosen goes into
             with open(TEAM_PATH, "r", encoding = "utf-8") as csvfile:
-                reader  = csvfile.readlines() # Reads the linse in the csv
+                reader  = csvfile.readlines() # Reads the lines in the csv
                 
                 for row in reader: # For loop that goes through the lines to look for the right team
                     teams.append(row) # Append the team chosen to the list
@@ -42,7 +42,7 @@ class TeamIO:
         '''Create an empty team with no players'''
         try: 
             with open(TEAM_PATH, "a",newline = "", encoding = "utf-8") as csvfile:
-        # The user writes in the details needed for a team like the name
+        # The user writes in the details needed for a team, like the name
                 writer = csv.writer(csvfile) 
                 writer.writerow([name, captain, asciiLogo]) # Prints what was written in a new row 
                 
@@ -52,7 +52,7 @@ class TeamIO:
 
 
     def add_teams_to_tournament(tournament: str, teams: list) -> str:
-        '''Organizer will wants to add teams to a designated tournament'''
+        '''Organizer wants to add teams to a designated tournament'''
         if len(teams) != 16:
             return "Error, not enough teams in the tournament. There have to be at least 16 teams."
         try:
@@ -61,7 +61,7 @@ class TeamIO:
                 
                 for team in teams:
                     writer.writerow([tournament, team])
-                return "The team has been added to the tournament."
+                return "The team has been added to the tournament!"
                 
         except ValueError:
             return "Failed to add the team to the tournament. Please try again."
@@ -79,6 +79,6 @@ class TeamIO:
                         teams.append(row[0])
                         
         except FileNotFoundError:
-            f"The file was not found" 
+            f"The file was not found." 
             pass
         return teams # Return a list of all the teams

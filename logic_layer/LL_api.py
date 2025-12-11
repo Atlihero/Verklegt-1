@@ -19,11 +19,11 @@ class LL_API:
     '''The Logic layer wrapper for the LLPlayer'''
 
     def valid_name(self, name):
-        '''Validates player full name.'''
+        '''Validates player's full name.'''
         return self.player.validate_name(name)
     
     def valid_dob(self, dob):
-        '''Validates players date of birth.'''
+        '''Validates player's date of birth.'''
         return self.player.validate_dob(dob)
     
     def valid_address(self, address):
@@ -31,11 +31,11 @@ class LL_API:
         return self.player.validate_address(address)
     
     def valid_phone(self, phone):
-        '''Validates the phone number.'''
+        '''Validates inputted phone number.'''
         return self.player.validate_phone(phone) 
     
     def valid_email(self, email):
-        '''Validates the email.'''
+        '''Validates inputted email.'''
         return self.player.validate_email(email)
     
     def valid_handle(self, handle):
@@ -43,7 +43,7 @@ class LL_API:
         return self.player.validate_handle(handle)
     
     def validate_link(self, link):
-        '''Validates the link of the new players.'''
+        '''Validates the link of new players.'''
         return self.player.validate_link(link)
     
     def create_player(self, player_obj: Player):
@@ -51,11 +51,11 @@ class LL_API:
         return self.player.create_player(player_obj)
     
     def get_player_public(self):
-        '''Gets the team for the public viewer.'''
+        '''Gets the players for the public viewer.'''
         return self.player.get_player_public_viewer()
 
     def get_players_all_off_them(self):
-        '''Gets the players for Organizer to see'''
+        '''Gets the players for the organizer to see.'''
         return self.player.get_all_players()
     
 
@@ -74,7 +74,7 @@ class LL_API:
         return self.team.get_teams_public()
     
     def check_team(self, name):
-        '''Check if team has this name.'''
+        '''Check if a team already has this name.'''
         return self.team.team_exists(name)
 
     def add_team(self, name, captain, asciiLogo):
@@ -82,34 +82,34 @@ class LL_API:
         return self.team.new_team(name, captain, asciiLogo)
 
     def select_captains(self, team_name, new_captain):
-        '''Selects a new captain for a team'''
+        '''Selects a new captain for a team.'''
         return self.team.select_captain(team_name, new_captain)
 
     def view_teams(self):
-        '''Public viewer wants to view teams'''
+        '''Gets the teams for the public viewer.'''
         return self.team.view_teams() 
     
 
-    '''Logic wrapper for Tournament'''
+    '''Logic wrapper for LLTournament'''
 
     def get_all_tournaments(self):
-        '''List of all tournaments that have been made'''
+        '''List of all tournaments that exist.'''
         return self.tournament.get_all_tournamnets()
     
     def get_tournament_names(self):
-        '''List of all names of tournaments that have been'''
+        '''List of all names of tournaments that exist.'''
         return self.tournament.get_tournament_names()
 
     def create_new_tournament(self, tournament_obj: Tournament):
-        '''Creates a new tournament in the csv file'''
+        '''Creates a new tournament in the csv file.'''
         return self.tournament.new_tourney(tournament_obj)
     
     def generate_games(self, tournament_name: str, start_date: str):
-        '''Makes games for the tournament'''
+        '''Makes games for the tournament.'''
         return self.tournament.generate_games(tournament_name, start_date)
     
     def update_game(self, tournament_name: str, match_number: int, score_a: int, score_b: int):
-        '''Updates score of each game that has been played in the tournament'''       
+        '''Updates score of each game that have been played in the tournament.'''       
         return self.tournament.update_games(tournament_name, match_number, score_a, score_b)
 
     def get_game(self):
@@ -117,54 +117,55 @@ class LL_API:
         return self.tournament.get_all_games()
 
     def advance_round(self, tournament_name: str, match_number: int, winner: str):
-        '''Determines what team advances to the next round of the tournament'''
+        '''Determines what team advances to the next round of the tournament.'''
         return self.tournament.advance(tournament_name ,match_number, winner)
 
     def get_game_by_tournament_name(self, tournament_name):
         games = self.tournament.get_all_games()
         return [g for g in games if g["tournament_name"] == tournament_name]
-
+    
+    
     '''Logic layer wrapper for the LLCaptain'''
 
     def remove_player_from_team(self, team_name, player_name):
-        '''Captain removes a player from their team'''
+        '''Captain removes a player from their team.'''
         return self.captain.remove_from_team(player_name, team_name)
     
     def add_player_to_team(self, team_name, player_name):
-        '''Captain adds a player to their team'''
+        '''Captain adds a player to their team.'''
         return self.captain.add_player_to_team(team_name, player_name)
 
     def get_team_members(self, team_name):
-        '''Return a list of Player objects in the team'''
+        '''Return a list of players in the team.'''
         return self.captain.get_team_members(team_name)
     
     def cap_view_player_info(self, player_name, team_name):
-        '''Captain can see player info about members in his team'''
+        '''Captain can see information on the players in his team.'''
         return self.captain.cap_see_player_info(player_name, team_name)
 
 
-    '''Logic wrapper for Organizer'''
+    '''Logic wrapper for LLOrganizer'''
 
     def valid_tournament_name(self, name):
-        '''Validates if the tournament name is unique'''
+        '''Validates if the tournament name is unique.'''
         return self.organizer.tournament_name(name)
     
     def valid_start_date(self, start_date):
-        '''Validates if the tournament start date is in the future of the day today'''
+        '''Validates if the tournaments start date is in the future.'''
         return self.organizer.choose_start_date(start_date)
     
     def valid_end_date(self, end_date, start_date):
-        '''Validates if the tournament end date is later than the start date'''
+        '''Validates if the tournaments end date is later than the start date.'''
         return self.organizer.choose_end_date(end_date, start_date)
     
     def valid_tournament_location(self, location):
-        '''Validates if the tournament has a location'''
+        '''Validates if the tournament has a location.'''
         return self.organizer.tournament_location(location)
     
     def valid_tournament_contact(self, contact_name):
-        '''Validates the contact persons name'''
+        '''Validates the contact persons name.'''
         return self.organizer.tournament_contact_name(contact_name)
 
     def organizer_view_player_info(self):
-        '''Organizer can see information about every player in the tournament'''
+        '''Organizer can see information about every player in the tournament.'''
         return self.organizer.organizer_player_info()
