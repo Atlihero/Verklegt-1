@@ -72,7 +72,7 @@ class LL_API:
     
     def get_teams_public(self):
         '''Gets the teams for the public viewer to see.'''
-        return self.team.getTeamsPublic()
+        return self.team.get_teams_public()
     
     def check_team(self, name):
         '''Check if team has this name.'''
@@ -95,7 +95,7 @@ class LL_API:
 
     def get_all_tournaments(self):
         '''List of all tournaments that have been made'''
-        return self.tournament.get_allTournamnets()
+        return self.tournament.get_all_tournamnets()
     
     def get_tournament_names(self):
         '''List of all names of tournaments that have been'''
