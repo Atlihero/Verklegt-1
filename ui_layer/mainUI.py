@@ -34,6 +34,7 @@ class Uimain:
             user_inp = input("Press any button to start: ")
             """Here the code starts"""
             if user_inp != 1:
+                clear_term()
                 Happy_paths.Happy_menu()
                 user_inp = input("Enter 1, 2, 3 or b: ")
                 
@@ -43,9 +44,11 @@ class Uimain:
 
                 if user_inp == "1":
                     """Now we are in Organizer and can chose what we will do there"""
+                    clear_term()
                     Happy_paths.Happy_organizer() #This is the organizer
                     user_inp = input("Enter 1-6 or b: ")
                     if user_inp == "1": #Here you create a new player
+                        clear_term()
                         Happy_paths.Happy_create_player()
                         organizer.create_player()
                         Happy_paths.player_was_made()
@@ -54,25 +57,38 @@ class Uimain:
                             clear_term()
                             self.start()
                     elif user_inp == "2": #Here you create a tournament
+                        clear_term()
                         Happy_paths.Happy_create_tournament()
                         organizer.createTournament()
-                        self.start()
+                        Happy_paths.tournament_was_made()
+                        user_inp = input("Press any button to return to start")
+                        if user_inp  != 1:
+                            clear_term()
+                            self.start()
                     elif user_inp == "3": #Here you create a team
+                        clear_term()
                         Happy_paths.Happy_create_team()
                         organizer.create_team_ui()
-                        self.start()
+                        Happy_paths.team_was_made()
+                        user_inp = input("Press any button to return to start")
+                        if user_inp  != 1:
+                            clear_term()
+                            self.start()
                     elif user_inp == "4":
+                        clear_term()
                         Happy_paths.Happy_Update_result()
                         organizer.update_result()
                         self.start()
                     elif user_inp == "5": #here you make a player a captain
+                        clear_term()
                         Happy_paths.Happy_make_captain()
                     elif user_inp == "6":
+                        clear_term()
                         Happy_paths.Happy_information()
                         organizer.organizer_see_info()
                         self.start()
                     elif user_inp == "b": #return back to starting psition
-                        os.system('cls')
+                        clear_term()
                         continue
                 
                 elif user_inp == "2": #This is the Captain
