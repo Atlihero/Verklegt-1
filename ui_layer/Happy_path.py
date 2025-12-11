@@ -33,7 +33,7 @@ class Happy_paths:
         print("\033[94m|      Exit q)                       |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     
-        @staticmethod
+    @staticmethod
     def Happy_viewer():
         print("\033[91m┌────────────────────────────────────┐\033[0m")
         print("\033[91m|             GLADIATORS             |\033[0m")
