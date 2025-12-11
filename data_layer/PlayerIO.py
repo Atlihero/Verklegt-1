@@ -35,7 +35,7 @@ class PlayerIO:
     
     
     def get_player_public_viewer(self) -> list:
-        '''Shows name and the handle of a player for the publiv viewer'''
+        '''Shows name and the handle of a player for the public viewer'''
         try:
             # Use lists to store each players name and handle and their team
             players = [] 
