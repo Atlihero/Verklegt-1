@@ -164,26 +164,26 @@ class OrganizerUI():
         return self.lapi.create_new_tournament(tournament_obj)
 
 
-    def update_result(self):
+   def update_result(self):
         '''Update results of the tournament '''
         try:
-            tournaments = self.lapi.get_tournament_names()
+            tournaments = self.lapi.get_tournament_names() # List of all tournament names
             print(tournaments)
             
-            while True:
-                tournament_name = input("Enter tournament name: ").strip()
-
+            while True: # Select a tournament that is already made
+                tournament_name = input("Please enter the tournament name: ").strip()
                 if tournament_name in tournaments:
                     break
-
                 print("Tournament was not found. Please enter a valid tournament name.")
             
+            # Get all games from the inputted tournament
             games = self.lapi.get_game_by_tournament_name(tournament_name)
 
             if not games:
                 print("\nNo games were found for this tournament.\n")
 
             show_games(games, "Current Games")
+
             while True:
                 try:
                     match_number = int(input("\nEnter match number to update: "))
@@ -193,9 +193,10 @@ class OrganizerUI():
                 except ValueError:
                     print("Scores and match number must be integer numbers. Please enter valid numbers.")
 
+            # Updates the game/match results
             result = self.lapi.update_game(tournament_name, match_number, score_a, score_b)
 
-            '''If a draw occurs the scores must be inputted again'''
+            # If a draw occurs the scores must be inputted again until there is a clear winner
             while result["winner"] is None:
                 print(f"The game between {result['team_a']} and {result['team_b']} ended in a draw. Please enter new scores.")
                 score_a = int(input(f"Score for {result['team_a']}: "))
@@ -205,17 +206,17 @@ class OrganizerUI():
             winner = result["winner"]
             tournament_name = result["tournament_name"]
 
-            '''The winner advances'''
+            # The winner of the match advances to the next round
             advance_result = self.lapi.advance_round(tournament_name, match_number, winner)
             print(advance_result)
 
-            '''if it is the Finals, aka F, the team that wins that game is the tournament winner'''
+            # If it is the Finals (F) the team that wins that game is the tournament winner'''
             if result["round"] == "F":
                 print("\n==============================")
                 print(f" TOURNAMENT WINNER: {winner} ")
 
             updated_games = self.lapi.get_game_by_tournament_name(tournament_name)
-            show_games(updated_games, "Updated Games")
+            show_games(updated_games, "Updated Games") # Shows updated match/game list
             
         except ValueError as error:
             print(f"Invalid input: {error}")
@@ -225,7 +226,7 @@ class OrganizerUI():
         '''Creates a new team'''
         print("\n=== Create a New Team ===")
                 
-        team_name = input("Enter the Team Name: ").strip()
+        team_name = input("Enter the team Name: ").strip() # Team name must be unique
         captain = None
         ascii_logo = input("Enter ASCII Logo (optional): ").strip() or None
 
@@ -236,24 +237,24 @@ class OrganizerUI():
 
     def organizer_see_info(self) -> None:
         '''The organizer can see player information for every player in the tournament'''
-        player = self.lapi.organizer_view_player_info()
+        player = self.lapi.organizer_view_player_info() # Get list of players and their team
 
         while True:
             try:
-                userinput = int(input(f"Veldu ID leikmanns milli 1-{len(player)}: "))
+                userinput = int(input(f"Select a player ID between 1-{len(player)}: "))
 
-                if 1 < userinput <= len(player):
+                if 1 <= userinput <= len(player): # Check if the input is valid
                         break
                 else:
                     print("A player with this ID does not exist. Please enter a valid ID number.")
             except ValueError:
                     print("The input has to be an integer number. Please enter a valid number.") 
         
-        print(f"Player: {player[userinput]}")
+        print(f"Player: {player[userinput]}") # Show the player
         
         
     def make_captain(self): #virkar ekki enþá
-        """The organizer selects a player to become captain"""
+        '''The organizer selects a player to become captain'''
         player_to_captain = self.lapi.get_all_players()
         return player_to_captain
 
