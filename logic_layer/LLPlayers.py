@@ -99,7 +99,7 @@ class LLPlayer():
         existing_usernames = self.data.get_all_players()
         existing_handles = []
         for player in existing_usernames: 
-            if getattr(player, 'handle', None):
+            if player:
                 existing_handles.append(player.handle)
         
         if handle in existing_handles: # Checking if the handle is already in use
