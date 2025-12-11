@@ -76,7 +76,7 @@ class DataAPI:
     
     def update_game(self, tournament_name: str, match_number: int, score_a: int, score_b: int):
         "updates the game based on the score inputted"
-        return self.tournament.update_games(tournament_name, match_number, score_a, score_b)
+        return self.tournament.update_game(tournament_name, match_number, score_a, score_b)
     
-    def advance_round(self, tournament_name: str, match_number: int, winner: str):
-        return self.tournament.advance(tournament_name, match_number, winner)
+    def advance(self, tournament_name: str, match_number: int, winner: str):
+        return self.tournament.advance_round(tournament_name, match_number, winner)
