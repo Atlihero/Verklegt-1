@@ -249,6 +249,6 @@ class OrganizerUI():
         
     def make_captain(self): #virkar ekki enþá
         """The organizer selects a player to become captain"""
-        player_to_cap = self.lapi.get_team_members(self)
-        return player_to_cap
+        player_to_captain = self.lapi.get_all_players()
+        return player_to_captain
 
