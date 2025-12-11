@@ -6,6 +6,7 @@ from .LLOrganizer import LLOrganizer
 from .LLTournament import LLTournament
 from Models.Tournament import Tournament
 from Models.Player import Player
+from data_layer.data_api import DataAPI
 
 class LL_API:
     def __init__(self):
@@ -142,6 +143,34 @@ class LL_API:
     def cap_view_player_info(self, player_name, team_name):
         '''Captain can see information on the players in his team.'''
         return self.captain.cap_see_player_info(player_name, team_name)
+    
+    def get_team_names_and_captains(self) -> tuple[list[str], list[str]]:
+        """Return (team_names, captains) from the TeamIO CSV via DataAPI."""
+        data = DataAPI()
+        return data.get_public_team()
+
+    def get_available_players_for_captain(self, team_name: str):
+        """Wrapper so CaptainUI can ask for free players."""
+        return self.captain.get_available_players(team_name)
+
+    def update_player_contact(
+        self,
+        player_name: str,
+        team_name: str,
+        new_phone: str,
+        new_address: str,
+        new_email: str,
+    ):
+        """Captain updates a player's phone, address and email."""
+        return self.captain.update_player_contact(
+            player_name,
+            team_name,
+            new_phone,
+            new_address,
+            new_email,
+        )
+
+
 
 
     '''Logic wrapper for LLOrganizer'''
