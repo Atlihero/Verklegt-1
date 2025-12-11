@@ -8,11 +8,7 @@ class Round(Tournament):
         self.startTime = start_time
         self.endTime = end_time
 
-
-    def __str__(self):
-        '''Returns the information'''
-        return f"{self.name}:\n{self.number}:\n{self.start_time}:\n{self.end_time}"
-
+    
     def __str__(self):
         '''Return the information'''
         return (
