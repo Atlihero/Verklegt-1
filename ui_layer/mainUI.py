@@ -110,17 +110,29 @@ class Uimain:
                     
                         Happy_paths.Happy_captain_add_or_info()
                         cap_choice = input("").strip().lower()
-
-
-                    if cap_choice == "1":
-                        captain.add_to_team()
-                    elif cap_choice == "2":
-                        captain.remove_from_team()
-                    elif cap_choice == "3":
-                        captain.cap_see_player_info()
-                    elif cap_choice == "b":
-                        os.system("cls")
-                        continue
+                        if cap_choice == "1":
+                            captain.add_to_team()
+                            user_inp = input("Press any button to return to start")
+                            if user_inp  != 1:
+                                clear_term()
+                        elif cap_choice == "2":
+                            captain.remove_from_team()
+                            user_inp = input("Press any button to return to start")
+                            if user_inp  != 1:
+                                clear_term()
+                        elif cap_choice == "3":
+                            captain.cap_see_player_info()
+                            user_inp = input("Press any button to return to start")
+                            if user_inp  != 1:
+                                clear_term()
+                        elif cap_choice == "4":
+                            captain.view_schedule()
+                            user_inp = input("Press any button to return to start")
+                            if user_inp  != 1:
+                                clear_term()
+                        elif cap_choice == "q":
+                            clear_term()
+                            self.start()
                     
 
 
