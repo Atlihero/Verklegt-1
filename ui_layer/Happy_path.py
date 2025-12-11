@@ -160,7 +160,7 @@ class Happy_paths:
         print("\033[94m--------------------------------------\033[0m")
         print("\033[94m--- Back b)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
-        
+
 
     @staticmethod
     def Happy_captain_player_to_inspect():
@@ -244,18 +244,23 @@ class Happy_paths:
         print("\033[94m┌────────────────────────────────────┐\033[0m")
         print("\033[94m|      Exit q)                       |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
-    
+    @staticmethod    
     def player_was_made():
         print("\033[92m┌────────────────────────────────────┐\033[0m")
         print("\033[92m|        Player has been made        |\033[0m")
         print("\033[92m└────────────────────────────────────┘\033[0m")
-
+    @staticmethod
     def team_was_made():
         print("\033[92m┌────────────────────────────────────┐\033[0m")
         print("\033[92m|         Team has been made         |\033[0m")
         print("\033[92m└────────────────────────────────────┘\033[0m")
-
+    @staticmethod
     def tournament_was_made():
         print("\033[92m┌────────────────────────────────────┐\033[0m")
         print("\033[92m|     Tournament has been made       |\033[0m")
         print("\033[92m└────────────────────────────────────┘\033[0m")
+    @staticmethod   
+    def not_valid_input():
+        print("\033[100m┌────────────────────────────────────┐\033[0m")
+        print("\033[100m|           Not valid input          |\033[0m")
+        print("\033[100m└────────────────────────────────────┘\033[0m")
