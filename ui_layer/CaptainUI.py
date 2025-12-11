@@ -88,13 +88,20 @@ class CaptainUI:
         players = self._get_and_show_available_players()
         if not players:
             return
+        
+        while True:
+            selected = input("Enter the number of the player you want to add: ")
+            try:
+                selected_index = int(selected) - 1
+            except ValueError:
+                print("Please enter a valid number")
+                continue
+            if selected_index < 0 or selected_index >= len(players):
+                print("The number is not in the player's number range. Please select another number.")
+                continue
+            break
+ 
 
-        selected = input("Enter the number of the player you want to add: ")
-
-        selected_index = int(selected) - 1
-        if selected_index < 0 or selected_index >= len(players):
-            print("The number is not in the player's number range. Please select another number.")
-            return
 
         player_to_add = players[selected_index]
         player_name = player_to_add.name
@@ -137,22 +144,33 @@ class CaptainUI:
             handle = p.handle
             print(f"{index}. {name} | Handle: {handle}")
 
+        while True:
+            selected = input("Please enter the number of who you want to remove: ")
+            try:
+                selected_index = int(selected) - 1
+            except ValueError:
+                print("Please enter a valid integer")
+                continue
+            if selected_index < 0 or selected_index >= len(players):
+                print("A player with this ID does not exist. Please enter a valid ID number.")
+                continue
 
-        selected = input("Please enter the number of who you want to remove: ").strip()
-
-        selected_index = int(selected) - 1
-        if selected_index < 0 or selected_index >= len(players):
-            print("The number is not in the player's number range. Please select another number.")
-            return
+            break
 
         player_to_remove = players[selected_index]
         player_name = player_to_remove.name
 
-        confirmation = input(f"Are you sure you want to remove {player_name} from the team? Y/N ").strip().upper()
+        while True:
+            confirmation = input(f"Are you sure you want to remove {player_name} from the team? Y/N ").strip().upper()
 
-        if confirmation != "Y":
-            print("Removal cancelled. The player will not be removed from the team.")
-            return
+            if confirmation == "Y":
+                    break
+                    
+            if confirmation == "N":
+                print("Removal cancelled. The player will not be removed from the team.")
+                return
+            
+            print("Please enter either Y/N")
 
         try:
             self.ll.remove_player_from_team(self.current_team_name, player_name)
