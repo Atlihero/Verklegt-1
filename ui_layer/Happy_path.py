@@ -146,6 +146,7 @@ class Happy_paths:
         print("\033[94m░  (1)    Add Player to team         ░\033[0m")
         print("\033[94m░  (2)    Remove Player from team    ░\033[0m")
         print("\033[94m░  (3)    Information on team        ░\033[0m")
+        print("\033[94m░  (4)    View Schedule              ░\033[0m")
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
         print("\033[94m|      Exit: q                       |\033[0m")

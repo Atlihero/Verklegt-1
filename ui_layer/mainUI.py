@@ -118,6 +118,8 @@ class Uimain:
                         captain.remove_from_team()
                     elif cap_choice == "3":
                         captain.cap_see_player_info()
+                    elif cap_choice == "4":
+                        captain.view_schedule()
                     elif cap_choice == "b":
                         os.system("cls")
                         continue

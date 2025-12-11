@@ -260,3 +260,33 @@ class CaptainUI:
 
         except ValueError as error:
             print("Error:", error)
+
+    def view_schedule(self,title="Current Games"):
+        try:
+            tournaments = self.ll.get_tournament_names() # Gets all tournament names
+            print(tournaments)
+            
+            while True:
+                tournament_name = input("Enter tournament name: ").strip()
+
+                if tournament_name in tournaments: # Confirms that the tournament is in the system
+                    break
+
+                print("Tournament not found. Please enter a valid tournament name.")
+            
+            # Get all games/matches that are in the tournament 
+            games = self.ll.get_game_by_tournament_name(tournament_name) 
+
+            if not games: # If there are no games found
+                print(f"No games found for tournament: {tournament_name}")
+                return []
+            
+            print(f"\n=== {title} ===")
+            for g in games: # Print information on every match/game
+                print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
+                    f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
+            
+            return games
+        
+        except ValueError:
+            print("Invalid input")
