@@ -100,7 +100,7 @@ class LLTournament:
         return all_games
 
     
-    def get_all_tournamnets(self) -> :
+    def get_all_tournamnets(self) -> list:
         '''Retrieves the tournaments from the csv file'''
         
         return self.data.get_all_tournaments()
