@@ -4,6 +4,7 @@ from Models.Player import Player
 
 
 def show_games(games, title="Current Games"):
+    '''  '''
     print(f"\n=== {title} ===")
     for g in games:
         print(f"{g['match_number']:>2}: {g['round']} {g['match_date']}| {g['team_a']} vs {g['team_b']} | "
@@ -17,50 +18,50 @@ class OrganizerUI():
 
 
     def create_player(self):
-    
-        while True:
+    '''Have the user input all the information needed for the player.'''
+        while True: # Check if name of player is a valid input
             name = input("Enter full name of player: ")
             try:
                 name = self.lapi.valid_name(name)
                 break
             except ValueError as error:
-                print(error)
+                print(f"Error: {error}")
 
 
-        while True:
+        while True: # Check if players date of birth is a valid input
             dob_str = input("Enter player date of birth (DD/MM/YYYY): ")
             try:
-                dob = self.lapi.valid_dob(dob_str) #blud are we fr dob er síðan ekkert notað
+                dob = self.lapi.valid_dob(dob_str)
                 break
             except ValueError as error:
-                print(error)
+                print(f"Error: {error}")
             
-        while True:
+        while True: # Check if players home address is a valid input
             address = input("Enter player's home address: ")
             try:
                 address = self.lapi.valid_address(address)
                 break
             except ValueError as error:
-                print(error) 
+                print(f"Error: {error}")
         
     
-        while True:
+        while True: # Check if players phone number is a valid input
             phone_number = input("Enter player's phone number: ")
             try:
                 self.lapi.valid_phone(phone_number)
                 break
             except ValueError as error:
-                print(error)
+                print(f"Error: {error}")
 
-        while True:
+        while True: # Check if players email address is a valid input
             player_email = input("Enter the player's email address: ")
             try: 
                 self.lapi.valid_email(player_email)
                 break
             except ValueError as error:
-                print(error)
+                print(f"Error: {error}")
     
-        while True:
+        while True: # Check if players handle is a valid input
             handle = input("Enter player's handle: ")
             try:  
                 handle = self.lapi.valid_handle(handle)
@@ -68,14 +69,13 @@ class OrganizerUI():
             except ValueError as error:
                 print(error)
 
-        while True:
+        while True: # Check if players link is a valid input
             link = input("Enter a link (press 'Enter' to skip): ")
             try:
                 link = self.lapi.validate_link(link)
                 break
             except ValueError as error:
-                print(error)
-
+                print(f"Error: {error}")
 
         player_obj = Player(
             name = name,
@@ -90,69 +90,66 @@ class OrganizerUI():
 
         return self.lapi.create_player(player_obj)
 
-        #player = self.lapi.create_new_player(name, dob, address, phone_number, player_email, handle, link)
-        #print("Player created successfully!")
-        #return player
 
     def createTournament(self):
-    
-        while True:
+        '''Input every information needed to create a tournament.'''
+        while True: # Check if tournamnent name is a valid input
             unique_name = input("Create a unique name for the tournament: ")
             try:
                 unique_name = self.lapi.valid_tournament_name(unique_name)
                 break
             except ValueError as error:
-                print(error)
+                print(f"Error: {error}")
 
-        while True:
+        while True: # Check if tournamnent start date is a valid input
             start_date = input("Select the start date of the tournament: ")
             try:
                 start_date = self.lapi.valid_start_date(start_date)
                 break
             except ValueError as error:
-                print(error)
+                print(f"Error: {error}")
 
-        while True:
+        while True: # Check if tournamnent end date is a valid input
             end_date = input("Select the end date of the tournament: ")
             try:
                 end_date = self.lapi.valid_end_date(end_date, start_date)
                 break
             except ValueError as error:
-                print(error)
+                print(f"Error: {error}")
 
-        while True:
+        while True: # Check if tournamnent location is a valid input
             venue = input("Enter the name of a venue (location) for the tournament: ")
             try:
                 venue = self.lapi.valid_tournament_location(venue)
                 break
             except ValueError as error:
-                print(error)
+                print(f"Error: {error}")
         
-        while True:
+        while True: # Check if tournamnent contact name is a valid input
             try:
-                contact_person = input("Name the contact person for this tournament: ")
+                contact_person = input("Who is the contact person for this tournament. Please enter a name: ")
                 contact_person = self.lapi.valid_tournament_contact(contact_person)
                 break
             except ValueError as error:
-                print(error)
+                print(f"Error: {error}")
         
-        while True:
-            contact_email = input("What is the contact email for this tournament: ")
+        while True: # Check if tournamnent contact email is a valid input
+            contact_email = input("What is the contact person's email. Please enter an email address: ")
             try: 
                 self.lapi.valid_email(contact_email)
                 break
             except ValueError as error:
-                print(error)
+                print(f"Error: {error}")
         
-        while True:
-            contact_phone = input("What is the contact phone for this tournament: ")
+        while True: # Check if tournamnent contact phone number is a valid input
+            contact_phone = input("What is the contact person's phone number. Please enter a phone number: ")
             try:
                 self.lapi.valid_phone(contact_phone)
                 break
             except ValueError as error:
-                print(error)
+                print(f"Error: {error}")
         
-    # have it as an object not an dict so it is easier to return and read.
+    # We have it as an object not a dict so it is easier to return and read.
         tournament_obj = Tournament( 
             unique_name=unique_name,
             start_date=start_date,
@@ -165,7 +162,9 @@ class OrganizerUI():
 
         return self.lapi.create_new_tournament(tournament_obj)
 
+
     def update_result(self):
+        '''Update results of the tournament '''
         try:
             tournaments = self.lapi.get_tournament_names()
             print(tournaments)
@@ -176,12 +175,12 @@ class OrganizerUI():
                 if tournament_name in tournaments:
                     break
 
-                print("Tournament not found. Please enter a valid tournament name.")
+                print("Tournament was not found. Please enter a valid tournament name.")
             
             games = self.lapi.get_game_by_tournamentName(tournament_name)
 
             if not games:
-                print("\nNo games found for this tournament.\n")
+                print("\nNo games were found for this tournament.\n")
 
             show_games(games, "Current Games")
             while True:
@@ -191,14 +190,14 @@ class OrganizerUI():
                     score_b = int(input("Enter score for team B: "))
                     break
                 except ValueError:
-                    print("Scores and match number must be integers. Please try again.")
+                    print("Scores and match number must be integer numbers. Please enter valid numbers.")
 
             result = self.lapi.update_game(tournament_name, match_number, score_a, score_b)
 
             winner = result["winner"]
             tournament_name = result["tournament_name"]
 
-            # If a winner exists, advance
+            # If there is a winner, then he advances
             if winner:
                 advance_result = self.lapi.advance_round(tournament_name, match_number, winner)
                 print(advance_result)
@@ -208,26 +207,27 @@ class OrganizerUI():
                     print(f" TOURNAMENT WINNER: {winner} ")
 
             else:
-                print("Game is a draw. Winner cannot advance.")
-
+                print("The result of the game is a draw. Winner cannot advance. Please enter another score")
 
             updated_games = self.lapi.get_game_by_tournamentName(tournament_name)
             show_games(updated_games, "Updated Games")
             
-        except ValueError as e:
-            print(f"Invalid input: {e}")
+        except ValueError as error:
+            print(f"Invalid input: {error}")
 
 
     def create_team_ui(self):
+        '''Creates a new team'''
         print("\n=== Create a New Team ===")
                 
-        team_name = input("Enter Team Name: ").strip()
+        team_name = input("Enter the Team Name: ").strip()
         captain = None
         ascii_logo = input("Enter ASCII Logo (optional): ").strip() or None
 
         new_team = self.lapi.add_team(name=team_name, captain=captain, asciiLogo=ascii_logo)
-        print(f"Team '{new_team.name}' created successfully!")
+        print(f"Team '{new_team.name}' has been successfully created!")
         return new_team
+        
 
     def organizer_see_info(self) -> None:
         '''The organizer can see player information for every player in the tournament'''
@@ -240,9 +240,9 @@ class OrganizerUI():
                 if 1 < userinput <= len(player):
                         break
                 else:
-                    print("A player with this id does not exist")
+                    print("A player with this ID does not exist. Please enter a valid ID number.")
             except ValueError:
-                    print("please enter a valid integer") 
+                    print("The input has to be an integer number. Please enter a valid number.") 
         
         print(f"Player: {player[userinput]}")
         
