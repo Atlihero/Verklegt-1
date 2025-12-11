@@ -4,6 +4,8 @@ api = LL_API()
 class PublicViewer:
 
     def get_player_public(self):
+        '''Gets the players for the public viewer.'''
+        
         try:
             player, team = api.get_player_public() # Get list of players and their team
 
@@ -26,6 +28,8 @@ class PublicViewer:
 
 
     def get_teams_public(self):
+        '''Gets the teams for the public viewer.'''
+        
         try:
             teams, captain = api.get_teams_public() # Get list of teams and their captains
             
@@ -48,6 +52,8 @@ class PublicViewer:
     
 
     def view_schedule(title="Current Games"):
+        '''Gets the schedule for the games.'''
+        
         try:
             tournaments = api.get_tournament_names() # Gets all tournament names
             print(tournaments)
