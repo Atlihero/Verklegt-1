@@ -22,8 +22,8 @@ class PlayerIO:
                 player = Player(
                         row["Name"],
                         row["DOB"],
-                        row["Address"],
                         row["Phonenumber"],
+                        row["Address"],
                         row["Email"],
                         row["Handle"],
                         row["Team"],

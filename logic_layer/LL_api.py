@@ -17,10 +17,6 @@ class LL_API:
 
     
     '''The Logic layer wrapper for the LLPlayer'''
-    def get_all_players(self):
-        '''Gets the players for Organizer to see'''
-        return self.player.get_players()
-
 
     def valid_name(self, name):
         '''Validates player full name.'''
@@ -50,22 +46,21 @@ class LL_API:
         '''Validates the link of the new players.'''
         return self.player.validate_link(link)
     
-    #def create_new_player(self, name, dob_string, address, phone, email, handle, link=""):
-    #    '''Creates a new player'''
-    #    return self.player.create_player(name, dob_string, address, phone, email, handle, link)
-    
     def create_player(self, player_obj: Player):
         '''Creates a new player.'''
         return self.player.create_player(player_obj)
     
-    def get_playerPublic(self):
+    def get_player_public(self):
         '''Gets the team for the public viewer.'''
-        return self.player.get_player_publicViewer()
+        return self.player.get_player_public_viewer()
+
+    def get_all_players(self):
+        '''Gets the players for Organizer to see'''
+        return self.player.get_players()
     
 
     '''Logic layer wrapper for the LLTeams'''
 
-    
     def add_player(self, team_name, player_name):
         '''Add player to team.'''
         return self.team.add_player_to_team(team_name, player_name)
@@ -76,7 +71,7 @@ class LL_API:
     
     def get_teams_public(self):
         '''Gets the teams for the public viewer to see.'''
-        return self.team.getTeamsPublic()
+        return self.team.get_teams_public()
     
     def check_team(self, name):
         '''Check if team has this name.'''
@@ -99,7 +94,7 @@ class LL_API:
 
     def get_all_tournaments(self):
         '''List of all tournaments that have been made'''
-        return self.tournament.get_allTournamnets()
+        return self.tournament.get_all_tournamnets()
     
     def get_tournament_names(self):
         '''List of all names of tournaments that have been'''
@@ -125,7 +120,7 @@ class LL_API:
         '''Determines what team advances to the next round of the tournament'''
         return self.tournament.advance(tournament_name ,match_number, winner)
 
-    def get_game_by_tournamentName(self, tournament_name):
+    def get_game_by_tournament_name(self, tournament_name):
         games = self.tournament.get_all_games()
         return [g for g in games if g["tournament_name"] == tournament_name]
 
