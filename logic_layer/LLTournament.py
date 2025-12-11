@@ -86,10 +86,17 @@ class LLTournament:
         return self.data.update_game(tournament_name, match_number, score_a, score_b)
 
     
-    def get_all_games(self) ->:
-        '''Gets the games from the tournament'''
+    def get_all_games(self) -> list:
+        '''Gets the games from a specific tournament'''
         
-        return self.data.get_games()
+        games = self.data.get_games()
+        all_games = []
+        
+        for game in all_games:
+            if game["tournament_name"] == tournament_name:
+                all_games.append(game)
+        
+        return all_games
 
     
     def get_all_tournamnets(self) -> :
