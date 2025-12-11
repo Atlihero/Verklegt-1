@@ -15,7 +15,7 @@ class OrganizerUI():
     def __init__(self):
         self.lapi = LL_API()
 
-
+ 
     def create_player(self):
     
         while True:
