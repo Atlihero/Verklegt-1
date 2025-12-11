@@ -11,4 +11,8 @@ class Result(Game):
     
     def __str__(self):
         '''Return the information'''
-        return f"{self.score_A}:\n{self.score_B}:\n{self.winner}"
+        return(
+         f"Score for team A  : {self.score_A}\n"
+         f"Score for team B  : {self.score_B}\n"
+         f"Winner            : {self.winner}\n
+         )
