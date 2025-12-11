@@ -128,7 +128,7 @@ class Uimain:
                 elif user_inp == "3": #This is the puplic viewer
 
 
-                    """Now we are in VIWER"""
+                    """Now we are in VIEWER"""
                     clear_term()
                     while True:
                         Happy_paths.Happy_viewer()

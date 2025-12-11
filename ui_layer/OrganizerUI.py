@@ -19,6 +19,8 @@ class OrganizerUI():
 
     def create_player(self):
         '''Have the user input all the information needed for the player.'''
+
+        print("\n=== Create a New Player ===")
         while True: # Check if name of player is a valid input
             name = input("Enter full name of player: ")
             try:
@@ -46,7 +48,7 @@ class OrganizerUI():
         
     
         while True: # Check if player's phone number is a valid input
-            phone_number = "354" + input("Enter player's phone number: ")
+            phone_number = "354" + input("Enter player's phone number (354): ")
             try:
                 phone_number = self.lapi.valid_phone(phone_number)
                 break
@@ -94,6 +96,9 @@ class OrganizerUI():
 
     def createTournament(self):
         '''Input every information needed to create a tournament.'''
+        
+        print("\n=== Create a New Tournament ===")
+
         while True: # Check if tournamnent name is a valid input
             unique_name = input("Create a unique name for the tournament: ")
             try:
@@ -103,7 +108,7 @@ class OrganizerUI():
                 print(f"Error: {error}")
 
         while True: # Check if tournament start date is a valid input
-            start_date = input("Select the start date of the tournament: ")
+            start_date = input("Select the start date of the tournament. DD/MM/YYYY: ")
             try:
                 start_date = self.lapi.valid_start_date(start_date)
                 break
@@ -111,7 +116,7 @@ class OrganizerUI():
                 print(f"Error: {error}")
 
         while True: # Check if tournament end date is a valid input
-            end_date = input("Select the end date of the tournament: ")
+            end_date = input("Select the end date of the tournament. DD/MM/YYYY: ")
             try:
                 end_date = self.lapi.valid_end_date(end_date, start_date)
                 break
@@ -143,7 +148,7 @@ class OrganizerUI():
                 print(f"Error: {error}")
         
         while True: # Check if tournamnent contact phone number is a valid input
-            contact_phone = "354" + input("What is the contact person's phone number. Please enter a phone number: ")
+            contact_phone = "354" + input("What is the contact person's phone number. Please enter a phone number (354): ")
             try:
                 self.lapi.valid_phone(contact_phone)
                 break
