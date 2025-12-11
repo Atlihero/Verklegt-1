@@ -189,10 +189,13 @@ class OrganizerUI():
                     match_number = int(input("\nEnter match number to update: "))
                     score_a = int(input("Enter score for team A: "))
                     score_b = int(input("Enter score for team B: "))
+
+                    if match_number < 0 or score_a < 0 or score_b < 0:
+                        print("Numbers cannot be negative. Please enter non-negative integers.")
+                        continue
                     break
                 except ValueError:
                     print("Scores and match number must be integer numbers. Please enter valid numbers.")
-
             # Updates the game/match results
             result = self.lapi.update_game(tournament_name, match_number, score_a, score_b)
 
