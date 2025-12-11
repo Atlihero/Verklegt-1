@@ -90,7 +90,7 @@ class CaptainUI:
             return
         
         while True:
-            selected = input("Enter the number of the player you want to add: ")
+            selected = input("Enter the number of the player you want to add: \n")
             try:
                 selected_index = int(selected) - 1
             except ValueError:
@@ -100,15 +100,13 @@ class CaptainUI:
                 print("The number is not in the player's number range. Please select another number.")
                 continue
             break
- 
-
 
         player_to_add = players[selected_index]
         player_name = player_to_add.name
 
         try:
             self.ll.add_player_to_team(self.current_team_name, player_name)
-            print(f"{player_name} has been added to {self.current_team_name}.")
+            print(f"\n{player_name} has been added to {self.current_team_name}.")
         except ValueError as error:
             print("Error:", error)
 
@@ -138,14 +136,15 @@ class CaptainUI:
             print("There are no players to remove (only the captain exists).")
             return
 
-        print(f"\nPlayers in {self.current_team_name} (excluding captain {captain_name}):")
+        print(f"\nPlayers in {self.current_team_name} (excluding captain {captain_name}):\n")
+       
         for index, p in enumerate(players, start=1):
             name = p.name
             handle = p.handle
-            print(f"{index}. {name} | Handle: {handle}")
+            print(f"{index:2}. {name.ljust(15)} | Handle: {handle}")
 
         while True:
-            selected = input("Please enter the number of who you want to remove: ")
+            selected = input("\nPlease enter the number of who you want to remove: ")
             try:
                 selected_index = int(selected) - 1
             except ValueError:
@@ -154,7 +153,6 @@ class CaptainUI:
             if selected_index < 0 or selected_index >= len(players):
                 print("A player with this ID does not exist. Please enter a valid ID number.")
                 continue
-
             break
 
         player_to_remove = players[selected_index]
