@@ -18,7 +18,6 @@ class LLPlayer():
     def get_player_public_viewer(self):
         '''Gets the player for the public viewers'''
         return self.data.public_get_player()
-    
 
     def validate_name(self, name: str) -> str:
         '''Checks if name is unique or missing a name'''
