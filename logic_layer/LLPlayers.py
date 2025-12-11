@@ -59,14 +59,14 @@ class LLPlayer():
         if len(phone_number) != 7 or not phone_number.isdigit():
             raise ValueError("Phone number must be exactly 7 digits long. Please try again")
         
-		existing_phone_number: list[Player] = self.data.get_all_players()
+        existing_phone_number: list[Player] = self.data.get_all_players()
         existing_number = []
     
         for number in existing_phone_number:
             if number.phone == phone_number:
                 raise ValueError("Phone number is already in use, please choose another one.")
 			
-		return phone_number
+        return phone_number
             
 
     def validate_email(self, player_email: str) -> str:
@@ -92,7 +92,7 @@ class LLPlayer():
         if len(ending) < 2 or len(ending) > 3 or not ending.isalpha():
             raise ValueError("The email must contain a valid ending. Please try again.")
 		
-		existing_email: list[Player] = self.data.get_all_players()
+        existing_email: list[Player] = self.data.get_all_players()
         existing_emails = []
         for emails in existing_email:
             if emails:
