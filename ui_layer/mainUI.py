@@ -1,8 +1,8 @@
 from logic_layer.LL_api import LL_API
 from ui_layer.Happy_path import Happy_paths
-from ui_layer.OrganizerUI import OrganizerUI
+from ui_layer.OrganizerUi import OrganizerUI
 from ui_layer.Publicviewer import PublicViewer
-from ui_layer.CaptainUI import CaptainUI
+from ui_layer.CaptainUi import CaptainUI
 import os
 
 def clear_term():
