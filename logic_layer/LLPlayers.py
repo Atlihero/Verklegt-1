@@ -96,7 +96,7 @@ class LLPlayer():
         if not handle: # Check if empty
             raise ValueError("Player's handle name cannot be emtpy. Please enter a handle.")
 
-		existing_usernames = self.data.get_all_players()
+        existing_usernames = self.data.get_all_players()
         existing_handles = []
         for player in existing_usernames: 
             if getattr(player, 'handle', None):
