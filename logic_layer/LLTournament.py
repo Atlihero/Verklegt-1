@@ -11,21 +11,6 @@ class LLTournament:
         self.data = DataAPI()
         self.teams = self.data.get_all_teams()
 
-
-    def add_game(self, game_dict: dict):
-        row = [
-            game_dict["tournament_name"],
-            game_dict["round"],
-            game_dict["match_number"],
-            game_dict["match_date"],
-            game_dict["team_a"],
-            game_dict["team_b"],
-            game_dict["score_a"],
-            game_dict["score_b"],
-            game_dict["winner"],
-        ]
-        return self.data.new_game(row)
-
     def create_game(self, tournament_name, round, match_number, match_date, team_a, team_b):
         return [
             tournament_name,
