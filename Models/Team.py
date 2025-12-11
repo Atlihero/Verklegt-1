@@ -1,10 +1,9 @@
 class Team:
     '''Class for information about each team'''
-    def __init__(self, name, captain, asciiLogo, wins: int = 0):
+    def __init__(self, name, captain, asciiLogo):
         self.name = name
         self.captain = captain
         self.asciiLogo = asciiLogo
-        self.wins = wins
 
     
     def __str__(self):
