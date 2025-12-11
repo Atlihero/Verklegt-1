@@ -89,7 +89,7 @@ class LLTournament:
     def get_all_games(self, tournament_name):
         '''Gets the games from a specific tournament'''
         
-        games = self.data.get_games()
+        all_games = self.data.get_games()
         all_games = []
         
         # Choose the tournament that has the same name as the user asked for
