@@ -28,6 +28,7 @@ class Uimain:
         Happy_paths
         organizer = OrganizerUI()
         api = LL_API()
+        publicViewer = PublicViewer()
         while True:
             Happy_paths.Happy_logo()
             user_inp = input("Press any button to start: ")
@@ -45,21 +46,31 @@ class Uimain:
                     Happy_paths.Happy_organizer() #This is the organizer
                     user_inp = input("Enter 1-6 or b: ")
                     if user_inp == "1": #Here you create a new player
-                        organizer.create_player(self)
-                        exit()
+                        Happy_paths.Happy_create_player()
+                        organizer.create_player()
+                        Happy_paths.player_was_made()
+                        user_inp = input("Press any button to return to start")
+                        if user_inp  != 1:
+                            clear_term()
+                            self.start()
                     elif user_inp == "2": #Here you create a tournament
-                        organizer.createTournament(self)
-                        exit()
+                        Happy_paths.Happy_create_tournament()
+                        organizer.createTournament()
+                        self.start()
                     elif user_inp == "3": #Here you create a team
-                        organizer.create_team_ui(self)
+                        Happy_paths.Happy_create_team()
+                        organizer.create_team_ui()
+                        self.start()
                     elif user_inp == "4":
-                        organizer.update_result(self)
-                        exit()
+                        Happy_paths.Happy_Update_result()
+                        organizer.update_result()
+                        self.start()
                     elif user_inp == "5": #here you make a player a captain
                         Happy_paths.Happy_make_captain()
                     elif user_inp == "6":
-                        organizer.organizer_see_info(self)
-                        exit()
+                        Happy_paths.Happy_information()
+                        organizer.organizer_see_info()
+                        self.start()
                     elif user_inp == "b": #return back to starting psition
                         os.system('cls')
                         continue
@@ -80,24 +91,20 @@ class Uimain:
 
                     """Now we are in VIWER"""
                     Happy_paths.Happy_viewer()
-                    user_inp = input("Enter 1, 2, 3 or b")
+                    user_inp = input("Enter 1-3 or b")
                     if user_inp == "1":
-                        print("nice guys")#information on teams
-                        api.get_teams_public()
+                        publicViewer.getplayerPublic()
+                        self.start()
                     elif user_inp == "2":
-                        print("epic")#schedual
-                        api.scheduleGames()
-                        exit()
+                        self.publicviewer.getTeamsPublic()
+                        self.start()
                     elif user_inp == "3":
-                        print("123") #result
-                        
-                        exit()
+                        self.publicviewer.view_schedule()
+                        self.start()
                     else:
                         self.start()
                         exit()
                   
-
-
                 elif user_inp == "b": #return back to the start
 
 
@@ -123,10 +130,6 @@ class Uimain:
             else: #stops the code if you some how manige to give int not string which should not be possible
                 self.start()
                 
-
-
-
-
 
 
 
