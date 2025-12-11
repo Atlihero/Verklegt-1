@@ -28,7 +28,7 @@ class Happy_paths:
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m░       Please select you option     ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit b)                       |\033[0m")
+        print("\033[94m|      Exit q)                       |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     @staticmethod
     def Happy_viewer():
@@ -44,7 +44,7 @@ class Happy_paths:
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m░       Please select you option     ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit b)                       |\033[0m")
+        print("\033[94m|      Exit q)                       |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
         
     @staticmethod
@@ -58,7 +58,7 @@ class Happy_paths:
         print("\033[94m░       Select wich captain          ░\033[0m")
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit b)                       |\033[0m")
+        print("\033[94m|      Exit q)                       |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     @staticmethod
     def Happy_organizer():
@@ -77,7 +77,7 @@ class Happy_paths:
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m░       Please select you option     ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit b)                       |\033[0m")
+        print("\033[94m|      Exit q)                       |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     @staticmethod
     def Happy_create_tournament():
@@ -94,7 +94,7 @@ class Happy_paths:
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m░       Please enter information     ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit b)                       |\033[0m")
+        print("\033[94m|      Exit q)                       |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     @staticmethod
     def Happy_create_team():
@@ -109,7 +109,7 @@ class Happy_paths:
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m░       Please enter information     ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit b)                       |\033[0m")
+        print("\033[94m|      Exit q)                       |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     @staticmethod
     def Happy_make_captain():
@@ -122,7 +122,7 @@ class Happy_paths:
         print("\033[94m░    Enter player to make captain    ░\033[0m")
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit b)                       |\033[0m")
+        print("\033[94m|      Exit q)                       |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     @staticmethod
     def Happy_create_player():
@@ -142,7 +142,7 @@ class Happy_paths:
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m░       Please enter information     ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit b)                       |\033[0m")
+        print("\033[94m|      Exit q)                       |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     @staticmethod
     def Happy_Update_result():
@@ -153,7 +153,7 @@ class Happy_paths:
         print("\033[95m░       >Selected update result      ░\033[0m")
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit b)                       |\033[0m")
+        print("\033[94m|      Exit q)                       |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     @staticmethod
     def Happy_information():
@@ -164,7 +164,7 @@ class Happy_paths:
         print("\033[95m░       >Selected information        ░\033[0m")
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit b)                       |\033[0m")
+        print("\033[94m|      Exit q)                       |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     
     def player_was_made():
