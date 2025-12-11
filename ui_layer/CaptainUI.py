@@ -6,7 +6,7 @@ class CaptainUI:
         self.ll = LL_API()
         self.current_team_name: str | None = None
 
-    # 
+    # Make sure a team is selected
 
     def _ensure_team_selected(self) -> bool:
         """Make sure a team is selected, if not, ask the user to pick one."""
@@ -14,7 +14,7 @@ class CaptainUI:
             return True
         return self.select_captain_and_team()
 
-    # chose which Captain or Team
+    # Chose which Captain or Team
 
     def select_captain_and_team(self) -> bool:
         """
@@ -31,9 +31,7 @@ class CaptainUI:
             print(f"{idx}) Team: {t.name} | Captain: {t.captain}")
 
         while True:
-            choice = input(
-                "Enter team number to log in as captain (or 'b' to go back): "
-            ).strip().lower()
+            choice = input("Enter team number to log in as captain (or 'b' to go back): ").strip().lower()
 
             if choice == "b":
                 return False
@@ -68,14 +66,11 @@ class CaptainUI:
         for index, p in enumerate(players, start=1):
             name = p.get("Name", "Unknown")
             handle = p.get("Handle", "")
-            if handle:
-                print(f"{index}. {name} | Handle: {handle}")
-            else:
-                print(f"{index}. {name}")
+            print(f"{index}. {name}")
         return players
 
     def _get_and_show_available_players(self) -> list[dict]:
-        """Show all players that are NOT in any team."""
+        '''Show all players that are NOT in any team.'''
         if not self._ensure_team_selected():
             return []
 
@@ -159,10 +154,8 @@ class CaptainUI:
         for index, p in enumerate(players, start=1):
             name = p.get("Name", "Unknown")
             handle = p.get("Handle", "")
-            if handle:
-                print(f"{index}. {name} | Handle: {handle}")
-            else:
-                print(f"{index}. {name}")
+            print(f"{index}. {name} | Handle: {handle}")
+
 
         selected = input("Please enter the number of who you want to remove (or 'b' for back): ").strip().lower()
 
@@ -182,9 +175,7 @@ class CaptainUI:
         player_to_remove = players[selected_index]
         player_name = player_to_remove.get("Name", "Unknown")
 
-        confirmation = input(
-            f"Are you sure you want to remove {player_name} from the team? Y/N "
-        ).strip().upper()
+        confirmation = input(f"Are you sure you want to remove {player_name} from the team? Y/N ").strip().upper()
 
         if confirmation != "Y":
             print("Removal cancelled. The player will not be removed from the team.")
@@ -205,9 +196,7 @@ class CaptainUI:
         if not players:
             return
 
-        selected = input(
-            "Please enter the number of whose information you want to see (or 'b' for back): "
-        ).strip().lower()
+        selected = input("Please enter the number of whose information you want to see (or 'b' for back): ").strip().lower()
 
         if selected == "b":
             return
