@@ -28,7 +28,7 @@ class OrganizerUI():
                 print(f"Error: {error}")
 
 
-        while True: # Check if players date of birth is a valid input
+        while True: # Check if player's date of birth is a valid input
             dob_str = input("Enter player date of birth (DD/MM/YYYY): ")
             try:
                 dob = self.lapi.valid_dob(dob_str)
@@ -36,7 +36,7 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
             
-        while True: # Check if players home address is a valid input
+        while True: # Check if player's home address is a valid input
             address = input("Enter player's home address: ")
             try:
                 address = self.lapi.valid_address(address)
@@ -45,15 +45,15 @@ class OrganizerUI():
                 print(f"Error: {error}")
         
     
-        while True: # Check if players phone number is a valid input
-            phone_number = input("Enter player's phone number: ")
+        while True: # Check if player's phone number is a valid input
+            phone = "354" + input("Enter player's phone number: ")
             try:
-                self.lapi.valid_phone(phone_number)
+                phone_number = self.lapi.valid_phone(phone_number)
                 break
             except ValueError as error:
                 print(f"Error: {error}")
 
-        while True: # Check if players email address is a valid input
+        while True: # Check if player's email address is a valid input
             player_email = input("Enter the player's email address: ")
             try: 
                 self.lapi.valid_email(player_email)
@@ -61,7 +61,7 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
     
-        while True: # Check if players handle is a valid input
+        while True: # Check if player's handle is a valid input
             handle = input("Enter player's handle: ")
             try:  
                 handle = self.lapi.valid_handle(handle)
@@ -69,7 +69,7 @@ class OrganizerUI():
             except ValueError as error:
                 print(error)
 
-        while True: # Check if players link is a valid input
+        while True: # Check if player's link is a valid input
             link = input("Enter a link (press 'Enter' to skip): ")
             try:
                 link = self.lapi.validate_link(link)
@@ -101,7 +101,7 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
 
-        while True: # Check if tournamnent start date is a valid input
+        while True: # Check if tournament start date is a valid input
             start_date = input("Select the start date of the tournament: ")
             try:
                 start_date = self.lapi.valid_start_date(start_date)
@@ -109,7 +109,7 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
 
-        while True: # Check if tournamnent end date is a valid input
+        while True: # Check if tournament end date is a valid input
             end_date = input("Select the end date of the tournament: ")
             try:
                 end_date = self.lapi.valid_end_date(end_date, start_date)
@@ -117,7 +117,7 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
 
-        while True: # Check if tournamnent location is a valid input
+        while True: # Check if tournament location is a valid input
             venue = input("Enter the name of a venue (location) for the tournament: ")
             try:
                 venue = self.lapi.valid_tournament_location(venue)
@@ -125,7 +125,7 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
         
-        while True: # Check if tournamnent contact name is a valid input
+        while True: # Check if tournament contact name is a valid input
             try:
                 contact_person = input("Who is the contact person for this tournament. Please enter a name: ")
                 contact_person = self.lapi.valid_tournament_contact(contact_person)
@@ -149,7 +149,7 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
         
-    # We have it as an object not a dict so it is easier to return and read.
+    # We have it as an object, not a dict, so it is easier to return and read.
         tournament_obj = Tournament( 
             unique_name=unique_name,
             start_date=start_date,
@@ -208,7 +208,7 @@ class OrganizerUI():
             advance_result = self.lapi.advance_round(tournament_name, match_number, winner)
             print(advance_result)
 
-            '''if it is the Finals aka F the team that wins that game is the tournament winner'''
+            '''if it is the Finals, aka F, the team that wins that game is the tournament winner'''
             if result["round"] == "F":
                 print("\n==============================")
                 print(f" TOURNAMENT WINNER: {winner} ")
