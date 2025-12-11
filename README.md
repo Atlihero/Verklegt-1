@@ -1,2 +1,2 @@
 ## Verklegt 1
-þetta er verkefni okkar í verklegt eitt :)
+þetta er verkefni hóp 17 í verklegt eitt :)
