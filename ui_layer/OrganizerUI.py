@@ -143,7 +143,7 @@ class OrganizerUI():
                 print(f"Error: {error}")
         
         while True: # Check if tournamnent contact phone number is a valid input
-            contact_phone = input("What is the contact person's phone number. Please enter a phone number: ")
+            contact_phone = "354" + input("What is the contact person's phone number. Please enter a phone number: ")
             try:
                 self.lapi.valid_phone(contact_phone)
                 break
