@@ -1,14 +1,11 @@
 from logic_layer.LL_api import LL_API
+api = LL_API()
 
 class PublicViewer:
 
-    def __init__(self):
-        self.lapi = LL_API()
-
-    
     def get_player_public(self):
         try:
-            player, team = self.lapi.get_player_public() # Get list of players
+            player, team = api.get_player_public() # Get list of players and their team
 
             while True:
                 try: 
@@ -18,38 +15,41 @@ class PublicViewer:
                         break
                     else:
                         print("A player with this ID number does not exist")
-                        
+
                 except ValueError:
                     print("The input has to be a integer number. Please enter a valid number.")
-            # Show the player that was chosen            
-            print(f"Player: {player[userinput-1]}, Team: {team[userinput-1]}")
+                        
+            print(f"Player: {player[userinput-1]}, Team: {team[userinput-1]}") # Show the player and its team
+        
         except ValueError as error:
             print("Please enter a valid integer")
 
 
-    def getTeamsPublic(self):
+    def get_teams_public(self):
         try:
-            teams, captain = self.lapi.get_teams_public()
+            teams, captain = api.get_teams_public() # Get list of teams and their captains
             
             while True:
                 try:
-                    userinput = int(input(f"Select team id between 1-{len(teams)}: "))
+                    userinput = int(input(f"Select team ID between 1-{len(teams)}: "))
 
-                    if 1 < userinput <= len(teams):
+                    if 1 <= userinput <= len(teams): # Check if the input is valid
                         break
                     else:
-                        print("A team with this id does not exist")
+                        print("A team with this ID does not exist")
+
                 except ValueError:
                     print("please enter a valid integer")
 
-            print(f"Team: {teams[userinput-1]}, Captain: {captain[userinput-1]}")
+            print(f"Team: {teams[userinput-1]}, Captain: {captain[userinput-1]}") # Show team and its captain
 
         except ValueError:
             print("Please enter a valid integer")
     
-    def view_schedule(title="Current Games"):
+
+def view_schedule(title="Current Games"):
         try:
-            tournaments = self.lapi.get_tournament_names() # Gets all tournament names
+            tournaments = api.get_tournament_names() # Gets all tournament names
             print(tournaments)
             
             while True:
@@ -61,7 +61,7 @@ class PublicViewer:
                 print("Tournament not found. Please enter a valid tournament name.")
             
             # Get all games/matches that are in the tournament 
-            games = self.lapi.get_game_by_tournament_name(tournament_name) 
+            games = api.get_game_by_tournament_name(tournament_name) 
 
             if not games: # If there are no games found
                 print(f"No games found for tournament: {tournament_name}")
@@ -76,6 +76,3 @@ class PublicViewer:
         
         except ValueError:
             print("Invalid input")
-
-
-
