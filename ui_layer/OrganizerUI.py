@@ -247,7 +247,7 @@ class OrganizerUI():
         print(f"Player: {player[userinput]}")
         
         
-    def make_captain(self):
+    def make_captain(self): #virkar ekki enþá
         """The organizer selects a player to become captain"""
         player_to_cap = self.lapi.get_team_members(self)
         return player_to_cap
