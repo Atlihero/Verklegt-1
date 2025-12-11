@@ -129,7 +129,7 @@ class CaptainUI:
         # Exclude captain from removable list
         players: list[Player] = []
         for p in all_players:
-            if p.name != captain_name:
+            if p.handle != captain_name:
                 players.append(p)
 
         if not players:
