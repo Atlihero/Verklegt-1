@@ -122,7 +122,7 @@ class LL_API:
 
     def get_game_by_tournament_name(self, tournament_name):
         '''Gets the games from a specific tournament.'''
-        return self.tournament.get_all_games(self)
+        return self.tournament.get_all_games(tournament_name)
     
     
     '''Logic layer wrapper for the LLCaptain'''

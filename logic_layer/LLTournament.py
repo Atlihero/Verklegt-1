@@ -86,7 +86,7 @@ class LLTournament:
         return self.data.update_game(tournament_name, match_number, score_a, score_b)
 
     
-    def get_all_games(self, tournament_name) -> list:
+    def get_all_games(self, tournament_name):
         '''Gets the games from a specific tournament'''
         
         games = self.data.get_games()
@@ -112,7 +112,7 @@ class LLTournament:
         return self.data.get_tournament_names()
 
     
-    def advance(self, tournament_name: str, match_number: int, winner: str) -> :
+    def advance(self, tournament_name: str, match_number: int, winner: str):
         '''Shows what team advances to the next round'''
         
         return self.data.advance_round(tournament_name, match_number, winner)
