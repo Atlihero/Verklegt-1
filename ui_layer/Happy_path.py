@@ -277,5 +277,5 @@ class Happy_paths:
     @staticmethod   
     def not_valid_input():
         print("\033[91m\033[100m┌────────────────────────────────────┐\033[0m")
-        print("\033[91m\033[100m|           Not valid input          |\033[0m")
+        print("\033[91m\033[100m|            Invalid input           |\033[0m")
         print("\033[91m\033[100m└────────────────────────────────────┘\033[0m")

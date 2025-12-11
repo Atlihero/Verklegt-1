@@ -9,16 +9,16 @@ class CaptainUI:
     # Chose which Captain or Team
 
     def _player_to_dict(self, p: Player) -> dict:
-        """Convert Player object to dict so we can comfortably use .get()."""
+        '''Convert Player object to dict so we can comfortably use .get().'''
         return {
-            "Name": p.name,
-            "DOB": p.dob,
-            "Address": p.address,
-            "Phonenumber": p.phone,
-            "Email": p.email,
-            "Handle": p.handle,
-            "Team": p.team,
-            "Link": p.link,
+            "Name"        : p.name,
+            "DOB"         : p.dob,
+            "Address"     : p.address,
+            "Phone number": p.phone,
+            "Email"       : p.email,
+            "Handle"      : p.handle,
+            "Team"        : p.team,
+            "Link"        : p.link,
         }
 
     def select_captain_and_team(self) -> bool:
@@ -35,7 +35,6 @@ class CaptainUI:
             captain = captains[i]
             index = i + 1
             print(f"{index}) Team: {team_name} | Captain: {captain}")
-
 
 
         while True:
@@ -67,11 +66,9 @@ class CaptainUI:
         return players
 
     def _get_and_show_available_players(self) -> list[Player]:
-        """Show all players that are NOT in any team."""
+        '''Show all players that are NOT in any team.'''
 
-        players: list[Player] = self.ll.get_available_players_for_captain(
-            self.current_team_name
-        )
+        players: list[Player] = self.ll.get_available_players_for_captain(self.current_team_name)
         if not players:
             print("There are no free players to add.")
             return []
@@ -84,11 +81,6 @@ class CaptainUI:
             print(f"{index}. {p.name}")
         return players_sorted
 
-
-
-
-
-    # Captain actions
 
     def add_to_team(self):
         '''Captain adds a player that has no team to their team.'''
@@ -129,25 +121,15 @@ class CaptainUI:
                 captain_name = cap
                 break
 
-
-
         # Exclude captain from removable list
         players: list[Player] = []
         for p in all_players:
             if p.name != captain_name:
                 players.append(p)
 
-
-
-
-
         if not players:
             print("There are no players to remove (only the captain exists).")
             return
-
-
-
-
 
         print(f"\nPlayers in {self.current_team_name} (excluding captain {captain_name}):")
         for index, p in enumerate(players, start=1):
@@ -182,19 +164,13 @@ class CaptainUI:
         '''Captain can see detailed info about a player in their own team.'''
         players = self._get_and_show_team_members()
 
-
         if not players:
-
             return
-
-
+        
         selected = input("Please enter the number of whose information you want to see: ").strip().lower()
 
         selected_index = int(selected) - 1
         if selected_index < 0 or selected_index >= len(players):
-
-
-
             print("The number is not in the player's number range. Please select another number.")
             return
 
@@ -204,9 +180,9 @@ class CaptainUI:
         try:
             player: Player = self.ll.cap_view_player_info(player_name, self.current_team_name)
             info = self._player_to_dict(player)
-            print(f"\nPlayer Information for {player_name}:")
+            print(f"\n===Player Information for {player_name}===\n")
             for key, value in info.items():
-                print(f"{key}: {value}")
+                print(f"{key:12} : {value}")
 
             print("\nDo you want to edit this player's contact info?")
             choice = input("Change phone/address/email? (y/n): ").strip().lower()
