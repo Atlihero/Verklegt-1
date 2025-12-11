@@ -11,6 +11,7 @@ class Game(Round):
 
 
     def __str__(self):
+        '''Return the information'''
         return f"{self.date}:\n{self.round}"
 
     
