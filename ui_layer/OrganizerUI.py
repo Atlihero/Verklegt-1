@@ -170,6 +170,7 @@ class OrganizerUI():
         print(tournaments)
         tournament_name = input("Enter tournament name: ").strip()
         games = self.lapi.get_game_by_tournamentName(tournament_name)
+        print(g for g in games if g["tournament_name"] == tournament_name)
 
         if not games:
             print("\nNo games found for this tournament.\n")
