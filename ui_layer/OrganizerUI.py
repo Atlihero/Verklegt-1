@@ -77,6 +77,7 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
 
+        # Create the player object using valid fieldnames
         player_obj = Player(
             name = name,
             dob = dob_str,
@@ -85,7 +86,7 @@ class OrganizerUI():
             email = player_email,
             handle = handle,
             link = link,
-            team = None,
+            team = None, # Player start with no team
         )
 
         return self.lapi.create_player(player_obj)
@@ -149,15 +150,15 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
         
-    # We have it as an object, not a dict, so it is easier to return and read.
+        # Create the tournament object with valid fieldnames
         tournament_obj = Tournament( 
-            unique_name=unique_name,
-            start_date=start_date,
-            end_date=end_date,
-            venue=venue,
-            contact_person=contact_person,
-            contact_email=contact_email,
-            contact_phone=contact_phone
+            unique_name = unique_name,
+            start_date = start_date,
+            end_date = end_date,
+            venue = venue,
+            contact_person = contact_person,
+            contact_email = contact_email,
+            contact_phone = contact_phone
         )
 
         return self.lapi.create_new_tournament(tournament_obj)
