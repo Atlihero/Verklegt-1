@@ -13,7 +13,7 @@ class LLTeams:
     def get_teams_public(self):
         '''So the public viewer can see the teams.'''
         data = DataAPI()
-        return data.getPublicTeam()
+        return data.get_public_team()
 
     
     def add_player_to_team(self, team_name: str, player_name: str) -> Player:
