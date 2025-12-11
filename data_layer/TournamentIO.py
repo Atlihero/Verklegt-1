@@ -11,7 +11,6 @@ class TournamentIO:
             tournament = [] # empty list we will add all the tournaments to
             with open(TOURNAMENT_PATH, "r", encoding = "utf-8") as csvfile:
                 reader  = csvfile.readlines() 
-                #reader = csv.reader(csvfile) virkar með þessu fyrir Organizer
                 for row in reader:
                     tournament.append(row) 
         except ValueError: 
@@ -57,12 +56,12 @@ class TournamentIO:
 
     def get_all_games(self) -> list:
         '''Finds all games in the csv file.'''
-        games = [] # Empty list we will add every game to the list
+        games = [] # We will add every game to the list
         try:
             with open(GAMES_PATH, "r", encoding = "utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                    games.append(row) # Add every 
+                    games.append(row)
         except FileNotFoundError:
             return "No file was found" #[]
         return games
@@ -79,7 +78,7 @@ class TournamentIO:
                 game["score_a"] = score_a
                 game["score_b"] = score_b
             
-            # find out who is the winner for the round
+            # Find out who is the winner of the round in action
                 if score_a > score_b:
                     game["winner"] = game["team_a"]
                 
@@ -108,7 +107,7 @@ class TournamentIO:
         fieldnames = ["tournament_name","round","match_number","match_date",
                       "team_a","team_b","score_a","score_b","winner"]
         
-        # open the file and write in the results from the round
+        # Open the file and write in the results from the round
         with open(GAMES_PATH, "w", newline = "", encoding = "utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
             writer.writeheader()
@@ -122,8 +121,8 @@ class TournamentIO:
         '''These are if commands that determine the advance order by match number
         From Round of 16 to QF (QF = quarter final)
         And then from QF to SF (SF = semi final)
-        and then from SF to F (F = final)
-        '''
+        and then from SF to F (F = final)'''
+        
         games = self.get_all_games()
 
         if 1 <= match_number <= 8:
@@ -149,7 +148,7 @@ class TournamentIO:
         fieldnames = ["tournament_name","round","match_number","match_date",
                       "team_a","team_b","score_a","score_b","winner"]
         
-        # open and write in the file which team advances to the next roun
+        # Open and write in the file which team advances to the next round
         with open(GAMES_PATH, "w", newline = "", encoding = "utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
             writer.writeheader()
