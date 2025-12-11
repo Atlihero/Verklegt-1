@@ -166,40 +166,56 @@ class OrganizerUI():
         return self.lapi.create_new_tournament(tournament_obj)
 
     def update_result(self):
-        tournaments = self.lapi.get_tournament_names()
-        print(tournaments)
-        tournament_name = input("Enter tournament name: ").strip()
-        games = self.lapi.get_game_by_tournamentName(tournament_name)
+        try:
+            tournaments = self.lapi.get_tournament_names()
+            print(tournaments)
+            
+            while True:
+                tournament_name = input("Enter tournament name: ").strip()
 
-        if not games:
-            print("\nNo games found for this tournament.\n")
+                if tournament_name in tournaments:
+                    break
 
-        show_games(games, "Current Games")
+                print("Tournament not found. Please enter a valid tournament name.")
+            
+            games = self.lapi.get_game_by_tournamentName(tournament_name)
 
-        match_number = int(input("\nEnter match number to update: "))
-        score_a = int(input("Enter score for team A: "))
-        score_b = int(input("Enter score for team B: "))
+            if not games:
+                print("\nNo games found for this tournament.\n")
 
-        result = self.lapi.update_game(tournament_name, match_number, score_a, score_b)
+            show_games(games, "Current Games")
+            while True:
+                try:
+                    match_number = int(input("\nEnter match number to update: "))
+                    score_a = int(input("Enter score for team A: "))
+                    score_b = int(input("Enter score for team B: "))
+                    break
+                except ValueError:
+                    print("Scores and match number must be integers. Please try again.")
 
-        winner = result["winner"]
-        tournament_name = result["tournament_name"]
+            result = self.lapi.update_game(tournament_name, match_number, score_a, score_b)
 
-        # If a winner exists, advance
-        if winner:
-            advance_result = self.lapi.advance_round(tournament_name, match_number, winner)
-            print(advance_result)
+            winner = result["winner"]
+            tournament_name = result["tournament_name"]
 
-            if result["round"] == "F":
-                print("\n==============================")
-                print(f" TOURNAMENT WINNER: {winner} ")
+            # If a winner exists, advance
+            if winner:
+                advance_result = self.lapi.advance_round(tournament_name, match_number, winner)
+                print(advance_result)
 
-        else:
-            print("Game is a draw. Winner cannot advance.")
+                if result["round"] == "F":
+                    print("\n==============================")
+                    print(f" TOURNAMENT WINNER: {winner} ")
+
+            else:
+                print("Game is a draw. Winner cannot advance.")
 
 
-        updated_games = self.lapi.get_game_by_tournamentName(tournament_name)
-        show_games(updated_games, "Updated Games")
+            updated_games = self.lapi.get_game_by_tournamentName(tournament_name)
+            show_games(updated_games, "Updated Games")
+            
+        except ValueError as e:
+            print(f"Invalid input: {e}")
 
 
     def create_team_ui(self):
@@ -215,8 +231,19 @@ class OrganizerUI():
 
     def organizer_see_info(self) -> None:
         '''The organizer can see player information for every player in the tournament'''
-        userinput = int(input("Veldu ID leikmanns milli 1-48: ")) 
         player = self.lapi.organizer_view_player_info()
+
+        while True:
+            try:
+                userinput = int(input(f"Veldu ID leikmanns milli 1-{len(player)}: "))
+
+                if 1 < userinput <= len(player):
+                        break
+                else:
+                    print("A player with this id does not exist")
+            except ValueError:
+                    print("please enter a valid integer") 
+        
         print(f"Player: {player[userinput]}")
 
 #vantar create captain!!!

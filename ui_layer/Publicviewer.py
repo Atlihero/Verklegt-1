@@ -4,26 +4,41 @@ class PublicViewer:
 
     def getplayerPublic(self):
         try:
-            userinput = int(input("Veldu ID leikmanns milli 1-48: "))  
             player, team = api.get_playerPublic()
 
-            if userinput < 1 or userinput > len(player):
-                print("A player with this id does not exist")
-            else:
-                print(f"Player: {player[userinput-1]}, Team: {team[userinput-1]}")
-        except ValueError:
+            while True:
+                try:
+                    userinput = int(input(f"Select a player id between 1-{len(player)}: "))
+
+                    if 1 < userinput <= len(player):
+                        break
+                    else:
+                        print("A player with this id does not exist")
+                except ValueError:
+                    print("please enter a valid integer")
+                        
+            print(f"Player: {player[userinput-1]}, Team: {team[userinput-1]}")
+        except ValueError as e:
             print("Please enter a valid integer")
 
 
     def getTeamsPublic(self):
         try:
-            userinput = int(input("Select team id 1-16: "))
             teams, captain = api.get_teams_public()
+            
+            while True:
+                try:
+                    userinput = int(input(f"Select team id between 1-{len(teams)}: "))
 
-            if userinput < 1 or userinput > len(teams):
-                print("A team with this ID does not exist")
-            else:
-                print(f"Team: {teams[userinput-1]}, Captain: {captain[userinput-1]}")
+                    if 1 < userinput <= len(teams):
+                        break
+                    else:
+                        print("A team with this id does not exist")
+                except ValueError:
+                    print("please enter a valid integer")
+
+            print(f"Team: {teams[userinput-1]}, Captain: {captain[userinput-1]}")
+
         except ValueError:
             print("Please enter a valid integer")
     
@@ -31,10 +46,14 @@ class PublicViewer:
         try:
             tournaments = api.get_tournament_names()
             print(tournaments)
+            
+            while True:
+                tournament_name = input("Enter tournament name: ").strip()
 
-            tournament_name = input("Enter tournament name: ").strip()
-            if not tournament_name:
-                raise ValueError("Tournament name cannot be empty.")
+                if tournament_name in tournaments:
+                    break
+
+                print("Tournament not found. Please enter a valid tournament name.")
             
             games = api.get_game_by_tournamentName(tournament_name)
             if not games:
