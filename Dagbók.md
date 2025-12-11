@@ -211,3 +211,10 @@ Mættir á morgundund eru Brynja, Christian, Daníel og Elvar, morgunfundur var 
 **Staðan eftir daginn í dag:**
 - Komin mjög vel á veg með að tengja saman lögin
 - Skýrslan er að mestu tilbúin, bara á eftir að bæta inn í hana myndum úr kerfinu.
+
+### Fimmtudagur 11.12.25 (Dagur 4 Vika 3)
+Mættir á morgunfund eru allir nema Atli. Elvar mætti aðeins seint á fundinn.
+**Verkefni dagsins eru:**
+-	Klára kóðann 
+-	Komast eins langt og hægt er í skýrslunni
+-	Undirbúa hvernig kynningarmyndbandið á að vera.
