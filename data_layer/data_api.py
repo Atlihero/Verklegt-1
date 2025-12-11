@@ -9,9 +9,9 @@ class DataAPI:
         self.team = TeamIO()
 
 
-'''Data wrapper for PlayerIO'''
+    '''Data wrapper for PlayerIO'''
 
-     def add_player(self,player_dict):
+    def add_player(self,player_dict):
         '''Ads a new player to the csv with the dict data'''
         return self.player.create_new_player(player_dict)
 
@@ -24,7 +24,7 @@ class DataAPI:
         return self.player.get_player_PublicViewer()
 
 
-'''Data wrapper for TeamIO'''
+    '''Data wrapper for TeamIO'''
 
     def get_all_Teams(self):
         '''Gets all the teams an puts them in a list'''
@@ -47,7 +47,7 @@ class DataAPI:
         return self.team.add_teams_to_tournament(tournament_name, teams_list)
 
 
-'''Data wrapper for TournamentIO'''
+    '''Data wrapper for TournamentIO'''
 
     def new_tournament(self, tournament_dict):
         '''Creates a new tournament in the csv'''
@@ -63,7 +63,7 @@ class DataAPI:
 
     def create_new_tournaments(self, tournament_obj):
         '''Creates new tournament and adds to csv file'''
-       return self.tournament.create_new_tournament(tournament_obj)
+        return self.tournament.create_new_tournament(tournament_obj)
 
     def new_game(self, row: list):
         '''Creates a new game in the csv'''
