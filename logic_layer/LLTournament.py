@@ -92,7 +92,8 @@ class LLTournament:
         games = self.data.get_games()
         all_games = []
         
-        for game in all_games:
+        # Choose the tournament that has the same name as the user asked for
+        for game in all_games: 
             if game["tournament_name"] == tournament_name:
                 all_games.append(game)
         
