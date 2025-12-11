@@ -1,4 +1,4 @@
-from Models import Player
+from Models.Player import Player
 from datetime import datetime
 from data_layer.data_api import DataAPI
 from data_layer.PlayerIO import PlayerIO
@@ -52,15 +52,18 @@ class LLPlayer():
         return address
         
 
-    def validate_phone(self, phone_number: int) -> int:
+    def validate_phone(self, phone_number: str) -> str:
         '''Validates the players phone number, if not then 
           the user tries again.'''
+        phone_number = phone_number.strip()
+        if not phone_number: # Check if empty
+            raise ValueError("Player's phone number cannot be emtpy. Please enter a phone number.")
+        
 		# Number has to be exactly 7 digits long
         if len(phone_number) != 7 or not phone_number.isdigit():
             raise ValueError("Phone number must be exactly 7 digits long. Please try again")
         
         existing_phone_number: list[Player] = self.data.get_all_players()
-        existing_number = []
     
         for number in existing_phone_number:
             if number.phone == phone_number:
