@@ -17,15 +17,16 @@ class Tournament():
 
     def __str__(self):
         return (
-        f"Name: {self.unique_name}:\n"
-        f"Start date: {self.start_date}:\n"
-        f"End date: {self.end_date}:\n"
-        f"Location: {self.venue}\n"
-        f"Contact person: {self.contact_person}\n"
-        f"Contact person email: {self.contact_email}\n"
-        f"Contact person phone: {self.contact_phone}"
+        f"Name                  : {self.unique_name}\n"
+        f"Start date            : {self.start_date}\n"
+        f"End date              : {self.end_date}\n"
+        f"Location              : {self.venue}\n"
+        f"Contact person        : {self.contact_person}\n"
+        f"Contact person email  : {self.contact_email}\n"
+        f"Contact person phone  : {self.contact_phone}"
         )
     
     
     def __repr__(self):
         return str(self)
+    

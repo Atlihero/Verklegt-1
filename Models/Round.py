@@ -1,13 +1,24 @@
+from Models.Tournament import Tournament
 
+class Round(Tournament):
+    '''Class for each round of the tournament that number what
+    the round is and when it starts and ends'''
+    def __init__(self, number, startTime, endTime):
+        self.number = number
+        self.start_time = startTime
+        self.end_time = endTime
 
-class Round:
-    def __init__(self, name, games=None):
-        self.name = name
-        self.games = games if games is not None else []
-
+    
     def __str__(self):
-        return f"{self.name}:\n{self.games}"
+        '''Return the information'''
+        return (
+        f"Number: {self.number}\n"
+        f"Start Time: {self.start_time}\n"
+        f"End Time: {self.end_time}"
+        )
+
     
     def __repr__(self):
         return str(self)
+    
     

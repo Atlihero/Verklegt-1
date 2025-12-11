@@ -1,21 +1,17 @@
-TeamName,Captain,Wins,Points
-"Fantom","Shrek Swomp",3,9
-"Black in Yellow","Tony Stork",1,3
-"Red Dragons","Peter Borker",0,0
-"Blue Shells","Master Chiefy",10,30
-"Spartan Squad","Kratos Rage",6,18
-"Blockheads","Yoshi Dino",5,15
-"Poké Pals","Ash Catchum",9,27
-"Silver Blades","Geralt Rivia",3,9
-"Shadow Clan","Zelda Royle",2,6
-"Pink Stars","Kirby Puff",4,12
-"Limit Breakers","Cloud Strife",7,21
-"Street Squad","Ryu Hadou",4,12
-"Fatal Force","Scorpion Stng",2,6
-"Explorer Crew","Nathan Drayk",6,18
-"Fireflies","Joel Millr",7,21
-"Payload","Doom Slayer",6,18
-"Arcane Crew","Jinx Boom",4,12
-"Anti Krambúðin","King kong",5,15
-
-
+TeamName,Captain,asciiLogo
+SegFault Spartans,SegFaultSam,ASCII_SPARTAN_HELMET
+NullPointer Ninjas,NullPointerNina,ASCII_NINJA_SHADOW
+OffByOne Offense,OffByOneOlaf,ASCII_FENCEPOST_BUG
+Pepsi Max Punishers,PepsiMaxPalli,ASCII_PEPSI_CAN
+Chuck Norris Fan Club,RoundhouseRik,ASCII_ROUNDHOUSE_KICK
+IndentationError Invaders,IndentationErrorIna,ASCII_INDENT_ICON
+Assembly Avengers,MovAxMaria,ASCII_OPCODES
+Datalab Dominators,BitTwiddlerBjarni,ASCII_BITMASK
+Bomblab Bombers,BombDefusalDori,ASCII_BOMB_WIRE
+StackOverflow Stackers,CopyPasteKalli,ASCII_STACK_FRAME
+CacheHit Crusaders,L1CacheLara,ASCII_CACHE_LINES
+WhileTrue Tryhards,WhileTrueWendy,ASCII_LOOP_ICON
+Segmentation Foul,SegmentationFoulStebbi,ASCII_RED_CARD
+RaceCondition Racers,RaceConditionRagnhildur,ASCII_CHECKERED_FLAG
+Undefined Behavior United,UBUnitedUlfar,ASCII_GLITCHED_LOGO
+Pepsi Max Overflow,PepsiMaxOverflowPetra,ASCII_OVERFLOWING_CAN

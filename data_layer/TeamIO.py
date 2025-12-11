@@ -31,24 +31,6 @@ class TeamIO:
         except ValueError:
             f"Failed to display the captain and the team name. Please try again."
         return teams, captain
-    
-
-    '''def get_team_stats(self) -> list:
-        Gathers wins and points for a team and puts in a list for easy access
-        try:
-            Wins = [] # Empty list for the wins of teams
-            Points = [] # Empty list for the points of teams
-            with open(TEAM_PATH, "r", encoding="utf-8") as csvfile:
-                reader = csv.DictReader(csvfile) #reads the file like a dictionary
-                for row in reader: 
-                # Adds the wins to wins list based on the number in the wins column in the csv
-                    Wins.append(row["Wins"]) 
-                # Adds the points to points list based on the number in the points column in the csv
-                    Points.append(row["Points"]) 
-                return Wins, Points # Returns both of those lists with updated numbers
-        except ValueError:  # In case of wrong inputs 
-            f"Failed to display the points and wins of the team. Please try again."
-        pass'''
         
 
     def create_new_team(self, name: str, captain: str = None, asciiLogo: str = "") -> str:

@@ -18,7 +18,11 @@ class LLOrganizer():
         
         # Get all tournament names from the csv file
         existing_tournament_names = self.dapi.get_all_tournaments()
-        existing_name = [row[0] for row in existing_tournament_names if row]
+        existing_name = []
+        for row in existing_tournament_names: 
+            if row: # Check if row is not empty, to prevent errors
+                existing_name.append(row[0])
+    
         if name in existing_name: # Checking if the name is unique
             raise ValueError("Name already exists, please choose another one.")
 
@@ -73,6 +77,6 @@ class LLOrganizer():
     
 
     def organizer_player_info(self):
-        """Allows the organizer to see information on all the players"""
+        '''Allows the organizer to see information on all the players'''
         all_players = self.playerio.get_players()
         return all_players

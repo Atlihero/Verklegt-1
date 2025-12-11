@@ -7,7 +7,11 @@ class Team:
     
     #Strengur sem skilar þeim úpllýsingum í nýjum línum
     def __str__(self):
-        return f"{self.name}:\n{self.captain}:\n{self.asciiLogo}"
+        return (
+        f"Name      : {self.name}\n"
+        f"Captain   : {self.captain}\n"
+        f"AsciiLogo : {self.asciiLogo}"
+        )
 
     def __repr__(self):
         return str(self)

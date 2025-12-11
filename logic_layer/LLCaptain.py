@@ -22,7 +22,7 @@ class LLCaptain():
         return team_members
             
     
-    def get_available_players(self, team_name: str) -> list:
+    def get_available_players(self) -> list:
         '''Return availale players as a list if they are not a member of any team'''
         all_players = self.dapi.get_all_players()
         available_players = []
@@ -30,6 +30,7 @@ class LLCaptain():
     # if p.get("Team") is nothing or if p.get("Team").strip() are empty then it appends to the list
             if p.get("Team") is None or p.get("Team").strip() == "":
                 available_players.append(p)
+        return available_players
 
 
     def add_player_to_team(self, team_name: str, player_name: str):
@@ -47,7 +48,7 @@ class LLCaptain():
         all_players = self.playerio.get_players()
         player_to_add = None
         for p in all_players:
-            if p.get("Name") == player_name.strip:
+            if p.get("Name") == player_name.strip():
                 player_to_add = p
                 break
 

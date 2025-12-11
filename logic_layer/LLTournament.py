@@ -106,7 +106,7 @@ class LLTournament:
     
 
     def get_tournament_names(self):
-        return self.data.get_tournamentNames()
+        return self.data.get_tournament_names()
     
     
     def advance(self, tournament_name: str, match_number: int, winner: str):
