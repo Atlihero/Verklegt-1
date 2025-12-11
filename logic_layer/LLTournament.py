@@ -110,7 +110,6 @@ class LLTournament:
         return self.data.advance_round(tournament_name, match_number, winner)
     
 
-    
     def new_tourney(self, tournament_obj: Tournament) -> list:
         '''Returns a list of the new tournament that was created'''
         

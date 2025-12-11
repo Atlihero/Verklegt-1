@@ -19,6 +19,8 @@ class OrganizerUI():
 
     def create_player(self):
         '''Have the user input all the information needed for the player.'''
+
+        print("\n=== Create a New Player ===")
         while True: # Check if name of player is a valid input
             name = input("Enter full name of player: ")
             try:
@@ -46,7 +48,7 @@ class OrganizerUI():
         
     
         while True: # Check if player's phone number is a valid input
-            phone_number = "354" + input("Enter player's phone number: ")
+            phone_number = "354" + input("Enter player's phone number (354): ")
             try:
                 phone_number = self.lapi.valid_phone(phone_number)
                 break
@@ -94,6 +96,9 @@ class OrganizerUI():
 
     def createTournament(self):
         '''Input every information needed to create a tournament.'''
+        
+        print("\n=== Create a New Tournament ===")
+
         while True: # Check if tournamnent name is a valid input
             unique_name = input("Create a unique name for the tournament: ")
             try:
@@ -103,7 +108,7 @@ class OrganizerUI():
                 print(f"Error: {error}")
 
         while True: # Check if tournament start date is a valid input
-            start_date = input("Select the start date of the tournament: ")
+            start_date = input("Select the start date of the tournament. DD/MM/YYYY: ")
             try:
                 start_date = self.lapi.valid_start_date(start_date)
                 break
@@ -111,7 +116,7 @@ class OrganizerUI():
                 print(f"Error: {error}")
 
         while True: # Check if tournament end date is a valid input
-            end_date = input("Select the end date of the tournament: ")
+            end_date = input("Select the end date of the tournament. DD/MM/YYYY: ")
             try:
                 end_date = self.lapi.valid_end_date(end_date, start_date)
                 break
@@ -143,7 +148,7 @@ class OrganizerUI():
                 print(f"Error: {error}")
         
         while True: # Check if tournamnent contact phone number is a valid input
-            contact_phone = "354" + input("What is the contact person's phone number. Please enter a phone number: ")
+            contact_phone = "354" + input("What is the contact person's phone number. Please enter a phone number (354): ")
             try:
                 self.lapi.valid_phone(contact_phone)
                 break
@@ -186,13 +191,20 @@ class OrganizerUI():
 
             while True:
                 try:
+                    '''
+                    enter the match to edit and the scores of both teams with error handling
+                    on negative and invalid inputs
+                    '''
                     match_number = int(input("\nEnter match number to update: "))
                     score_a = int(input("Enter score for team A: "))
                     score_b = int(input("Enter score for team B: "))
+
+                    if match_number < 0 or score_a < 0 or score_b < 0:
+                        print("Numbers cannot be negative. Please enter non-negative integers.")
+                        continue
                     break
                 except ValueError:
                     print("Scores and match number must be integer numbers. Please enter valid numbers.")
-
             # Updates the game/match results
             result = self.lapi.update_game(tournament_name, match_number, score_a, score_b)
 
@@ -238,7 +250,7 @@ class OrganizerUI():
     def organizer_see_info(self) -> None:
         '''The organizer can see player information for every player in the tournament'''
         player = self.lapi.organizer_view_player_info() # Get list of players and their team
-
+        print(f"\n=== Player Information ===")
         while True:
             try:
                 userinput = int(input(f"Select a player ID between 1-{len(player)}: "))

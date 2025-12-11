@@ -70,7 +70,7 @@ class Happy_paths:
         print("\033[91m|             GLADIATORS             |\033[0m")
         print("\033[91m└────────────────────────────────────┘\033[0m")
         print("\033[94m░                                    ░\033[0m")
-        print("\033[95m░       >Selected: Organizer          ░\033[0m")
+        print("\033[95m░       >Selected: Organizer         ░\033[0m")
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m░  (1)    Create player              ░\033[0m")
         print("\033[94m░  (2)    Create tournament          ░\033[0m")
