@@ -164,7 +164,7 @@ class OrganizerUI():
         return self.lapi.create_new_tournament(tournament_obj)
 
 
-   def update_result(self):
+    def update_result(self):
         '''Update results of the tournament '''
         try:
             tournaments = self.lapi.get_tournament_names() # List of all tournament names

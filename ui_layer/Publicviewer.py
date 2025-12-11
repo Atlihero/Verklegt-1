@@ -47,7 +47,7 @@ class PublicViewer:
             print("Please enter a valid integer")
     
 
-def view_schedule(title="Current Games"):
+    def view_schedule(title="Current Games"):
         try:
             tournaments = api.get_tournament_names() # Gets all tournament names
             print(tournaments)
