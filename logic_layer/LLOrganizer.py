@@ -20,7 +20,7 @@ class LLOrganizer():
         existing_tournament_names = self.dapi.get_all_tournaments()
         existing_name = []
         for row in existing_tournament_names: 
-            if row:
+            if row: # Check if row is not empty, to prevent errors
                 existing_name.append(row[0])
     
         if name in existing_name: # Checking if the name is unique
