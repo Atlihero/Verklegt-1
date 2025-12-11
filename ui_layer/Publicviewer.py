@@ -5,13 +5,13 @@ class PublicViewer:
     def getplayerPublic(self):
         userinput = int(input("Veldu ID leikmanns milli 1-48: "))  
         player, team = api.get_playerPublic()
-        print(f"Player: {player[userinput-1]}, Team: {team[userinput-1]}")
+        print(f"Player: {player[userinput-1]}, Team: {team[userinput-1]}")  # Userinput -1 til þess að ignora header línu
 
 
     def getTeamsPublic(self):
         userinput = int(input("Select team id 1-16: "))
         teams, captain = api.get_teams_public()
-        print(f"Team: {teams[userinput-1]}, Captain: {captain[userinput-1]}")
+        print(f"Team: {teams[userinput-1]}, Captain: {captain[userinput-1]}") # Userinput -1 til þess að ignora header línu
     
     def view_schedule(title="Current Games"):
         tournaments = api.get_tournament_names()
