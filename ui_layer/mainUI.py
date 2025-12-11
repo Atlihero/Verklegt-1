@@ -85,6 +85,7 @@ class Uimain:
                     elif user_inp == "5": #here you make a player a captain
                         clear_term()
                         Happy_paths.Happy_make_captain()
+                        organizer.make_captain()
                         user_inp = input("Press any button to return to start")
                         if user_inp  != 1:
                             clear_term()

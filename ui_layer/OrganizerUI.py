@@ -245,5 +245,10 @@ class OrganizerUI():
                     print("please enter a valid integer") 
         
         print(f"Player: {player[userinput]}")
+        
+        
+    def make_captain(self):
+        """The organizer selects a player to become captain"""
+        player_to_cap = self.lapi.get_team_members(self)
+        return player_to_cap
 
-#vantar create captain!!!
