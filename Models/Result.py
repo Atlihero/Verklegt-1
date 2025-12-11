@@ -14,5 +14,5 @@ class Result(Game):
         return(
          f"Score for team A  : {self.score_A}\n"
          f"Score for team B  : {self.score_B}\n"
-         f"Winner            : {self.winner}\n"
+         f"Winner            : {self.winner}"
          )
