@@ -186,6 +186,10 @@ class OrganizerUI():
 
             while True:
                 try:
+                    '''
+                    enter the match to edit and the scores of both teams with error handling
+                    on negative and invalid inputs
+                    '''
                     match_number = int(input("\nEnter match number to update: "))
                     score_a = int(input("Enter score for team A: "))
                     score_b = int(input("Enter score for team B: "))
