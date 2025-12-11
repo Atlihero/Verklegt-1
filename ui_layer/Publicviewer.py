@@ -1,10 +1,14 @@
 from logic_layer.LL_api import LL_API
-api = LL_API()
+
 class PublicViewer:
 
+    def __init__(self):
+        self.lapi = LL_API()
+
+    
     def get_player_public(self):
         try:
-            player, team = api.get_player_public() # Get list of players
+            player, team = self.lapi.get_player_public() # Get list of players
 
             while True:
                 try: 
@@ -25,7 +29,7 @@ class PublicViewer:
 
     def getTeamsPublic(self):
         try:
-            teams, captain = api.get_teams_public()
+            teams, captain = self.lapi.get_teams_public()
             
             while True:
                 try:
@@ -45,7 +49,7 @@ class PublicViewer:
     
     def view_schedule(title="Current Games"):
         try:
-            tournaments = api.get_tournament_names() # Gets all tournament names
+            tournaments = self.lapi.get_tournament_names() # Gets all tournament names
             print(tournaments)
             
             while True:
@@ -57,7 +61,7 @@ class PublicViewer:
                 print("Tournament not found. Please enter a valid tournament name.")
             
             # Get all games/matches that are in the tournament 
-            games = api.get_game_by_tournament_name(tournament_name) 
+            games = self.lapi.get_game_by_tournament_name(tournament_name) 
 
             if not games: # If there are no games found
                 print(f"No games found for tournament: {tournament_name}")
