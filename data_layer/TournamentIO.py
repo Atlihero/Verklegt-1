@@ -76,54 +76,33 @@ class TournamentIO:
     
 
     def update_games(self, tournament_name: str, match_number: int, score_a: int, score_b: int) -> str:
-        '''Updates the scoring for played games.'''
+        """Updates a game's score and winner"""
         games = self.get_all_games()
-        winner = None
-        update = False
-        
+        updated_game = None
+
         for game in games:
-            if  game["tournament_name"] == tournament_name and int(game["match_number"]) == match_number:
+            if game["tournament_name"] == tournament_name and int(game["match_number"]) == match_number:
                 game["score_a"] = score_a
                 game["score_b"] = score_b
-            
-            # Find out who is the winner of the round in action
                 if score_a > score_b:
                     game["winner"] = game["team_a"]
-                
                 elif score_b > score_a:
                     game["winner"] = game["team_b"]
-                
                 else:
-                    while score_a == score_b:
-                        print("The scores entered end in a draw. Please re-enter the scores:")
-                        score_a = int(input(f"Score for {game['team_a']}: "))
-                        score_b = int(input(f"Score for {game['team_b']}: "))
-                    
-                    game["score_a"] = score_a
-                    game["score_b"] = score_b
-                    game["winner"] = game["team_a"] if score_a > score_b else game["team_b"]
+                    game["winner"] = None
+                updated_game = game
+                break
 
-                winner = game["winner"]
-                current_round = game["round"]
-                tournament_name = game["tournament_name"]
-                
-                update = True
+        if updated_game:
+            fieldnames = ["tournament_name", "round", "match_number", "match_date",
+                          "team_a", "team_b", "score_a", "score_b", "winner"]
+            with open(GAMES_PATH, "w", newline="", encoding="utf-8") as csvfile:
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                writer.writeheader()
+                for g in games:
+                    writer.writerow(g)
 
-        if not update:
-            return f"No game was found. Please try again"
-        
-        fieldnames = ["tournament_name","round","match_number","match_date",
-                      "team_a","team_b","score_a","score_b","winner"]
-        
-        # Open the file and write in the results from the round
-        with open(GAMES_PATH, "w", newline = "", encoding = "utf-8") as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
-            writer.writeheader()
-            
-            for g in games:
-                writer.writerow(g)
-        
-        return {"winner": winner, "round": current_round, "tournament_name": tournament_name}
+        return updated_game
 
 
     def advance(self, tournament_name: str, match_number: int, winner: str):
