@@ -194,20 +194,24 @@ class OrganizerUI():
 
             result = self.lapi.update_game(tournament_name, match_number, score_a, score_b)
 
+            '''If a draw occurs the scores must be inputted again'''
+            while result["winner"] is None:
+                print(f"The game between {result['team_a']} and {result['team_b']} ended in a draw. Please enter new scores.")
+                score_a = int(input(f"Score for {result['team_a']}: "))
+                score_b = int(input(f"Score for {result['team_b']}: "))
+                result = self.lapi.update_game(tournament_name, match_number, score_a, score_b)
+
             winner = result["winner"]
             tournament_name = result["tournament_name"]
 
-            # If there is a winner, then he advances
-            if winner:
-                advance_result = self.lapi.advance_round(tournament_name, match_number, winner)
-                print(advance_result)
+            '''The winner advances'''
+            advance_result = self.lapi.advance_round(tournament_name, match_number, winner)
+            print(advance_result)
 
-                if result["round"] == "F":
-                    print("\n==============================")
-                    print(f" TOURNAMENT WINNER: {winner} ")
-
-            else:
-                print("The result of the game is a draw. Winner cannot advance. Please enter another score")
+            '''if it is the Finals aka F the team that wins that game is the tournament winner'''
+            if result["round"] == "F":
+                print("\n==============================")
+                print(f" TOURNAMENT WINNER: {winner} ")
 
             updated_games = self.lapi.get_game_by_tournamentName(tournament_name)
             show_games(updated_games, "Updated Games")
