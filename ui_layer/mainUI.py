@@ -135,12 +135,12 @@ class Uimain:
                         Happy_paths.Happy_viewer()
                         user_inp = input("Enter 1, 2, 3 or q: ")
                         if user_inp == "1":
-                            publicViewer.getplayerPublic()
+                            publicViewer.get_player_public()
                             user_inp = input("Press any button to continue")
                             if user_inp  != 1:
                                 clear_term()
                         elif user_inp == "2":
-                            self.publicviewer.getTeamsPublic()
+                            self.publicviewer.get_teams_public()
                             user_inp = input("Press any button to continue")
                             if user_inp  != 1:
                                 clear_term()
