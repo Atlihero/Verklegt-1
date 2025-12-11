@@ -72,9 +72,7 @@ class LLTournament:
                 team_b = round_teams[i + 1]
                 match_date = current_date.strftime("%d/%m/%Y")
 
-                game_dict = self.create_game_dict(
-                    tournament_name, round_name, match_number, match_date, team_a, team_b
-                )
+                game_dict = self.create_game(tournament_name, round_name, match_number, match_date, team_a, team_b)
                 self.data.new_game(game_dict)
                 all_games.append(game_dict)
 
