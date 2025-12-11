@@ -27,6 +27,8 @@ class Uimain:
         """Prints the game screen on terminal and controles the flow of information"""
         Happy_paths
         organizer = OrganizerUI()
+        captain = CaptainUI()
+
         api = LL_API()
         publicViewer = PublicViewer()
         while True:
@@ -101,27 +103,24 @@ class Uimain:
                 
                 elif user_inp == "2": #This is the Captain
 
-
                     """Now we are in CAPTAIN"""
 
-                    clear_term()
-                    Happy_paths.Happy_captain()
-                    user_inp = input("Press any button to start")
-                    if user_inp  == "1":
-                        clear_term()
-                        self.start()
-                    elif user_inp == "2":
-                        clear_term()
-                    elif user_inp == "3":
-                        clear_term()
-                    elif user_inp == "4":
-                        clear_term()
-                    elif user_inp == "4":
-                        clear_term()
-                    elif user_inp == "q":
-                        clear_term()
-                    else:
-                        clear_term()
+                    if not captain.select_captain_and_team():
+                        continue # go back to main menue if captain not found
+                   
+                    Happy_paths.Happy_captain_add_or_info()
+                    cap_choice = input("").strip().lower()
+
+
+                    if cap_choice == "1":
+                        captain.add_to_team()
+                    elif cap_choice == "2":
+                        captain.remove_from_team()
+                    elif cap_choice == "3":
+                        captain.cap_see_player_info()
+                    elif cap_choice == "b":
+                        os.system("cls")
+                        continue
                     
 
 
