@@ -66,8 +66,7 @@ class LLTeams:
     def new_team(self, name: str, captain: str = None, asciiLogo: str = "") -> Team:
         '''Create a new team and add it to the csv file.'''
         new_team = Team(name=name, captain=captain, asciiLogo=asciiLogo)
-        teams_ = self.teams
-        teams_.append(new_team)
+        self.teams.append(new_team)
         
         # saves the new team in the data_layer
         DataAPI().add_team(name, captain, asciiLogo)
