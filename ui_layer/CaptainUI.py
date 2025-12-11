@@ -172,7 +172,9 @@ class CaptainUI:
 
         try:
             self.ll.remove_player_from_team(self.current_team_name, player_name)
-            print(f"{player_name} has been removed from the team.")
+            print("\033[92m\033[100m┌────────────────────────────────────────────────────┐\033[0m")
+            print(f"\033[92m\033[100m {player_name} has been removed from the team.\033[0m")
+            print("\033[92m\033[100m└────────────────────────────────────────────────────┘\033[0m")
         except ValueError as error:
             print("Error:", error)
 
