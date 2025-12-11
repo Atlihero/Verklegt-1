@@ -15,7 +15,7 @@ class LLPlayer():
         return self.data.get_all_players()
     
 
-    def get_player_publicViewer(self):
+    def get_player_public_viewer(self):
         '''Gets the player for the public viewers'''
         return self.data.public_get_player()
     

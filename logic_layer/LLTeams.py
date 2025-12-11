@@ -10,12 +10,11 @@ class LLTeams:
         self.teams = DataAPI()
 
     
-    def getTeamsPublic(self):
+    def get_teams_public(self):
         '''So the public viewer can see the teams.'''
         data = DataAPI()
         return data.getPublicTeam()
 
-    
     
     def add_player_to_team(self, team_name: str, player_name: str) -> Player:
         '''Captain wants to add a player to his team'''

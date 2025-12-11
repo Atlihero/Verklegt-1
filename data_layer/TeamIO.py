@@ -21,7 +21,7 @@ class TeamIO:
         return teams # Returns the list with the team
     
 
-    def getTeam_public(self) -> list:
+    def get_team_public(self) -> list:
         '''Only shows captain and team name for the public viewer '''
         try:
             teams = [] # We will add the right team to the list

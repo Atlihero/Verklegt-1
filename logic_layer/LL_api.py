@@ -50,17 +50,13 @@ class LL_API:
         '''Validates the link of the new players.'''
         return self.player.validate_link(link)
     
-    #def create_new_player(self, name, dob_string, address, phone, email, handle, link=""):
-    #    '''Creates a new player'''
-    #    return self.player.create_player(name, dob_string, address, phone, email, handle, link)
-    
     def create_player(self, player_obj: Player):
         '''Creates a new player.'''
         return self.player.create_player(player_obj)
     
-    def get_playerPublic(self):
+    def get_player_public(self):
         '''Gets the team for the public viewer.'''
-        return self.player.get_player_publicViewer()
+        return self.player.get_player_public_viewer()
     
 
     '''Logic layer wrapper for the LLTeams'''
@@ -76,7 +72,7 @@ class LL_API:
     
     def get_teams_public(self):
         '''Gets the teams for the public viewer to see.'''
-        return self.team.getTeamsPublic()
+        return self.team.get_teams_public()
     
     def check_team(self, name):
         '''Check if team has this name.'''
@@ -99,7 +95,7 @@ class LL_API:
 
     def get_all_tournaments(self):
         '''List of all tournaments that have been made'''
-        return self.tournament.get_allTournamnets()
+        return self.tournament.get_all_tournamnets()
     
     def get_tournament_names(self):
         '''List of all names of tournaments that have been'''

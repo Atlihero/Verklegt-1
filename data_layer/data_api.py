@@ -26,7 +26,7 @@ class DataAPI:
 
     '''Data wrapper for TeamIO'''
 
-    def get_all_Teams(self):
+    def get_all_teams(self):
         '''Gets all the teams an puts them in a list'''
         return self.team.get_all_teams()
 
@@ -38,9 +38,9 @@ class DataAPI:
         '''Adds a new team to the csv with the dict details'''
         return self.team.create_new_team(name, captain, asciiLogo)
     
-    def getPublicTeam(self):
+    def get_public_team(self):
         '''Gets the teams for the public viewer'''
-        return self.team.getTeam_public()
+        return self.team.get_team_public()
 
     def add_team_to_tournament(self, tournament_name, teams_list):
         '''Add exactly 16 teams to the tournament'''
