@@ -1,5 +1,6 @@
 from logic_layer.LL_api import LL_API
 from Models.Player import Player
+import os
 
 class CaptainUI:
     def __init__(self):
@@ -177,6 +178,13 @@ class CaptainUI:
             print("\033[92m\033[100m┌────────────────────────────────────────────────────┐\033[0m")
             print(f"\033[92m\033[100m {player_name} has been removed from the team.\033[0m")
             print("\033[92m\033[100m└────────────────────────────────────────────────────┘\033[0m")
+            user_inp = input("Press any button to return to start")
+            if user_inp  != 1:
+                if os.name == 'nt':
+                    _ = os.system('cls')
+                else:
+                    _ = os.system('clear')
+                
         except ValueError as error:
             print("Error:", error)
 
