@@ -95,9 +95,12 @@ class LLPlayer():
         handle = handle.strip()
         if not handle: # Check if empty
             raise ValueError("Player's handle name cannot be emtpy. Please enter a handle.")
-        
-        existing_usernames = self.data.get_all_players()
-        existing_handles = [p.handle for p in existing_usernames]
+
+		existing_usernames = self.data.get_all_players()
+        existing_handles = []
+        for player in existing_usernames: 
+            if getattr(player, 'handle', None):
+                existing_handles.append(player.handle)
         
         if handle in existing_handles: # Checking if the handle is already in use
             raise ValueError("Handle is already in use, please choose another one.")
