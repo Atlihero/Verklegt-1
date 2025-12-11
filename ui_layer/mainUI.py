@@ -171,12 +171,11 @@ class Uimain:
 
                     """now this is for invalid input"""
                     #need to find a way to return to input not back or exit
-                    Happy_paths.not_valid_input()
                     clear_term()
                     Happy_paths.not_valid_input()
-                        
-                    
             
-            else: #restarts the code if you some how manige to give int not string which should not be possible
+        
+            
+            else: #restarts the code if you some how manige to give int and not string which should not be possible
                 self.start()
                 
