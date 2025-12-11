@@ -59,6 +59,14 @@ class LLPlayer():
 		# Number has to be exactly 7 digits long
         if len(phone_number) != 7 or not phone_number.isdigit():
             raise ValueError("Phone number must be exactly 7 digits long. Please try again")
+        
+        existing_phone_number: list[Player] = self.data.get_all_players()
+        existing_number = []
+    
+        for number in existing_phone_number:
+            if number.phone == phone_number:
+                raise ValueError("Phone number is already in use, please choose another one.")
+
         return phone_number
             
 
@@ -85,6 +93,15 @@ class LLPlayer():
         if len(ending) < 2 or len(ending) > 3 or not ending.isalpha():
             raise ValueError("The email must contain a valid ending. Please try again.")
 
+        existing_email: list[Player] = self.data.get_all_players()
+        existing_emails = []
+        for emails in existing_email:
+            if emails:
+                existing_emails.append(emails.email)
+
+        if player_email in existing_emails:
+                raise ValueError("Email is already in use, please choose another one.")
+
         return player_email
 
 
@@ -96,14 +113,16 @@ class LLPlayer():
         if not handle: # Check if empty
             raise ValueError("Player's handle name cannot be emtpy. Please enter a handle.")
         
-        existing_usernames = self.data.get_all_players()
-        existing_handles = [p.handle for p in existing_usernames]
+        existing_usernames: list[Player] = self.data.get_all_players()
+        existing_handles = []
+        for player in existing_usernames: 
+            if player:
+                existing_handles.append(player.handle)
         
         if handle in existing_handles: # Checking if the handle is already in use
             raise ValueError("Handle is already in use, please choose another one.")
-
+        
         return handle
-
     
     def validate_link(self, link: str) -> str:
         '''Checks if the link is a valid link'''

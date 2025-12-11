@@ -45,9 +45,9 @@ class OrganizerUI():
         
     
         while True:
-            phone_number = input("Enter player's phone number: ")
+            phone_number = "354" + input("Enter player's phone number (354): ")
             try:
-                self.lapi.valid_phone(phone_number)
+                phone_number = self.lapi.valid_phone(phone_number)
                 break
             except ValueError as error:
                 print(error)
