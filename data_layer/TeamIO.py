@@ -10,9 +10,12 @@ class TeamIO:
             teams = [] # Empty list in which the team that is chosen goes into
             with open(TEAM_PATH, "r", encoding = "utf-8") as csvfile:
                 reader  = csvfile.readlines() # Reads the linse in the csv
+                
                 for row in reader: # For loop that goes through the lines to look for the right team
                     teams.append(row) # Append the team chosen to the list
+                    
             return teams # Returns the list
+            
         except ValueError: # In case of wrong inputs
             f"It was not possible to return a new list of players for the team. Please try again."
         return teams # Returns the list with the team
@@ -25,9 +28,11 @@ class TeamIO:
             captain = [] # We will add the right captain to the list
             with open(TEAM_PATH, "r", encoding = "utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
+                
                 for row in reader:
                     teams.append(row["TeamName"]) 
                     captain.append(row["Captain"])
+                    
         except ValueError:
             f"Failed to display the captain and the team name. Please try again."
         return teams, captain
@@ -40,6 +45,7 @@ class TeamIO:
         # The user writes in the details needed for a team like the name
                 writer = csv.writer(csvfile) 
                 writer.writerow([name, captain, asciiLogo]) # Prints what was written in a new row 
+                
         except ValueError: # In case of wrong inputs 
             f"Failed to add a new team. Please try again."
         return f"New team has been added!" 
@@ -52,9 +58,11 @@ class TeamIO:
         try:
             with open(TEAM_PATH, "a", newline = "", encoding = "utf-8") as csvfile:
                 writer = csv.writer(csvfile)
+                
                 for team in teams:
                     writer.writerow([tournament, team])
                 return "The team has been added to the tournament."
+                
         except ValueError:
             return "Failed to add the team to the tournament. Please try again."
 
@@ -65,9 +73,11 @@ class TeamIO:
         try:
             with open(TEAM_PATH, "r", newline = "", encoding = "utf-8") as csvfile:
                 reader = csv.reader(csvfile)
+                
                 for row in reader:
                     if row:
                         teams.append(row[0])
+                        
         except FileNotFoundError:
             f"The file was not found" 
             pass
