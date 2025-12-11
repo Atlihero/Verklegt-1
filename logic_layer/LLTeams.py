@@ -7,7 +7,7 @@ from data_layer.data_api import DataAPI
 
 class LLTeams:
     def __init__(self): 
-        self.teams: list[Team] = self._load_teams_from_csv()
+        self.teams = DataAPI()
 
     
     def getTeamsPublic(self):
