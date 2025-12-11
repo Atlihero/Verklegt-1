@@ -11,8 +11,10 @@ class TournamentIO:
             tournament = [] # Empty list we will add all the tournaments to
             with open(TOURNAMENT_PATH, "r", encoding = "utf-8") as csvfile:
                 reader  = csvfile.readlines() 
+                
                 for row in reader:
                     tournament.append(row) 
+                    
         except ValueError: 
             return f"Failed to find and display the tournament. Please try again."
         return tournament 
@@ -24,8 +26,10 @@ class TournamentIO:
             tournament_names = [] # Old tournament names go in this list.
             with open(TOURNAMENT_PATH, "r", encoding = "utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
+                
                 for row in reader:
                     tournament_names.append(row["tournamentName"]) 
+                    
         except FileNotFoundError:
             return "No older tournaments name found"
         return tournament_names
@@ -39,6 +43,7 @@ class TournamentIO:
                 writer = csv.writer(csvfile)
                 writer.writerow(tournament) # Write the new tournament to the file.
             return f"New Tournament has been created!"    
+            
         except ValueError: 
             f"Failed to create a new tournament. Please try again."
 
@@ -49,6 +54,7 @@ class TournamentIO:
             with open(GAMES_PATH, "a", newline = "", encoding = "utf-8") as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow(games) # Add the new game to the csv file
+                
             return f"New game has been added to the tournament"
         except ValueError:
             return "Failed to add a new game to the tournament. Please try again."
@@ -60,8 +66,10 @@ class TournamentIO:
         try:
             with open(GAMES_PATH, "r", encoding = "utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
+                
                 for row in reader:
                     games.append(row)
+                    
         except FileNotFoundError:
             return "No file was found"
         return games
@@ -111,6 +119,7 @@ class TournamentIO:
         with open(GAMES_PATH, "w", newline = "", encoding = "utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
             writer.writeheader()
+            
             for g in games:
                 writer.writerow(g)
         
@@ -152,6 +161,7 @@ class TournamentIO:
         with open(GAMES_PATH, "w", newline = "", encoding = "utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
             writer.writeheader()
+            
             for g in games:
                 writer.writerow(g)
         
