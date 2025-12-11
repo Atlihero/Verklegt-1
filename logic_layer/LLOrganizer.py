@@ -32,7 +32,7 @@ class LLOrganizer():
     def choose_start_date(self, start_date: str) -> datetime:
         '''Check if the start date for a tournament is a valid date'''
         
-		try:
+        try:
             # Change string input to datetime
             start_date = datetime.strptime(start_date, "%d/%m/%Y")
             
@@ -47,7 +47,7 @@ class LLOrganizer():
     def choose_end_date(self, end_date, start_date) -> datetime:
         '''Check if the end date for a tournament is a valid date'''
         
-		try:
+        try:
             # Change string input to datetime
             end_date = datetime.strptime(end_date, "%d/%m/%Y")
             
@@ -81,5 +81,5 @@ class LLOrganizer():
     def organizer_player_info(self):
         '''Allows the organizer to see information on all the players'''
         
-		all_players = self.playerio.get_players()
+        all_players = self.playerio.get_players()
         return all_players

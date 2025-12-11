@@ -13,19 +13,19 @@ class LLPlayer():
     def get_all_players(self):
         '''Gets the players from the csv file'''
         
-		return self.data.get_all_players()
+        return self.data.get_all_players()
     
-
+    
     def get_player_public_viewer(self):
         '''Gets the players for the public viewers'''
        
-		return self.data.public_get_player()
+        return self.data.public_get_player()
 
 	
     def validate_name(self, name: str) -> str:
         '''Checks if name input is missing'''
         
-		name = name.strip()
+        name = name.strip()
         if not name: # Check if empty
             raise ValueError("Player name cannot be emtpy. Please enter a valid name.")
     
@@ -36,7 +36,7 @@ class LLPlayer():
         '''Checks player's date of birth and if the format fits the 
         standards, then the user can continue inputting the information.'''
         
-		try:
+        try:
             # change string input to datetime
             dob = datetime.strptime(dob_str, "%d/%m/%Y")
             
@@ -51,7 +51,7 @@ class LLPlayer():
     def validate_address(self, address: str) -> str:
         '''Checks if address input is empty'''
         
-		address = address.strip()
+        address = address.strip()
         if not address: # Check if empty
             raise ValueError("Player's address name cannot be emtpy. Please enter a valid address.")
         
@@ -62,7 +62,7 @@ class LLPlayer():
         '''Validates the players phone number, if invalid then 
           the user tries again.'''
         
-		phone_number = phone_number.strip()
+        phone_number = phone_number.strip()
         if not phone_number: # Check if empty
             raise ValueError("Player's phone number cannot be emtpy. Please enter a phone number.")
         
@@ -83,7 +83,7 @@ class LLPlayer():
         '''Checks players email address and if it is valid then he can contiue.
            If email is invalid the user tries again.'''
         
-		try:
+        try:
             local_name, domain = player_email.split("@")
                 
 		# Check if the inputted email has @ 
@@ -118,7 +118,7 @@ class LLPlayer():
     def validate_handle(self, handle: str) -> str:
         '''Checks if the username is already in use. No two users can have the same username '''
         
-		handle = handle.strip()
+        handle = handle.strip()
         if not handle: # Check if empty
             raise ValueError("Player's handle name cannot be emtpy. Please enter a handle.")
 
