@@ -17,10 +17,6 @@ class LL_API:
 
     
     '''The Logic layer wrapper for the LLPlayer'''
-    def get_all_players(self):
-        '''Gets the players for Organizer to see'''
-        return self.player.get_players()
-
 
     def valid_name(self, name):
         '''Validates player full name.'''
@@ -57,11 +53,14 @@ class LL_API:
     def get_player_public(self):
         '''Gets the team for the public viewer.'''
         return self.player.get_player_public_viewer()
+
+    def get_all_players(self):
+        '''Gets the players for Organizer to see'''
+        return self.player.get_players()
     
 
     '''Logic layer wrapper for the LLTeams'''
 
-    
     def add_player(self, team_name, player_name):
         '''Add player to team.'''
         return self.team.add_player_to_team(team_name, player_name)
