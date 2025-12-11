@@ -1,82 +1,264 @@
 from logic_layer.LL_api import LL_API
 
+
 class CaptainUI:
     def __init__(self):
         self.ll = LL_API()
+        self.current_team_name: str | None = None
 
+    # 
 
-    def add_to_team(self, team_name: str):
-        '''Captain can add players from the list to his team'''
-        player_name = input("Enter the name of the player you want to add to your team: ")
-        try:
-            self.ll.add_player_to_team(team_name, player_name)
-            print(f"{player_name} has been added to {team_name}.")
-        except ValueError as error:
-            print("Error: ", error)
+    def _ensure_team_selected(self) -> bool:
+        """Make sure a team is selected, if not, ask the user to pick one."""
+        if self.current_team_name is not None:
+            return True
+        return self.select_captain_and_team()
 
+    # chose which Captain or Team
 
-    def remove_from_team(self, team_name: str):
-        # get current team members
-        players = self.ll.get_team_members(team_name)
+    def select_captain_and_team(self) -> bool:
+        """
+        Make the user choose which team they are captain of.
+        """
+        teams = self.ll.view_teams()
+
+        if not teams:
+            print("There are no teams in the system yet.")
+            return False
+
+        print("\nAvailable teams / captains:")
+        for idx, t in enumerate(teams, start=1):
+            print(f"{idx}) Team: {t.name} | Captain: {t.captain}")
+
+        while True:
+            choice = input(
+                "Enter team number to log in as captain (or 'b' to go back): "
+            ).strip().lower()
+
+            if choice == "b":
+                return False
+
+            if not choice.isdigit():
+                print("Please enter a number or 'b'.")
+                continue
+
+            index = int(choice)
+            if 1 <= index <= len(teams):
+                selected_team = teams[index - 1]
+                self.current_team_name = selected_team.name
+                print(f"\nYou are now captain of team: {self.current_team_name}")
+                return True
+
+            print(f"Please enter a number between 1 and {len(teams)}.")
+
+    
+
+    def _get_and_show_team_members(self) -> list[dict]:
+        """Get team members for current team (as dicts) and print them."""
+        if not self._ensure_team_selected():
+            return []
+
+        players = self.ll.get_team_members(self.current_team_name)
 
         if not players:
-            print("There are currently no players in your team. Please add members to be able to remove members.")
-            return 
-        
-        print("\nPlayers in your team: ")
-        for index, p in enumerate(start = 1):
-            print(f"{index}. {p.get("Name")} | Handle: {p.get("Handle")}")
+            print("There are currently no players in your team.")
+            return []
 
-        try:
-            selected = input("Please enter the number of who you want to remove: ")
-            selected_index = int(selected) - 1
-            if selected_index < 0 or selected_index >= len(players):
-                print("The number is not in the player's number range. Please select another number.")
-                return
-        except ValueError:
+        print(f"\nPlayers in {self.current_team_name}:")
+        for index, p in enumerate(players, start=1):
+            name = p.get("Name", "Unknown")
+            handle = p.get("Handle", "")
+            if handle:
+                print(f"{index}. {name} | Handle: {handle}")
+            else:
+                print(f"{index}. {name}")
+        return players
+
+    def _get_and_show_available_players(self) -> list[dict]:
+        """Show all players that are NOT in any team."""
+        if not self._ensure_team_selected():
+            return []
+
+        players = self.ll.get_available_players_for_captain(self.current_team_name)
+        if not players:
+            print("There are no free players to add.")
+            return []
+
+        # Sort alphabetically by Name
+        players_sorted = sorted(
+            players,
+            key=lambda p: (p.get("Name") or "").lower()
+        )
+
+        print("\nAvailable players (no team yet):")
+        for index, p in enumerate(players_sorted, start=1):
+            name = p.get("Name", "Unknown")
+            print(f"{index}. {name}")
+        return players_sorted
+
+
+
+
+    # Captain actions
+
+    def add_to_team(self):
+        """Captain adds a player (who has no team) to their team."""
+        if not self._ensure_team_selected():
+            return
+
+        players = self._get_and_show_available_players()
+        if not players:
+            return
+
+        selected = input("Enter the number of the player you want to add (or 'b' for back): ").strip().lower()
+
+        if selected == "b":
+            print("Cancelled adding player.")
+            return
+
+        if not selected.isdigit():
+            print("The input must be a number or 'b'.")
+            return
+
+        selected_index = int(selected) - 1
+        if selected_index < 0 or selected_index >= len(players):
             print("The number is not in the player's number range. Please select another number.")
             return
-        
-        player_to_remove = players[selected_index]
 
-        confirmation = input(f"Are you sure you want to remove {player_to_remove} from the team? Y/N")
-        if confirmation.upper() != "y":
-            print("Removal cancelled. The player will not be removed from the team.")
+        player_to_add = players[selected_index]
+        player_name = player_to_add.get("Name", "Unknown")
 
         try:
-            removed_player = self.ll.remove_player_from_team(player_to_remove.get("Name"), team_name)
-            print(f"{removed_player} has been removed from the team.")
+            self.ll.add_player_to_team(self.current_team_name, player_name)
+            print(f"{player_name} has been added to {self.current_team_name}.")
         except ValueError as error:
-            print("Error:", error) 
+            print("Error:", error)
 
-
-    def cap_see_player_info(self, team_name: str):
-        '''Captain or organizer can see player info'''
-        players = self.ll.get_team_members(team_name)
-        if not players:
-            print("There are currently no players in your team. Please add members to be able to remove members.")
+    def remove_from_team(self):
+        """Captain removes a player from their own team (not the captain)."""
+        if not self._ensure_team_selected():
             return
-        
-        print("\nPlayers in your team: ")
-        for index, p in enumerate(start = 1):
-            print(f"{index}. {p.get("Name")}")
+
+        all_players = self.ll.get_team_members(self.current_team_name)
+
+        # Find the captain name for this team so we don't remove them
+        team_list = self.ll.view_teams()
+        captain_name = next(
+            (t.captain for t in team_list if t.name == self.current_team_name),
+            None
+        )
+
+        # Exclude captain from removable list
+        players = [p for p in all_players if p.get("Name") != captain_name]
+
+        if not players:
+            print("There are no players to remove (only the captain exists).")
+            return
+
+        print(f"\nPlayers in {self.current_team_name} (excluding captain {captain_name}):")
+        for index, p in enumerate(players, start=1):
+            name = p.get("Name", "Unknown")
+            handle = p.get("Handle", "")
+            if handle:
+                print(f"{index}. {name} | Handle: {handle}")
+            else:
+                print(f"{index}. {name}")
+
+        selected = input("Please enter the number of who you want to remove (or 'b' for back): ").strip().lower()
+
+        if selected == "b":
+            print("Removal cancelled.")
+            return
+
+        if not selected.isdigit():
+            print("The input must be a number or 'b'.")
+            return
+
+        selected_index = int(selected) - 1
+        if selected_index < 0 or selected_index >= len(players):
+            print("The number is not in the player's number range. Please select another number.")
+            return
+
+        player_to_remove = players[selected_index]
+        player_name = player_to_remove.get("Name", "Unknown")
+
+        confirmation = input(
+            f"Are you sure you want to remove {player_name} from the team? Y/N "
+        ).strip().upper()
+
+        if confirmation != "Y":
+            print("Removal cancelled. The player will not be removed from the team.")
+            return
 
         try:
-            selected = input("Please enter the number of whose information you want to see: ")
-            selected_index = int(selected) - 1
-            if selected_index < 0 or selected_index >= len(players):
-                print("The number is not in the player's number range. Please select another number.")
-                return
-        except ValueError:
+            self.ll.remove_player_from_team(self.current_team_name, player_name)
+            print(f"{player_name} has been removed from the team.")
+        except ValueError as error:
+            print("Error:", error)
+
+    def cap_see_player_info(self):
+        """Captain can see detailed info about a player in their own team."""
+        if not self._ensure_team_selected():
+            return
+
+        players = self._get_and_show_team_members()
+        if not players:
+            return
+
+        selected = input(
+            "Please enter the number of whose information you want to see (or 'b' for back): "
+        ).strip().lower()
+
+        if selected == "b":
+            return
+
+        if not selected.isdigit():
+            print("The input must be a number or 'b'.")
+            return
+
+        selected_index = int(selected) - 1
+        if selected_index < 0 or selected_index >= len(players):
             print("The number is not in the player's number range. Please select another number.")
             return
 
         player_to_see = players[selected_index]
+        player_name = player_to_see.get("Name", "Unknown")
 
         try:
-            info = self.ll.cap_view_player_info(team_name, player_to_see.get("Name"))
-            print(f"\nPlayer Information for {player_to_see}:")
-            for attr, value in vars(info).items():
-                print(f"{attr}: {value}")
+            info = self.ll.cap_view_player_info(player_name, self.current_team_name)
+            print(f"\nPlayer Information for {player_name}:")
+            for key, value in info.items():
+                print(f"{key}: {value}")
+
+            print("\nDo you want to edit this player's contact info?")
+            choice = input("Change phone/address/email? (y/n): ").strip().lower()
+
+            if choice != "y":
+                return
+        
+            current_phone = info.get("Phonenumber", "")
+            current_address = info.get("Address", "")
+            current_email = info.get("Email", "")
+
+            print("\nLeave field empty to keep current value.")
+            new_phone = input(f"New phone  (current: {current_phone}): ").strip()
+            new_address = input(f"New address (current: {current_address}): ").strip()
+            new_email = input(f"New email   (current: {current_email}): ").strip()
+
+            updated_info = self.ll.update_player_contact(
+                player_name,
+                self.current_team_name,
+                new_phone,
+                new_address,
+                new_email
+            )
+
+
+            print("\nUpdated player info:")
+            for key, value in updated_info.items():
+                print(f"{key}: {value}")
+
+
+
         except ValueError as error:
-            print("Error: ", error)
+            print("Error:", error)
