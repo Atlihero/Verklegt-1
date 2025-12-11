@@ -16,35 +16,6 @@ class LLTeams:
         return data.getPublicTeam()
 
     
-    def _load_teams_from_csv(self) -> list[Team]:
-        '''Gets teams from the csv file and puts in a list'''
-        raw_rows = TeamIO.get_team(self)
-        teams: list[Team] = []
-
-        for line in raw_rows:  # Loops each line from the csv
-            line = line.strip()
-            if not line or line.startswith("TeamID"):
-                continue  # skip empty lines and header
-
-            # Split á kommu og hreinsa bil + "
-            parts = [p.strip(' "') for p in line.split(",")]
-
-            # We need: TeamID, TeamName, Captain, wins, points
-            if len(parts) < 5:
-                continue
-
-            teams.append(
-                Team(
-                    name=parts[1],       	
-                    captain=parts[2],    	
-                    asciiLogo="",        	# Logo for later
-                    wins = int(parts[3]),	
-                    points = int(parts[4])	
-                )
-            )
-
-        return teams
-
     
     def add_player_to_team(self, team_name: str, player_name: str) -> Player:
         '''Captain wants to add a player to his team'''

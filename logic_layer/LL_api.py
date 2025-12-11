@@ -65,9 +65,6 @@ class LL_API:
 
     '''Logic layer wrapper for the LLTeams'''
 
-    def load_team(self):
-        '''Loads a team from the csv.'''
-        return self.team._load_teams_from_csv()
     
     def add_player(self, team_name, player_name):
         '''Add player to team.'''
