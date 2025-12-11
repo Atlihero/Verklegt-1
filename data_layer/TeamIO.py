@@ -15,18 +15,18 @@ class TeamIO:
             return teams # Returns the list
         except ValueError: # In case of wrong inputs
             f"It was not possible to return a new list of players for the team. Please try again."
-        return teams # Returns the list
+        return teams # Returns the list with the team
     
 
     def getTeam_public(self) -> list:
         '''Only shows captain and team name for the public viewer '''
         try:
-            teams = [] 
-            captain = []
+            teams = [] # We will add the right team to the list
+            captain = [] # We will add the right captain to the list
             with open(TEAM_PATH, "r", encoding = "utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                    teams.append(row["TeamName"])
+                    teams.append(row["TeamName"]) 
                     captain.append(row["Captain"])
         except ValueError:
             f"Failed to display the captain and the team name. Please try again."
@@ -34,7 +34,7 @@ class TeamIO:
             
 
     def create_new_team(self, name: str, captain: str = None, asciiLogo: str = "") -> str:
-        '''create an empty team with no players'''
+        '''Create an empty team with no players'''
         try: 
             with open(TEAM_PATH, "a",newline = "", encoding = "utf-8") as csvfile:
         # The user writes in the details needed for a team like the name
@@ -46,7 +46,7 @@ class TeamIO:
 
 
     def add_teams_to_tournament(tournament: str, teams: list) -> str:
-        '''Organizer will use to add teams to a designated tournament'''
+        '''Organizer will wants to add teams to a designated tournament'''
         if len(teams) != 16:
             return "Error, not enough teams in the tournament. There have to be at least 16 teams."
         try:
@@ -60,8 +60,8 @@ class TeamIO:
 
 
     def get_all_teams(self) -> list:
-        '''returns a list of all team names'''
-        teams = []
+        '''Returns a list of all team names'''
+        teams = [] # We will add every team to the list
         try:
             with open(TEAM_PATH, "r", newline = "", encoding = "utf-8") as csvfile:
                 reader = csv.reader(csvfile)
@@ -71,4 +71,4 @@ class TeamIO:
         except FileNotFoundError:
             f"The file was not found" 
             pass
-        return teams # return a list of the teams
+        return teams # Return a list of all the teams
