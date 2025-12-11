@@ -162,6 +162,7 @@ class OrganizerUI():
 
         return self.lapi.create_new_tournament(tournament_obj)
 
+
     def update_result(self):
         '''Update results of the tournament '''
         try:
@@ -226,6 +227,7 @@ class OrganizerUI():
         new_team = self.lapi.add_team(name=team_name, captain=captain, asciiLogo=ascii_logo)
         print(f"Team '{new_team.name}' has been successfully created!")
         return new_team
+        
 
     def organizer_see_info(self) -> None:
         '''The organizer can see player information for every player in the tournament'''
