@@ -250,7 +250,7 @@ class OrganizerUI():
     def organizer_see_info(self) -> None:
         '''The organizer can see player information for every player in the tournament'''
         player = self.lapi.organizer_view_player_info() # Get list of players and their team
-
+        print(f"\n=== Player Information ===")
         while True:
             try:
                 userinput = int(input(f"Select a player ID between 1-{len(player)}: "))
