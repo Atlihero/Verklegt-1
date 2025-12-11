@@ -139,4 +139,4 @@ class TournamentIO:
             for g in games:
                 writer.writerow(g)
 
-        return True
+        return f"{winner}"
