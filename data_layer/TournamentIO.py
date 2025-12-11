@@ -131,38 +131,33 @@ class TournamentIO:
         From Round of 16 to QF (QF = quarter final)
         And then from QF to SF (SF = semi final)
         and then from SF to F (F = final)'''
-        
+        """Updates the next round with the winner. Returns True if successful."""
         games = self.get_all_games()
 
+        # Determine next game and slot
         if 1 <= match_number <= 8:
             next_game = 9 + (match_number - 1) // 2
             slot = "team_a" if match_number % 2 == 1 else "team_b"
-
         elif 9 <= match_number <= 12:
             next_game = 13 + (match_number - 9) // 2
             slot = "team_a" if match_number % 2 == 1 else "team_b"
-        
         elif 13 <= match_number <= 14:
             next_game = 15
             slot = "team_a" if match_number == 13 else "team_b"
-        
         else:
-            return f"{winner} is the winner of the round."
-        
+            return False  # Final winner, no next game
+
         for game in games:
             if game["tournament_name"] == tournament_name and int(game["match_number"]) == next_game:
                 game[slot] = winner
                 break
-        
-        fieldnames = ["tournament_name","round","match_number","match_date",
-                      "team_a","team_b","score_a","score_b","winner"]
-        
-        # Open and write in the file which team advances to the next round
-        with open(GAMES_PATH, "w", newline = "", encoding = "utf-8") as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
-            writer.writeheader()
             
+        fieldnames = ["tournament_name", "round", "match_number", "match_date",
+                      "team_a", "team_b", "score_a", "score_b", "winner"]
+        with open(GAMES_PATH, "w", newline="", encoding="utf-8") as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
             for g in games:
                 writer.writerow(g)
-        
-        return f"{winner} advances to the next round!"
+
+        return True
