@@ -12,16 +12,20 @@ class LLPlayer():
 
     def get_all_players(self):
         '''Gets the players from the csv file'''
-        return self.data.get_all_players()
+        
+		return self.data.get_all_players()
     
 
     def get_player_public_viewer(self):
-        '''Gets the player for the public viewers'''
-        return self.data.public_get_player()
+        '''Gets the players for the public viewers'''
+       
+		return self.data.public_get_player()
 
+	
     def validate_name(self, name: str) -> str:
-        '''Checks if name is unique or missing a name'''
-        name = name.strip()
+        '''Checks if name input is missing'''
+        
+		name = name.strip()
         if not name: # Check if empty
             raise ValueError("Player name cannot be emtpy. Please enter a valid name.")
     
@@ -31,11 +35,12 @@ class LLPlayer():
     def validate_dob(self, dob_str: str) -> datetime: 
         '''Checks player's date of birth and if the format fits the 
         standards, then the user can continue inputting the information.'''
-        try:
+        
+		try:
             # change string input to datetime
             dob = datetime.strptime(dob_str, "%d/%m/%Y")
             
-			# check if inputted date is in the future, then not valid
+			# check if inputted date is in the future, then invalid
             if dob > datetime.now():
                 raise ValueError("Please enter a valid date.")
             return dob
@@ -44,8 +49,9 @@ class LLPlayer():
         
 
     def validate_address(self, address: str) -> str:
-        '''Checks if address is valid'''
-        address = address.strip()
+        '''Checks if address input is empty'''
+        
+		address = address.strip()
         if not address: # Check if empty
             raise ValueError("Player's address name cannot be emtpy. Please enter a valid address.")
         
@@ -53,39 +59,41 @@ class LLPlayer():
         
 
     def validate_phone(self, phone_number: str) -> str:
-        '''Validates the players phone number, if not then 
+        '''Validates the players phone number, if invalid then 
           the user tries again.'''
-        phone_number = phone_number.strip()
+        
+		phone_number = phone_number.strip()
         if not phone_number: # Check if empty
             raise ValueError("Player's phone number cannot be emtpy. Please enter a phone number.")
         
-		# Number has to be exactly 7 digits long
+		# Number has to be exactly 7 digits long, the country code is already inputted
         if len(phone_number) != 10 or not phone_number.isdigit():
-            raise ValueError("Phone number must be exactly 7 digits long. Please try again")
+            raise ValueError("Phone number must be exactly 7 digits long. Please acknowledge that the coutnry code is already inputted.")
         
         existing_phone_number: list[Player] = self.data.get_all_players()
     
         for number in existing_phone_number:
             if number.phone == phone_number:
-                raise ValueError("Phone number is already in use, please choose another one.")
+                raise ValueError("Phone number is already in use. Please choose another one.")
 			
         return phone_number
             
 
     def validate_email(self, player_email: str) -> str:
         '''Checks players email address and if it is valid then he can contiue.
-           Raises error messages when the input is not up to standards.'''
-        try:
+           If email is invalid the user tries again.'''
+        
+		try:
             local_name, domain = player_email.split("@")
                 
-		# Check if the inputted (innslegna) email has @ 
+		# Check if the inputted email has @ 
         except ValueError:
                 raise ValueError("Email must contain a single '@'. Please try again.")
             
         if not local_name:
             raise ValueError("Local part (name) may not be empty. Please try again")
                 
-        # Check if the domain has a name and a dot, if not, then invalid email address and user tries again
+        # Check if the domain has a name and a dot, if not then the email address is invalid and the user tries again
         domain_parts = domain.split(".")
         if len(domain_parts) < 2 or not all(domain_parts):
             raise ValueError("Domain must have a name and a valid ending. Please try again.")
@@ -93,7 +101,7 @@ class LLPlayer():
         # Check if end of domain has valid ending after the dot
         ending = domain_parts[-1]
         if len(ending) < 2 or len(ending) > 3 or not ending.isalpha():
-            raise ValueError("The email must contain a valid ending. Please try again.")
+            raise ValueError("The email must contain a valid ending. Either 2 or 3 letters. Please try again.")
 		
         existing_email: list[Player] = self.data.get_all_players()
         existing_emails = []
@@ -102,16 +110,15 @@ class LLPlayer():
                 existing_emails.append(emails.email)
 
         if player_email in existing_emails:
-                raise ValueError("Email is already in use, please choose another one.")
+                raise ValueError("Email is already in use. Please choose another one.")
 
         return player_email
 
 
     def validate_handle(self, handle: str) -> str:
-        '''Checks players' handle. It checks if the username 
-        is already in use and then asks for a new username since no two players 
-        can have the same username '''
-        handle = handle.strip()
+        '''Checks if the username is already in use. No two users can have the same username '''
+        
+		handle = handle.strip()
         if not handle: # Check if empty
             raise ValueError("Player's handle name cannot be emtpy. Please enter a handle.")
 
