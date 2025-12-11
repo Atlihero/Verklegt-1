@@ -54,9 +54,9 @@ class LL_API:
         '''Gets the team for the public viewer.'''
         return self.player.get_player_public_viewer()
 
-    def get_all_players(self):
+    def get_players_all_off_them(self):
         '''Gets the players for Organizer to see'''
-        return self.player.get_players()
+        return self.player.get_all_players()
     
 
     '''Logic layer wrapper for the LLTeams'''
