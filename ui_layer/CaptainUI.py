@@ -5,8 +5,9 @@ class CaptainUI:
         self.ll = LL_API()
 
 
-    def add_to_team(self, team_name: str):
+    def add_to_team(self, team_name: str) -> str:
         '''Captain can add players from the list to his team'''
+        
         player_name = input("Enter the name of the player you want to add to your team: ")
         try:
             self.ll.add_player_to_team(team_name, player_name)
@@ -16,7 +17,9 @@ class CaptainUI:
 
 
     def remove_from_team(self, team_name: str):
-        # get current team members
+        '''Captain can remove players from the list from his team'''
+        
+        # Get current team members
         players = self.ll.get_team_members(team_name)
 
         if not players:
@@ -34,7 +37,7 @@ class CaptainUI:
                 print("The number is not in the player's number range. Please select another number.")
                 return
         except ValueError:
-            print("The number is not in the player's number range. Please select another number.")
+            print("The number inputted does not match a player. Please select another number.")
             return
         
         player_to_remove = players[selected_index]
@@ -51,7 +54,8 @@ class CaptainUI:
 
 
     def cap_see_player_info(self, team_name: str):
-        '''Captain or organizer can see player info'''
+        '''Captain can see player info.'''
+        
         players = self.ll.get_team_members(team_name)
         if not players:
             print("There are currently no players in your team. Please add members to be able to remove members.")
@@ -65,7 +69,7 @@ class CaptainUI:
             selected = input("Please enter the number of whose information you want to see: ")
             selected_index = int(selected) - 1
             if selected_index < 0 or selected_index >= len(players):
-                print("The number is not in the player's number range. Please select another number.")
+                print("The number inputted does not match a player. Please select another number.")
                 return
         except ValueError:
             print("The number is not in the player's number range. Please select another number.")
@@ -80,3 +84,4 @@ class CaptainUI:
                 print(f"{attr}: {value}")
         except ValueError as error:
             print("Error: ", error)
+
