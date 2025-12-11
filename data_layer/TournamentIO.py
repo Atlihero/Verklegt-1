@@ -21,7 +21,7 @@ class TournamentIO:
     
 
     def get_tournament_names(self) -> list:
-        '''Finds every name of a tournament that has been held'''
+        '''Finds every name of all tournaments that have been held'''
         try:
             tournament_names = [] # Old tournament names go in this list.
             with open(TOURNAMENT_PATH, "r", encoding = "utf-8") as csvfile:
@@ -31,12 +31,12 @@ class TournamentIO:
                     tournament_names.append(row["tournamentName"]) 
                     
         except FileNotFoundError:
-            return "No older tournaments name found"
+            return "No older tournaments names were found."
         return tournament_names
 
 
     def create_new_tournament(self, tournament: list):
-        '''This function is used to create a new tournament by using the csv writer to append this new tournament
+        '''This function is used to create a new tournament by using the csv writer to append the new tournament
         with all its details into the tournament csv file'''
         try: 
             with open(TOURNAMENT_PATH, "a", newline = "", encoding = "utf-8") as csvfile:
@@ -55,7 +55,7 @@ class TournamentIO:
                 writer = csv.writer(csvfile)
                 writer.writerow(games) # Add the new game to the csv file
                 
-            return f"New game has been added to the tournament"
+            return f"New game has been added to the tournament!"
         except ValueError:
             return "Failed to add a new game to the tournament. Please try again."
             
@@ -71,12 +71,12 @@ class TournamentIO:
                     games.append(row)
                     
         except FileNotFoundError:
-            return "No file was found"
+            return "No file was found."
         return games
     
 
     def update_games(self, tournament_name: str, match_number: int, score_a: int, score_b: int) -> str:
-        """Updates a game's score and winner"""
+        '''Updates a game's score and winner'''
         games = self.get_all_games()
         updated_game = None
 
@@ -106,11 +106,9 @@ class TournamentIO:
 
 
     def advance(self, tournament_name: str, match_number: int, winner: str):
-        '''These are if commands that determine the advance order by match number
-        From Round of 16 to QF (QF = quarter final)
-        And then from QF to SF (SF = semi final)
-        and then from SF to F (F = final)'''
-        """Updates the next round with the winner. Returns True if successful."""
+        '''Determine the advance order by match number
+        From Round of 16 to QF (QF = quarter final). And then from QF to SF (SF = semi final).
+        and then from SF to F (F = final). Updates the next round with the winner. Returns True if successful.'''
         games = self.get_all_games()
 
         # Determine next game and slot
