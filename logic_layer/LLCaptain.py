@@ -32,12 +32,11 @@ class LLCaptain():
         '''Return players that do not belong to any existing team.'''
 
         all_players = self._get_all_players()
-
         free_players: list[Player] = []
 
         for player in all_players:
             team = (player.team or "").strip()
-            if not team:          # no team set in CSV
+            if not team: # If there is no corresponding team in the csv file
                 free_players.append(player)
 
         return free_players
@@ -91,7 +90,6 @@ class LLCaptain():
         return player_to_add
 
     
-    
     def remove_from_team(self, player_name: str, team_name: str) -> Player:
         '''Allows captain to remove a player from team'''
 
@@ -107,7 +105,6 @@ class LLCaptain():
                 player_found = player
                 break
 
-                    
         if player_found is None:
             raise ValueError ("This player does not exist. Please try another player.")
         
@@ -139,7 +136,6 @@ class LLCaptain():
 
         raise ValueError("Player is not in this team. Please try another player.")
 
-        
 
     def update_player_contact(
             self,
@@ -163,9 +159,7 @@ class LLCaptain():
             if p.name == player_name and p.team == team_name:
                 player = p
                 break
-
-
-
+            
         if player is None:
             raise ValueError("Player is not in this team. Please try another player.")
             

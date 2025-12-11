@@ -113,7 +113,7 @@ class OrganizerUI():
                 start_date = self.lapi.valid_start_date(start_date)
                 break
             except ValueError as error:
-                print(f"Error: {error}")
+                print(f"Error: {error}. Start date has to be in the future.")
 
         while True: # Check if tournament end date is a valid input
             end_date = input("Select the end date of the tournament. DD/MM/YYYY: ")
@@ -121,7 +121,7 @@ class OrganizerUI():
                 end_date = self.lapi.valid_end_date(end_date, start_date)
                 break
             except ValueError as error:
-                print(f"Error: {error}")
+                print(f"Error: {error}. End date has to be after the start date.")
 
         while True: # Check if tournament location is a valid input
             venue = input("Enter the name of a venue (location) for the tournament: ")

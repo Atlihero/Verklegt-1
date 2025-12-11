@@ -1,5 +1,6 @@
 from logic_layer.LL_api import LL_API
 from Models.Player import Player
+import os
 
 class CaptainUI:
     def __init__(self):
@@ -9,16 +10,16 @@ class CaptainUI:
     # Chose which Captain or Team
 
     def _player_to_dict(self, p: Player) -> dict:
-        """Convert Player object to dict so we can comfortably use .get()."""
+        '''Convert Player object to dict so we can comfortably use .get().'''
         return {
-            "Name": p.name,
-            "DOB": p.dob,
-            "Address": p.address,
-            "Phonenumber": p.phone,
-            "Email": p.email,
-            "Handle": p.handle,
-            "Team": p.team,
-            "Link": p.link,
+            "Name"        : p.name,
+            "DOB"         : p.dob,
+            "Address"     : p.address,
+            "Phone number": p.phone,
+            "Email"       : p.email,
+            "Handle"      : p.handle,
+            "Team"        : p.team,
+            "Link"        : p.link,
         }
 
     def select_captain_and_team(self) -> bool:
@@ -35,7 +36,6 @@ class CaptainUI:
             captain = captains[i]
             index = i + 1
             print(f"{index}) Team: {team_name} | Captain: {captain}")
-
 
 
         while True:
@@ -67,11 +67,9 @@ class CaptainUI:
         return players
 
     def _get_and_show_available_players(self) -> list[Player]:
-        """Show all players that are NOT in any team."""
+        '''Show all players that are NOT in any team.'''
 
-        players: list[Player] = self.ll.get_available_players_for_captain(
-            self.current_team_name
-        )
+        players: list[Player] = self.ll.get_available_players_for_captain(self.current_team_name)
         if not players:
             print("There are no free players to add.")
             return []
@@ -85,11 +83,6 @@ class CaptainUI:
         return players_sorted
 
 
-
-
-
-    # Captain actions
-
     def add_to_team(self):
         '''Captain adds a player that has no team to their team.'''
 
@@ -98,7 +91,7 @@ class CaptainUI:
             return
         
         while True:
-            selected = input("Enter the number of the player you want to add: ")
+            selected = input("Enter the number of the player you want to add: \n")
             try:
                 selected_index = int(selected) - 1
             except ValueError:
@@ -108,15 +101,13 @@ class CaptainUI:
                 print("The number is not in the player's number range. Please select another number.")
                 continue
             break
- 
-
 
         player_to_add = players[selected_index]
         player_name = player_to_add.name
 
         try:
             self.ll.add_player_to_team(self.current_team_name, player_name)
-            print(f"{player_name} has been added to {self.current_team_name}.")
+            print(f"\n{player_name} has been added to {self.current_team_name}.")
         except ValueError as error:
             print("Error:", error)
 
@@ -136,34 +127,25 @@ class CaptainUI:
                 captain_name = cap
                 break
 
-
-
         # Exclude captain from removable list
         players: list[Player] = []
         for p in all_players:
-            if p.name != captain_name:
+            if p.handle != captain_name:
                 players.append(p)
-
-
-
-
 
         if not players:
             print("There are no players to remove (only the captain exists).")
             return
 
-
-
-
-
-        print(f"\nPlayers in {self.current_team_name} (excluding captain {captain_name}):")
+        print(f"\nPlayers in {self.current_team_name} (excluding captain {captain_name}):\n")
+       
         for index, p in enumerate(players, start=1):
             name = p.name
             handle = p.handle
-            print(f"{index}. {name} | Handle: {handle}")
+            print(f"{index:2}. {name.ljust(15)} | Handle: {handle}")
 
         while True:
-            selected = input("Please enter the number of who you want to remove: ")
+            selected = input("\nPlease enter the number of who you want to remove: ")
             try:
                 selected_index = int(selected) - 1
             except ValueError:
@@ -172,7 +154,6 @@ class CaptainUI:
             if selected_index < 0 or selected_index >= len(players):
                 print("A player with this ID does not exist. Please enter a valid ID number.")
                 continue
-
             break
 
         player_to_remove = players[selected_index]
@@ -192,7 +173,16 @@ class CaptainUI:
 
         try:
             self.ll.remove_player_from_team(self.current_team_name, player_name)
-            print(f"{player_name} has been removed from the team.")
+            print("\033[92m\033[100m┌────────────────────────────────────────────────────┐\033[0m")
+            print(f"\033[92m\033[100m {player_name} has been removed from the team.\033[0m")
+            print("\033[92m\033[100m└────────────────────────────────────────────────────┘\033[0m")
+            user_inp = input("Press any button to return to start")
+            if user_inp  != 1:
+                if os.name == 'nt':
+                    _ = os.system('cls')
+                else:
+                    _ = os.system('clear')
+                
         except ValueError as error:
             print("Error:", error)
 
@@ -200,19 +190,13 @@ class CaptainUI:
         '''Captain can see detailed info about a player in their own team.'''
         players = self._get_and_show_team_members()
 
-
         if not players:
-
             return
-
-
+        
         selected = input("Please enter the number of whose information you want to see: ").strip().lower()
 
         selected_index = int(selected) - 1
         if selected_index < 0 or selected_index >= len(players):
-
-
-
             print("The number is not in the player's number range. Please select another number.")
             return
 
@@ -222,9 +206,9 @@ class CaptainUI:
         try:
             player: Player = self.ll.cap_view_player_info(player_name, self.current_team_name)
             info = self._player_to_dict(player)
-            print(f"\nPlayer Information for {player_name}:")
+            print(f"\n===Player Information for {player_name}===\n")
             for key, value in info.items():
-                print(f"{key}: {value}")
+                print(f"{key:12} : {value}")
 
             print("\nDo you want to edit this player's contact info?")
             choice = input("Change phone/address/email? (y/n): ").strip().lower()

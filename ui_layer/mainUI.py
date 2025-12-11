@@ -104,12 +104,12 @@ class Uimain:
                 elif user_inp == "2": #This is the Captain
 
                     """Now we are in CAPTAIN"""
-
-                    if not captain.select_captain_and_team():
-                        continue # go back to main menue if captain not found
-                   
-                    Happy_paths.Happy_captain_add_or_info()
-                    cap_choice = input("").strip().lower()
+                    while True:
+                        if not captain.select_captain_and_team():
+                            continue # go back to main menue if captain not found
+                    
+                        Happy_paths.Happy_captain_add_or_info()
+                        cap_choice = input("").strip().lower()
 
 
                     if cap_choice == "1":
@@ -118,8 +118,6 @@ class Uimain:
                         captain.remove_from_team()
                     elif cap_choice == "3":
                         captain.cap_see_player_info()
-                    elif cap_choice == "4":
-                        captain.view_schedule()
                     elif cap_choice == "b":
                         os.system("cls")
                         continue
