@@ -18,7 +18,7 @@ class OrganizerUI():
 
 
     def create_player(self):
-    '''Have the user input all the information needed for the player.'''
+        '''Have the user input all the information needed for the player.'''
         while True: # Check if name of player is a valid input
             name = input("Enter full name of player: ")
             try:
