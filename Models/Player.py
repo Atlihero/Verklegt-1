@@ -18,7 +18,7 @@ class Player:
         '''Return the information about the player'''
         dob_str = self.dob.strftime("%d/%m/%Y") if hasattr(self.dob, "strftime") else self.dob
         
-        return (
+        return ("\n"
         f"Name    : {self.name}\n"
         f"DOB     : {dob_str}\n"
         f"Address : {self.address}\n"

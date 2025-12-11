@@ -87,8 +87,8 @@ class OrganizerUI():
             phone = phone_number,
             email = player_email,
             handle = handle,
-            link = link,
             team = None, # Player start with no team
+            link = link
         )
 
         return self.lapi.create_player(player_obj)
@@ -254,15 +254,15 @@ class OrganizerUI():
         while True:
             try:
                 userinput = int(input(f"Select a player ID between 1-{len(player)}: "))
-
-                if 1 <= userinput <= len(player): # Check if the input is valid
+                real_userinput = userinput - 1
+                if 0 <= real_userinput <= len(player): # Check if the input is valid
                         break
                 else:
                     print("A player with this ID does not exist. Please enter a valid ID number.")
             except ValueError:
                     print("The input has to be an integer number. Please enter a valid number.") 
         
-        print(f"Player: {player[userinput]}") # Show the player
+        print(f"{player[real_userinput]}") # Show the player
         
     """    
     def make_captain(self): #virkar ekki enþá
