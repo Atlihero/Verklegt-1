@@ -54,7 +54,7 @@ class PlayerIO:
 
     def save_players(players: list[Player]):
         '''Saves a player which has been created by using the csv writer 
-        to save him and is the player now in the csv with all the details needed'''
+        to save him and the player is now in the csv with all the details needed'''
         with open(PLAYER_PATH, "w", newline = "", encoding = "utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["Name", "DOB", "Address", "Phonenumber",
