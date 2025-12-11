@@ -46,7 +46,7 @@ class OrganizerUI():
         
     
         while True: # Check if player's phone number is a valid input
-            phone = "354" + input("Enter player's phone number: ")
+            phone_number = "354" + input("Enter player's phone number: ")
             try:
                 phone_number = self.lapi.valid_phone(phone_number)
                 break

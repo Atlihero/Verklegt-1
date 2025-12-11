@@ -60,7 +60,7 @@ class LLPlayer():
             raise ValueError("Player's phone number cannot be emtpy. Please enter a phone number.")
         
 		# Number has to be exactly 7 digits long
-        if len(phone_number) != 7 or not phone_number.isdigit():
+        if len(phone_number) != 10 or not phone_number.isdigit():
             raise ValueError("Phone number must be exactly 7 digits long. Please try again")
         
         existing_phone_number: list[Player] = self.data.get_all_players()
