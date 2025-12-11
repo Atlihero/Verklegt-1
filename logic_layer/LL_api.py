@@ -50,17 +50,13 @@ class LL_API:
         '''Validates the link of the new players.'''
         return self.player.validate_link(link)
     
-    #def create_new_player(self, name, dob_string, address, phone, email, handle, link=""):
-    #    '''Creates a new player'''
-    #    return self.player.create_player(name, dob_string, address, phone, email, handle, link)
-    
     def create_player(self, player_obj: Player):
         '''Creates a new player.'''
         return self.player.create_player(player_obj)
     
-    def get_playerPublic(self):
+    def get_player_public(self):
         '''Gets the team for the public viewer.'''
-        return self.player.get_player_publicViewer()
+        return self.player.get_player_public_viewer()
     
 
     '''Logic layer wrapper for the LLTeams'''
