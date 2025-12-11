@@ -5,14 +5,13 @@ class Round(Tournament):
     the round is and when it starts and ends'''
     def __init__(self, number, startTime, endTime):
         self.number = number
-        self.startTime = start_time
-        self.endTime = end_time
+        self.start_time = startTime
+        self.end_time = endTime
 
     
     def __str__(self):
         '''Return the information'''
         return (
-        f"Name: {self.name}\n"
         f"Number: {self.number}\n"
         f"Start Time: {self.start_time}\n"
         f"End Time: {self.end_time}"
@@ -21,4 +20,3 @@ class Round(Tournament):
     
     def __repr__(self):
         return str(self)
-    
