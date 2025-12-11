@@ -11,13 +11,15 @@ class LLTeams:
 
     
     def get_teams_public(self):
-        '''So the public viewer can see the teams.'''
+        '''The public viewer can see the teams.'''
+        
         data = DataAPI()
         return data.get_public_team()
 
     
     def add_player_to_team(self, team_name: str, player_name: str) -> Player:
         '''Captain wants to add a player to his team'''
+        
         # Check if team exists
         team = self.get_team_by_name(team_name)
         if team is None:
@@ -50,7 +52,8 @@ class LLTeams:
 
     
     def get_team_by_name(self, name: str) -> Team | None:
-        '''Checks for the team and returns it if found, or None if not'''
+        '''Checks for the team and returns it, if it was found, or None if it was not found'''
+        
         for team in self.teams:
             if team.name == name:
                 return team
@@ -59,11 +62,13 @@ class LLTeams:
     
     def team_exists(self, name: str) -> bool:
         '''Checks if a team with the inputted name already exists.'''
-        return self.get_team_by_name(name) is not None  # Checks if a team has this name
+        
+        return self.get_team_by_name(name) is not None  # Check if a team has this name
 
     
     def new_team(self, name: str, captain: str = None, asciiLogo: str = "") -> Team:
         '''Create a new team and add it to the csv file.'''
+        
         new_team = Team(name=name, captain=captain, asciiLogo=asciiLogo)
         
         
@@ -74,12 +79,13 @@ class LLTeams:
 
     
     def select_captain(self, team_name: str, new_captain: str) -> Team:
-        '''Organizer wants to chose a captain'''
+        '''Organizer wants to choose a captain'''
+        
         team = self.get_team_by_name(team_name)
         if team is None:
-            raise ValueError("Team with this name was not found")
+            raise ValueError("No team with this name was not found. Please try again.")
         if not new_captain.strip():
-            raise ValueError("The captain can not be empty")
+            raise ValueError("The captain's name can not be empty. Please enter a captain name")
 
         team.captain = new_captain.strip()
 
@@ -88,4 +94,5 @@ class LLTeams:
     
     def view_teams(self) -> list[Team]:
         '''Spectator wants to see information about a team. Returns a list of all teams.'''
+        
         return list(self.teams)
