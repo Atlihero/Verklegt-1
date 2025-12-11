@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 class LLTournament:
     def __init__(self):
         self.data = DataAPI()
-        self.teams = self.data.get_all_Teams()
+        self.teams = self.data.get_all_teams()
 
 
     def add_game(self, game_dict: dict):
@@ -95,7 +95,7 @@ class LLTournament:
     def get_all_games(self):
         return self.data.get_games()
 
-    def get_allTournamnets(self):
+    def get_all_tournamnets(self):
         return self.data.get_all_tournaments()
     
     def get_tournament_names(self):
