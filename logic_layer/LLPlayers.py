@@ -68,7 +68,7 @@ class LLPlayer():
         
 		# Number has to be exactly 7 digits long, the country code is already inputted
         if len(phone_number) != 10 or not phone_number.isdigit():
-            raise ValueError("Phone number must be exactly 7 digits long. Please acknowledge that the coutnry code is already inputted.")
+            raise ValueError("Phone number must be exactly 7 digits long. Please acknowledge that the country code is already inputted.")
         
         existing_phone_number: list[Player] = self.data.get_all_players()
     
