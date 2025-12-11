@@ -17,7 +17,7 @@ class LLOrganizer():
             raise ValueError("Tournament name cannot be emtpy. Please enter a valid name.")
         
         # Get all tournament names from the csv file
-		existing_tournament_names = self.dapi.get_all_tournaments()
+        existing_tournament_names = self.dapi.get_all_tournaments()
         existing_name = []
         for row in existing_tournament_names: 
             if row:
