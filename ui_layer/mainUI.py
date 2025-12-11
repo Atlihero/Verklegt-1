@@ -157,7 +157,7 @@ class Uimain:
 
 
                     clear_term()
-                    self.start()
+                    exit()
 
 
                 else: # if you enter an invalid input
