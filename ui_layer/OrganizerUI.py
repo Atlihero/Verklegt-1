@@ -6,7 +6,7 @@ from Models.Player import Player
 def show_games(games, title="Current Games"):
     '''  '''
     print(f"\n=== {title} ===")
-    for g in games:
+    for g in games: # Print information on every match/game
         print(f"{g['match_number']:>2}: {g['round']} {g['match_date']}| {g['team_a']} vs {g['team_b']} | "
               f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
 
@@ -177,7 +177,7 @@ class OrganizerUI():
 
                 print("Tournament was not found. Please enter a valid tournament name.")
             
-            games = self.lapi.get_game_by_tournamentName(tournament_name)
+            games = self.lapi.get_game_by_tournament_name(tournament_name)
 
             if not games:
                 print("\nNo games were found for this tournament.\n")
@@ -213,7 +213,7 @@ class OrganizerUI():
                 print("\n==============================")
                 print(f" TOURNAMENT WINNER: {winner} ")
 
-            updated_games = self.lapi.get_game_by_tournamentName(tournament_name)
+            updated_games = self.lapi.get_game_by_tournament_name(tournament_name)
             show_games(updated_games, "Updated Games")
             
         except ValueError as error:
