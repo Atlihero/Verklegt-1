@@ -10,12 +10,11 @@ class LLTeams:
         self.teams = DataAPI()
 
     
-    def getTeamsPublic(self):
+    def get_teams_public(self):
         '''So the public viewer can see the teams.'''
         data = DataAPI()
         return data.getPublicTeam()
 
-    
     
     def add_player_to_team(self, team_name: str, player_name: str) -> Player:
         '''Captain wants to add a player to his team'''
@@ -66,7 +65,7 @@ class LLTeams:
     def new_team(self, name: str, captain: str = None, asciiLogo: str = "") -> Team:
         '''Create a new team and add it to the csv file.'''
         new_team = Team(name=name, captain=captain, asciiLogo=asciiLogo)
-        self.teams.append(new_team)
+        
         
         # saves the new team in the data_layer
         DataAPI().add_team(name, captain, asciiLogo)

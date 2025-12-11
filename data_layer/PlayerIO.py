@@ -13,11 +13,11 @@ class PlayerIO:
             reader = csv.DictReader(csvfile)  
 
             for row in reader:
-                if not row and not row.get("Name"): # skip empty rows that don't have 'name' in the header
+                if not row and not row.get("Name"): # Skip empty rows that don't have 'name' in the header
                     continue
 
                 if "Link" not in row:
-                    row["Link"] = "" # returns empty if 'link' is not in header
+                    row["Link"] = "" # Returns empty if 'link' is not in header
                 
                 player = Player(
                         row["Name"],
@@ -34,7 +34,7 @@ class PlayerIO:
         return players
     
     
-    def get_player_PublicViewer(self) -> list:
+    def get_player_public_viewer(self) -> list:
         '''Shows name and the handle of a player for the publiv viewer'''
         try:
             # Use lists to store each players name and handle and their team
@@ -42,9 +42,11 @@ class PlayerIO:
             team = []
             with open(PLAYER_PATH, "r", encoding = "utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
+             
                 for row in reader:
                     players.append(row["Handle"])
                     team.append(row["Team"])
+                 
         except ValueError:
             f"Failed to display the name and handle of the player. Please try again."
         return players, team

@@ -1,7 +1,9 @@
-from Models.Round import Round #importar round klasanum
+from Models.Round import Round
 
-#klasi fyrir leiki sem segja hvenær þeir eru og að passa að það séu slétttölu
 class Game(Round):
+    '''Class for games that says when they are and make sure 
+    that there are even numbered amount of teams'''
+   
     def __init__(self, date, round):
         super().__init__()
         self.date = date
@@ -9,7 +11,9 @@ class Game(Round):
 
 
     def __str__(self):
+        '''Return the information'''
         return f"{self.date}:\n{self.round}"
+
     
     def __repr__(self):
         return str(self)
