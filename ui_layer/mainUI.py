@@ -36,7 +36,7 @@ class Uimain:
             if user_inp != 1:
                 clear_term()
                 Happy_paths.Happy_menu()
-                user_inp = input("Enter 1, 2, 3 or b: ")
+                user_inp = input("Enter 1, 2, 3 or q: ")
                 
                 
                 """Here we select Organizer or captain or viewer"""
@@ -46,7 +46,7 @@ class Uimain:
                     """Now we are in Organizer and can chose what we will do there"""
                     clear_term()
                     Happy_paths.Happy_organizer() #This is the organizer
-                    user_inp = input("Enter 1-6 or b: ")
+                    user_inp = input("Enter 1-6 or q: ")
                     if user_inp == "1": #Here you create a new player
                         clear_term()
                         Happy_paths.Happy_create_player()
@@ -78,50 +78,66 @@ class Uimain:
                         clear_term()
                         Happy_paths.Happy_Update_result()
                         organizer.update_result()
-                        self.start()
+                        user_inp = input("Press any button to return to start")
+                        if user_inp  != 1:
+                            clear_term()
+                            self.start()
                     elif user_inp == "5": #here you make a player a captain
                         clear_term()
                         Happy_paths.Happy_make_captain()
+                        user_inp = input("Press any button to return to start")
+                        if user_inp  != 1:
+                            clear_term()
+                            self.start()
                     elif user_inp == "6":
                         clear_term()
                         Happy_paths.Happy_information()
                         organizer.organizer_see_info()
-                        self.start()
-                    elif user_inp == "b": #return back to starting psition
+                        user_inp = input("Press any button to return to start")
+                        if user_inp  != 1:
+                            clear_term()
+                            self.start()
+                    elif user_inp == "q": #return back to starting psition
                         clear_term()
-                        continue
+                        self.start()
                 
                 elif user_inp == "2": #This is the Captain
 
 
                     """Now we are in CAPTAIN"""
 
-
+                    clear_term()
                     Happy_paths.Happy_captain()
                     user_inp = input("")
-                    exit()
+                    user_inp = input("Press any button to return to start")
+                    if user_inp  != 1:
+                        clear_term()
+                        self.start()
 
 
                 elif user_inp == "3": #This is the puplic viewer
 
 
                     """Now we are in VIWER"""
+                    clear_term()
                     Happy_paths.Happy_viewer()
-                    user_inp = input("Enter 1-3 or b")
+                    user_inp = input("Enter 1, 2, 3 or q")
                     if user_inp == "1":
                         publicViewer.getplayerPublic()
-                        self.start()
                     elif user_inp == "2":
                         self.publicviewer.getTeamsPublic()
                         self.start()
                     elif user_inp == "3":
                         self.publicviewer.view_schedule()
                         self.start()
-                    else:
+                    elif user_inp == "q":
+                        clear_term()
                         self.start()
-                        exit()
+                    else:
+                        print("not valid input") #TODO we need to fix this
+                        self.start()
                   
-                elif user_inp == "b": #return back to the start
+                elif user_inp == "q": #return back to the start
 
 
                     """Now we are in EXIT"""
@@ -143,6 +159,6 @@ class Uimain:
                         
                     
             
-            else: #stops the code if you some how manige to give int not string which should not be possible
+            else: #restarts the code if you some how manige to give int not string which should not be possible
                 self.start()
                 
