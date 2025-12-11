@@ -8,7 +8,7 @@ class TournamentIO:
     def get_tournaments(self) -> list:
         '''Finds the tournament selected by the user and displayes it for him'''
         try:
-            tournament = [] # empty list we will add all the tournaments to
+            tournament = [] # Empty list we will add all the tournaments to
             with open(TOURNAMENT_PATH, "r", encoding = "utf-8") as csvfile:
                 reader  = csvfile.readlines() 
                 for row in reader:
@@ -63,7 +63,7 @@ class TournamentIO:
                 for row in reader:
                     games.append(row)
         except FileNotFoundError:
-            return "No file was found" #[]
+            return "No file was found"
         return games
     
 
