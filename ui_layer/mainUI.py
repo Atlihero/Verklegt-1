@@ -134,7 +134,7 @@ class Uimain:
                     """Now we are in VIWER"""
                     clear_term()
                     Happy_paths.Happy_viewer()
-                    user_inp = input("Enter 1, 2, 3 or q")
+                    user_inp = input("Enter 1, 2, 3 or q: ")
                     if user_inp == "1":
                         publicViewer.getplayerPublic()
                     elif user_inp == "2":
