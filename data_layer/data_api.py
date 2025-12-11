@@ -21,7 +21,7 @@ class DataAPI:
 
     def public_get_player(self):
         '''Gets the player for the public viewers'''
-        return self.player.get_player_PublicViewer()
+        return self.player.get_player_public_viewer()
 
 
     '''Data wrapper for TeamIO'''
