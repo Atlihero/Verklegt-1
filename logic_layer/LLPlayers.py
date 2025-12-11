@@ -30,7 +30,7 @@ class LLPlayer():
 
 
     def validate_dob(self, dob_str: str) -> datetime: 
-        '''Checks players date of birth and if the format fits the 
+        '''Checks player's date of birth and if the format fits the 
         standards, then the user can continue inputting the information.'''
         try:
             # change string input to datetime
@@ -45,7 +45,7 @@ class LLPlayer():
         
 
     def validate_address(self, address: str) -> str:
-        '''Checks if name is unique or missing a name'''
+        '''Checks if address is valid'''
         address = address.strip()
         if not address: # Check if empty
             raise ValueError("Player's address name cannot be emtpy. Please enter a valid address.")
@@ -59,7 +59,15 @@ class LLPlayer():
 		# Number has to be exactly 7 digits long
         if len(phone_number) != 7 or not phone_number.isdigit():
             raise ValueError("Phone number must be exactly 7 digits long. Please try again")
-        return phone_number
+        
+		existing_phone_number: list[Player] = self.data.get_all_players()
+        existing_number = []
+    
+        for number in existing_phone_number:
+            if number.phone == phone_number:
+                raise ValueError("Phone number is already in use, please choose another one.")
+			
+		return phone_number
             
 
     def validate_email(self, player_email: str) -> str:
@@ -75,7 +83,7 @@ class LLPlayer():
         if not local_name:
             raise ValueError("Local part (name) may not be empty. Please try again")
                 
-        # Check if domain has a name and a dot, if not then invalid email address and user tries again
+        # Check if the domain has a name and a dot, if not, then invalid email address and user tries again
         domain_parts = domain.split(".")
         if len(domain_parts) < 2 or not all(domain_parts):
             raise ValueError("Domain must have a name and a valid ending. Please try again.")
@@ -84,19 +92,28 @@ class LLPlayer():
         ending = domain_parts[-1]
         if len(ending) < 2 or len(ending) > 3 or not ending.isalpha():
             raise ValueError("The email must contain a valid ending. Please try again.")
+		
+		existing_email: list[Player] = self.data.get_all_players()
+        existing_emails = []
+        for emails in existing_email:
+            if emails:
+                existing_emails.append(emails.email)
+
+        if player_email in existing_emails:
+                raise ValueError("Email is already in use, please choose another one.")
 
         return player_email
 
 
     def validate_handle(self, handle: str) -> str:
-        '''Checks players handle. It checks if the username 
+        '''Checks players' handle. It checks if the username 
         is already in use and then asks for a new username since no two players 
         can have the same username '''
         handle = handle.strip()
         if not handle: # Check if empty
             raise ValueError("Player's handle name cannot be emtpy. Please enter a handle.")
 
-        existing_usernames = self.data.get_all_players()
+        existing_usernames: list[Player] = self.data.get_all_players()
         existing_handles = []
         for player in existing_usernames: 
             if player:
