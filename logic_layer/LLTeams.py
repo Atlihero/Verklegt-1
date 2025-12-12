@@ -1,31 +1,30 @@
 from Models.Team import Team
 from Models.Player import Player
-from data_layer.TeamIO import TeamIO
-from data_layer.PlayerIO import PlayerIO
 from data_layer.data_api import DataAPI
 
 
 class LLTeams:
     def __init__(self): 
-        self.teams = DataAPI()
+        self.data = DataAPI()
+        self.teams = self.data.get_all_teams()
 
     
-    def getTeamsPublic(self):
-        '''So the public viewer can see the teams.'''
-        data = DataAPI()
-        return data.getPublicTeam()
+    def get_teams_public(self) -> list:
+        '''The public viewer can see the teams.'''
+        
+        return self.data.get_public_team()
 
-    
     
     def add_player_to_team(self, team_name: str, player_name: str) -> Player:
         '''Captain wants to add a player to his team'''
+        
         # Check if team exists
         team = self.get_team_by_name(team_name)
         if team is None:
             raise ValueError("A team with this name was not found.")
 
         # Get all players from data layer
-        players = PlayerIO.get_players()
+        players = self.data.get_all_players()
 
         # Find player with the right name
         player_to_add = None
@@ -44,43 +43,59 @@ class LLTeams:
         # Update Players team
         player_to_add.team = team.name
 
-        # Save player list through PlayerIO
-        PlayerIO.save_players(players)
+        # Save player list through the data layer
+        self.data.save_new_player(players)
+
 
         return player_to_add
 
     
     def get_team_by_name(self, name: str) -> Team | None:
-        '''Checks for the team and returns it if found, or None if not'''
         for team in self.teams:
-            if team.name == name:
+            # If team is a string (team name)
+            if isinstance(team, str) and team == name:
+                return team  # or convert to a Team object if needed
+            elif hasattr(team, "name") and team.name == name:
                 return team
         return None
 
-    
+    def validate_team_name(self, name: str) -> str:
+        '''Validates that the team name is not empty and unique.'''
+        name = name.strip()
+        if not name:
+            raise ValueError("Team name cannot be empty. Please enter a valid name.")
+
+        if self.team_exists(name):
+            raise ValueError("Team name already exists. Please choose another one.")
+
+        return name
+
+
     def team_exists(self, name: str) -> bool:
         '''Checks if a team with the inputted name already exists.'''
-        return self.get_team_by_name(name) is not None  # Checks if a team has this name
+        
+        return self.get_team_by_name(name) is not None  # Check if a team has this name
 
     
     def new_team(self, name: str, captain: str = None, asciiLogo: str = "") -> Team:
         '''Create a new team and add it to the csv file.'''
+        
         new_team = Team(name=name, captain=captain, asciiLogo=asciiLogo)
         
-        
         # saves the new team in the data_layer
-        DataAPI().add_team(name, captain, asciiLogo)
+        self.data.add_team(name, captain, asciiLogo)
 
         return new_team
 
     
     def select_captain(self, team_name: str, new_captain: str) -> Team:
-        '''Organizer wants to chose a captain'''
+        '''Organizer wants to choose a captain'''
+        
         team = self.get_team_by_name(team_name)
         if team is None:
-            raise ValueError("Team with this name was not found")
+            raise ValueError("No team with this name was not found. Please try again.")
         if not new_captain.strip():
-            raise ValueError("The captain can not be empty")
+            raise ValueError("The captain's name can not be empty. Please enter a captain name")
 
         team.captain = new_captain.strip()
 
@@ -89,4 +104,5 @@ class LLTeams:
     
     def view_teams(self) -> list[Team]:
         '''Spectator wants to see information about a team. Returns a list of all teams.'''
+        
         return list(self.teams)
