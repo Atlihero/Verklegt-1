@@ -1,10 +1,2 @@
-<<<<<<< HEAD
-tournamentName,startDate,endDate,venue,contactPerson,contactEmail,contactPhone
-HRingurinn,12/12/2025,20/12/2025,HR,Daniek,daniel@gmail.com,1234567
-Daniel,14/12/2025,31/12/2025,HR,daniel,daniel@gmail.com,1234567
-hr,12/12/2025,20/12/2025,hR,danw,dawn@gmail.com,1234567
-fwa,15/12/2025,30/12/2025,HR,dnaiel,daniel@gamil.com,1234567
-=======
 tournamentName,startDate,endDate,Venue,contactPerson,contatEmail,contactPhone
 Group17,13/12/2025,20/12/2025,HR,Daniel,daniel@email.com,3541234567
->>>>>>> main_debug

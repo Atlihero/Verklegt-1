@@ -1,22 +1,4 @@
 TeamName,Captain,asciiLogo
-<<<<<<< HEAD
-SegFault Spartans,SegFaultSam,
-NullPointer Ninjas,NullPointerNina,
-OffByOne Offense,OffByOneOlaf,
-Pepsi Max Punishers,PepsiMaxPalli,
-Chuck Norris Fan Club,RoundhouseRik,
-IndentationError Invaders,IndentationErrorIna,
-Assembly Avengers,MovAxMaria,
-Datalab Dominators,BitTwiddlerBjarni,
-Bomblab Bombers,BombDefusalDori,
-StackOverflow Stackers,CopyPasteKalli,
-CacheHit Crusaders,L1CacheLara,
-WhileTrue Tryhards,WhileTrueWendy,
-Segmentation Foul,SegmentationFoulStebbi,
-RaceCondition Racers,RaceConditionRagnhildur,
-Undefined Behavior United,UBUnitedUlfar,
-Pepsi Max Overflow,PepsiMaxOverflowPetra,
-=======
 SegFault Spartans,SegFaultSam,ASCII_SPARTAN_HELMET
 NullPointer Ninjas,NullPointerNina,ASCII_NINJA_SHADOW
 OffByOne Offense,OffByOneOlaf,ASCII_FENCEPOST_BUG
@@ -33,5 +15,3 @@ Segmentation Foul,SegmentationFoulStebbi,ASCII_RED_CARD
 RaceCondition Racers,RaceConditionRagnhildur,ASCII_CHECKERED_FLAG
 Undefined Behavior United,UBUnitedUlfar,ASCII_GLITCHED_LOGO
 Pepsi Max Overflow,PepsiMaxOverflowPetra,ASCII_OVERFLOWING_CAN
-
->>>>>>> main_debug

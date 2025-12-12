@@ -311,8 +311,10 @@ class OrganizerUI():
         )
         empty = self.lapi.create_player(player_obj)
         ascii_logo = input("Enter ASCII Logo (optional): ").strip() or None
+        
+        unique_name = self.lapi.check_team(team_name)
 
-        new_team = self.lapi.add_team(name=team_name, captain=handle, asciiLogo=ascii_logo)
+        new_team = self.lapi.add_team(name=unique_name, captain=handle, asciiLogo=ascii_logo)
         print(f"Team '{new_team.name}' has been successfully created!")
         return new_team
         
