@@ -6,7 +6,6 @@ class LLOrganizer():
     
     def __init__(self):
         self.dapi = DataAPI()
-        self.playerio = PlayerIO()
     
 
     def tournament_name(self, name: str) -> str:
@@ -78,8 +77,8 @@ class LLOrganizer():
         return contact_name
     
 
-    def organizer_player_info(self):
+    def organizer_player_info(self) -> list:
         '''Allows the organizer to see information on all the players'''
         
-        all_players = self.playerio.get_players()
+        all_players = self.dapi.get_all_players()
         return all_players
