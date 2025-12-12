@@ -9,7 +9,7 @@ class LLTeams:
         self.teams = self.data.get_all_teams()
 
     
-    def get_teams_public(self):
+    def get_teams_public(self) -> list:
         '''The public viewer can see the teams.'''
         
         return self.data.get_public_team()

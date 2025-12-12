@@ -10,13 +10,13 @@ class LLPlayer():
         self.playerio = PlayerIO
 
 
-    def get_all_players(self):
+    def get_all_players(self) -> list:
         '''Gets the players from the csv file'''
         
         return self.data.get_all_players()
     
     
-    def get_player_public_viewer(self):
+    def get_player_public_viewer(self) -> list:
         '''Gets the players for the public viewers'''
        
         return self.data.public_get_player()
