@@ -215,6 +215,7 @@ class CaptainUI:
         if selected_index < 0 or selected_index >= len(players):
             print("The number is not in the player's number range. Please select another number.")
             return
+        
         while True:
             selected = input("Please enter the number of whose information you want to see: ").strip().lower()
             try:
@@ -257,7 +258,6 @@ class CaptainUI:
                     print(f"Error: {error}")
             
             while True:
-                
                 try:
                     new_address_input = input("Enter player's new home address: ").strip()
                     new_address = self.ll.valid_address(new_address_input, player.address)
@@ -283,6 +283,7 @@ class CaptainUI:
         for key, value in updated_dict.items():
                 print(f"{key:13}: {value}")
         print()
+
 
     def view_schedule(self,title="Current Games"):
         try:
