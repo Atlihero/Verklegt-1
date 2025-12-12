@@ -87,7 +87,7 @@ class LLCaptain():
 
         # Add player to this team and save to the csv file
         player_to_add.team = team_name
-        PlayerIO.save_players(all_players)
+        self.data_api.save_new_player(all_players)
 
         return player_to_add
 
@@ -116,7 +116,7 @@ class LLCaptain():
 
         player_found.team = ""
 
-        PlayerIO.save_players(all_players)
+        self.data_api.save_new_player(all_players)
         return player_found
     
 
@@ -164,7 +164,7 @@ class LLCaptain():
 
 
         # Save all players back to csv
-        PlayerIO.save_players(all_players)
+        self.data_api.save_new_player(all_players)
         return player
 
     

@@ -54,7 +54,7 @@ class PlayerIO:
         return players, team
 
 
-    def save_players(players: list[Player]) -> None:
+    def save_players(self, players: list[Player]) -> None:
         '''Saves a player which has been created by using the csv writer 
         to save him and the player is now in the csv with all the details needed'''
         
@@ -75,7 +75,7 @@ class PlayerIO:
                 ])
 
 
-    def create_new_player(player: list) -> str:
+    def create_new_player(self, player: list) -> str:
         '''Used to write a new player into the csv file by using the csv writer'''
         
         try: 
