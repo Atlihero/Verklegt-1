@@ -118,10 +118,10 @@ class OrganizerUI():
         while True: # Check if tournament end date is a valid input
             end_date = input("Select the end date of the tournament. DD/MM/YYYY: ")
             try:
-                end_date = self.lapi.valid_end_date(end_date, start_date)
+                end_date = self.lapi.valid_end_date(end_date, start_date ,min_days=5)
                 break
             except ValueError as error:
-                print(f"Error: {error}. End date has to be after the start date.")
+                print(f"Error: {error}. End date must be at least 5 days after the start date.")
 
         while True: # Check if tournament location is a valid input
             venue = input("Enter the name of a venue (location) for the tournament: ")
@@ -235,14 +235,84 @@ class OrganizerUI():
 
 
     def create_team_ui(self):
-        '''Creates a new team'''
+        '''Creates a new team and captain using create player things from earlier'''
         print("\n=== Create a New Team ===")
                 
         team_name = input("Enter the team Name: ").strip() # Team name must be unique
-        captain = None
+        print("\n=== Create a Capitan ===")
+        while True: # Check if name of player is a valid input
+            name = input("Enter full name of player: ")
+            try:
+                name = self.lapi.valid_name(name)
+                break
+            except ValueError as error:
+                print(f"Error: {error}")
+
+
+        while True: # Check if player's date of birth is a valid input
+            dob_str = input("Enter player date of birth (DD/MM/YYYY): ")
+            try:
+                dob = self.lapi.valid_dob(dob_str)
+                break
+            except ValueError as error:
+                print(f"Error: {error}")
+            
+        while True: # Check if player's home address is a valid input
+            address = input("Enter player's home address: ")
+            try:
+                address = self.lapi.valid_address(address)
+                break
+            except ValueError as error:
+                print(f"Error: {error}")
+        
+    
+        while True: # Check if player's phone number is a valid input
+            phone_number = "354" + input("Enter player's phone number (354): ")
+            try:
+                phone_number = self.lapi.valid_phone(phone_number)
+                break
+            except ValueError as error:
+                print(f"Error: {error}")
+
+        while True: # Check if player's email address is a valid input
+            player_email = input("Enter the player's email address: ")
+            try: 
+                self.lapi.valid_email(player_email)
+                break
+            except ValueError as error:
+                print(f"Error: {error}")
+    
+        while True: # Check if player's handle is a valid input
+            handle = input("Enter player's handle: ")
+            try:  
+                handle = self.lapi.valid_handle(handle)
+                break
+            except ValueError as error:
+                print(error)
+
+        while True: # Check if player's link is a valid input
+            link = input("Enter a link (press 'Enter' to skip): ")
+            try:
+                link = self.lapi.validate_link(link)
+                break
+            except ValueError as error:
+                print(f"Error: {error}")
+
+        # Create the player object using valid fieldnames
+        player_obj = Player(
+            name = name,
+            dob = dob_str,
+            address = address,
+            phone = phone_number,
+            email = player_email,
+            handle = handle,
+            team = team_name,
+            link = link
+        )
+        empty = self.lapi.create_player(player_obj)
         ascii_logo = input("Enter ASCII Logo (optional): ").strip() or None
 
-        new_team = self.lapi.add_team(name=team_name, captain=captain, asciiLogo=ascii_logo)
+        new_team = self.lapi.add_team(name=team_name, captain=handle, asciiLogo=ascii_logo)
         print(f"Team '{new_team.name}' has been successfully created!")
         return new_team
         
@@ -264,12 +334,6 @@ class OrganizerUI():
         
         print(f"{player[real_userinput]}") # Show the player
         
-    """    
-    def make_captain(self): #virkar ekki enþá
-        '''The organizer selects a player to become captain'''
-        player_to_captain = self.lapi.get_players_all_off_them()
-        return player_to_captain
-    """
     
     def view_schedule(self,title="Current Games"):
         try:

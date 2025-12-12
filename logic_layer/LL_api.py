@@ -180,9 +180,9 @@ class LL_API:
         '''Validates if the tournaments start date is in the future.'''
         return self.organizer.choose_start_date(start_date)
     
-    def valid_end_date(self, end_date, start_date):
+    def valid_end_date(self, end_date, start_date, min_days):
         '''Validates if the tournaments end date is later than the start date.'''
-        return self.organizer.choose_end_date(end_date, start_date)
+        return self.organizer.choose_end_date(end_date, start_date, min_days)
     
     def valid_tournament_location(self, location):
         '''Validates if the tournament has a location.'''

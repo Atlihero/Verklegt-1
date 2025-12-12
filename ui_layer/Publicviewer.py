@@ -75,7 +75,7 @@ class PublicViewer:
             
             print(f"\n=== {title} ===")
             for g in games: # Print information on every match/game
-                print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
+                print(f"{g['match_number']:>2}: {g['round']} {g['match_date']}| {g['team_a']} vs {g['team_b']} | "
                     f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
             
             return games
