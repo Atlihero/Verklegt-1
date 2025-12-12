@@ -1,20 +1,17 @@
 from Models.Team import Team
 from Models.Player import Player
-from data_layer.TeamIO import TeamIO
-from data_layer.PlayerIO import PlayerIO
 from data_layer.data_api import DataAPI
 
 
 class LLTeams:
     def __init__(self): 
-        self.teams = DataAPI()
+        self.data = DataAPI()
 
     
     def get_teams_public(self):
         '''The public viewer can see the teams.'''
         
-        data = DataAPI()
-        return data.get_public_team()
+        return self.data.get_public_team()
 
     
     def add_player_to_team(self, team_name: str, player_name: str) -> Player:
@@ -26,7 +23,7 @@ class LLTeams:
             raise ValueError("A team with this name was not found.")
 
         # Get all players from data layer
-        players = PlayerIO.get_players()
+        players = self.data.get_all_players()
 
         # Find player with the right name
         player_to_add = None
@@ -45,8 +42,9 @@ class LLTeams:
         # Update Players team
         player_to_add.team = team.name
 
-        # Save player list through PlayerIO
-        PlayerIO.save_players(players)
+        # Save player list through the data layer
+        self.data.save_new_player(players)
+
 
         return player_to_add
 
@@ -71,9 +69,8 @@ class LLTeams:
         
         new_team = Team(name=name, captain=captain, asciiLogo=asciiLogo)
         
-        
         # saves the new team in the data_layer
-        DataAPI().add_team(name, captain, asciiLogo)
+        self.data.add_team(name, captain, asciiLogo)
 
         return new_team
 
