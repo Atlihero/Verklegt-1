@@ -39,11 +39,10 @@ class CaptainUI:
 
 
         while True:
-            choice = input("Enter team number to log in as captain: ")
+            choice = int(input("Enter team number to log in as captain: "))
 
-            index = int(choice)
-            if 1 <= index <= len(team_names):
-                selected_team = team_names[index - 1]
+            if 1 <= choice <= len(team_names):
+                selected_team = team_names[choice - 1]
                 self.current_team_name = selected_team
                 print(f"\nYou are now captain of team: {self.current_team_name}")
                 return True
