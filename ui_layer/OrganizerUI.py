@@ -8,14 +8,13 @@ def show_games(games, title="Current Games") -> str:
     '''Gets the schedule for the games.'''
     
     print(f"\n=== {title} ===\n")
-    print(f"{'No':<3}  {'Round':<8} {'Date':<12} {'Match':<49} {'Score':<7} {'Winner'}")
-    print("-" * 105)
+    print(f"{'No':<3}  {'Round':<8} {'Date':<12} {'Match':<55} {'Score':<8} {'Winner'}")
+    print("-" * 110)
 
     for g in games: # Print information on every match/game
-    
         match = f"{g['team_a']} vs {g['team_b']}"
         score = f"{g['score_a'] or '-'}-{g['score_b'] or '-'}"
-        print(f"{g['match_number']:<4}| {g['round']:<5} | {g['match_date']:<11} | {match:<47} | {score:<5} | {g['winner'] or '-'}")
+        print(f"{g['match_number']:<4}| {g['round']:<5} | {g['match_date']:<11} | {match:<53} | {score:<6} | {g['winner'] or '-'}")
     print()
     return games
 
@@ -470,13 +469,13 @@ class OrganizerUI():
                 return []
             
             print(f"\n=== {title} ===\n")
-            print(f"{'No':<3}  {'Round':<8} {'Date':<12} {'Match':<49} {'Score':<7} {'Winner'}")
-            print("-" * 105)
+            print(f"{'No':<3}  {'Round':<8} {'Date':<12} {'Match':<55} {'Score':<8} {'Winner'}")
+            print("-" * 110)
 
             for g in games: # Print information on every match/game
                 match = f"{g['team_a']} vs {g['team_b']}"
                 score = f"{g['score_a'] or '-'}-{g['score_b'] or '-'}"
-                print(f"{g['match_number']:<4}| {g['round']:<5} | {g['match_date']:<11} | {match:<47} | {score:<6} | {g['winner'] or '-'}")
+                print(f"{g['match_number']:<4}| {g['round']:<5} | {g['match_date']:<11} | {match:<53} | {score:<6} | {g['winner'] or '-'}")
             
             print()
             return games

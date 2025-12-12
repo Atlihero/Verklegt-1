@@ -51,7 +51,6 @@ class DataAPI:
         '''Gets all the teams and puts them in a list'''
         return self.team.get_all_teams()
 
-
     '''Data wrapper for TournamentIO'''
 
     def get_all_tournaments(self) -> list:
