@@ -239,7 +239,7 @@ class OrganizerUI():
         print("\n=== Create a New Team ===")
                 
         team_name = input("Enter the team Name: ").strip() # Team name must be unique
-        print("\n=== Create a Capitan ===")
+        print("\n=== Create a Captain ===")
         while True: # Check if name of player is a valid input
             name = input("Enter full name of player: ")
             try:
