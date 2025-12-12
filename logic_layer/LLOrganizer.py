@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from data_layer.data_api import DataAPI
 from data_layer.PlayerIO import PlayerIO
 
@@ -44,7 +44,7 @@ class LLOrganizer():
             raise ValueError ("Invalid date. Use DD/MM/YYYY")
 
     
-    def choose_end_date(self, end_date, start_date) -> datetime:
+    def choose_end_date(self, end_date, start_date, min_days=5) -> datetime:
         '''Check if the end date for a tournament is a valid date'''
         
         try:
@@ -52,8 +52,8 @@ class LLOrganizer():
             end_date = datetime.strptime(end_date, "%d/%m/%Y")
             
 			# Check if inputted end date is after the start date
-            if end_date < start_date:
-                raise ValueError("Date has to be after the start date. Please enter a valid date.")
+            if end_date < start_date + timedelta(days=min_days):
+                raise ValueError(f"End date must be at least {min_days} days after the start date.")
             return end_date
         except ValueError: # If the formatting is wrong
             raise ValueError ("Invalid date. Use DD/MM/YYYY")

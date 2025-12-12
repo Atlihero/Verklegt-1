@@ -118,10 +118,10 @@ class OrganizerUI():
         while True: # Check if tournament end date is a valid input
             end_date = input("Select the end date of the tournament. DD/MM/YYYY: ")
             try:
-                end_date = self.lapi.valid_end_date(end_date, start_date)
+                end_date = self.lapi.valid_end_date(end_date, start_date ,min_days=5)
                 break
             except ValueError as error:
-                print(f"Error: {error}. End date has to be after the start date.")
+                print(f"Error: {error}. End date must be at least 5 days after the start date.")
 
         while True: # Check if tournament location is a valid input
             venue = input("Enter the name of a venue (location) for the tournament: ")
