@@ -1,16 +1,16 @@
 tournament_name,round,match_number,match_date,team_a,team_b,score_a,score_b,winner
 Group17,R16,1,13/12/2025,Pepsi Max Overflow,WhileTrue Tryhards,1,3,WhileTrue Tryhards
-Group17,R16,2,13/12/2025,Undefined Behavior United,Assembly Avengers,,,
-Group17,R16,3,13/12/2025,Pepsi Max Punishers,SegFault Spartans,,,
-Group17,R16,4,13/12/2025,CacheHit Crusaders,Chuck Norris Fan Club,,,
-Group17,R16,5,13/12/2025,Bomblab Bombers,IndentationError Invaders,,,
-Group17,R16,6,13/12/2025,NullPointer Ninjas,StackOverflow Stackers,,,
-Group17,R16,7,13/12/2025,Segmentation Foul,Datalab Dominators,,,
-Group17,R16,8,13/12/2025,OffByOne Offense,RaceCondition Racers,,,
-Group17,QF,9,14/12/2025,WhileTrue Tryhards,TBD,,,
-Group17,QF,10,14/12/2025,TBD,TBD,,,
-Group17,QF,11,14/12/2025,TBD,TBD,,,
-Group17,QF,12,14/12/2025,TBD,TBD,,,
-Group17,SF,13,15/12/2025,TBD,TBD,,,
-Group17,SF,14,15/12/2025,TBD,TBD,,,
-Group17,F,15,16/12/2025,TBD,TBD,,,
+Group17,R16,2,13/12/2025,Undefined Behavior United,Assembly Avengers,2,4,Assembly Avengers
+Group17,R16,3,13/12/2025,Pepsi Max Punishers,SegFault Spartans,3,5,SegFault Spartans
+Group17,R16,4,13/12/2025,CacheHit Crusaders,Chuck Norris Fan Club,5,4,CacheHit Crusaders
+Group17,R16,5,13/12/2025,Bomblab Bombers,IndentationError Invaders,5,4,Bomblab Bombers
+Group17,R16,6,13/12/2025,NullPointer Ninjas,StackOverflow Stackers,5,3,NullPointer Ninjas
+Group17,R16,7,13/12/2025,Segmentation Foul,Datalab Dominators,3,1,Segmentation Foul
+Group17,R16,8,13/12/2025,OffByOne Offense,RaceCondition Racers,3,1,OffByOne Offense
+Group17,QF,9,14/12/2025,WhileTrue Tryhards,Assembly Avengers,1,3,Assembly Avengers
+Group17,QF,10,14/12/2025,SegFault Spartans,CacheHit Crusaders,3,5,CacheHit Crusaders
+Group17,QF,11,14/12/2025,Bomblab Bombers,NullPointer Ninjas,3,6,NullPointer Ninjas
+Group17,QF,12,14/12/2025,Segmentation Foul,OffByOne Offense,5,6,OffByOne Offense
+Group17,SF,13,15/12/2025,Assembly Avengers,CacheHit Crusaders,4,5,CacheHit Crusaders
+Group17,SF,14,15/12/2025,NullPointer Ninjas,OffByOne Offense,9,1,NullPointer Ninjas
+Group17,F,15,16/12/2025,CacheHit Crusaders,NullPointer Ninjas,3,2,CacheHit Crusaders
