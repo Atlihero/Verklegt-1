@@ -5,10 +5,17 @@ from Models.Player import Player
 
 def show_games(games, title="Current Games"):
     '''  '''
-    print(f"\n=== {title} ===")
+    print(f"\n=== {title} ===\n")
+    print(f"{'No':<3}  {'Round':<8} {'Date':<12} {'Match':<49} {'Score':<7} {'Winner'}")
+    print("-" * 105)
+
     for g in games: # Print information on every match/game
-        print(f"{g['match_number']:>2}: {g['round']} {g['match_date']}| {g['team_a']} vs {g['team_b']} | "
-              f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
+    
+        match = f"{g['team_a']} vs {g['team_b']}"
+        score = f"{g['score_a'] or '-'}-{g['score_b'] or '-'}"
+        print(f"{g['match_number']:<4}| {g['round']:<5} | {g['match_date']:<11} | {match:<47} | {score:<5} | {g['winner'] or '-'}")
+    print()
+    return games
 
 
 class OrganizerUI():
@@ -173,10 +180,11 @@ class OrganizerUI():
         '''Update results of the tournament '''
         try:
             tournaments = self.lapi.get_tournament_names() # List of all tournament names
-            print(tournaments)
+            print()
+            print(f"Tournaments in the syste: {tournaments}")
             
             while True: # Select a tournament that is already made
-                tournament_name = input("Please enter the tournament name: ").strip()
+                tournament_name = input("\nPlease enter a tournament name: ").strip()
                 if tournament_name in tournaments:
                     break
                 print("Tournament was not found. Please enter a valid tournament name.")
@@ -195,7 +203,7 @@ class OrganizerUI():
                     enter the match to edit and the scores of both teams with error handling
                     on negative and invalid inputs
                     '''
-                    match_number = int(input("\nEnter match number to update: "))
+                    match_number = int(input("Enter match number to update: "))
                     score_a = int(input("Enter score for team A: "))
                     score_b = int(input("Enter score for team B: "))
 
@@ -338,10 +346,11 @@ class OrganizerUI():
     def view_schedule(self,title="Current Games"):
         try:
             tournaments = self.lapi.get_tournament_names() # Gets all tournament names
-            print(tournaments)
+            print()
+            print(f"Torunaments in the system: {tournaments}")
             
             while True:
-                tournament_name = input("Enter tournament name: ").strip()
+                tournament_name = input("\nPlease enter a tournament name: ").strip()
 
                 if tournament_name in tournaments: # Confirms that the tournament is in the system
                     break
@@ -355,11 +364,16 @@ class OrganizerUI():
                 print(f"No games found for tournament: {tournament_name}")
                 return []
             
-            print(f"\n=== {title} ===")
+            print(f"\n=== {title} ===\n")
+            print(f"{'No':<3}  {'Round':<8} {'Date':<12} {'Match':<49} {'Score':<7} {'Winner'}")
+            print("-" * 105)
+
             for g in games: # Print information on every match/game
-                print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
-                    f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
             
+                match = f"{g['team_a']} vs {g['team_b']}"
+                score = f"{g['score_a'] or '-'}-{g['score_b'] or '-'}"
+                print(f"{g['match_number']:<4}| {g['round']:<5} | {g['match_date']:<11} | {match:<47} | {score:<6} | {g['winner'] or '-'}")
+            print()
             return games
         
         except ValueError:

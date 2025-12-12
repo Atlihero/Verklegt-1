@@ -17,7 +17,7 @@ class TournamentIO:
                     tournament.append(row) 
                     
         except ValueError: 
-            return f"Failed to find and display the tournament. Please try again."
+            return "Failed to find and display the tournament. Please try again."
         return tournament 
     
 
@@ -37,7 +37,7 @@ class TournamentIO:
         return tournament_names
 
 
-    def create_new_tournament(self, tournament: list):
+    def create_new_tournament(self, tournament: list) -> str:
         '''This function is used to create a new tournament by using the csv writer to append the new tournament
         with all its details into the tournament csv file'''
         
@@ -45,13 +45,13 @@ class TournamentIO:
             with open(TOURNAMENT_PATH, "a", newline = "", encoding = "utf-8") as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow(tournament) # Write the new tournament to the file.
-            return f"New Tournament has been created!"    
+            return "New Tournament has been created!"    
             
         except ValueError: 
-            f"Failed to create a new tournament. Please try again."
+            return "Failed to create a new tournament. Please try again."
 
 
-    def create_new_game(self, games: list):
+    def create_new_game(self, games: list) -> str:
         '''Creates a new game for a tournament using the csv writer to append it to the games csv'''
         
         try:
@@ -59,7 +59,7 @@ class TournamentIO:
                 writer = csv.writer(csvfile)
                 writer.writerow(games) # Add the new game to the csv file
                 
-            return f"New game has been added to the tournament!"
+            return "New game has been added to the tournament!"
         except ValueError:
             return "Failed to add a new game to the tournament. Please try again."
             

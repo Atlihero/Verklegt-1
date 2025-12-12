@@ -42,7 +42,7 @@ class DataAPI:
         '''Gets the teams for the public viewer'''
         return self.team.get_team_public()
 
-    def add_team_to_tournament(self, tournament_name, teams_list):
+    def add_team_to_tournament(self, tournament_name: str, teams_list: list):
         '''Add teams to the tournament'''
         return self.team.add_teams_to_tournament(tournament_name, teams_list)
 
@@ -57,7 +57,7 @@ class DataAPI:
         '''Retrieves the tournament names'''
         return self.tournament.get_tournament_names()
 
-    def create_new_tournaments(self, tournament_obj):
+    def create_new_tournaments(self, tournament_obj: object):
         '''Creates new tournament and adds to csv file'''
         return self.tournament.create_new_tournament(tournament_obj)
 
