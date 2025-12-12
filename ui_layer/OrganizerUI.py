@@ -105,7 +105,7 @@ class OrganizerUI():
         print("\n=== Create a New Tournament ===")
         running = True
         while running: # Check if tournamnent name is a valid input
-            unique_name = input("Create a unique name for the tournament: ").strip().lower()
+            unique_name = input("Create a unique name for the tournament: ").strip()
             if unique_name == "q":
                 running = False
                 break
@@ -148,12 +148,14 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
         
+        
+
         while running: # Check if tournament contact name is a valid input
+            contact_person = input("Who is the contact person for this tournament. Please enter a name: ")
             if contact_person == "q":
                 running = False
                 break
             try:
-                contact_person = input("Who is the contact person for this tournament. Please enter a name: ")
                 contact_person = self.lapi.valid_tournament_contact(contact_person)
                 break
             except ValueError as error:
@@ -193,7 +195,7 @@ class OrganizerUI():
                 contact_phone = contact_phone
             )
             self.lapi.generate_games(unique_name, start_date)
-            return self.lapi.create_new_tournament(tournament_obj) and Happy_paths.tournament_was_made()
+            return self.lapi.create_new_tournament(tournament_obj)
             
             
 
