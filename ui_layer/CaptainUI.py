@@ -217,7 +217,6 @@ class CaptainUI:
             return
         
         while True:
-            selected = input("Please enter the number of whose information you want to see: ").strip().lower()
             try:
                 selected_index = int(selected) - 1
             except ValueError:
@@ -259,8 +258,8 @@ class CaptainUI:
             
             while True:
                 try:
-                    new_address_input = input("Enter player's new home address: ").strip()
-                    new_address = self.ll.valid_address(new_address_input, player.address)
+                    new_address_input = input("Enter player's new home address. Press enter to keep the old one: ").strip()
+                    new_address = self.ll.keep_old_address(new_address_input, player.address)
                     break
                 except ValueError as error:
                     print(f"Error: {error}")
