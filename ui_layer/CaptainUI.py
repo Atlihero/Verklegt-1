@@ -218,8 +218,9 @@ class CaptainUI:
                 selected_index = int(selected) - 1
                 if selected_index < 0 or selected_index >= len(players):
                     print("The number is not in the player's number range. Please select another number.")
-                    return
-            except:
+                    continue
+                break
+            except ValueError:
                 print("select an integer")
 
         while True:
