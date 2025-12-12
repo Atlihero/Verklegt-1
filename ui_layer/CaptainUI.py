@@ -39,15 +39,16 @@ class CaptainUI:
 
 
         while True:
-            choice = int(input("Enter team number to log in as captain: "))
-
-            if 1 <= choice <= len(team_names):
-                selected_team = team_names[choice - 1]
-                self.current_team_name = selected_team
-                print(f"\nYou are now captain of team: {self.current_team_name}")
-                return True
-
-            print(f"Please enter a number between 1 and {len(team_names)}.")
+            try:
+                choice = int(input("Enter team number to log in as captain: "))
+                
+                if 1 <= choice <= len(team_names):
+                    selected_team = team_names[choice - 1]
+                    self.current_team_name = selected_team
+                    print(f"\nYou are now captain of team: {self.current_team_name}")
+                    return True
+            except ValueError:
+                print(f"Please enter a number between 1 and {len(team_names)}.")
     
 
     def _get_and_show_team_members(self) -> list[Player]:
