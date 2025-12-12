@@ -40,6 +40,7 @@ class CaptainUI:
             captain = captains[i]
             index = i + 1
             print(f"{index:3}) Team: {team_name:25} | Captain: {captain:12}")
+        print()
 
         while True:
             try:
@@ -98,7 +99,7 @@ class CaptainUI:
             return
         
         while True:
-            selected = input("Enter the number of the player you want to add: \n").strip().lower()
+            selected = input("\nEnter the number of the player you want to add: ").strip().lower()
             if selected == "q":
                 return
             try:
@@ -116,7 +117,6 @@ class CaptainUI:
 
         try:
             self.ll.add_player_to_team(self.current_team_name, player_name)
-            print(f"\n{player_name} has been added to {self.current_team_name}.\n")
             print("\033[92m┌────────────────────────────────────────────────────┐\033[0m")
             print(f"\033[92m {player_name} has been added to {self.current_team_name}.\033[0m")
             print("\033[92m└────────────────────────────────────────────────────┘\033[0m")

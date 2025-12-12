@@ -7,7 +7,7 @@ class LLPlayer():
 
     def __init__(self):
         self.data = DataAPI()
-        self.playerio = PlayerIO
+        self.playerio = PlayerIO()
 
 
     def get_all_players(self) -> list:

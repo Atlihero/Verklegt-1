@@ -227,7 +227,7 @@ class OrganizerUI():
         try:
             tournaments = self.lapi.get_tournament_names() # List of all tournament names
             print()
-            print(f"Tournaments in the syste: {tournaments}")
+            print(f"Tournaments in the system: {tournaments}")
 
             running = True
             
