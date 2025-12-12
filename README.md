@@ -1,2 +1,5 @@
-## Verklegt 1
-þetta er verkefni hóp 17 í verklegt eitt :)
+## Ræsa
+Þetta er ræst með því að cd í .\Verklegt-1\ og gera annaðhvort python main.py eða py main.py
+
+## Linkur á myndband
+
