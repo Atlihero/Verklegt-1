@@ -124,7 +124,7 @@ class Uimain:
                         print("\033[90m└────────────────────────────────────────────────────┘\033[1m")
                     
                         if not captain.select_captain_and_team():
-                            continue # go back to main menue if captain not found
+                            break # go back to main menue if captain not found
                             
                         Happy_paths.Happy_captain_add_or_info()
                         cap_choice = input("").strip().lower()
