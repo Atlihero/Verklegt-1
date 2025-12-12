@@ -8,7 +8,6 @@ data_layer:
     Player.csv,
     Teams.csv,
     Tournament.csv,
-    
   PlayerIO.py,
   TeamIO.py,
   TournamentIO.py,
