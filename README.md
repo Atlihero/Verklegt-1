@@ -4,37 +4,38 @@
 ## Layout
 data_layer:
   _data:
-    Games.csv
-    Player.csv
-    Teams.csv
-    Tournament.csv
-  PlayerIO.py
-  TeamIO.py
-  TournamentIO.py
+    Games.csv,
+    Player.csv,
+    Teams.csv,
+    Tournament.csv,
+    
+  PlayerIO.py,
+  TeamIO.py,
+  TournamentIO.py,
   data_api.py
 
 logic_layer:
-  LLCaptain.py
-  LLOrganizer.py
-  LLPlayers.py
-  LLTeams.py
-  LLTournament.py
+  LLCaptain.py,
+  LLOrganizer.py,
+  LLPlayers.py,
+  LLTeams.py,
+  LLTournament.py,
   LL_api.py
 
 ui_layer:
-  CaptainUI.py
-  Happy_path.py
-  OrganizerUI.py
-  Publicviewer.py
+  CaptainUI.py,
+  Happy_path.py,
+  OrganizerUI.py,
+  Publicviewer.py,
   mainUI.py
 
 Models:
-  Game.py
-  Organizer.py
-  Player.py
-  Result.py
-  Round.py
-  Team.py
+  Game.py,
+  Organizer.py,
+  Player.py,
+  Result.py,
+  Round.py,
+  Team.py,
   Tournament.py
 
 main.py
