@@ -1,6 +1,7 @@
 from data_layer.PlayerIO import PlayerIO
 from data_layer.TeamIO import TeamIO
 from data_layer.TournamentIO import TournamentIO
+from Models.Player import Player
 
 class DataAPI:
     def __init__(self):
@@ -11,72 +12,72 @@ class DataAPI:
 
     '''Data wrapper for PlayerIO'''
 
-    def add_player(self,player_dict):
-        '''Ads a new player to the csv with the dict data'''
-        return self.player.create_new_player(player_dict)
-
-    def get_all_players(self):
-        '''Gets the players from the csv to the LL'''
+    def get_all_players(self) -> list:
+        '''Gets the players from the csv and ready for the logic layer'''
         return self.player.get_players()
 
-    def public_get_player(self):
+    def public_get_player(self) -> list:
         '''Gets the player for the public viewers'''
-        return self.player.get_player_PublicViewer()
+        return self.player.get_player_public_viewer()
+    
+    def save_new_player(self, players: list[Player]) -> None:
+        '''Saves a player in the csv file with all needed information'''
+        return self.player.save_players(players)
+    
+    def add_player(self,player_dict: list) -> str:
+        '''Adds a new player to the csv file'''
+        return self.player.create_new_player(player_dict)
 
 
     '''Data wrapper for TeamIO'''
 
-    def get_all_Teams(self):
-        '''Gets all the teams an puts them in a list'''
-        return self.team.get_all_teams()
-
-    def get_teams(self):
-        '''Gets the teams from the csv to the LL'''
+    def get_teams(self) -> list:
+        '''Gets the teams from the csv and ready for the logic layer'''
         return self.team.get_team()
-
-    def add_team(self, name: str, captain: str, asciiLogo: str):
-        '''Adds a new team to the csv with the dict details'''
+    
+    def get_public_team(self) -> list:
+        '''Gets the teams for the public viewer'''
+        return self.team.get_team_public()
+    
+    def add_team(self, name: str, captain: str, asciiLogo: str) -> str:
+        '''Adds a new team to the csv file'''
         return self.team.create_new_team(name, captain, asciiLogo)
     
-    def getPublicTeam(self):
-        '''Gets the teams for the public viewer'''
-        return self.team.getTeam_public()
-
-    def add_team_to_tournament(self, tournament_name, teams_list):
-        '''Add exactly 16 teams to the tournament'''
+    def add_team_to_tournament(self, tournament_name: str, teams_list: list) -> str:
+        '''Add teams to the tournament'''
         return self.team.add_teams_to_tournament(tournament_name, teams_list)
+
+    def get_all_teams(self) -> list:
+        '''Gets all the teams and puts them in a list'''
+        return self.team.get_all_teams()
 
 
     '''Data wrapper for TournamentIO'''
 
-    def new_tournament(self, tournament_dict):
-        '''Creates a new tournament in the csv'''
-        return self.tournament.create_new_tournament(tournament_dict)
-
-    def get_all_tournaments(self):
-        '''Retrieves the tournaments from the csv'''
+    def get_all_tournaments(self) -> list:
+        '''Retrieves the tournaments from the csv file'''
         return self.tournament.get_tournaments()
     
-    def get_tournamentNames(self):
+    def get_tournament_names(self) -> list:
         '''Retrieves the tournament names'''
         return self.tournament.get_tournament_names()
 
-    def create_new_tournaments(self, tournament_obj):
+    def create_new_tournaments(self, tournament_obj: list) -> str:
         '''Creates new tournament and adds to csv file'''
         return self.tournament.create_new_tournament(tournament_obj)
 
-    def new_game(self, row: list):
-        '''Creates a new game in the csv'''
+    def new_game(self, row: list) -> str:
+        '''Creates a new game in the csv file'''
         return self.tournament.create_new_game(row)
 
-    def get_games(self):
-        '''Gets the games from the tournamnet'''
+    def get_games(self) -> list:
+        '''Gets the games from the tournament'''
         return self.tournament.get_all_games()
     
-    def update_game(self, tournament_name: str, match_number: int, score_a: int, score_b: int):
-        '''Updates the game based on the score inputted'''
+    def update_game(self, tournament_name: str, match_number: int, score_a: int, score_b: int) -> str:
+        '''Updates the game based on the inputted score'''
         return self.tournament.update_games(tournament_name, match_number, score_a, score_b)
     
-    def advance_round(self, tournament_name: str, match_number: int, winner: str):
+    def advance_round(self, tournament_name: str, match_number: int, winner: str) -> str:
         '''Shows what team advances to the next round'''
         return self.tournament.advance(tournament_name, match_number, winner)

@@ -3,7 +3,7 @@ from datetime import date
 class Player:
     '''Class that takes in information about the player'''
 
-    def __init__(self, name, dob, phone, address, email, handle, link, team=None):        
+    def __init__(self, name, dob, phone, address, email, handle, team=None, link=""):        
         self.name: str = name
         self.dob: date = dob
         self.address: int = address
@@ -18,7 +18,7 @@ class Player:
         '''Return the information about the player'''
         dob_str = self.dob.strftime("%d/%m/%Y") if hasattr(self.dob, "strftime") else self.dob
         
-        return (
+        return ("\n"
         f"Name    : {self.name}\n"
         f"DOB     : {dob_str}\n"
         f"Address : {self.address}\n"

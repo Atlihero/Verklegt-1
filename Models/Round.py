@@ -11,10 +11,11 @@ class Round(Tournament):
     
     def __str__(self):
         '''Return the information'''
+        
         return (
-        f"Number    : {self.number}\n"
-        f"Start Time: {self.start_time}\n"
-        f"End Time  : {self.end_time}"
+        f"Number     : {self.number}\n"
+        f"Start Time : {self.start_time}\n"
+        f"End Time   : {self.end_time}"
         )
 
     
