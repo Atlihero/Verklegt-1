@@ -4,8 +4,9 @@ from Models.Player import Player
 from ui_layer.Happy_path import Happy_paths
 
 
-def show_games(games, title="Current Games"):
-    '''  '''
+def show_games(games, title="Current Games") -> str:
+    '''Gets the schedule for the games.'''
+    
     print(f"\n=== {title} ===\n")
     print(f"{'No':<3}  {'Round':<8} {'Date':<12} {'Match':<49} {'Score':<7} {'Winner'}")
     print("-" * 105)
@@ -24,7 +25,8 @@ class OrganizerUI():
     def __init__(self):
         self.lapi = LL_API()
 
-    def create_player(self):
+
+    def create_player(self) -> Player:
         '''Have the user input all the information needed for the player.'''
 
         running = True
@@ -39,7 +41,6 @@ class OrganizerUI():
                 break
             except ValueError as error:
                 print(f"Error: {error}")
-
 
         while running: # Check if player's date of birth is a valid input
             dob_str = input("Enter player date of birth (DD/MM/YYYY): ")
@@ -124,7 +125,7 @@ class OrganizerUI():
             return self.lapi.create_player(player_obj)
 
 
-    def createTournament(self):
+    def createTournament(self) -> Tournament:
         '''Input every information needed to create a tournament.'''
         
         print("\n=== Create a New Tournament ===")
@@ -173,8 +174,6 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
         
-        
-
         while running: # Check if tournament contact name is a valid input
             contact_person = input("Who is the contact person for this tournament. Please enter a name: ")
             if contact_person == "q":
@@ -222,11 +221,9 @@ class OrganizerUI():
             self.lapi.generate_games(unique_name, start_date)
             return self.lapi.create_new_tournament(tournament_obj)
             
-            
 
-
-    def update_result(self):
-        '''Update results of the tournament '''
+    def update_result(self) -> str:
+        '''Update results of the tournament.'''
         try:
             tournaments = self.lapi.get_tournament_names() # List of all tournament names
             print()
@@ -279,8 +276,8 @@ class OrganizerUI():
                     break
                 except ValueError:
                     print("Scores and match number must be integer numbers. Please enter valid numbers.")
+            
             # Updates the game/match results
-
             if running:
                 result = self.lapi.update_game(tournament_name, match_number, score_a, score_b)
 
@@ -310,8 +307,9 @@ class OrganizerUI():
             print(f"Invalid input: {error}")
 
 
-    def create_team_ui(self):
+    def create_team_ui(self) -> str:
         '''Creates a new team and captain using create player things from earlier'''
+
         print("\n=== Create a New Team ===")
         running = True
 
@@ -335,7 +333,6 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
 
-
         while running: # Check if player's date of birth is a valid input
             dob_str = input("Enter player date of birth (DD/MM/YYYY): ")
             if dob_str == "q":
@@ -358,7 +355,6 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
         
-    
         while running: # Check if player's phone number is a valid input
             phone_number = "354" + input("Enter player's phone number (354): ")
             if phone_number == "q":
@@ -448,7 +444,8 @@ class OrganizerUI():
             print(f"{player[real_userinput]}\n") # Show the player
         
     
-    def view_schedule(self, title="Current Games"):
+    def view_schedule(self, title="Current Games") -> str:
+        '''Return the schedule for the games so it can be viewed.'''
         try:
             tournaments = self.lapi.get_tournament_names() # Gets all tournament names
             print()

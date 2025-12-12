@@ -3,7 +3,7 @@ api = LL_API()
 
 class PublicViewer:
 
-    def get_player_public(self):
+    def get_player_public(self) -> str:
         '''Gets the players for the public viewer.'''
         
         try:
@@ -27,7 +27,7 @@ class PublicViewer:
             print("Please enter a valid integer")
 
 
-    def get_teams_public(self):
+    def get_teams_public(self) -> str:
         '''Gets the teams for the public viewer.'''
         
         try:
@@ -51,8 +51,8 @@ class PublicViewer:
             print("Please enter a valid integer")
     
 
-    def view_schedule(self, title="Current Games"):
-        '''Gets the schedule for the games.'''
+    def view_schedule(self, title="Current Games") -> str:
+        '''Return the schedule for the games so it can be viewed by the public viewer.'''
         
         try:
             tournaments = api.get_tournament_names() # Gets all tournament names

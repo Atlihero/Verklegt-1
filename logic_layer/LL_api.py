@@ -7,7 +7,6 @@ from .LLTournament import LLTournament
 from Models.Tournament import Tournament
 from Models.Player import Player
 from Models.Team import Team
-from data_layer.data_api import DataAPI
 from datetime import datetime
 
 
