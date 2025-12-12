@@ -315,13 +315,16 @@ class OrganizerUI():
         print("\n=== Create a New Team ===")
         running = True
 
-        while running:
-            team_name = input("Enter the team Name: ").strip() # Team name must be unique
-            if team_name == "q":
-                running = False
+        while True:
+            team_name = input("Enter the team Name (or 'q' to quit): ").strip()
+            if team_name.lower() == "q":
+                print("Team creation cancelled.")
+                return None
+            try:
+                team_name = self.lapi.valid_team_name(team_name)
                 break
-            else:
-                break
+            except ValueError as error:
+                print(f"Error: {error}")
 
         while running: # Check if name of player is a valid input
             print("\n=== Create a Captain ===")

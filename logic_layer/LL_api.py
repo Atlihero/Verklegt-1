@@ -125,6 +125,11 @@ class LL_API:
         games = self.tournament.get_all_games()
         return [g for g in games if g["tournament_name"] == tournament_name]
     
+    def valid_team_name(self, name: str):
+        '''Logic layer wrapper to check team name uniqueness.'''
+        return self.team.validate_team_name(name)
+
+    
     
     '''Logic layer wrapper for the LLCaptain'''
 
