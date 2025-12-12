@@ -121,7 +121,7 @@ class OrganizerUI():
                 link = link
             )
 
-            return self.lapi.create_player(player_obj) and Happy_paths.player_was_made()
+            return self.lapi.create_player(player_obj)
 
 
     def createTournament(self):
