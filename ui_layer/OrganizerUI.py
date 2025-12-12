@@ -219,7 +219,7 @@ class OrganizerUI():
                 contact_phone = contact_phone
             )
             self.lapi.generate_games(unique_name, start_date)
-            return self.lapi.create_new_tournament(tournament_obj)
+            return self.lapi.create_new_tournament(tournament_obj) and Happy_paths.tournament_was_made()
             
 
     def update_result(self) -> str:
