@@ -8,6 +8,7 @@ class PlayerIO:
     def get_players(self) -> list:
         '''This function finds the selected player and puts him into an empty 
             list to be displayed'''
+        
         players = [] 
         with open(PLAYER_PATH, "r", encoding = "utf-8") as csvfile:
             reader = csv.DictReader(csvfile)  
@@ -36,6 +37,7 @@ class PlayerIO:
     
     def get_player_public_viewer(self) -> list:
         '''Shows name and the handle of a player for the public viewer'''
+        
         try:
             # Use lists to store each players name and handle and their team
             players = [] 
@@ -48,13 +50,14 @@ class PlayerIO:
                     team.append(row["Team"])
                  
         except ValueError:
-            f"Failed to display the name and handle of the player. Please try again."
+            return "Failed to display the name and handle of the player. Please try again."
         return players, team
 
 
-    def save_players(players: list[Player]):
+    def save_players(players: list[Player]) -> None:
         '''Saves a player which has been created by using the csv writer 
         to save him and the player is now in the csv with all the details needed'''
+        
         with open(PLAYER_PATH, "w", newline = "", encoding = "utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["Name", "DOB", "Address", "Phonenumber",
@@ -72,8 +75,9 @@ class PlayerIO:
                 ])
 
 
-    def create_new_player(player: list):
+    def create_new_player(player: list) -> str:
         '''Used to write a new player into the csv file by using the csv writer'''
+        
         try: 
             with open(PLAYER_PATH, "a",newline = "", encoding = "utf-8") as csvfile:
             # The user writes in what is needed for the player: name, DOB etc.
@@ -81,4 +85,4 @@ class PlayerIO:
                 writer.writerow(player) # Prints what was written in a new row
             return f"New player has been added!"    
         except ValueError:   # In case of wrong inputs 
-            f"Failed to add a new player. Please try again."
+            return "Failed to add a new player. Please try again."

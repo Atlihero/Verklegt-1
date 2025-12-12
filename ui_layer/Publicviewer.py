@@ -21,7 +21,7 @@ class PublicViewer:
                 except ValueError:
                     print("The input has to be a integer number. Please enter a valid number.")
                         
-            print(f"Player: {player[userinput-1]}, Team: {team[userinput-1]}") # Show the player and its team
+            print(f"\nPlayer: {player[userinput-1]} \nTeam  : {team[userinput-1]}\n") # Show the player and its team
         
         except ValueError as error:
             print("Please enter a valid integer")
@@ -45,21 +45,22 @@ class PublicViewer:
                 except ValueError:
                     print("please enter a valid integer")
 
-            print(f"Team: {teams[userinput-1]}, Captain: {captain[userinput-1]}") # Show team and its captain
+            print(f"\nTeam    : {teams[userinput-1]} \nCaptain : {captain[userinput-1]}\n") # Show team and its captain
 
         except ValueError:
             print("Please enter a valid integer")
     
 
-    def view_schedule(title="Current Games"):
+    def view_schedule(self, title="Current Games"):
         '''Gets the schedule for the games.'''
         
         try:
             tournaments = api.get_tournament_names() # Gets all tournament names
-            print(tournaments)
+            print()
+            print(f"Tournaments in the system: {tournaments}")
             
             while True:
-                tournament_name = input("Enter tournament name: ").strip()
+                tournament_name = input("\nPlease enter a tournament name: ").strip()
 
                 if tournament_name in tournaments: # Confirms that the tournament is in the system
                     break
@@ -73,11 +74,16 @@ class PublicViewer:
                 print(f"No games found for tournament: {tournament_name}")
                 return []
             
-            print(f"\n=== {title} ===")
+            print(f"\n=== {title} ===\n")
+            print(f"{'No':<3}  {'Round':<8} {'Date':<12} {'Match':<49} {'Score':<7} {'Winner'}")
+            print("-" * 105)
+
             for g in games: # Print information on every match/game
-                print(f"{g['match_number']:>2}: {g['round']} {g['match_date']}| {g['team_a']} vs {g['team_b']} | "
-                    f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
             
+                match = f"{g['team_a']} vs {g['team_b']}"
+                score = f"{g['score_a'] or '-'}-{g['score_b'] or '-'}"
+                print(f"{g['match_number']:<4}| {g['round']:<5} | {g['match_date']:<11} | {match:<47} | {score:<6} | {g['winner'] or '-'}")
+            print()
             return games
         
         except ValueError:

@@ -1,5 +1,6 @@
 from data_layer.PlayerIO import PlayerIO
 from data_layer.data_api import DataAPI
+from .LLPlayers import LLPlayer
 from Models.Player import Player
 
 
@@ -9,6 +10,7 @@ class LLCaptain():
 
     def __init__(self):
         self.data_api = DataAPI()
+        self.players = LLPlayer()
 
     def _get_all_players(self) -> list[Player]:
         """Get all players as Player objects from the data layer."""
@@ -28,7 +30,7 @@ class LLCaptain():
         return team_players
 
     
-    def get_available_players(self, team_name: str) -> list[Player]:
+    def get_available_players(self, free_players: str) -> list[Player]:
         '''Return players that do not belong to any existing team.'''
 
         all_players = self._get_all_players()
@@ -43,7 +45,7 @@ class LLCaptain():
 
     
     def add_player_to_team(self, team_name: str, player_name: str) -> Player:
-        '''Captain adds a player to his team'''
+        '''Captain can add a player to his team.'''
 
         team_name = team_name.strip()
         player_name = player_name.strip()
@@ -62,7 +64,7 @@ class LLCaptain():
         # Get all players
         all_players = self._get_all_players()
 
-        # Get players already in this team to check max 5
+        # Get how many players already are in this team, maximum 5 players in a team
         team_players = self.get_team_members(team_name)
         if len(team_players) >= self.MAX_TEAM_MEMBERS:
             raise ValueError("There are already 5 players in this team.")
@@ -83,7 +85,7 @@ class LLCaptain():
         if current_team not in ("", team_name):
             raise ValueError(f"{player_name} is already in another team.")
 
-        # Add player to this team and save
+        # Add player to this team and save to the csv file
         player_to_add.team = team_name
         PlayerIO.save_players(all_players)
 
@@ -91,7 +93,7 @@ class LLCaptain():
 
     
     def remove_from_team(self, player_name: str, team_name: str) -> Player:
-        '''Allows captain to remove a player from team'''
+        '''Allows captain to remove a player from his team'''
 
         player_name = player_name.strip()
         team_name = team_name.strip()
@@ -118,61 +120,85 @@ class LLCaptain():
         return player_found
     
 
-    def cap_see_player_info(self, player_name: str, team_name: str) -> Player:
-        """Allows captains to see the players info that are on their team."""
+    def cap_see_player_info(self, player_handle: str, team_name: str) -> Player:
+        '''Allows captain to see the information on players in his team.'''
 
-        player_name = player_name.strip()
+        player_handle = player_handle.strip()
         team_name = team_name.strip()
 
         all_players = self._get_all_players()
 
         # Find the player in this team
         for p in all_players:
-            name = p.name.strip()
+            handle = p.handle.strip()
             team = (p.team or "").strip()
 
-            if name == player_name and team == team_name:
+            if handle == player_handle and team == team_name:
                 return p
 
         raise ValueError("Player is not in this team. Please try another player.")
 
 
-    def update_player_contact(
-            self,
-            player_name: str,
-            team_name: str,
-            new_phone: str,
-            new_address: str,
-            new_email: str,
-        ) -> Player:
+    def update_player_contact(self, player_handle: str, team_name: str, new_phone: str, new_address: str, new_email: str) -> Player:
+        '''Captain can update phone number, address and email address for a player in a team.'''
 
-
-        '''Update phone, address and email for a player in a team.'''
-        player_name = player_name.strip()
+        player_handle = player_handle.strip()
         team_name = team_name.strip()
 
         all_players = self._get_all_players()
         player: Player | None = None
 
-        # Find the player in this team
+        # Find the player in the corresponding team
         for p in all_players:
-            if p.name == player_name and p.team == team_name:
+            if p.handle == player_handle and p.team == team_name:
                 player = p
                 break
-            
+
         if player is None:
             raise ValueError("Player is not in this team. Please try another player.")
-            
-        # Only update field if the captain typed something
-        if new_phone.strip() != "":
-            player.phone = new_phone.strip()
+    
+        # Update the inputted values    
+        player.phone = new_phone.strip()
+        player.address = new_address.strip()
+        player.email = new_email.strip()
 
-        if new_address.strip() != "":
-            player.address = new_address.strip()
-
-        if new_email.strip() != "":
-            player.email = new_email.strip()
 
         # Save all players back to csv
         PlayerIO.save_players(all_players)
         return player
+
+    
+    def keep_old_phone_number(self, new_phone: str, current_phone: str) -> str:
+        '''Checks if the user wants to keep their old phone number and not update it'''
+
+        if not new_phone.strip(): # Check if the user wants to keep the old one
+            return current_phone
+        
+        # We validate the phone number if the user doesn't want to keep the old one
+        new_phone = new_phone.strip()
+        self.players.validate_phone(new_phone)
+        return new_phone
+    
+    
+    def keep_old_email(self, new_email: str, current_email: str) -> str:
+        '''Checks if the user wants to keep their old email address and not update it'''
+
+        if not new_email.strip(): # Check if the user wants to keep the old one
+            return current_email
+
+        # We validate the email if the user doesn't want to keep the old one
+        new_email = new_email.strip()
+        self.players.validate_email(new_email)
+
+        return new_email
+    
+    def keep_old_address(self, new_address: str, current_address: str) -> str:
+        '''Checks if the user wants to keep their old address and not update it'''
+
+        if not new_address.strip():
+            return current_address
+        
+        new_address = new_address.strip()
+        self.players.validate_address(new_address)
+
+        return new_address

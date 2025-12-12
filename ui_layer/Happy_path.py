@@ -39,7 +39,7 @@ class Happy_paths:
         print("\033[91m|             GLADIATORS             |\033[0m")
         print("\033[91m└────────────────────────────────────┘\033[0m")
         print("\033[94m░                                    ░\033[0m")
-        print("\033[95m░       >Selected: Viewer            ░\033[0m")
+        print("\033[95m░      >Selected: Public Viewer      ░\033[0m")
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m░  (1)     Player information        ░\033[0m")
         print("\033[94m░  (2)     Team information          ░\033[0m")
@@ -169,7 +169,7 @@ class Happy_paths:
         print("\033[94m---    etc                         ---\033[0m")
         print("\033[94m---                                ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Back b)                        ---\033[0m")
+        print("\033[94m--- Back q)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
 
     @staticmethod
@@ -188,7 +188,7 @@ class Happy_paths:
         print("\033[94m---                                ---\033[0m")
         print("\033[94m---      Select a number 1-5       ---\033[0m")        
         print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Back b)                        ---\033[0m")
+        print("\033[94m--- Back q)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
 
     @staticmethod
@@ -209,7 +209,7 @@ class Happy_paths:
         print("\033[94m---    #Link                       ---\033[0m")
         print("\033[94m---                                ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Back b)                        ---\033[0m")
+        print("\033[94m--- Back q)                        ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
 
     @staticmethod

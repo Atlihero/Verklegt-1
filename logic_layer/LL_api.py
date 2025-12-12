@@ -149,28 +149,25 @@ class LL_API:
         data = DataAPI()
         return data.get_public_team()
 
-    def get_available_players_for_captain(self, team_name: str):
-        """Wrapper so CaptainUI can ask for free players."""
-        return self.captain.get_available_players(team_name)
+    def get_available_players_for_captain(self, free_players : str):
+        '''Shows what players are not in a team'''
+        return self.captain.get_available_players(free_players)
 
-    def update_player_contact(
-        self,
-        player_name: str,
-        team_name: str,
-        new_phone: str,
-        new_address: str,
-        new_email: str,
-    ):
-        """Captain updates a player's phone, address and email."""
-        return self.captain.update_player_contact(
-            player_name,
-            team_name,
-            new_phone,
-            new_address,
-            new_email,
-        )
-
-
+    def update_player_contact(self, player_name: str, team_name: str, new_phone: str, new_address: str, new_email: str):
+        '''Captain updates a player's phone, address and email.'''
+        return self.captain.update_player_contact(player_name, team_name, new_phone, new_address, new_email)
+    
+    def keep_old_phone(self, new_phone: str, current_phone: str):
+        '''Checks if the user wants to keep their old phone number and not update it'''
+        return self.captain.keep_old_phone_number(new_phone, current_phone)
+    
+    def keep_old_email(self, new_email: str, current_email: str):
+        '''Checks if the user wants to keep their old email address and not update it'''
+        return self.captain.keep_old_email(new_email, current_email)
+    
+    def keep_old_address(self, new_address: str, current_address: str):
+        '''Checks if the user wants to keep their old address and not update it'''
+        return self.captain.keep_old_address(new_address, current_address)
 
 
     '''Logic wrapper for LLOrganizer'''
