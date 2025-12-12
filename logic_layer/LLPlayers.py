@@ -136,6 +136,7 @@ class LLPlayer():
     
     def validate_link(self, link: str) -> str:
         '''Checks if the link is a valid link'''
+        
         if not link:
             return "" # User didn't add a link
         if not (link.startswith("http://") or link.startswith("https://")):
@@ -145,6 +146,7 @@ class LLPlayer():
 
     def create_player(self, player_obj: Player) -> Player:
         '''Creates the player and adds it to the csv file.'''
+        
         player_list = [ 
             player_obj.name,
             player_obj.dob,

@@ -10,6 +10,7 @@ class LLOrganizer():
 
     def tournament_name(self, name: str) -> str:
         '''Checks if name is unique or missing.'''
+        
         name = name.strip()
         if not name:
             raise ValueError("Tournament name cannot be empty. Please enter a valid name.")

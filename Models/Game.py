@@ -12,6 +12,7 @@ class Game(Round):
 
     def __str__(self):
         '''Return the information'''
+        
         return (
             f"Date : {self.date}\n"
             f"Round: {self.round}"

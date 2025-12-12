@@ -51,6 +51,8 @@ class LLTeams:
 
     
     def get_team_by_name(self, name: str) -> Team | None:
+        '''Looks for a team by name and returns it if it is found'''
+
         for team in self.teams:
             # If team is a string (team name)
             if isinstance(team, str) and team == name:
@@ -61,6 +63,7 @@ class LLTeams:
 
     def validate_team_name(self, name: str) -> str:
         '''Validates that the team name is not empty and unique.'''
+        
         name = name.strip()
         if not name:
             raise ValueError("Team name cannot be empty. Please enter a valid name.")

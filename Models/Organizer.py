@@ -8,6 +8,7 @@ class Organizer():
     
     def __str__(self):
         '''Return the information'''
+        
         return (
         f"Login: {self.adminLogin}\n"
         f"Name : {self.name}"

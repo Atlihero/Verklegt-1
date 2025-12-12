@@ -64,12 +64,13 @@ class Uimain:
                             clear_term()
                             Happy_paths.Happy_create_tournament()
                             organizer.createTournament()
-                            user_inp = input("Press any button to return to start")
+                            user_inp = input("Press any button to return to start: ")
                             if user_inp  != 1:
                                 clear_term()
                         
                         elif user_inp == "3": #Here you create a team
                             clear_term()
+                            Happy_paths.Happy_create_team()
                             organizer.create_team_ui()
                             user_inp = input("Press any button to return to start: ")
                             

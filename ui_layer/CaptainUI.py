@@ -28,6 +28,7 @@ class CaptainUI:
 
     def select_captain_and_team(self) -> bool:
         '''Make the user choose which team they are captain of.'''
+        
         team_names, captains = self.ll.get_team_names_and_captains()
 
         if not team_names:
@@ -176,7 +177,7 @@ class CaptainUI:
         player_name = player_to_remove.name
 
         while True:
-            confirmation = input(f"Are you sure you want to remove {player_name} from the team? Y/N ").strip().upper()
+            confirmation = input(f"\nAre you sure you want to remove {player_name} from the team? (Y/N):  ").strip().upper()
 
             if confirmation == "Y":
                 break
@@ -185,7 +186,7 @@ class CaptainUI:
                 print("Removal cancelled. The player will not be removed from the team.\n")
                 return
             
-            print("Please enter either Y/N")
+            print("Please enter either Y/N.")
 
         try:
             self.ll.remove_player_from_team(self.current_team_name, player_name)

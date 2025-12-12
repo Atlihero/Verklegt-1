@@ -28,8 +28,9 @@ class OrganizerUI():
     def create_player(self) -> Player:
         '''Have the user input all the information needed for the player.'''
 
-        running = True
         print("\n=== Create a New Player ===")
+        
+        running = True
         while True: # Check if name of player is a valid input
             name = input("Enter full name of player: ")
             if name == "q":
@@ -128,6 +129,7 @@ class OrganizerUI():
         '''Input every information needed to create a tournament.'''
         
         print("\n=== Create a New Tournament ===")
+        
         running = True
         while running: # Check if tournamnent name is a valid input
             unique_name = input("Create a unique name for the tournament: ").strip()
@@ -223,6 +225,7 @@ class OrganizerUI():
 
     def update_result(self) -> str:
         '''Update results of the tournament.'''
+        
         try:
             tournaments = self.lapi.get_tournament_names() # List of all tournament names
             print()
@@ -448,6 +451,7 @@ class OrganizerUI():
     
     def view_schedule(self, title="Current Games") -> str:
         '''Return the schedule for the games so it can be viewed.'''
+        
         try:
             tournaments = self.lapi.get_tournament_names() # Gets all tournament names
             print()

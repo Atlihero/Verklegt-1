@@ -6,7 +6,7 @@ Nina Null,10/02/2004,Kennarabraut 1 Reykjavik,3546110004,nina.null@example.com,N
 Dan Dangling,30/11/2003,Kennarabraut 2 Reykjavik,3546110005,dan.dangling@example.com,DanglingPtrDan,NullPointer Ninjas,https://github.com/DanglingPtrDan
 Val Void,21/06/2005,Kennarabraut 3 Reykjavik,3546110006,val.void@example.com,VoidStarVal,NullPointer Ninjas,https://twitter.com/VoidStarVal
 Olaf Offby,19/07/2003,Sundurvegur 1 Kopavogur,3546110007,olaf.offby@example.com,OffByOneOlaf,OffByOne Offense,https://twitch.tv/OffByOneOlaf
-Frida Fencepost,03/12/2004,Sundurvegur 2 Kopavogur,3546110008,frida.fencepost@example.com,FencepostFrida,OffByOne Offense,https://github.com/FencepostFrida
+Frida Fencepost,03/12/2004,Sundurvegur 2 Kopavogur,3546110008,frida.fencepost@example.com,FencepostFrida,NullPointer Ninjas,https://github.com/FencepostFrida
 Ian Index,15/03/2005,Sundurvegur 3 Kopavogur,3546110009,ian.index@example.com,IndexMinusOne,OffByOne Offense,https://twitter.com/IndexMinusOne
 Palli Pepsi,05/05/2003,LANgata 1 Reykjavik,3546110010,palli.pepsi@example.com,PepsiMaxPalli,Pepsi Max Punishers,https://twitch.tv/PepsiMaxPalli
 Asta Aspartame,17/08/2004,LANgata 2 Reykjavik,3546110011,asta.aspartame@example.com,AspartameAssassin,Pepsi Max Punishers,https://github.com/AspartameAssassin
@@ -47,3 +47,4 @@ Vala Volatile,28/08/2005,UBgata 3 Reykjavik,3546110045,vala.volatile@example.com
 Petra PepsiOverflow,07/07/2003,Fizzgata 1 Reykjavik,3546110046,petra.pepsioverflow@example.com,PepsiMaxOverflowPetra,Pepsi Max Overflow,https://twitch.tv/PepsiMaxOverflowPetra
 Bogi Buffer,25/01/2004,Fizzgata 2 Reykjavik,3546110047,bogi.buffer@example.com,BufferOverflowBogi,Pepsi Max Overflow,https://github.com/BufferOverflowBogi
 Sif Canary,29/03/2005,Fizzgata 3 Reykjavik,3546110048,sif.canary@example.com,StackCanarySif,Pepsi Max Overflow,https://twitter.com/StackCanarySifcakey
+vv,12/12/2000,vv,3541232343,vb@vv.vv,ccc,bb,

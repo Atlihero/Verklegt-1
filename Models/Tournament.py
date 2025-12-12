@@ -3,6 +3,7 @@ from Models.Organizer import Organizer
 class Tournament(Organizer):
     '''Class that takes in information about the tournament'''
     def __init__(self, unique_name, start_date, end_date, venue, contact_person, contact_email, contact_phone):
+        
         self.unique_name = unique_name
         self.start_date = start_date
         self.end_date = end_date
@@ -14,6 +15,7 @@ class Tournament(Organizer):
     
     def __str__(self):
         '''Return the information'''
+        
         return (
         f"Name                  : {self.unique_name}\n"
         f"Start date            : {self.start_date}\n"

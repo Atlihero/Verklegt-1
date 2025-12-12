@@ -14,11 +14,13 @@ class LLCaptain():
 
     def _get_all_players(self) -> list[Player]:
         '''Get all players as Player objects from the data layer.'''
-        return self.data_api.get_all_players() or []
+        
+        return self.data_api.get_all_players() or [] # If get_all_players is None then return empty list
 
 
     def get_team_members(self, team_name: str) -> list[Player]:
         '''Return Player objects that belong to this team.'''
+        
         team_name = team_name.strip()
         all_players = self._get_all_players()
         
@@ -163,8 +165,7 @@ class LLCaptain():
         player.address = new_address.strip()
         player.email = new_email.strip()
 
-
-        # Save all players back to csv
+        # Save all players back to the csv file
         self.data_api.save_new_player(all_players)
         return player
 
@@ -193,6 +194,7 @@ class LLCaptain():
 
         return new_email
     
+
     def keep_old_address(self, new_address: str, current_address: str) -> str:
         '''Checks if the user wants to keep their old address and not update it'''
 
@@ -207,4 +209,5 @@ class LLCaptain():
 
     def get_names_team_captains(self) -> tuple[list[str], list[str]]:
         '''Returns team names and captains for corresponding team from the csv file'''
+        
         return self.data_api.get_public_team()
