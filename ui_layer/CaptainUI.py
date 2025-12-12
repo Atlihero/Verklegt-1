@@ -1,24 +1,26 @@
 from logic_layer.LL_api import LL_API
+from data_layer.data_api import DataAPI
 from Models.Player import Player
 
 class CaptainUI:
     def __init__(self):
         self.ll = LL_API()
+        self.data_api = DataAPI()
         self.current_team_name: str | None = None
 
-    # Chose which Captain or Team
 
-    def _player_to_dict(self, p: Player) -> dict:
-        '''Convert Player object to dict so we can comfortably use .get().'''
+    def _player_to_dict(self, player: Player) -> dict:
+        '''Convert Player object to dictionary'''
+        
         return {
-            "Name"        : p.name,
-            "DOB"         : p.dob,
-            "Address"     : p.address,
-            "Phone number": p.phone,
-            "Email"       : p.email,
-            "Handle"      : p.handle,
-            "Team"        : p.team,
-            "Link"        : p.link,
+            "Name"        : player.name,
+            "DOB"         : player.dob,
+            "Address"     : player.address,
+            "Phone number": player.phone,
+            "Email"       : player.email,
+            "Handle"      : player.handle,
+            "Team"        : player.team,
+            "Link"        : player.link,
         }
 
     def select_captain_and_team(self) -> bool:
@@ -29,16 +31,16 @@ class CaptainUI:
             print("There are no teams in the system yet.")
             return False
 
-        print("\nAvailable teams / captains:")
+        print("\n===Available teams/captains===\n")
         for i in range(len(team_names)):
             team_name = team_names[i]
             captain = captains[i]
             index = i + 1
-            print(f"{index}) Team: {team_name} | Captain: {captain}")
+            print(f"{index:3}) Team: {team_name:25} | Captain: {captain:12}")
 
 
         while True:
-            choice = input("Enter team number to log in as captain: ")
+            choice = input("\nEnter a team number to log in as captain of that team: ")
 
             index = int(choice)
             if 1 <= index <= len(team_names):
@@ -59,26 +61,27 @@ class CaptainUI:
             print("There are currently no players in your team.")
             return []
 
-        print(f"\nPlayers in {self.current_team_name}:")
-        for index, p in enumerate(players, start=1):
-            name = p.name
+        print(f"\n==Players in {self.current_team_name}==\n")
+        for index, player in enumerate(players, start=1):
+            name = player.name
             print(f"{index}. {name}")
         return players
 
     def _get_and_show_available_players(self) -> list[Player]:
-        '''Show all players that are NOT in any team.'''
+        '''Show all players that are not in any team.'''
 
         players: list[Player] = self.ll.get_available_players_for_captain(self.current_team_name)
         if not players:
-            print("There are no free players to add.")
+            print("There are no free players to add.\n")
             return []
 
         # Sort alphabetically by Name
         players_sorted = sorted(players, key=lambda p: p.name.lower())
 
-        print("\nAvailable players (no team yet):")
+        print("\n==Available players (no team yet)==\n")
         for index, p in enumerate(players_sorted, start=1):
-            print(f"{index}. {p.name}")
+            print(f"{index:2}. {p.name.ljust(15)}")
+
         return players_sorted
 
 
@@ -90,7 +93,7 @@ class CaptainUI:
             return
         
         while True:
-            selected = input("Enter the number of the player you want to add: \n")
+            selected = input("\nPlease enter the number of the player you want to add: \n")
             try:
                 selected_index = int(selected) - 1
             except ValueError:
@@ -106,7 +109,10 @@ class CaptainUI:
 
         try:
             self.ll.add_player_to_team(self.current_team_name, player_name)
-            print(f"\n{player_name} has been added to {self.current_team_name}.")
+            print(f"\n{player_name} has been added to {self.current_team_name}.\n")
+            print("\033[92m┌────────────────────────────────────────────────────────┐\033[0m")
+            print(f"\033[92m {player_name} has been added to {self.current_team_name}.\033[0m")
+            print("\033[92m└────────────────────────────────────────────────────────┘\033[0m")
         except ValueError as error:
             print("Error:", error)
 
@@ -115,7 +121,7 @@ class CaptainUI:
 
         all_players: list[Player] = self.ll.get_team_members(self.current_team_name)
 
-        # Find the captain name for this team so we don't remove them
+        # Find the captain for the team
         team_names, captains = self.ll.get_team_names_and_captains()
         captain_name = None
 
@@ -126,17 +132,17 @@ class CaptainUI:
                 captain_name = cap
                 break
 
-        # Exclude captain from removable list
+        # Exclude captain from removable list, because he is the player removing others
         players: list[Player] = []
         for p in all_players:
             if p.handle != captain_name:
                 players.append(p)
 
         if not players:
-            print("There are no players to remove (only the captain exists).")
+            print("There are no players to remove (only the captain exists). Please add players in your team to be able to remove them.\n")
             return
 
-        print(f"\nPlayers in {self.current_team_name} (excluding captain {captain_name}):\n")
+        print(f"\n==Players in {self.current_team_name} (excluding captain {captain_name})==\n")
        
         for index, p in enumerate(players, start=1):
             name = p.name
@@ -148,7 +154,7 @@ class CaptainUI:
             try:
                 selected_index = int(selected) - 1
             except ValueError:
-                print("Please enter a valid integer")
+                print("The input has to be a valid integer. Please try again.")                
                 continue
             if selected_index < 0 or selected_index >= len(players):
                 print("A player with this ID does not exist. Please enter a valid ID number.")
@@ -162,10 +168,10 @@ class CaptainUI:
             confirmation = input(f"Are you sure you want to remove {player_name} from the team? Y/N ").strip().upper()
 
             if confirmation == "Y":
-                    break
+                break
                     
             if confirmation == "N":
-                print("Removal cancelled. The player will not be removed from the team.")
+                print("Removal cancelled. The player will not be removed from the team.\n")
                 return
             
             print("Please enter either Y/N")
@@ -179,13 +185,13 @@ class CaptainUI:
             print("Error:", error)
 
     def cap_see_player_info(self):
-        '''Captain can see detailed info about a player in their own team.'''
+        '''Captain can see personal information about the player's in his own team.'''
         players = self._get_and_show_team_members()
 
         if not players:
             return
         
-        selected = input("Please enter the number of whose information you want to see: ").strip().lower()
+        selected = input("\nPlease enter the number of whose information you want to see: ").strip().lower()
 
         selected_index = int(selected) - 1
         if selected_index < 0 or selected_index >= len(players):
@@ -193,46 +199,58 @@ class CaptainUI:
             return
 
         player_to_see = players[selected_index]
-        player_name = player_to_see.name
+        player_handle = player_to_see.handle
 
         try:
-            player: Player = self.ll.cap_view_player_info(player_name, self.current_team_name)
+            player: Player = self.ll.cap_view_player_info(player_handle, self.current_team_name)
             info = self._player_to_dict(player)
-            print(f"\n===Player Information for {player_name}===\n")
+            print(f"\n===Player Information for {player_handle}===\n")
             for key, value in info.items():
                 print(f"{key:12} : {value}")
 
             print("\nDo you want to edit this player's contact info?")
-            choice = input("Change phone/address/email? (y/n): ").strip().lower()
+            choice = input("Change phone/address/email? (Y/N): ").strip().lower()
 
             if choice != "y":
                 return
-        
-            current_phone = info.get("Phonenumber", "")
-            current_address = info.get("Address", "")
-            current_email = info.get("Email", "")
-
+    
             print("\nLeave field empty to keep current value.")
-            new_phone = input(f"New phone  (current: {current_phone}): ").strip()
-            new_address = input(f"New address (current: {current_address}): ").strip()
-            new_email = input(f"New email   (current: {current_email}): ").strip()
+            while True:
+                try:
+                    new_phone_input = input("Enter the player's new phone number (354). Press enter to keep old phone number: ")
+                    if new_phone_input == "":
+                        new_phone = self.ll.keep_old_phone("", player.phone)
+                    else:
+                        new_input = "354" + new_phone_input 
+                        new_phone = self.ll.keep_old_phone(new_input, player.phone)
+                    break
+                except ValueError as error:
+                    print(f"Error: {error}")
+            
+            while True:
+                
+                try:
+                    new_address_input = input("Enter player's new home address: ").strip()
+                    new_address = self.ll.valid_address(new_address_input, player.address)
+                    break
+                except ValueError as error:
+                    print(f"Error: {error}")
+               
+            while True:
+                try: 
+                    new_email_input = input("Enter the player's email addres. Press enter to keep old email address: ")
+                    new_email = self.ll.keep_old_email(new_email_input, player.email)
+                    break
+                except ValueError as error:
+                    print(f"Error: {error}")
 
-            updated_player = self.ll.update_player_contact(
-                player_name,
-                self.current_team_name,
-                new_phone,
-                new_address,
-                new_email
-            )
-
-
-            updated_dict = self._player_to_dict(updated_player)
-
-            print("\nUpdated player info:")
-            for key, value in updated_dict.items():
-                print(f"{key}: {value}")
-
-
-
+            updated_player = self.ll.update_player_contact(player_handle, self.current_team_name, new_phone, new_address, new_email)
+            
         except ValueError as error:
             print("Error:", error)
+        
+        updated_dict = self._player_to_dict(updated_player)
+        print("\n===Updated player info===\n")
+        for key, value in updated_dict.items():
+                print(f"{key:13}: {value}")
+        print()
