@@ -140,6 +140,9 @@ class Uimain:
                         elif cap_choice == "q":
                             clear_term()
                             self.start()
+                        else:
+                            clear_term()
+                            Happy_paths.not_valid_input()
                     
 
 
