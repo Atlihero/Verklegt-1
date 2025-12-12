@@ -36,7 +36,6 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
 
-
         while True: # Check if player's date of birth is a valid input
             dob_str = input("Enter player date of birth (DD/MM/YYYY): ")
             try:
@@ -53,7 +52,6 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
         
-    
         while True: # Check if player's phone number is a valid input
             phone_number = "354" + input("Enter player's phone number (354): ")
             try:
@@ -181,7 +179,7 @@ class OrganizerUI():
         try:
             tournaments = self.lapi.get_tournament_names() # List of all tournament names
             print()
-            print(f"Tournaments in the syste: {tournaments}")
+            print(f"Tournaments in the system: {tournaments}")
             
             while True: # Select a tournament that is already made
                 tournament_name = input("\nPlease enter a tournament name: ").strip()
@@ -199,10 +197,9 @@ class OrganizerUI():
 
             while True:
                 try:
-                    '''
-                    enter the match to edit and the scores of both teams with error handling
-                    on negative and invalid inputs
-                    '''
+                    '''Enter the match number to edit and the scores of both teams with error handling
+                    on negative and invalid inputs'''
+
                     match_number = int(input("Enter match number to update: "))
                     score_a = int(input("Enter score for team A: "))
                     score_b = int(input("Enter score for team B: "))
@@ -273,7 +270,6 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
         
-    
         while True: # Check if player's phone number is a valid input
             phone_number = "354" + input("Enter player's phone number (354): ")
             try:
@@ -340,11 +336,10 @@ class OrganizerUI():
             except ValueError:
                     print("The input has to be an integer number. Please enter a valid number.") 
         
-
         print(f"{player[real_userinput]}\n") # Show the player
         
     
-    def view_schedule(self,title="Current Games"):
+    def view_schedule(self, title="Current Games"):
         try:
             tournaments = self.lapi.get_tournament_names() # Gets all tournament names
             print()
@@ -370,10 +365,10 @@ class OrganizerUI():
             print("-" * 105)
 
             for g in games: # Print information on every match/game
-            
                 match = f"{g['team_a']} vs {g['team_b']}"
                 score = f"{g['score_a'] or '-'}-{g['score_b'] or '-'}"
                 print(f"{g['match_number']:<4}| {g['round']:<5} | {g['match_date']:<11} | {match:<47} | {score:<6} | {g['winner'] or '-'}")
+            
             print()
             return games
         

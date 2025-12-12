@@ -16,7 +16,7 @@ class PublicViewer:
                     if 1 <= userinput <= len(player): # Check if the input is valid
                         break
                     else:
-                        print("A player with this ID number does not exist")
+                        print("A player with this ID number does not exist. Please enter a valid ID.")
 
                 except ValueError:
                     print("The input has to be a integer number. Please enter a valid number.")
@@ -40,7 +40,7 @@ class PublicViewer:
                     if 1 <= userinput <= len(teams): # Check if the input is valid
                         break
                     else:
-                        print("A team with this ID does not exist")
+                        print("A team with this ID does not exist. Please enter a valid ID.")
 
                 except ValueError:
                     print("please enter a valid integer")
