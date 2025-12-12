@@ -62,7 +62,7 @@ class Uimain:
                             clear_term()
                             Happy_paths.Happy_create_tournament()
                             organizer.createTournament()
-                            Happy_paths.tournament_was_made()
+
                             user_inp = input("Press any button to return to start")
                             if user_inp  != 1:
                                 clear_term()
@@ -110,10 +110,11 @@ class Uimain:
                         print("\033[92m|              ░█▀▀░█▀▀░█░░░█▀▀░█▀▀░▀█▀              |\033[1m")
                         print("\033[92m|              ░▀▀█░█▀▀░█░░░█▀▀░█░░░░█░              |\033[1m")
                         print("\033[92m|              ░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░░▀░              |\033[1m")
-                        print("\033[95m└────────────────────────────────────────────────────┘\033[1m")
+                        print("\033[95m└────────────────────────────────────────────────────┘\033[0m")
                         if not captain.select_captain_and_team():
+                            clear_term()
                             
-                            continue # go back to main menue if captain not found
+                            break # go back to main menue if captain not found
                             
                         Happy_paths.Happy_captain_add_or_info()
                         cap_choice = input("").strip().lower()

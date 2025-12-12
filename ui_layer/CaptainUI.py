@@ -1,5 +1,6 @@
 from logic_layer.LL_api import LL_API
 from Models.Player import Player
+
 import os
 
 class CaptainUI:
@@ -40,10 +41,13 @@ class CaptainUI:
 
         while True:
             try:
-                choice = int(input("Enter team number to log in as captain: "))
-                
-                if 1 <= choice <= len(team_names):
-                    selected_team = team_names[choice - 1]
+                choice = input("Enter team number to log in as captain or q to quit: ").strip().lower()
+                if choice == "q":
+                    return False
+
+
+                elif 1 <= int(choice) <= len(team_names):
+                    selected_team = team_names[int(choice) - 1]
                     self.current_team_name = selected_team
                     print(f"\nYou are now captain of team: {self.current_team_name}")
                     return True
@@ -91,7 +95,9 @@ class CaptainUI:
             return
         
         while True:
-            selected = input("Enter the number of the player you want to add: \n")
+            selected = input("Enter the number of the player you want to add: \n").strip().lower()
+            if selected == "q":
+                return
             try:
                 selected_index = int(selected) - 1
             except ValueError:
@@ -145,7 +151,9 @@ class CaptainUI:
             print(f"{index:2}. {name.ljust(15)} | Handle: {handle}")
 
         while True:
-            selected = input("\nPlease enter the number of who you want to remove: ")
+            selected = input("\nPlease enter the number of who you want to remove: ").strip().lower()
+            if selected == "q":
+                return
             try:
                 selected_index = int(selected) - 1
             except ValueError:
@@ -194,6 +202,8 @@ class CaptainUI:
             return
         while True:
             selected = input("Please enter the number of whose information you want to see: ").strip().lower()
+            if selected == "q":
+                return
             try:
                 selected_index = int(selected) - 1
             except ValueError:
@@ -255,9 +265,11 @@ class CaptainUI:
             print(tournaments)
             
             while True:
-                tournament_name = input("Enter tournament name: ").strip()
+                tournament_name = input("Enter tournament name: ").strip().lower()
+                if tournament_name == "q":
+                    break
 
-                if tournament_name in tournaments: # Confirms that the tournament is in the system
+                elif tournament_name in tournaments: # Confirms that the tournament is in the system
                     break
 
                 print("Tournament not found. Please enter a valid tournament name.")
