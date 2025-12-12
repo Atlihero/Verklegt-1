@@ -5,71 +5,84 @@ GAMES_PATH: str = r"data_layer/_data/Games.csv"
 
 class TournamentIO:
 
-    def get_tournaments(self):
-        """
-        THis function finds the tournament selected by the user and displayes it for the user
-        """
+    def get_tournaments(self) -> list:
+        '''Finds the tournament selected by the user and displayes it for him'''
+        
         try:
-            tournament = []
-            with open(TOURNAMENT_PATH, "r", encoding="utf-8") as csvfile:
+            tournament = [] # Empty list we will add all the tournaments to
+            with open(TOURNAMENT_PATH, "r", encoding = "utf-8") as csvfile:
                 reader  = csvfile.readlines() 
-                #reader = csv.reader(csvfile) virkar með þessu fyrir Organizer
+                
                 for row in reader:
                     tournament.append(row) 
+                    
         except ValueError: 
-            return f"Error message to be decided"
+            return f"Failed to find and display the tournament. Please try again."
         return tournament 
     
-    def get_tournament_names(self):
+
+    def get_tournament_names(self) -> list:
+        '''Finds every name of all tournaments that have been held'''
+        
         try:
-            tournament_names = []
-            with open(TOURNAMENT_PATH, "r", encoding="utf-8") as csvfile:
+            tournament_names = [] # Old tournament names go in this list.
+            with open(TOURNAMENT_PATH, "r", encoding = "utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
+                
                 for row in reader:
-                    tournament_names.append(row["tournamentName"])
+                    tournament_names.append(row["tournamentName"]) 
+                    
         except FileNotFoundError:
-            return "Nothing found"
+            return "No older tournaments names were found."
         return tournament_names
 
+
     def create_new_tournament(self, tournament: list):
-        """
-        This function is used to create a new tournament by using the csv writer to append this new tournament
-        with all its details into the tournament csv file
-        """
+        '''This function is used to create a new tournament by using the csv writer to append the new tournament
+        with all its details into the tournament csv file'''
+        
         try: 
-            with open(TOURNAMENT_PATH, "a",newline="", encoding="utf-8") as csvfile:
+            with open(TOURNAMENT_PATH, "a", newline = "", encoding = "utf-8") as csvfile:
                 writer = csv.writer(csvfile)
-                writer.writerow(tournament) 
-            return f"New Tournament added!"    
+                writer.writerow(tournament) # Write the new tournament to the file.
+            return f"New Tournament has been created!"    
+            
         except ValueError: 
-            f"Error message to be decided"
+            f"Failed to create a new tournament. Please try again."
+
 
     def create_new_game(self, games: list):
-        """
-        This function creates a new game for a tournament using the csv writer to append it to the games csv
-        """
+        '''Creates a new game for a tournament using the csv writer to append it to the games csv'''
+        
         try:
-            with open(GAMES_PATH, "a", newline="", encoding="utf-8") as csvfile:
+            with open(GAMES_PATH, "a", newline = "", encoding = "utf-8") as csvfile:
                 writer = csv.writer(csvfile)
-                writer.writerow(games)
-            return f"New Game added"
+                writer.writerow(games) # Add the new game to the csv file
+                
+            return f"New game has been added to the tournament!"
         except ValueError:
-            return "Error"
+            return "Failed to add a new game to the tournament. Please try again."
             
 
-    def get_all_games(self):
-        games = []
+    def get_all_games(self) -> list:
+        '''Finds all games in the csv file.'''
+        
+        games = [] # We will add every game to the list
         try:
-            with open(GAMES_PATH, "r", encoding="utf-8") as csvfile:
+            with open(GAMES_PATH, "r", encoding = "utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
+                
                 for row in reader:
                     games.append(row)
+                    
         except FileNotFoundError:
-            return []
+            return "No file was found."
         return games
     
-    def update_game(self, tournament_name: str, match_number: int, score_a: int, score_b: int) -> dict:
-        """Updates a game's score and winner. Returns updated game dict or None if not found."""
+
+    def update_games(self, tournament_name: str, match_number: int, score_a: int, score_b: int) -> str:
+        '''Updates a game's score and winner'''
+        
         games = self.get_all_games()
         updated_game = None
 
@@ -82,13 +95,14 @@ class TournamentIO:
                 elif score_b > score_a:
                     game["winner"] = game["team_b"]
                 else:
-                    game["winner"] = None  # Tie handled in logic layer
+                    game["winner"] = None
                 updated_game = game
                 break
 
         if updated_game:
             fieldnames = ["tournament_name", "round", "match_number", "match_date",
                           "team_a", "team_b", "score_a", "score_b", "winner"]
+            
             with open(GAMES_PATH, "w", newline="", encoding="utf-8") as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 writer.writeheader()
@@ -97,8 +111,12 @@ class TournamentIO:
 
         return updated_game
 
-    def advance_round(self, tournament_name: str, match_number: int, winner: str) -> bool:
-        """Updates the next round with the winner. Returns True if successful."""
+
+    def advance(self, tournament_name: str, match_number: int, winner: str) -> str:
+        '''Determine the advance order by match number
+        From Round of 16 to QF (QF = quarter final). And then from QF to SF (SF = semi final).
+        and then from SF to F (F = final). Updates the next round with the winner. Returns True if successful.'''
+        
         games = self.get_all_games()
 
         # Determine next game and slot
@@ -118,8 +136,7 @@ class TournamentIO:
             if game["tournament_name"] == tournament_name and int(game["match_number"]) == next_game:
                 game[slot] = winner
                 break
-
-        # Write back
+            
         fieldnames = ["tournament_name", "round", "match_number", "match_date",
                       "team_a", "team_b", "score_a", "score_b", "winner"]
         with open(GAMES_PATH, "w", newline="", encoding="utf-8") as csvfile:
@@ -128,4 +145,4 @@ class TournamentIO:
             for g in games:
                 writer.writerow(g)
 
-        return True
+        return f"{winner}"

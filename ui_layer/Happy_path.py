@@ -1,9 +1,6 @@
-from logic_layer.LL_api import LL_API
-
-
-
 class Happy_paths:
-
+    
+    @staticmethod
     def Happy_logo():
         print(r"     _       __     __                              __             ____  __  ___ ")
         print(r"    | |     / /__  / /________  ____ ___  ___      / /_____       / __ \/ / / ( )_____")
@@ -20,194 +17,274 @@ class Happy_paths:
         print(r"     / /____>  </ /_/ /  / /_/ /| |/ / /_/ / /_/ / /_/ / / / / / /_/ /_/ /_/ ") 
         print(r"    /_____/_/|_|\__/_/   \__,_/ |___/\__,_/\__, /\__,_/_/ /_/ /___/\__,_(_) ") 
         print(r"                                          /____/")
-
+    
+    @staticmethod
     def Happy_menu():
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[91m---           GLADIATORS           ---\033[0m")
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[94m---    #Organizer(1)               ---\033[0m")
-        print("\033[94m---    #Captain(2)                 ---\033[0m")
-        print("\033[94m---    #Puplic viewer(3)           ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---    #Please select you option   ---\033[0m")
-        print("\033[94m---      (1,2,3 or b for back)     ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m---     #Pleas enter your input    ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Exit b)                        ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
+        print("\033[91m┌────────────────────────────────────┐\033[0m")
+        print("\033[91m|             GLADIATORS             |\033[0m")
+        print("\033[91m└────────────────────────────────────┘\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░  (1)     Organizer                 ░\033[0m")
+        print("\033[94m░  (2)     Captain                   ░\033[0m")
+        print("\033[94m░  (3)     Public viewer             ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░      Please select your option     ░\033[0m")
+        print("\033[94m┌────────────────────────────────────┐\033[0m")
+        print("\033[94m|      Exit q)                       |\033[0m")
+        print("\033[94m└────────────────────────────────────┘\033[0m")
     
+    @staticmethod
     def Happy_viewer():
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[91m---           GLADIATORS           ---\033[0m")
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[93m---   >Selected viewer             ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---    #Information on team(1)     ---\033[0m")
-        print("\033[94m---    #Schedule(2)                ---\033[0m")
-        print("\033[94m---    #Result(3)                  ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---    #Please select you option   ---\033[0m")
-        print("\033[94m---      (1,2,3 or b for back)     ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m---     #Pleas enter your input    ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Back b)                        ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-
-    def Happy_captain():
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[91m---           GLADIATORS           ---\033[0m")
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[93m---   >Selected captain            ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---       Input captains ID        ---\033[0m")
-        print("\033[94m---          from 1-number         ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---     #Pleas enter your input    ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Back b)                        ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-
-    def Happy_organizer():
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[91m---           GLADIATORS           ---\033[0m")
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[93m---   >Selected Organizer          ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---    #Create player(1)           ---\033[0m")
-        print("\033[94m---    #Create tournament(2)       ---\033[0m")
-        print("\033[94m---    #Create team(3)             ---\033[0m")
-        print("\033[94m---    #Update results(4)          ---\033[0m")
-        print("\033[94m---    #Make captain(5)            ---\033[0m")
-        print("\033[94m---    #See info(6)                ---\033[0m")
-        print("\033[94m---    (1-6 or b for back)         ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m---     #Pleas enter your input    ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Back b)                        ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-
-    def Happy_create_tournament():
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[91m---           GLADIATORS           ---\033[0m")
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[93m---   >Selected Create tournament  ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---    #Enter teams to compete     ---\033[0m")
-        print("\033[94m---            16+ teams           ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m---     #Pleas enter your input    ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Back b)                        ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-
-    def Happy_create_team():
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[91m---           GLADIATORS           ---\033[0m")
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[93m---   >Selected create team        ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---    Enter teams name:           ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---    Add players to team:        ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---    Add players by typing       ---\033[0m")
-        print("\033[94m---           player ID            ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m---     #Pleas enter your input    ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Back b)                        ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-
-    def Happy_make_captain():
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[91m---           GLADIATORS           ---\033[0m")
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[93m---   >Selected make captain       ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---     $Make player captain$      ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---     #Input player ID           ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m---     #Pleas enter your input    ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Back b)                        ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-
-
-    def Happy_create_player():
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[91m---           GLADIATORS           ---\033[0m")
-        print("\033[91m--------------------------------------\033[0m")
-        print("\033[93m---   >Selected create player      ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---    #Input players information  ---\033[0m")
-        print("\033[94m---                                ---\033[0m")
-        print("\033[94m---    #Full name                  ---\033[0m")
-        print("\033[94m---    #Date of birth              ---\033[0m")
-        print("\033[94m---    #Home address               ---\033[0m")
-        print("\033[94m---    #Phone                      ---\033[0m")
-        print("\033[94m---    #email                      ---\033[0m")
-        print("\033[94m---    #Handle                     ---\033[0m")
-        print("\033[94m---    #link(optional)             ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Back b)                        ---\033[0m")
-        print("\033[94m--------------------------------------\033[0m")
-
-    # Happy_logo()
-    # Happy_menu()
-    # fyrst_input = "" #Will take user input and take him to selected page and give ID to know at what page user is at
-    # while fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
-    #     fyrst_input = input("")
-    #     if fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
-    #         print("\033[100mEnter valid Input\033[0m")
-    # if fyrst_input != "1" and fyrst_input != "2" and fyrst_input != "3" and fyrst_input !="b":
-    #     quit
-    # elif fyrst_input == "1":
-    #     HappyID = 1
-    #     Happy_organizer()
-    # elif fyrst_input == "2":
-    #     HappyID = 2
-    #     Happy_captain()
-    # elif fyrst_input == "3":
-    #     HappyID = 3
-    #     Happy_viewer()
-    # else:
-    #     HappyID = 4
+        print("\033[91m┌────────────────────────────────────┐\033[0m")
+        print("\033[91m|             GLADIATORS             |\033[0m")
+        print("\033[91m└────────────────────────────────────┘\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[95m░      >Selected: Public Viewer      ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░  (1)     Player information        ░\033[0m")
+        print("\033[94m░  (2)     Team information          ░\033[0m")
+        print("\033[94m░  (3)     Schedule                  ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░      Please select your option     ░\033[0m")
+        print("\033[94m┌────────────────────────────────────┐\033[0m")
+        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m└────────────────────────────────────┘\033[0m")
         
-    # if HappyID == 1: #all paths for orginazer
-    #     input2 = ""
-    #     while input2 != "1" and input2 != "2" and input2 != "3" and input2 !="4" and input2 != "b":
-    #         input2 = input("")
-    #         if input2 != "1" and input2 != "2" and input2 != "3" and input2 !="4" and input2 != "b":
-    #             print("\033[100mEnter valid Input\033[0m")
-    #     if input2 == "1":
-    #         OD = 1
-    #         Happy_create_player()
-    #     elif input2 == "2":
-    #         OD = 2
-    #         Happy_create_tournament()
-    #     elif input2 == "3":
-    #         OD = 3
-    #         Happy_create_team()
-    #     elif input2 == "4":
-    #         OD = 4
-    #         Happy_make_captain()
+    @staticmethod
+    def Happy_captain():
+        print("\033[91m┌────────────────────────────────────┐\033[0m")
+        print("\033[91m|             GLADIATORS             |\033[0m")
+        print("\033[91m└────────────────────────────────────┘\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[95m░       >Selected: Captain           ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░       Select which captain         ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m┌────────────────────────────────────┐\033[0m")
+        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m└────────────────────────────────────┘\033[0m")
     
-    # if HappyID == 2: #all paths for captain
-    #     input3 =1
-    #     while input3 == 1: #captins id
-    #         input3 = input("")
-    #         if input3 != 1:
-    #             print("\033[100mEnter valid Input\033[0m")
-    #     input3 = input("Enter captain ID:")
+    @staticmethod
+    def Happy_organizer():
+        print("\033[91m┌────────────────────────────────────┐\033[0m")
+        print("\033[91m|             GLADIATORS             |\033[0m")
+        print("\033[91m└────────────────────────────────────┘\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[95m░       >Selected: Organizer         ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░  (1)    Create player              ░\033[0m")
+        print("\033[94m░  (2)    Create tournament          ░\033[0m")
+        print("\033[94m░  (3)    Create team                ░\033[0m")
+        print("\033[94m░  (4)    Update results             ░\033[0m")
+        print("\033[94m░  (5)    View schedule              ░\033[0m")
+        print("\033[94m░  (6)    See player information     ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░      Please select your option     ░\033[0m")
+        print("\033[94m┌────────────────────────────────────┐\033[0m")
+        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m└────────────────────────────────────┘\033[0m")
+    
+    @staticmethod
+    def Happy_create_tournament():
+        print("\033[91m┌────────────────────────────────────┐\033[0m")
+        print("\033[91m|             GLADIATORS             |\033[0m")
+        print("\033[91m└────────────────────────────────────┘\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[95m░     >Selected: Create tournament   ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░         Enter tournament name      ░\033[0m")
+        print("\033[94m░         Enter date                 ░\033[0m")
+        print("\033[94m░         Enter end date             ░\033[0m")
+        print("\033[94m░         Enter venue/location       ░\033[0m")
+        print("\033[94m░         Enter contact name         ░\033[0m")
+        print("\033[94m░         Enter contact email        ░\033[0m")
+        print("\033[94m░         Enter contact phone        ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░       Please enter information     ░\033[0m")
+        print("\033[94m┌────────────────────────────────────┐\033[0m")
+        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m└────────────────────────────────────┘\033[0m")
+    
+    @staticmethod
+    def Happy_create_team():
+        print("\033[91m┌────────────────────────────────────┐\033[0m")
+        print("\033[91m|             GLADIATORS             |\033[0m")
+        print("\033[91m└────────────────────────────────────┘\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[95m░       >Selected: Create team       ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░         Enter team name            ░\033[0m")
+        print("\033[94m░         Add players to team        ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░       Please enter information     ░\033[0m")
+        print("\033[94m┌────────────────────────────────────┐\033[0m")
+        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m└────────────────────────────────────┘\033[0m")
+    
+    @staticmethod
+    def Happy_make_captain():
+        print("\033[91m┌────────────────────────────────────┐\033[0m")
+        print("\033[91m|             GLADIATORS             |\033[0m")
+        print("\033[91m└────────────────────────────────────┘\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[95m░   >Selected: Make player captain   ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░    Enter player to make captain    ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m┌────────────────────────────────────┐\033[0m")
+        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m└────────────────────────────────────┘\033[0m")
 
-    # if HappyID == 3:
-    #     input4 = input("Enter viewer:")
+    @staticmethod
+    def Happy_captain_add_or_info():
+        print("\033[91m┌────────────────────────────────────┐\033[0m")
+        print("\033[91m|             GLADIATORS             |\033[0m")
+        print("\033[91m└────────────────────────────────────┘\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[95m░       >Selected: Captain name      ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░  (1)    Add Player to team         ░\033[0m")
+        print("\033[94m░  (2)    Remove Player from team    ░\033[0m")
+        print("\033[94m░  (3)    Information on team        ░\033[0m")
+        print("\033[94m░  (4)    View Schedule              ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m┌────────────────────────────────────┐\033[0m")
+        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m└────────────────────────────────────┘\033[0m")
 
-    # if HappyID == 4:
-    #     exit()
+    @staticmethod
+    def Happy_captain_add_players():
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[91m---           GLADIATORS           ---\033[0m")
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[93m--- >Selected: Add Players To Team ---\033[0m")
+        print("\033[94m---                                ---\033[0m")
+        print("\033[94m---    #(1)                        ---\033[0m")
+        print("\033[94m---    #(2)                        ---\033[0m")
+        print("\033[94m---    #(3)                        ---\033[0m")
+        print("\033[94m---    #(4)                        ---\033[0m")
+        print("\033[94m---    #(5)                        ---\033[0m")
+        print("\033[94m---    #(6)                        ---\033[0m")
+        print("\033[94m---    #(7)                        ---\033[0m")
+        print("\033[94m---    etc                         ---\033[0m")
+        print("\033[94m---                                ---\033[0m")
+        print("\033[94m--------------------------------------\033[0m")
+        print("\033[94m--- Back b)                        ---\033[0m")
+        print("\033[94m--------------------------------------\033[0m")
+
+    @staticmethod
+    def Happy_captain_player_to_inspect():
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[91m---           GLADIATORS           ---\033[0m")
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[93m--- >Selected: Information On Team ---\033[0m")
+        print("\033[94m---                                ---\033[0m")
+        print("\033[94m---    #Select player to inspect:  ---\033[0m")
+        print("\033[94m---    #(1)                        ---\033[0m")
+        print("\033[94m---    #(2)                        ---\033[0m")
+        print("\033[94m---    #(3)                        ---\033[0m")
+        print("\033[94m---    #(4)                        ---\033[0m")
+        print("\033[94m---    #(5)                        ---\033[0m")
+        print("\033[94m---                                ---\033[0m")
+        print("\033[94m---      Select a number 1-5       ---\033[0m")        
+        print("\033[94m--------------------------------------\033[0m")
+        print("\033[94m--- Back b)                        ---\033[0m")
+        print("\033[94m--------------------------------------\033[0m")
+
+    @staticmethod
+    def Happy_captain_inspecting_information():
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[91m---           GLADIATORS           ---\033[0m")
+        print("\033[91m--------------------------------------\033[0m")
+        print("\033[93m--- >Selected: Information On Team ---\033[0m")
+        print("\033[94m---   -> Name selected             ---\033[0m")
+        print("\033[94m---    #Information:               ---\033[0m")
+        print("\033[94m---                                ---\033[0m")
+        print("\033[94m---    #Name                       ---\033[0m")
+        print("\033[94m---    #Date of birth              ---\033[0m")
+        print("\033[94m---    #Address                    ---\033[0m")        
+        print("\033[94m---    #Email                      ---\033[0m")
+        print("\033[94m---    #Phone                      ---\033[0m")
+        print("\033[94m---    #Handle                     ---\033[0m")
+        print("\033[94m---    #Link                       ---\033[0m")
+        print("\033[94m---                                ---\033[0m")
+        print("\033[94m--------------------------------------\033[0m")
+        print("\033[94m--- Back b)                        ---\033[0m")
+        print("\033[94m--------------------------------------\033[0m")
+
+    @staticmethod
+    def Happy_create_player():
+        print("\033[91m┌────────────────────────────────────┐\033[0m")
+        print("\033[91m|             GLADIATORS             |\033[0m")
+        print("\033[91m└────────────────────────────────────┘\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[95m░      >Selected: Create player      ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░         Full name                  ░\033[0m")
+        print("\033[94m░         Date of birth              ░\033[0m")
+        print("\033[94m░         Address                    ░\033[0m")
+        print("\033[94m░         Phone number               ░\033[0m")
+        print("\033[94m░         Email                      ░\033[0m")
+        print("\033[94m░         Handle                     ░\033[0m")
+        print("\033[94m░         Link(optional)             ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m░     Please enter the information   ░\033[0m")
+        print("\033[94m┌────────────────────────────────────┐\033[0m")
+        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m└────────────────────────────────────┘\033[0m")
+   
+    @staticmethod
+    def Happy_Update_result():
+        print("\033[91m┌────────────────────────────────────┐\033[0m")
+        print("\033[91m|             GLADIATORS             |\033[0m")
+        print("\033[91m└────────────────────────────────────┘\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[95m░       >Selected: Update result     ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m┌────────────────────────────────────┐\033[0m")
+        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m└────────────────────────────────────┘\033[0m")
+    
+    @staticmethod
+    def Happy_information():
+        print("\033[91m┌────────────────────────────────────┐\033[0m")
+        print("\033[91m|             GLADIATORS             |\033[0m")
+        print("\033[91m└────────────────────────────────────┘\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[95m░       >Selected: Information        ░\033[0m")
+        print("\033[94m░                                    ░\033[0m")
+        print("\033[94m┌────────────────────────────────────┐\033[0m")
+        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m└────────────────────────────────────┘\033[0m")
+    
+    @staticmethod    
+    def player_was_made():
+        print("\033[92m┌──────────────────────────────────────────────────────┐\033[0m")
+        print("\033[92m|░█▀█░█░░░█▀█░█░█░█▀▀░█▀▄░░░█▀▀░█▀▄░█▀▀░█▀█░▀█▀░█▀▀░█▀▄|\033[0m")
+        print("\033[92m|░█▀▀░█░░░█▀█░░█░░█▀▀░█▀▄░░░█░░░█▀▄░█▀▀░█▀█░░█░░█▀▀░█░█|\033[0m")
+        print("\033[92m|░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀░▀░▀░░░▀▀▀░▀░▀░▀▀▀░▀░▀░░▀░░▀▀▀░▀▀░|\033[0m")
+        print("\033[92m└──────────────────────────────────────────────────────┘\033[0m")
+    
+    @staticmethod
+    def team_was_made():
+        print("\033[92m┌──────────────────────────────────────────────┐\033[0m")
+        print("\033[92m|░▀█▀░█▀▀░█▀█░█▄█░░░█▀▀░█▀▄░█▀▀░█▀█░▀█▀░█▀▀░█▀▄|\033[0m")
+        print("\033[92m|░░█░░█▀▀░█▀█░█░█░░░█░░░█▀▄░█▀▀░█▀█░░█░░█▀▀░█░█|\033[0m")
+        print("\033[92m|░░▀░░▀▀▀░▀░▀░▀░▀░░░▀▀▀░▀░▀░▀▀▀░▀░▀░░▀░░▀▀▀░▀▀░|\033[0m")
+        print("\033[92m└──────────────────────────────────────────────┘\033[0m")
+    
+    @staticmethod
+    def tournament_was_made():
+        print("\033[92m┌──────────────────────────────────────────────────────────────────────┐\033[0m")
+        print("\033[92m|░▀█▀░█▀█░█░█░█▀▄░█▀█░█▀█░█▄█░█▀▀░█▀█░▀█▀░░░█▀▀░█▀▄░█▀▀░█▀█░▀█▀░█▀▀░█▀▄|\033[0m")
+        print("\033[92m|░░█░░█░█░█░█░█▀▄░█░█░█▀█░█░█░█▀▀░█░█░░█░░░░█░░░█▀▄░█▀▀░█▀█░░█░░█▀▀░█░█|\033[0m")
+        print("\033[92m|░░▀░░▀▀▀░▀▀▀░▀░▀░▀░▀░▀░▀░▀░▀░▀▀▀░▀░▀░░▀░░░░▀▀▀░▀░▀░▀▀▀░▀░▀░░▀░░▀▀▀░▀▀░|\033[0m")
+        print("\033[92m└──────────────────────────────────────────────────────────────────────┘\033[0m")
+    
+    @staticmethod   
+    def not_valid_input():
+        print("\033[91m\033[100m┌──────────────────────────────────────────────────┐\033[0m")
+        print("\033[91m\033[100m|░▀█▀░█▀█░█░█░█▀█░█░░░▀█▀░█▀▄░░░▀█▀░█▀█░█▀█░█░█░▀█▀|\033[0m")
+        print("\033[91m\033[100m|░░█░░█░█░▀▄▀░█▀█░█░░░░█░░█░█░░░░█░░█░█░█▀▀░█░█░░█░|\033[0m")
+        print("\033[91m\033[100m|░▀▀▀░▀░▀░░▀░░▀░▀░▀▀▀░▀▀▀░▀▀░░░░▀▀▀░▀░▀░▀░░░▀▀▀░░▀░|\033[0m")
+        print("\033[91m\033[100m└──────────────────────────────────────────────────┘\033[0m")

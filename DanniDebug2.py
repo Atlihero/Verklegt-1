@@ -5,7 +5,7 @@ api = LL_API()
 def show_games(games, title="Current Games"):
     print(f"\n=== {title} ===")
     for g in games:
-        print(f"{g['match_number']:>2}: {g['round']} | {g['team_a']} vs {g['team_b']} | "
+        print(f"{g['match_number']:>2}: {g['round']} {g['match_date']}| {g['team_a']} vs {g['team_b']} | "
               f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
 
 while True:
@@ -15,12 +15,13 @@ while True:
     print("3. create tournament with games")
     print("4. Update results")
     print("5. Show Games")
+    print("6. Create new team")
     print("q. Quit")
 
     val = input("Veldu verkefni (1-5): ")
 
     if val == "1":
-        userinput = int(input("Veldu ID leikmanns milli 1-57: "))
+        userinput = int(input("Veldu ID leikmanns milli 1-48: "))
         class PublicViewer:     
             def getplayerPublic():
                 api = LL_API()        
@@ -165,23 +166,22 @@ while True:
 
         schedule = PublicViewer.view_schedule(games)
 
-    
     if val == "6":
         class OrganizerUI:
             def create_team_ui(self):
                 print("\n=== Create a New Team ===")
                 
                 team_name = input("Enter Team Name: ").strip()
-                captain = input("Enter Captain Name (optional): ").strip() or None
+                captain = None
                 ascii_logo = input("Enter ASCII Logo (optional): ").strip() or None
 
                 new_team = api.add_team(name=team_name, captain=captain, asciiLogo=ascii_logo)
                 print(f"Team '{new_team.name}' created successfully!")
                 return new_team
 
-        # Create an instance of OrganizerUI
-            ui = OrganizerUI()
-            new_team = ui.create_team_ui()
+        ui = OrganizerUI()
+        new_team = ui.create_team_ui()
+
 
     if val == "q":
         print("You have quit the program")
