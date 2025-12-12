@@ -47,7 +47,7 @@ class Happy_paths:
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m░      Please select your option     ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m|      Exit: q)                      |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
         
     @staticmethod
@@ -61,7 +61,7 @@ class Happy_paths:
         print("\033[94m░       Select which captain         ░\033[0m")
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m|      Exit: q)                      |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     
     @staticmethod
@@ -81,7 +81,7 @@ class Happy_paths:
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m░      Please select your option     ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m|      Exit: q)                      |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     
     @staticmethod
@@ -102,7 +102,7 @@ class Happy_paths:
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m░       Please enter information     ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m|      Exit: q)                      |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     
     @staticmethod
@@ -118,7 +118,7 @@ class Happy_paths:
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m░       Please enter information     ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m|      Exit: q)                      |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     
     @staticmethod
@@ -132,7 +132,7 @@ class Happy_paths:
         print("\033[94m░    Enter player to make captain    ░\033[0m")
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m|      Exit: q)                      |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
 
     @staticmethod
@@ -149,7 +149,7 @@ class Happy_paths:
         print("\033[94m░  (4)    View Schedule              ░\033[0m")
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m|      Exit: q)                      |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
 
     @staticmethod
@@ -169,7 +169,7 @@ class Happy_paths:
         print("\033[94m---    etc                         ---\033[0m")
         print("\033[94m---                                ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Back q)                        ---\033[0m")
+        print("\033[94m---   Back q)                      ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
 
     @staticmethod
@@ -188,7 +188,7 @@ class Happy_paths:
         print("\033[94m---                                ---\033[0m")
         print("\033[94m---      Select a number 1-5       ---\033[0m")        
         print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Back q)                        ---\033[0m")
+        print("\033[94m---   Back q)                      ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
 
     @staticmethod
@@ -209,7 +209,7 @@ class Happy_paths:
         print("\033[94m---    #Link                       ---\033[0m")
         print("\033[94m---                                ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
-        print("\033[94m--- Back q)                        ---\033[0m")
+        print("\033[94m---   Back q)                      ---\033[0m")
         print("\033[94m--------------------------------------\033[0m")
 
     @staticmethod
@@ -230,7 +230,7 @@ class Happy_paths:
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m░     Please enter the information   ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m|      Exit: q)                      |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
    
     @staticmethod
@@ -242,7 +242,7 @@ class Happy_paths:
         print("\033[95m░       >Selected: Update result     ░\033[0m")
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m|      Exit: q)                      |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     
     @staticmethod
@@ -254,7 +254,7 @@ class Happy_paths:
         print("\033[95m░       >Selected: Information        ░\033[0m")
         print("\033[94m░                                    ░\033[0m")
         print("\033[94m┌────────────────────────────────────┐\033[0m")
-        print("\033[94m|      Exit: q                       |\033[0m")
+        print("\033[94m|      Exit: q)                      |\033[0m")
         print("\033[94m└────────────────────────────────────┘\033[0m")
     
     @staticmethod    

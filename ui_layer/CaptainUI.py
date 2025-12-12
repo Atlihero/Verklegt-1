@@ -287,17 +287,17 @@ class CaptainUI:
 
 
     def view_schedule(self,title="Current Games") -> str:
+        '''Return the schedule for the games so it can be viewed.'''
+
         try:
             tournaments = self.ll.get_tournament_names() # Gets all tournament names
             print()
-            print(f"Tournaments in the system: {tournaments}")
+            print(f"Torunaments in the system: {tournaments}")
             
             while True:
-                tournament_name = input("Enter tournament name: ").strip().lower()
-                if tournament_name == "q":
-                    break
+                tournament_name = input("\nPlease enter a tournament name: ").strip()
 
-                elif tournament_name in tournaments: # Confirms that the tournament is in the system
+                if tournament_name in tournaments: # Confirms that the tournament is in the system
                     break
 
                 print("Tournament not found. Please enter a valid tournament name.")
@@ -310,14 +310,14 @@ class CaptainUI:
                 return []
             
             print(f"\n=== {title} ===\n")
-            print(f"{'No':<3}  {'Round':<8} {'Date':<12} {'Match':<49} {'Score':<7} {'Winner'}")
-            print("-" * 105)
+            print(f"{'No':<3}  {'Round':<8} {'Date':<12} {'Match':<55} {'Score':<8} {'Winner'}")
+            print("-" * 110)
 
             for g in games: # Print information on every match/game
-
                 match = f"{g['team_a']} vs {g['team_b']}"
                 score = f"{g['score_a'] or '-'}-{g['score_b'] or '-'}"
-                print(f"{g['match_number']:<4}| {g['round']:<5} | {g['match_date']:<11} | {match:<47} | {score:<6} | {g['winner'] or '-'}")
+                print(f"{g['match_number']:<4}| {g['round']:<5} | {g['match_date']:<11} | {match:<53} | {score:<6} | {g['winner'] or '-'}")
+            
             print()
             return games
         

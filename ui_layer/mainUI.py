@@ -40,8 +40,7 @@ class Uimain:
             if user_inp != 1:
                 clear_term()
                 Happy_paths.Happy_menu()
-                user_inp = input("Enter 1, 2, 3 or q: ")
-                
+                user_inp = input("Enter your choice (1, 2, 3 or q to exit): ")
                 '''Here we select Organizer or captain or viewer'''
             
                 if user_inp == "1":
@@ -50,7 +49,7 @@ class Uimain:
                     clear_term()
                     while True:
                         Happy_paths.Happy_organizer() #This is the organizer
-                        user_inp = input("Enter 1-6 or q: ")
+                        user_inp = input("Enter your choice (1-6 or q to exit): ")
                         
                         if user_inp == "1": #Here you create a new player
                             clear_term()
@@ -127,7 +126,7 @@ class Uimain:
                             break # Go back to main menu if captain not found
                             
                         Happy_paths.Happy_captain_add_or_info()
-                        cap_choice = input("").strip().lower()
+                        cap_choice = input("Enter your choice (1-4 or q to exit): ").strip().lower()
                         
                         if cap_choice == "1":
                             captain.add_to_team()
@@ -172,7 +171,7 @@ class Uimain:
                     
                     while True:
                         Happy_paths.Happy_viewer()
-                        user_inp = input("Enter 1, 2, 3 or q: ")
+                        user_inp = input("Enter your choice (1-3 or q to quit): ")
                         
                         if user_inp == "1":
                             publicViewer.get_player_public()
