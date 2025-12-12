@@ -334,12 +334,6 @@ class OrganizerUI():
         
         print(f"{player[real_userinput]}") # Show the player
         
-    """    
-    def make_captain(self): #virkar ekki enþá
-        '''The organizer selects a player to become captain'''
-        player_to_captain = self.lapi.get_players_all_off_them()
-        return player_to_captain
-    """
     
     def view_schedule(self,title="Current Games"):
         try:
