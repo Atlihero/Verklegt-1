@@ -210,20 +210,24 @@ class CaptainUI:
 
         if not players:
             return
-        
-        selected = input("\nPlease enter the number of whose information you want to see: ").strip().lower()
-        if selected == "q":
-            return
-        selected_index = int(selected) - 1
-        if selected_index < 0 or selected_index >= len(players):
-            print("The number is not in the player's number range. Please select another number.")
-            return
+        while True:
+            try:
+                selected = input("\nPlease enter the number of whose information you want to see or q to quit: ").strip().lower()
+                if selected == "q":
+                    return
+                selected_index = int(selected) - 1
+                if selected_index < 0 or selected_index >= len(players):
+                    print("The number is not in the player's number range. Please select another number.")
+                    continue
+                break
+            except ValueError:
+                print("Please enter a number or q to quit.")
         
         while True:
             try:
                 selected_index = int(selected) - 1
             except ValueError:
-                print("please enter a valid integer")
+                print("Please enter a valid integer")
                 continue
             if selected_index < 0 or selected_index >= len(players):
                 print("The number is not in the player's number range. Please select another number.")
