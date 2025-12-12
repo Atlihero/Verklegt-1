@@ -47,7 +47,6 @@ class CaptainUI:
                 if choice == "q":
                     return False
 
-
                 elif 1 <= int(choice) <= len(team_names):
                     selected_team = team_names[int(choice) - 1]
                     self.current_team_name = selected_team
@@ -91,7 +90,7 @@ class CaptainUI:
         return players_sorted
 
 
-    def add_to_team(self):
+    def add_to_team(self) -> str:
         '''Captain adds a player that has no team to their team.'''
 
         players = self._get_and_show_available_players()
@@ -125,7 +124,7 @@ class CaptainUI:
             print("Error:", error)
 
 
-    def remove_from_team(self):
+    def remove_from_team(self) -> str:
         '''Captain removes a player from their own team.'''
 
         all_players: list[Player] = self.ll.get_team_members(self.current_team_name)
@@ -204,7 +203,7 @@ class CaptainUI:
             print("Error:", error)
 
 
-    def cap_see_player_info(self):
+    def cap_see_player_info(self) -> str:
         '''Captain can see personal information about the player's in his own team.'''
         players = self._get_and_show_team_members()
 
@@ -287,7 +286,7 @@ class CaptainUI:
         print()
 
 
-    def view_schedule(self,title="Current Games"):
+    def view_schedule(self,title="Current Games") -> str:
         try:
             tournaments = self.ll.get_tournament_names() # Gets all tournament names
             print()

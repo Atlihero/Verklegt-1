@@ -6,27 +6,25 @@ class LLOrganizer():
     
     def __init__(self):
         self.dapi = DataAPI()
-        self.playerio = PlayerIO()
     
 
     def tournament_name(self, name: str) -> str:
-        '''Checks if name is unique or missing a name'''
-        
+        """Checks if name is unique or missing."""
         name = name.strip()
-        if not name: # Check for empty inputs
-            raise ValueError("Tournament name cannot be emtpy. Please enter a valid name.")
-        
-        # Get all tournament names from the csv file
-        existing_tournament_names = self.dapi.get_all_tournaments()
-        existing_name = []
-        for row in existing_tournament_names: 
-            if row: # Check if row is not empty, to prevent errors
-                existing_name.append(row[0])
-    
-        if name in existing_name: # Checking if the name is unique
+        if not name:
+            raise ValueError("Tournament name cannot be empty. Please enter a valid name.")
+
+        # Get all tournament names from the CSV via DataAPI
+        existing_names = self.dapi.get_tournament_names()
+
+        # Normalize: strip whitespace and lowercase
+        existing_names = [n.strip().lower() for n in existing_names if n]
+
+        if name.lower() in existing_names:
             raise ValueError("Tournament name already exists. Please choose another one.")
 
         return name
+
        
 
     def choose_start_date(self, start_date: str) -> datetime:
@@ -78,8 +76,8 @@ class LLOrganizer():
         return contact_name
     
 
-    def organizer_player_info(self):
+    def organizer_player_info(self) -> list:
         '''Allows the organizer to see information on all the players'''
         
-        all_players = self.playerio.get_players()
+        all_players = self.dapi.get_all_players()
         return all_players

@@ -16,3 +16,7 @@ class Result(Game):
          f"Score for team B  : {self.score_B}\n"
          f"Winner            : {self.winner}"
          )
+
+
+    def __repr__(self):
+        return str(self)

@@ -30,7 +30,7 @@ class TournamentIO:
                 reader = csv.DictReader(csvfile)
                 
                 for row in reader:
-                    tournament_names.append(row["tournamentName"]) 
+                    tournament_names.append(row["tournamentName"].strip()) 
                     
         except FileNotFoundError:
             return "No older tournaments names were found."

@@ -6,9 +6,10 @@ from data_layer.data_api import DataAPI
 class LLTeams:
     def __init__(self): 
         self.data = DataAPI()
+        self.teams = self.data.get_all_teams()
 
     
-    def get_teams_public(self):
+    def get_teams_public(self) -> list:
         '''The public viewer can see the teams.'''
         
         return self.data.get_public_team()
@@ -50,14 +51,26 @@ class LLTeams:
 
     
     def get_team_by_name(self, name: str) -> Team | None:
-        '''Checks for the team and returns it, if it was found, or None if it was not found'''
-        
         for team in self.teams:
-            if team.name == name:
+            # If team is a string (team name)
+            if isinstance(team, str) and team == name:
+                return team  # or convert to a Team object if needed
+            elif hasattr(team, "name") and team.name == name:
                 return team
         return None
 
-    
+    def validate_team_name(self, name: str) -> str:
+        '''Validates that the team name is not empty and unique.'''
+        name = name.strip()
+        if not name:
+            raise ValueError("Team name cannot be empty. Please enter a valid name.")
+
+        if self.team_exists(name):
+            raise ValueError("Team name already exists. Please choose another one.")
+
+        return name
+
+
     def team_exists(self, name: str) -> bool:
         '''Checks if a team with the inputted name already exists.'''
         

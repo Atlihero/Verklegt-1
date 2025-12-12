@@ -1,4 +1,3 @@
-from data_layer.PlayerIO import PlayerIO
 from data_layer.data_api import DataAPI
 from .LLPlayers import LLPlayer
 from Models.Player import Player
@@ -12,9 +11,11 @@ class LLCaptain():
         self.data_api = DataAPI()
         self.players = LLPlayer()
 
+
     def _get_all_players(self) -> list[Player]:
-        """Get all players as Player objects from the data layer."""
+        '''Get all players as Player objects from the data layer.'''
         return self.data_api.get_all_players() or []
+
 
     def get_team_members(self, team_name: str) -> list[Player]:
         '''Return Player objects that belong to this team.'''
@@ -202,3 +203,8 @@ class LLCaptain():
         self.players.validate_address(new_address)
 
         return new_address
+
+
+    def get_names_team_captains(self) -> tuple[list[str], list[str]]:
+        '''Returns team names and captains for corresponding team from the csv file'''
+        return self.data_api.get_public_team()

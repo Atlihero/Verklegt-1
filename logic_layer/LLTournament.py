@@ -10,7 +10,7 @@ class LLTournament:
         self.teams = self.data.get_all_teams()
 
     
-    def create_game(self, tournament_name, round, match_number, match_date, team_a, team_b) -> list:
+    def create_game(self, tournament_name: str, round: int, match_number: int, match_date: datetime, team_a: str, team_b: str) -> list:
         '''Creates a game with all attributes needed for a valid game '''
         
         return [

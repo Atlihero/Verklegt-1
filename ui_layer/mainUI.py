@@ -17,7 +17,7 @@ class Uimain:
     
     def __init__(self) -> None:
         '''Gets logic_layer as a variable'''
-        LL_api = LL_API()
+        self.ll_api = LL_API()
         self.captain = CaptainUI()
         self.publicviewer = PublicViewer()
         self.organizer = OrganizerUI()
@@ -30,7 +30,6 @@ class Uimain:
         Happy_paths
         organizer = OrganizerUI()
         captain = CaptainUI()
-        api = LL_API()
         publicViewer = PublicViewer()
         
         while True:
