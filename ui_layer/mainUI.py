@@ -117,14 +117,14 @@ class Uimain:
                     
                     while True:
                         clear_term()
-                        print("\033[95m┌────────────────────────────────────────────────────┐\033[1m")
+                        print("┌────────────────────────────────────────────────────┐")
                         print("\033[92m|              ░█▀▀░█▀▀░█░░░█▀▀░█▀▀░▀█▀              |\033[0m")
                         print("\033[92m|              ░▀▀█░█▀▀░█░░░█▀▀░█░░░░█░              |\033[0m")
                         print("\033[92m|              ░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░░▀░              |\033[0m")
-                        print("\033[90m└────────────────────────────────────────────────────┘\033[1m")
+                        print("└────────────────────────────────────────────────────┘       ")
                     
                         if not captain.select_captain_and_team():
-                            break # go back to main menue if captain not found
+                            break # Go back to main menu if captain not found
                             
                         Happy_paths.Happy_captain_add_or_info()
                         cap_choice = input("").strip().lower()
