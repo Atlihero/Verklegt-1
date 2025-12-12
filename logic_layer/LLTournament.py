@@ -1,5 +1,4 @@
 from Models.Tournament import Tournament
-from Models.Round import Round
 from data_layer.data_api import DataAPI
 import random
 from datetime import datetime, timedelta
@@ -80,13 +79,13 @@ class LLTournament:
         return all_games
 
     
-    def update_games(self, tournament_name, match_number: int, score_a: int, score_b: int):
+    def update_games(self, tournament_name, match_number: int, score_a: int, score_b: int) -> str:
         '''Updates the game based on the inputted score '''
         
         return self.data.update_game(tournament_name, match_number, score_a, score_b)
 
     
-    def get_all_games(self):
+    def get_all_games(self) -> list:
         '''Gets the games from a specific tournament'''
 
         return self.data.get_games()
@@ -104,7 +103,7 @@ class LLTournament:
         return self.data.get_tournament_names()
 
     
-    def advance(self, tournament_name: str, match_number: int, winner: str):
+    def advance(self, tournament_name: str, match_number: int, winner: str) -> str:
         '''Shows what team advances to the next round'''
         
         return self.data.advance_round(tournament_name, match_number, winner)

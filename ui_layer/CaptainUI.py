@@ -25,6 +25,7 @@ class CaptainUI:
             "Link"        : player.link,
         }
 
+
     def select_captain_and_team(self) -> bool:
         '''Make the user choose which team they are captain of.'''
         team_names, captains = self.ll.get_team_names_and_captains()
@@ -39,7 +40,6 @@ class CaptainUI:
             captain = captains[i]
             index = i + 1
             print(f"{index:3}) Team: {team_name:25} | Captain: {captain:12}")
-
 
         while True:
             try:
@@ -71,6 +71,7 @@ class CaptainUI:
             name = player.name
             print(f"{index}. {name}")
         return players
+
 
     def _get_and_show_available_players(self) -> list[Player]:
         '''Show all players that are not in any team.'''
@@ -104,7 +105,7 @@ class CaptainUI:
             try:
                 selected_index = int(selected) - 1
             except ValueError:
-                print("Please enter a valid number")
+                print("Please enter a valid number.")
                 continue
             if selected_index < 0 or selected_index >= len(players):
                 print("The number is not in the player's number range. Please select another number.")
@@ -122,6 +123,7 @@ class CaptainUI:
             print("\033[92m└────────────────────────────────────────────────────┘\033[0m")
         except ValueError as error:
             print("Error:", error)
+
 
     def remove_from_team(self):
         '''Captain removes a player from their own team.'''
@@ -163,7 +165,8 @@ class CaptainUI:
             try:
                 selected_index = int(selected) - 1
             except ValueError:
-                print("The input has to be a valid integer. Please try again.")                
+                print("The input has to be a valid integer. Please try again.")    
+            
                 continue
             if selected_index < 0 or selected_index >= len(players):
                 print("A player with this ID does not exist. Please enter a valid ID number.")
@@ -199,6 +202,7 @@ class CaptainUI:
                 
         except ValueError as error:
             print("Error:", error)
+
 
     def cap_see_player_info(self):
         '''Captain can see personal information about the player's in his own team.'''
