@@ -45,7 +45,7 @@ class PublicViewer:
                 except ValueError:
                     print("please enter a valid integer")
 
-            print(f"\nTeam    : {teams[userinput-1]}, \nCaptain : {captain[userinput-1]}\n") # Show team and its captain
+            print(f"\nTeam    : {teams[userinput-1]} \nCaptain : {captain[userinput-1]}\n") # Show team and its captain
 
         except ValueError:
             print("Please enter a valid integer")

@@ -331,7 +331,7 @@ class OrganizerUI():
         print(f"\n=== Player Information ===")
         while True:
             try:
-                userinput = int(input(f"Select a player ID between 1-{len(player)}: "))
+                userinput = int(input(f"\nSelect a player ID between 1-{len(player)}: "))
                 real_userinput = userinput - 1
                 if 0 <= real_userinput <= len(player): # Check if the input is valid
                         break
@@ -340,7 +340,8 @@ class OrganizerUI():
             except ValueError:
                     print("The input has to be an integer number. Please enter a valid number.") 
         
-        print(f"{player[real_userinput]}") # Show the player
+
+        print(f"{player[real_userinput]}\n") # Show the player
         
     
     def view_schedule(self,title="Current Games"):

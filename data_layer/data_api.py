@@ -57,7 +57,7 @@ class DataAPI:
         '''Retrieves the tournament names'''
         return self.tournament.get_tournament_names()
 
-    def create_new_tournaments(self, tournament_obj: object):
+    def create_new_tournaments(self, tournament_obj: list):
         '''Creates new tournament and adds to csv file'''
         return self.tournament.create_new_tournament(tournament_obj)
 

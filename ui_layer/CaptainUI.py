@@ -121,9 +121,9 @@ class CaptainUI:
         try:
             self.ll.add_player_to_team(self.current_team_name, player_name)
             print(f"\n{player_name} has been added to {self.current_team_name}.\n")
-            print("\033[92m┌────────────────────────────────────────────────────────┐\033[0m")
+            print("\033[92m┌────────────────────────────────────────────────────┐\033[0m")
             print(f"\033[92m {player_name} has been added to {self.current_team_name}.\033[0m")
-            print("\033[92m└────────────────────────────────────────────────────────┘\033[0m")
+            print("\033[92m└────────────────────────────────────────────────────┘\033[0m")
         except ValueError as error:
             print("Error:", error)
 
@@ -189,9 +189,9 @@ class CaptainUI:
 
         try:
             self.ll.remove_player_from_team(self.current_team_name, player_name)
-            print("\033[92m┌────────────────────────────────────────────────────┐\033[0m")
+            print("\033[92m┌────────────────────────────────────────────────┐\033[0m")
             print(f"\033[92m {player_name} has been removed from the team.\033[0m")
-            print("\033[92m└────────────────────────────────────────────────────┘\033[0m")
+            print("\033[92m└────────────────────────────────────────────────┘\033[0m")
             user_inp = input("Press any button to return to start")
             if user_inp  != 1:
                 if os.name == 'nt':
@@ -287,10 +287,11 @@ class CaptainUI:
     def view_schedule(self,title="Current Games"):
         try:
             tournaments = self.ll.get_tournament_names() # Gets all tournament names
-            print(tournaments)
+            print()
+            print(f"Tournaments in the system: {tournaments}")
             
             while True:
-                tournament_name = input("Enter tournament name: ").strip()
+                tournament_name = input("\nPlease enter a tournament name: ").strip()
 
                 if tournament_name in tournaments: # Confirms that the tournament is in the system
                     break
@@ -304,11 +305,16 @@ class CaptainUI:
                 print(f"No games found for tournament: {tournament_name}")
                 return []
             
-            print(f"\n=== {title} ===")
+            print(f"\n=== {title} ===\n")
+            print(f"{'No':<3}  {'Round':<8} {'Date':<12} {'Match':<49} {'Score':<7} {'Winner'}")
+            print("-" * 105)
+
             for g in games: # Print information on every match/game
-                print(f"{g['match_number']:>2}: {g['round']} {g['match_date']}| {g['team_a']} vs {g['team_b']} | "
-                    f"Score: {g['score_a'] or '-'}-{g['score_b'] or '-'} | Winner: {g['winner'] or '-'}")
-            
+
+                match = f"{g['team_a']} vs {g['team_b']}"
+                score = f"{g['score_a'] or '-'}-{g['score_b'] or '-'}"
+                print(f"{g['match_number']:<4}| {g['round']:<5} | {g['match_date']:<11} | {match:<47} | {score:<6} | {g['winner'] or '-'}")
+            print()
             return games
         
         except ValueError:
