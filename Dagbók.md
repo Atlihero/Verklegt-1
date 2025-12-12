@@ -218,3 +218,8 @@ Mættir á morgunfund eru allir nema Atli. Elvar mætti aðeins seint á fundinn
 -	Klára kóðann 
 -	Komast eins langt og hægt er í skýrslunni
 -	Undirbúa hvernig kynningarmyndbandið á að vera.
+
+### Föstudagur 12.12.2025 (THE LAST DAY!)
+Mæting var 10 í dag vegna hve seint við vorum að vinna í gærkvöldi.
+Dembdum okkur beint í að fara í gegnum forritið og gá hvernig það höndlar villur.
+Karen og Daníel eru að laga í skýrslunni og gera hana perfect. Á meðan restin er að fara í gegnum kóðann og laga hvernig output er á sumum stöðum og passa að það sé samræmi alls staðar í kóðanum í uppsetningu, kommentum, docstrings, villuskilaboðum og outputi.
