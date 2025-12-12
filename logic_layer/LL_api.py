@@ -127,7 +127,7 @@ class LL_API:
         '''Creates a new tournament in the csv file.'''
         return self.tournament.new_tourney(tournament_obj)
     
-    def get_game_by_tournament_name(self, tournament_name) -> list:
+    def get_game_by_tournament_name(self, tournament_name: str) -> list:
         '''Return the games in a tournament'''
         games = self.tournament.get_all_games()
         return [g for g in games if g["tournament_name"] == tournament_name]
