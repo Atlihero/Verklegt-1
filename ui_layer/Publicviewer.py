@@ -21,7 +21,7 @@ class PublicViewer:
                 except ValueError:
                     print("The input has to be a integer number. Please enter a valid number.")
                         
-            print(f"Player: {player[userinput-1]}, Team: {team[userinput-1]}") # Show the player and its team
+            print(f"\nPlayer: {player[userinput-1]} \nTeam  : {team[userinput-1]}\n") # Show the player and its team
         
         except ValueError as error:
             print("Please enter a valid integer")
