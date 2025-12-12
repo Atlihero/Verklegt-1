@@ -1,6 +1,7 @@
 from logic_layer.LL_api import LL_API
 from Models.Tournament import Tournament
 from Models.Player import Player
+from ui_layer.Happy_path import Happy_paths
 
 
 def show_games(games, title="Current Games"):
@@ -22,7 +23,6 @@ class OrganizerUI():
 
     def __init__(self):
         self.lapi = LL_API()
-
 
     def create_player(self):
         '''Have the user input all the information needed for the player.'''
@@ -103,40 +103,55 @@ class OrganizerUI():
         '''Input every information needed to create a tournament.'''
         
         print("\n=== Create a New Tournament ===")
-
-        while True: # Check if tournamnent name is a valid input
-            unique_name = input("Create a unique name for the tournament: ")
+        running = True
+        while running: # Check if tournamnent name is a valid input
+            unique_name = input("Create a unique name for the tournament: ").strip().lower()
+            if unique_name == "q":
+                running = False
+                break
             try:
                 unique_name = self.lapi.valid_tournament_name(unique_name)
                 break
             except ValueError as error:
                 print(f"Error: {error}")
 
-        while True: # Check if tournament start date is a valid input
+        while running: # Check if tournament start date is a valid input
             start_date = input("Select the start date of the tournament. DD/MM/YYYY: ")
+            if start_date == "q":
+                running = False
+                break
             try:
                 start_date = self.lapi.valid_start_date(start_date)
                 break
             except ValueError as error:
                 print(f"Error: {error}. Start date has to be in the future.")
 
-        while True: # Check if tournament end date is a valid input
+        while running: # Check if tournament end date is a valid input
             end_date = input("Select the end date of the tournament. DD/MM/YYYY: ")
+            if end_date == "q":
+                running = False
+                break
             try:
                 end_date = self.lapi.valid_end_date(end_date, start_date ,min_days=5)
                 break
             except ValueError as error:
                 print(f"Error: {error}. End date must be at least 5 days after the start date.")
 
-        while True: # Check if tournament location is a valid input
+        while running: # Check if tournament location is a valid input
             venue = input("Enter the name of a venue (location) for the tournament: ")
+            if venue == "q":
+                running = False
+                break
             try:
                 venue = self.lapi.valid_tournament_location(venue)
                 break
             except ValueError as error:
                 print(f"Error: {error}")
         
-        while True: # Check if tournament contact name is a valid input
+        while running: # Check if tournament contact name is a valid input
+            if contact_person == "q":
+                running = False
+                break
             try:
                 contact_person = input("Who is the contact person for this tournament. Please enter a name: ")
                 contact_person = self.lapi.valid_tournament_contact(contact_person)
@@ -144,34 +159,43 @@ class OrganizerUI():
             except ValueError as error:
                 print(f"Error: {error}")
         
-        while True: # Check if tournamnent contact email is a valid input
+        while running: # Check if tournamnent contact email is a valid input
             contact_email = input("What is the contact person's email. Please enter an email address: ")
+            if contact_email == "q":
+                running = False
+                break
             try: 
                 self.lapi.valid_email(contact_email)
                 break
             except ValueError as error:
                 print(f"Error: {error}")
         
-        while True: # Check if tournamnent contact phone number is a valid input
+        while running: # Check if tournamnent contact phone number is a valid input
             contact_phone = "354" + input("What is the contact person's phone number. Please enter a phone number (354): ")
+            if contact_phone == "q":
+                running = False
+                break
             try:
                 self.lapi.valid_phone(contact_phone)
                 break
             except ValueError as error:
                 print(f"Error: {error}")
         
-        # Create the tournament object with valid fieldnames
-        tournament_obj = Tournament( 
-            unique_name = unique_name,
-            start_date = start_date,
-            end_date = end_date,
-            venue = venue,
-            contact_person = contact_person,
-            contact_email = contact_email,
-            contact_phone = contact_phone
-        )
-        self.lapi.generate_games(unique_name, start_date)
-        return self.lapi.create_new_tournament(tournament_obj)
+        while running:
+            # Create the tournament object with valid fieldnames
+            tournament_obj = Tournament( 
+                unique_name = unique_name,
+                start_date = start_date,
+                end_date = end_date,
+                venue = venue,
+                contact_person = contact_person,
+                contact_email = contact_email,
+                contact_phone = contact_phone
+            )
+            self.lapi.generate_games(unique_name, start_date)
+            return self.lapi.create_new_tournament(tournament_obj) and Happy_paths.tournament_was_made()
+            
+            
 
 
     def update_result(self):
